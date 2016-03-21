@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MMXReport.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DataDBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MMX_MODULE_Data</Value>
+    </Setting>
+    <Setting Name="ConfigDBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MMX_MODULE_Config</Value>
+    </Setting>
+    <Setting Name="DB_Id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sa</Value>
+    </Setting>
+    <Setting Name="DB_Pwd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">nada123!</Value>
+    </Setting>
+    <Setting Name="ServerIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1\SQL2014</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
