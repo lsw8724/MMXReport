@@ -17,7 +17,6 @@ namespace MMXReport
             Graphics screenGraph = Graphics.FromImage(screenshot);
             screenGraph.CopyFromScreen(p, Point.Empty, size, CopyPixelOperation.SourceCopy);
             screenshot.Save("Screenshot.png", System.Drawing.Imaging.ImageFormat.Png);
-            int ddd = 0;
         }
     }
 }
