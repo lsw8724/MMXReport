@@ -10,6 +10,7 @@ namespace MMXReport.TsiConfig
 {
     public class BandpassConfig
     {
+        public bool Visible { get; set; }
         public bool Active { get; set; }
         public string BandpassName { get; set; }
         public DspVectorOverride OverrideInfo { get; set; }
@@ -38,10 +39,12 @@ namespace MMXReport.TsiConfig
             for(int i=0 ; i<BandpassArr.Length; i++)
             {
                 string bandpassName = Enum.GetValues(typeof(VectorOverrideOrder)).GetValue(i).ToString();
+                
                 BandpassArr[i] = new BandpassConfig()
                 {
+                    Visible = (Overrides[i].OverrideName == null || Overrides[i].OverrideName == string.Empty)? false:true,
                     OverrideInfo = Overrides[i],
-                    DisplayName = (!Overrides[i].Override || Overrides[i].OverrideName == null || Overrides[i].OverrideName == string.Empty)? bandpassName:Overrides[i].OverrideName,
+                    DisplayName = (Overrides[i].Override )? Overrides[i].OverrideName : bandpassName,
                     BandpassName = bandpassName
                 };
             }

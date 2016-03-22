@@ -74,18 +74,22 @@ namespace MMXReport.Dialog
         {
             TreeChildAllCheck(e.Node.Nodes);
             MimicNodes pointNodes = (MimicNodeTree.DataSource as MimicNodes).SearchNodes(300);
-            MultiPointConf.SetChannelList(pointNodes.Where(x => x.Active));
+            var temp = pointNodes.Where(x => x.Active);
+            MultiPointConf.SetChannelList(temp);
             List_Bandpass.DataSource = MultiPointConf.CommonBandpassList;
         }
 
         private void TreeChildAllCheck(TreeListNodes nodes)
         {
-            if (nodes.Count == 0) return;
+            if (nodes.Count == 0)
+            {
+                (MimicNodeTree.GetDataRecordByNode(nodes.ParentNode) as MimicNode).Active = nodes.ParentNode.Checked;
+                return;
+            }
 
             foreach (TreeListNode node in nodes)
             {
                 node.Checked = nodes.ParentNode.Checked;
-                (MimicNodeTree.GetDataRecordByNode(node) as MimicNode).Active = node.Checked;
                 TreeChildAllCheck(node.Nodes);
             }
         }

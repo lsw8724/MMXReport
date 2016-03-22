@@ -30,28 +30,28 @@ namespace MMXReport
 
         private List<BandpassConfig> CollectCommonOverrides()
         {
-            List<BandpassConfig> bandList = new List<BandpassConfig>();
+            List<BandpassConfig> commonBandList = new List<BandpassConfig>();
             if (SelectedChannelList.Count > 0)
             {
                 BandpassConfig[] bandArr = SelectedChannelList.First().BandpassArr;
-                bool[] isCommonBandpass = new bool[9];
+                bool[] isNotCommonBandpass = new bool[9];
                 for (int i = 0; i < bandArr.Length; i++)
                 {
                     foreach (var ch in SelectedChannelList)
                     {
-                        if (isCommonBandpass[i]) break;
-                        if (bandArr[i].DisplayName != ch.BandpassArr[i].DisplayName)
+                        if (isNotCommonBandpass[i]) break;
+                        if (bandArr[i].DisplayName != ch.BandpassArr[i].DisplayName || !ch.BandpassArr[i].Visible)
                         {
-                            isCommonBandpass[i] = true;
+                            isNotCommonBandpass[i] = true;
                             break;
                         }
                     }
-                    if (!isCommonBandpass[i])
-                        bandList.Add(bandArr[i]);
+                    if (!isNotCommonBandpass[i])
+                        commonBandList.Add(bandArr[i]);
                 }
-                bandList[0].Active = true;
+                commonBandList[0].Active = true;
             }
-            return bandList;
+            return commonBandList;
         }
     }
 }
