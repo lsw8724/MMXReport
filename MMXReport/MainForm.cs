@@ -79,9 +79,10 @@ namespace MMXReport
         private void BtnPreview_DayOfWeek_Click(object sender, EventArgs e)
         {
             Tchart_DayOfWeek.Visible = true;
-            Tchart_DayOfWeek.Series.Clear();
             if (DayOfWeekConf.Channel != null)
             {
+                Tchart_DayOfWeek.Series.Clear();
+                Tchart_DayOfWeek.Header.Lines = new string[] { DayOfWeekConf.Channel.PointName };
                 var datas = DBConn.LoadDayOfWeekData(DayOfWeekConf);
                 Tchart_DayOfWeek.Legend.Visible = (datas.Count != 1) ? true : false;
                 foreach (var dataTable in datas)
@@ -98,11 +99,12 @@ namespace MMXReport
 
         private void BtnPreview_Period_Click(object sender, EventArgs e)
         {
-            Tchart_Period.Series.Clear();
             Tchart_DayOfWeek.Hide();
             Tchart_Period.Show();
             if (PeriodConf.SelectedChannelList != null)
             {
+                Tchart_Period.Series.Clear();
+                Tchart_Period.Header.Lines = new string[] { PeriodConf.SelectedBandpass.DisplayName };
                 foreach (DataTable table in DBConn.LoadPeriodData(PeriodConf))
                 {
                     Bar barSeries = new Bar() { Title = table.TableName };
@@ -134,9 +136,10 @@ namespace MMXReport
         private void BtnPreview_MultiBandTrend_Click(object sender, EventArgs e)
         {
             Tchart_Trend.Visible = true;
-            Tchart_Trend.Series.Clear();
             if (MultiBandConf.Channel != null)
-            { 
+            {
+                Tchart_Trend.Series.Clear();
+                Tchart_Trend.Header.Lines = new string[] { MultiBandConf.Channel.PointName };
                 switch (MultiBandConf.StatTermType)
                 {
                     case "day":
@@ -145,7 +148,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월" + data.ItemArray[2].ToString() + "일");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월" + data.ItemArray[2].ToString() + "일");
                         } break;
                     case "week":
                         foreach (var dataTable in DBConn.LoadMultiBandpassTrendData(MultiBandConf))
@@ -153,7 +156,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "주");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "주");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiBandpassTrendData(MultiBandConf))
@@ -161,7 +164,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월");
                         } break;
                 }
             }
@@ -179,14 +182,15 @@ namespace MMXReport
 
         private void BtnReport_MultiBand_Click(object sender, EventArgs e)
         {
-            new ChartCapturer(Tchart_Trend.Size,tableLayoutPanel2.PointToClient(Tchart_Trend.Location));
+            new ChartCapturer(Tchart_Trend.Size,tableLayoutPanel2.PointToScreen(Tchart_Trend.Location));
         }
 
         private void BtnPreview_MultPointTrend_Click(object sender, EventArgs e)
         {
-            Tchart_Trend.Series.Clear();
             if (MultiPointConf.SelectedChannelList != null)
             {
+                Tchart_Trend.Series.Clear();
+                Tchart_Trend.Header.Lines = new string[] { MultiPointConf.SelectedBandpass.DisplayName };
                 switch (MultiPointConf.StatTermType)
                 {
                     case "day":
@@ -195,7 +199,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월" + data.ItemArray[2].ToString() + "일");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월" + data.ItemArray[2].ToString() + "일");
                         } break;
                     case "week":
                         foreach (var dataTable in DBConn.LoadMultiPointTrendData(MultiPointConf))
@@ -203,7 +207,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "주");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "주");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiPointTrendData(MultiPointConf))
@@ -211,7 +215,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월");
                         } break;
                 }
             }
@@ -242,14 +246,15 @@ namespace MMXReport
         private void BtnPreview_Repair_Click(object sender, EventArgs e)
         {
             Tchart_RepairTrend.Visible = true;
-            Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년\nM월 d일";
-            Tchart_RepairTrend.Series.Clear();
-            colorBand1.Start = RepairConf.BeforeRepairDate.ToOADate();
-            colorBand1.End = RepairConf.AfterRepairDate.ToOADate();
-            RepairConf.StartDate = RepairConf.BeforeRepairDate.AddDays(-1*RepairConf.RepairOffsetDay);
-            RepairConf.EndDate = RepairConf.AfterRepairDate.AddDays(RepairConf.RepairOffsetDay);
             if (RepairConf.Channel != null)
             {
+                Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년\nM월 d일";
+                Tchart_RepairTrend.Series.Clear();
+                Tchart_RepairTrend.Header.Lines = new string[] { RepairConf.Channel.PointName};
+                colorBand1.Start = RepairConf.BeforeRepairDate.ToOADate();
+                colorBand1.End = RepairConf.AfterRepairDate.ToOADate();
+                RepairConf.StartDate = RepairConf.BeforeRepairDate.AddDays(-1 * RepairConf.RepairOffsetDay);
+                RepairConf.EndDate = RepairConf.AfterRepairDate.AddDays(RepairConf.RepairOffsetDay);
                 foreach (var dataTable in DBConn.LoadRepairData(RepairConf))
                 {
                     FastLine fastline = new FastLine() { Title = dataTable.TableName };

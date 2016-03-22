@@ -11,8 +11,9 @@ namespace MMXReport
 {
     public class MultiPointConfiguration : BaseConfiguration
     {
-        public List<BandpassConfig> SelectedBandpassList { get; set; }
+        public List<BandpassConfig> CommonBandpassList { get; set; }
         public List<ChannelConfig> SelectedChannelList { get; set; }
+        public BandpassConfig SelectedBandpass { get; set; }
         public string StatTermType { get; set; }
         public MultiPointConfiguration(DBConnector dbconn) : base(dbconn)
         {
@@ -24,7 +25,7 @@ namespace MMXReport
             SelectedChannelList = new List<ChannelConfig>();
             foreach (var node in mimicNodes)
                 SelectedChannelList.Add(new ChannelConfig(node, DBConn));
-            SelectedBandpassList = CollectCommonOverrides();
+            CommonBandpassList = CollectCommonOverrides();
         }
 
         private List<BandpassConfig> CollectCommonOverrides()

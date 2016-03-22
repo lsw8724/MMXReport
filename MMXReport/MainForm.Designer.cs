@@ -174,7 +174,18 @@
             // 
             // 
             // 
-            this.Tchart_RepairTrend.Header.Visible = false;
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Header.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_RepairTrend.Header.Font.Name = "굴림";
+            this.Tchart_RepairTrend.Header.Lines = new string[] {
+        "Preview"};
+            this.Tchart_RepairTrend.Header.TextAlign = System.Drawing.StringAlignment.Center;
             // 
             // 
             // 
@@ -484,8 +495,8 @@
             // 
             // groupControl9
             // 
-            this.groupControl9.Controls.Add(this.Tchart_DayOfWeek);
             this.groupControl9.Controls.Add(this.Tchart_Period);
+            this.groupControl9.Controls.Add(this.Tchart_DayOfWeek);
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl9.Location = new System.Drawing.Point(279, 16);
             this.groupControl9.Name = "groupControl9";
@@ -517,7 +528,18 @@
             // 
             // 
             // 
-            this.Tchart_DayOfWeek.Header.Visible = false;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_DayOfWeek.Header.Font.Name = "굴림";
+            this.Tchart_DayOfWeek.Header.Lines = new string[] {
+        "Preview"};
+            this.Tchart_DayOfWeek.Header.TextAlign = System.Drawing.StringAlignment.Center;
             // 
             // 
             // 
@@ -590,7 +612,18 @@
             // 
             // 
             // 
-            this.Tchart_Period.Header.Visible = false;
+            // 
+            // 
+            // 
+            this.Tchart_Period.Header.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.Tchart_Period.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_Period.Header.Font.Name = "굴림";
+            this.Tchart_Period.Header.Lines = new string[] {
+        "Preview"};
+            this.Tchart_Period.Header.TextAlign = System.Drawing.StringAlignment.Center;
             // 
             // 
             // 
@@ -1171,6 +1204,7 @@
             // 
             // 
             this.Tchart_Trend.Axes.Left.Title.Font.Name = "Arial";
+            this.Tchart_Trend.Axes.Left.Title.Visible = false;
             // 
             // 
             // 
@@ -1239,10 +1273,13 @@
             // 
             // 
             // 
+            this.Tchart_Trend.Axes.Top.Title.Caption = "0";
             // 
             // 
             // 
             this.Tchart_Trend.Axes.Top.Title.Font.Name = "Arial";
+            this.Tchart_Trend.Axes.Top.Title.Lines = new string[] {
+        "0"};
             this.Tchart_Trend.Cursor = System.Windows.Forms.Cursors.Default;
             this.Tchart_Trend.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
@@ -1262,11 +1299,14 @@
             // 
             // 
             // 
+            this.Tchart_Trend.Header.Font.Bold = true;
             // 
             // 
             // 
-            this.Tchart_Trend.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.Tchart_Trend.Header.Font.Name = "Arial";
+            this.Tchart_Trend.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_Trend.Header.Font.Name = "굴림";
+            this.Tchart_Trend.Header.Lines = new string[] {
+        "Preview"};
             // 
             // 
             // 
@@ -1276,7 +1316,7 @@
             // 
             this.Tchart_Trend.Header.Shadow.Height = 0;
             this.Tchart_Trend.Header.Shadow.Width = 0;
-            this.Tchart_Trend.Header.Visible = false;
+            this.Tchart_Trend.Header.TextAlign = System.Drawing.StringAlignment.Center;
             // 
             // 
             // 

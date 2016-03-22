@@ -71,7 +71,7 @@ namespace MMXReport
         public List<DataTable> LoadMultiPointTrendData(MultiPointConfiguration multiPointConf)
         {
             List<DataTable> dataList = new List<DataTable>();
-            BandpassConfig selectedbandpass = multiPointConf.SelectedBandpassList.Where(x => x.Active).First() as BandpassConfig;
+            BandpassConfig selectedbandpass = multiPointConf.CommonBandpassList.Where(x => x.Active).First() as BandpassConfig;
             string query = string.Empty;
             switch (multiPointConf.StatTermType)
             {
@@ -234,18 +234,16 @@ namespace MMXReport
         public List<DataTable> LoadPeriodData(PeriodConfiguration periodConf)
         {
             List<DataTable> dataList = new List<DataTable>();
-            BandpassConfig selectedbandpass = periodConf.SelectedBandpassList.Where(x => x.Active).First() as BandpassConfig;
-
             foreach (var channel in periodConf.SelectedChannelList)
             {
                 string query =
-                    "SELECT DATEPART(yy, [DateTime]),Year_Quarter, " + periodConf.ValueMeasureType + "([" + selectedbandpass.BandpassName + "]) " +
+                    "SELECT DATEPART(yy, [DateTime]),Year_Quarter, " + periodConf.ValueMeasureType + "([" + periodConf.SelectedBandpass.BandpassName + "]) " +
                     "FROM(SELECT CASE " +
                     "WHEN DATEPART(mm, [DateTime]) = 1 THEN '1분기' WHEN DATEPART(mm, [DateTime]) = 2 THEN '1분기' WHEN DATEPART(mm, [DateTime]) = 3 THEN '1분기' " +
                     "WHEN DATEPART(mm, [DateTime]) = 4 THEN '2분기' WHEN DATEPART(mm, [DateTime]) = 5 THEN '2분기' WHEN DATEPART(mm, [DateTime]) = 6 THEN '2분기' " +
                     "WHEN DATEPART(mm, [DateTime]) = 7 THEN '3분기' WHEN DATEPART(mm, [DateTime]) = 8 THEN '3분기' WHEN DATEPART(mm, [DateTime]) = 9 THEN '3분기' " +
                     "WHEN DATEPART(mm, [DateTime]) = 10 THEN '4분기' WHEN DATEPART(mm, [DateTime]) = 11 THEN '4분기' WHEN DATEPART(mm, [DateTime]) = 12 THEN '4분기' " +
-                    "END Year_Quarter,[" + selectedbandpass.BandpassName + "],[DateTime] " +
+                    "END Year_Quarter,[" + periodConf.SelectedBandpass.BandpassName + "],[DateTime] " +
                     "FROM " + DataConnection.Database + ".[dbo].[VectorData_month_" + periodConf.ValueMeasureType + "] " +
                     "WHERE [ChannelId]=" + channel.Id + " AND [DateTime] >= '" + periodConf.StartDateStr + "' AND  [DateTime] < '" + periodConf.StartDate.AddYears(1).ToString("yyyy-MM-dd") + "')AS T " +
                     "GROUP BY DATEPART(yy, [DateTime]),Year_Quarter " +

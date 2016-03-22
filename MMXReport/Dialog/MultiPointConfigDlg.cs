@@ -75,7 +75,7 @@ namespace MMXReport.Dialog
             TreeChildAllCheck(e.Node.Nodes);
             MimicNodes pointNodes = (MimicNodeTree.DataSource as MimicNodes).SearchNodes(300);
             MultiPointConf.SetChannelList(pointNodes.Where(x => x.Active));
-            List_Bandpass.DataSource = MultiPointConf.SelectedBandpassList;
+            List_Bandpass.DataSource = MultiPointConf.CommonBandpassList;
         }
 
         private void TreeChildAllCheck(TreeListNodes nodes)
@@ -92,12 +92,15 @@ namespace MMXReport.Dialog
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            for(int i=0; i<MultiPointConf.SelectedBandpassList.Count; i++)
+            for(int i=0; i<MultiPointConf.CommonBandpassList.Count; i++)
             {
                 if (i == e.FocusedRowHandle)
-                    MultiPointConf.SelectedBandpassList[i].Active = true;
+                {
+                    MultiPointConf.CommonBandpassList[i].Active = true;
+                    MultiPointConf.SelectedBandpass = MultiPointConf.CommonBandpassList[i];
+                }
                 else
-                    MultiPointConf.SelectedBandpassList[i].Active = false;
+                    MultiPointConf.CommonBandpassList[i].Active = false;
             }  
         }
     }
