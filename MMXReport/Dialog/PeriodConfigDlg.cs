@@ -22,7 +22,7 @@ namespace MMXReport.Dialog
         {
             InitializeComponent();
 
-            MimicNodeTree.DataSource = common.CreateMimicNodes(baseConf.DBConn);
+            MimicNodeTree.DataSource = common.LoadMimicNodes(baseConf.DBConn);
             MimicNodeTree.BestFitColumns();
             MimicNodeTree.ExpandAll();
             MimicNodeTree.CollapseAll();

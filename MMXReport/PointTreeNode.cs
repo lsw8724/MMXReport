@@ -15,21 +15,32 @@ namespace MMXReport
         public string NodeName { get; set; }
         public int NodeType { get; set; }
         public int ChannelId { get; set; }
-        public MimicNodes ParentNode { get; set; }
+        public MimicNode ParentNode { get; set; }
+        public MimicNodes Nodes { get; set; }
         public MimicNodes ChildNodes { get; set; }
         
         public MimicNode() 
         {
             this.NodeName = "";
-            this.ParentNode = null;
+            this.Nodes = null;
             this.ChildNodes = new MimicNodes();
         }
-        public MimicNode(int id,string name,int type, int chid) {
+        public MimicNode(int id, string name, int type, int chid)
+        {
             this.Id = id;
             this.NodeName = name;
             this.NodeType = type;
             this.ChannelId = chid;
             this.ChildNodes = new MimicNodes();
+        }
+
+        public MimicNode(int id,string name,int type, int chid, MimicNode pNode) {
+            this.Id = id;
+            this.NodeName = name;
+            this.NodeType = type;
+            this.ChannelId = chid;
+            this.ChildNodes = new MimicNodes();
+            this.ParentNode = pNode;
         }
     }
 
@@ -82,7 +93,7 @@ namespace MMXReport
         }
         protected override void InsertItem(int index, MimicNode item)
         {
-            item.ParentNode = this;
+            item.Nodes = this;
             base.InsertItem(index, item);
         }
         void TreeList.IVirtualTreeListData.VirtualTreeGetCellValue(VirtualTreeGetCellValueInfo info)

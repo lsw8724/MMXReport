@@ -20,12 +20,14 @@ namespace MMXReport.TsiConfig
 
     public class ChannelConfig
     {
+        public string MachineName { get; set; }
         public string PointName{get;set;}
         public int Id { get; set; }
         public DspVectorOverride[] Overrides { get; set; }
         public BandpassConfig[] BandpassArr { get; set; }
         public ChannelConfig(MimicNode mimicNode, DBConnector dbConn)
         {
+            MachineName = mimicNode.ParentNode.NodeName;
             PointName = mimicNode.NodeName;
             Id = mimicNode.ChannelId;
             Overrides = dbConn.LoadExtraJSON(mimicNode.ChannelId).VectorOverrides;

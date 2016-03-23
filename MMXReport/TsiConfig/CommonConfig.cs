@@ -12,9 +12,9 @@ namespace MMXReport.TsiConfig
         public MimicNodes MimicNodes { get; set; }
         public CommonConfig(DBConnector dbconn)
         {
-            MimicNodes = CreateMimicNodes(dbconn);
+            MimicNodes = LoadMimicNodes(dbconn);
         }
-        public MimicNodes CreateMimicNodes(DBConnector dbconn)
+        public MimicNodes LoadMimicNodes(DBConnector dbconn)
         {
             DataTable data = dbconn.LoadMimicNodeList();
             MimicNodes mimicNodes = new MimicNodes();
@@ -29,14 +29,17 @@ namespace MMXReport.TsiConfig
                 switch(nodeType)
                 {
                     case 100: mimicNodes.Add(new MimicNode(id, name, nodeType, chid)); break;
-                    case 200: mimicNodes.Where(x => x.Id == parentId).First().ChildNodes.Add(new MimicNode(id, name, nodeType, chid)); break;
+                    case 200: 
+                        var node = mimicNodes.Where(x => x.Id == parentId).First();
+                        node.ChildNodes.Add(new MimicNode(id, name, nodeType, chid, node)); break;
                     case 300:
                         foreach (var m in mimicNodes)
                         {
                             var temp = m.ChildNodes.Where(x => x.Id == parentId);
                             if (temp.Count() > 0)
                             {
-                                temp.First().ChildNodes.Add(new MimicNode(id, name, nodeType, chid));
+                                var pNode = temp.First();
+                                pNode.ChildNodes.Add(new MimicNode(id, name, nodeType, chid, pNode));
                                 break;
                             }
                         }break;

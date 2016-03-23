@@ -21,6 +21,7 @@ namespace MMXReport.Dialog
             MimicNodeTree.BestFitColumns();
             DateEdit_Start.DateTime = BaseConfig.StartDate;
             DateEdit_End.DateTime = BaseConfig.EndDate;
+            MimicNodeTree.SetFocusedNode(MimicNodeTree.Nodes.FirstNode);
         }
 
         private void StartDateEdit_EditValueChanged(object sender, EventArgs e)

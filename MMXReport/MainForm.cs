@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using DevExpress.XtraEditors;
 using MMXReport.Properties;
 using MMXReport.Dialog;
@@ -6,6 +7,11 @@ using System.Data;
 using Steema.TeeChart.Styles;
 using MMXReport.TsiConfig;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
+using System.Threading.Tasks;
+using Steema.TeeChart;
 
 namespace MMXReport
 {
@@ -82,9 +88,10 @@ namespace MMXReport
             if (DayOfWeekConf.Channel != null)
             {
                 Tchart_DayOfWeek.Series.Clear();
-                Tchart_DayOfWeek.Header.Lines = new string[] { DayOfWeekConf.Channel.PointName };
+                Tchart_DayOfWeek.Header.Lines = new string[] { DayOfWeekConf.Channel.BandpassArr.Where(x=>x.Active).First().DisplayName };
                 var datas = DBConn.LoadDayOfWeekData(DayOfWeekConf);
                 Tchart_DayOfWeek.Legend.Visible = (datas.Count != 1) ? true : false;
+                Tchart_DayOfWeek.Header.Visible = (datas.Count != 1) ? false : true;
                 foreach (var dataTable in datas)
                 {
                     HorizBar hBar = new HorizBar() { Title = dataTable.TableName, ColorEach = (datas.Count ==1)? true:false };
@@ -118,7 +125,20 @@ namespace MMXReport
 
         private void BtnReport_DayOfWeek_Click(object sender, EventArgs e)
         {
-            new ExcelIOManager("HantaDailyReport1.xlsx");
+             BtnPreview_DayOfWeek_Click(null, null);
+            if (DayOfWeekConf.Channel != null)
+            {
+                new ExcelIOManager("Template_CommonReport.xlsx", new ReportItem()
+                {
+                    DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
+                    Name = "요일별 비교 분석 보고서",
+                    Machine = DayOfWeekConf.Channel.MachineName,
+                    Ref = "Point",
+                    Value = DayOfWeekConf.Channel.PointName,
+                    AnalysisType = "* BarChart Analysis",
+                    Img = ChartCaptur(Tchart_DayOfWeek)
+                });
+            }
         }
 
         private void BtnConfig_DayOfWeek_Click(object sender, EventArgs e)
@@ -148,7 +168,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월" + data.ItemArray[2].ToString() + "일");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "." + data.ItemArray[2].ToString());
                         } break;
                     case "week":
                         foreach (var dataTable in DBConn.LoadMultiBandpassTrendData(MultiBandConf))
@@ -156,7 +176,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "주");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "주");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiBandpassTrendData(MultiBandConf))
@@ -164,7 +184,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월");
                         } break;
                 }
             }
@@ -182,7 +202,20 @@ namespace MMXReport
 
         private void BtnReport_MultiBand_Click(object sender, EventArgs e)
         {
-            new ChartCapturer(Tchart_Trend.Size,tableLayoutPanel2.PointToScreen(Tchart_Trend.Location));
+            BtnPreview_MultiBandTrend_Click(null, null); 
+            if (MultiBandConf.Channel != null)
+            {
+                new ExcelIOManager("Template_CommonReport.xlsx", new ReportItem()
+                {
+                    DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
+                    Name = "포인트별 추이 분석 보고서",
+                    Machine = MultiBandConf.Channel.MachineName,
+                    Ref = "Point",
+                    Value = MultiBandConf.Channel.PointName,
+                    AnalysisType ="* Trend Analysis",
+                    Img = ChartCaptur(Tchart_Trend)
+                });
+            }
         }
 
         private void BtnPreview_MultPointTrend_Click(object sender, EventArgs e)
@@ -199,7 +232,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월" + data.ItemArray[2].ToString() + "일");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[3]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "." + data.ItemArray[2].ToString());
                         } break;
                     case "week":
                         foreach (var dataTable in DBConn.LoadMultiPointTrendData(MultiPointConf))
@@ -207,7 +240,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "주");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "주");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiPointTrendData(MultiPointConf))
@@ -215,7 +248,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "년\n" + data.ItemArray[1].ToString() + "월");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월");
                         } break;
                 }
             }
@@ -223,12 +256,28 @@ namespace MMXReport
 
         private void BtnReport_MultiPointTrend_Click(object sender, EventArgs e)
         {
-
+            BtnPreview_MultPointTrend_Click(null, null);
+            if (MultiPointConf.SelectedChannelList.Count > 0)
+            {
+                new ExcelIOManager("Template_CommonReport.xlsx", new ReportItem()
+                {
+                    DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
+                    Name = "밴드별 추이 분석 보고서",
+                    Machine = MultiPointConf.SelectedChannelList[0].MachineName,
+                    Ref = "Measure",
+                    Value = MultiPointConf.SelectedBandpass.DisplayName,
+                    AnalysisType = "* Trend Analysis",
+                    Img = ChartCaptur(Tchart_Trend)
+                });
+            }
         }
 
         private void BtnPreview_Daily_Click(object sender, EventArgs e)
         {
+            Tchart_RepairTrend.Visible = false;
+            Grid_DailyData.Visible = true;
             DataTable table = DBConn.LoadDailyData(DailyConf);
+            //Grid_DailyData.DataSource = table;
             var overrideOrder = Enum.GetNames(typeof(VectorOverrideOrder));
             foreach (DataRow row in table.Rows) // 0 chid, 3 overrideName, 4 unit, 5 alarm
             {
@@ -246,6 +295,7 @@ namespace MMXReport
         private void BtnPreview_Repair_Click(object sender, EventArgs e)
         {
             Tchart_RepairTrend.Visible = true;
+            Grid_DailyData.Visible = false;
             if (RepairConf.Channel != null)
             {
                 Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년\nM월 d일";
@@ -264,7 +314,22 @@ namespace MMXReport
                 }
             }
         }
+        private Bitmap ChartCaptur(TChart tchart)
+        {
+            tchart.Graphics3D.UseBuffer = false;
+            Rectangle rect = new Rectangle(0, 0, tchart.Width, tchart.Height);
+            Bitmap screenshot = new Bitmap(rect.Width, rect.Height, PixelFormat.Format64bppArgb);
 
-        
+            tchart.DrawToBitmap(screenshot, rect);
+            return ResizeBitmap(screenshot, 740);
+        }
+        private Bitmap ResizeBitmap(Bitmap sourceBMP, int width)
+        {
+            int height = Convert.ToInt32(sourceBMP.Height * (width / (float)sourceBMP.Width));
+            Bitmap result = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(result))
+                g.DrawImage(sourceBMP, 0, 0, width, height);
+            return result;
+        }
     }
 }

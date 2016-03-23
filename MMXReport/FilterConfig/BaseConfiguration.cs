@@ -28,7 +28,7 @@ namespace MMXReport
 
         protected void SetDefault()
         {
-            StartDate = new DateTime(2015, 10, 1);
+            StartDate = DateTime.Now;
             EndDate = DateTime.Now;
             ValueMeasureType = "max";
         }
