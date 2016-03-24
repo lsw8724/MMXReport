@@ -61,6 +61,9 @@
     <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.15.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.15.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v12.2, Version=12.2.15.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="MathNet.Iridium">
+      <HintPath>.\MathNet.Iridium.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -81,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DailyReportItem.cs" />
     <Compile Include="Dialog\BaseConfigDlg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,7 +115,14 @@
     <Compile Include="Dialog\MultiPointConfigDlg.Designer.cs">
       <DependentUpon>MultiPointConfigDlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\WaitLoadingDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\WaitLoadingDlg.Designer.cs">
+      <DependentUpon>WaitLoadingDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcelIOManager.cs" />
+    <Compile Include="FFTConvertor.cs" />
     <Compile Include="FilterConfig\DailyConfiguration.cs" />
     <Compile Include="Dialog\MultiBandpassConfigDlg.cs">
       <SubType>Form</SubType>
@@ -165,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DailyConfigDlg.resx">
       <DependentUpon>DailyConfigDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\WaitLoadingDlg.resx">
+      <DependentUpon>WaitLoadingDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

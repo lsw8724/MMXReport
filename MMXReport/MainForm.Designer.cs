@@ -34,21 +34,26 @@
             this.Gr_Report = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.Tchart_RepairTrend = new Steema.TeeChart.TChart();
-            this.fastLine2 = new Steema.TeeChart.Styles.FastLine();
-            this.colorBand1 = new Steema.TeeChart.Tools.ColorBand();
-            this.annotation1 = new Steema.TeeChart.Tools.Annotation();
             this.Grid_DailyData = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ChannelId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Machine = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Point = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Bandpass = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Function = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Unit = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Alarm = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Max = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Min = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Avg = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Caution = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Failure = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Repair = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Stop = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MIN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MAX = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.AVG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Remark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Tchart_RepairTrend = new Steema.TeeChart.TChart();
+            this.fastLine2 = new Steema.TeeChart.Styles.FastLine();
+            this.colorBand1 = new Steema.TeeChart.Tools.ColorBand();
+            this.annotation1 = new Steema.TeeChart.Tools.Annotation();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.BtnPreview_Repair = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPreview_Daily = new DevExpress.XtraEditors.SimpleButton();
@@ -59,12 +64,12 @@
             this.Gr_Compare = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl9 = new DevExpress.XtraEditors.GroupControl();
+            this.Tchart_DayOfWeek = new Steema.TeeChart.TChart();
+            this.horizBar1 = new Steema.TeeChart.Styles.HorizBar();
             this.Tchart_Period = new Steema.TeeChart.TChart();
             this.bar1 = new Steema.TeeChart.Styles.Bar();
             this.bar2 = new Steema.TeeChart.Styles.Bar();
             this.bar3 = new Steema.TeeChart.Styles.Bar();
-            this.Tchart_DayOfWeek = new Steema.TeeChart.TChart();
-            this.horizBar2 = new Steema.TeeChart.Styles.HorizBar();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.BtnPreview_Period = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPreview_DayOfWeek = new DevExpress.XtraEditors.SimpleButton();
@@ -84,6 +89,7 @@
             this.fastLine1 = new Steema.TeeChart.Styles.FastLine();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Gr_Variation = new DevExpress.XtraEditors.GroupControl();
+            this.bandpassConfigBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Gr_Report)).BeginInit();
             this.Gr_Report.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -106,6 +112,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Gr_Variation)).BeginInit();
             this.Gr_Variation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bandpassConfigBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // SmallImageList
@@ -156,8 +163,8 @@
             // 
             // groupControl4
             // 
-            this.groupControl4.Controls.Add(this.Tchart_RepairTrend);
             this.groupControl4.Controls.Add(this.Grid_DailyData);
+            this.groupControl4.Controls.Add(this.Tchart_RepairTrend);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(367, 16);
             this.groupControl4.Name = "groupControl4";
@@ -165,6 +172,193 @@
             this.groupControl4.Size = new System.Drawing.Size(531, 222);
             this.groupControl4.TabIndex = 4;
             this.groupControl4.Text = "groupControl4";
+            // 
+            // Grid_DailyData
+            // 
+            this.Grid_DailyData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grid_DailyData.Font = new System.Drawing.Font("Tahoma", 6F);
+            this.Grid_DailyData.Location = new System.Drawing.Point(2, 2);
+            this.Grid_DailyData.MainView = this.gridView1;
+            this.Grid_DailyData.Name = "Grid_DailyData";
+            this.Grid_DailyData.Size = new System.Drawing.Size(527, 218);
+            this.Grid_DailyData.TabIndex = 1;
+            this.Grid_DailyData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 7F);
+            this.gridView1.Appearance.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.Row.Options.UseFont = true;
+            this.gridView1.Appearance.Row.Options.UseForeColor = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.ChannelId,
+            this.Machine,
+            this.Point,
+            this.Function,
+            this.Unit,
+            this.Caution,
+            this.Failure,
+            this.Repair,
+            this.Stop,
+            this.MIN,
+            this.MAX,
+            this.AVG,
+            this.Status,
+            this.Remark});
+            this.gridView1.GridControl = this.Grid_DailyData;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.AllowHtmlDrawGroups = false;
+            this.gridView1.OptionsView.ShowDetailButtons = false;
+            this.gridView1.OptionsView.ShowGroupExpandCollapseButtons = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowIndicator = false;
+            this.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView1_RowCellStyle);
+            // 
+            // ChannelId
+            // 
+            this.ChannelId.Caption = "ChannelId";
+            this.ChannelId.FieldName = "ChannelId";
+            this.ChannelId.Name = "ChannelId";
+            this.ChannelId.OptionsColumn.AllowEdit = false;
+            this.ChannelId.OptionsColumn.AllowFocus = false;
+            // 
+            // Machine
+            // 
+            this.Machine.Caption = "Machine";
+            this.Machine.FieldName = "Machine";
+            this.Machine.Name = "Machine";
+            this.Machine.OptionsColumn.AllowEdit = false;
+            this.Machine.OptionsColumn.AllowFocus = false;
+            this.Machine.Visible = true;
+            this.Machine.VisibleIndex = 0;
+            this.Machine.Width = 50;
+            // 
+            // Point
+            // 
+            this.Point.Caption = "Point";
+            this.Point.FieldName = "Point";
+            this.Point.Name = "Point";
+            this.Point.OptionsColumn.AllowEdit = false;
+            this.Point.OptionsColumn.AllowFocus = false;
+            this.Point.Visible = true;
+            this.Point.VisibleIndex = 1;
+            this.Point.Width = 37;
+            // 
+            // Function
+            // 
+            this.Function.Caption = "Function";
+            this.Function.FieldName = "Function";
+            this.Function.Name = "Function";
+            this.Function.OptionsColumn.AllowEdit = false;
+            this.Function.OptionsColumn.AllowFocus = false;
+            this.Function.Visible = true;
+            this.Function.VisibleIndex = 2;
+            this.Function.Width = 54;
+            // 
+            // Unit
+            // 
+            this.Unit.Caption = "Unit";
+            this.Unit.FieldName = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.OptionsColumn.AllowEdit = false;
+            this.Unit.OptionsColumn.AllowFocus = false;
+            this.Unit.Visible = true;
+            this.Unit.VisibleIndex = 3;
+            this.Unit.Width = 30;
+            // 
+            // Caution
+            // 
+            this.Caution.Caption = "Caution";
+            this.Caution.FieldName = "Caution";
+            this.Caution.Name = "Caution";
+            this.Caution.OptionsColumn.AllowEdit = false;
+            this.Caution.OptionsColumn.AllowFocus = false;
+            this.Caution.Visible = true;
+            this.Caution.VisibleIndex = 4;
+            this.Caution.Width = 46;
+            // 
+            // Failure
+            // 
+            this.Failure.Caption = "Failure";
+            this.Failure.FieldName = "Failure";
+            this.Failure.Name = "Failure";
+            this.Failure.OptionsColumn.AllowEdit = false;
+            this.Failure.OptionsColumn.AllowFocus = false;
+            this.Failure.Visible = true;
+            this.Failure.VisibleIndex = 5;
+            this.Failure.Width = 46;
+            // 
+            // Repair
+            // 
+            this.Repair.Caption = "Repair";
+            this.Repair.FieldName = "Repair";
+            this.Repair.Name = "Repair";
+            this.Repair.Visible = true;
+            this.Repair.VisibleIndex = 6;
+            this.Repair.Width = 44;
+            // 
+            // Stop
+            // 
+            this.Stop.Caption = "Stop";
+            this.Stop.FieldName = "Stop";
+            this.Stop.Name = "Stop";
+            this.Stop.Visible = true;
+            this.Stop.VisibleIndex = 7;
+            this.Stop.Width = 34;
+            // 
+            // MIN
+            // 
+            this.MIN.Caption = "MIN";
+            this.MIN.FieldName = "MIN";
+            this.MIN.Name = "MIN";
+            this.MIN.OptionsColumn.AllowEdit = false;
+            this.MIN.OptionsColumn.AllowFocus = false;
+            this.MIN.Visible = true;
+            this.MIN.VisibleIndex = 8;
+            this.MIN.Width = 30;
+            // 
+            // MAX
+            // 
+            this.MAX.Caption = "MAX";
+            this.MAX.FieldName = "MAX";
+            this.MAX.Name = "MAX";
+            this.MAX.OptionsColumn.AllowEdit = false;
+            this.MAX.OptionsColumn.AllowFocus = false;
+            this.MAX.Visible = true;
+            this.MAX.VisibleIndex = 9;
+            this.MAX.Width = 29;
+            // 
+            // AVG
+            // 
+            this.AVG.Caption = "AVG";
+            this.AVG.FieldName = "AVG";
+            this.AVG.Name = "AVG";
+            this.AVG.OptionsColumn.AllowEdit = false;
+            this.AVG.OptionsColumn.AllowFocus = false;
+            this.AVG.Visible = true;
+            this.AVG.VisibleIndex = 10;
+            this.AVG.Width = 30;
+            // 
+            // Status
+            // 
+            this.Status.Caption = "Status";
+            this.Status.FieldName = "Status";
+            this.Status.Name = "Status";
+            this.Status.Visible = true;
+            this.Status.VisibleIndex = 11;
+            this.Status.Width = 39;
+            // 
+            // Remark
+            // 
+            this.Remark.Caption = "Remark";
+            this.Remark.FieldName = "Remark";
+            this.Remark.Name = "Remark";
+            this.Remark.Visible = true;
+            this.Remark.VisibleIndex = 12;
+            this.Remark.Width = 58;
             // 
             // Tchart_RepairTrend
             // 
@@ -245,6 +439,7 @@
             // 
             // 
             // 
+            this.fastLine2.XValues.DataMember = "X";
             this.fastLine2.XValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
             // 
             // 
@@ -341,133 +536,6 @@
             this.annotation1.Text = "수리기간";
             this.annotation1.Top = 50;
             // 
-            // Grid_DailyData
-            // 
-            this.Grid_DailyData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grid_DailyData.Location = new System.Drawing.Point(2, 2);
-            this.Grid_DailyData.MainView = this.gridView1;
-            this.Grid_DailyData.Name = "Grid_DailyData";
-            this.Grid_DailyData.Size = new System.Drawing.Size(527, 218);
-            this.Grid_DailyData.TabIndex = 1;
-            this.Grid_DailyData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.ChannelId,
-            this.Machine,
-            this.Point,
-            this.Bandpass,
-            this.Unit,
-            this.Alarm,
-            this.Max,
-            this.Min,
-            this.Avg});
-            this.gridView1.GridControl = this.Grid_DailyData;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.AllowHtmlDrawGroups = false;
-            this.gridView1.OptionsView.ShowDetailButtons = false;
-            this.gridView1.OptionsView.ShowGroupExpandCollapseButtons = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            // 
-            // ChannelId
-            // 
-            this.ChannelId.Caption = "ChannelId";
-            this.ChannelId.FieldName = "ChannelId";
-            this.ChannelId.Name = "ChannelId";
-            this.ChannelId.OptionsColumn.AllowEdit = false;
-            this.ChannelId.OptionsColumn.AllowFocus = false;
-            // 
-            // Machine
-            // 
-            this.Machine.Caption = "Machine";
-            this.Machine.FieldName = "Machine";
-            this.Machine.Name = "Machine";
-            this.Machine.OptionsColumn.AllowEdit = false;
-            this.Machine.OptionsColumn.AllowFocus = false;
-            this.Machine.Visible = true;
-            this.Machine.VisibleIndex = 0;
-            this.Machine.Width = 73;
-            // 
-            // Point
-            // 
-            this.Point.Caption = "Point";
-            this.Point.FieldName = "Point";
-            this.Point.Name = "Point";
-            this.Point.OptionsColumn.AllowEdit = false;
-            this.Point.OptionsColumn.AllowFocus = false;
-            this.Point.Visible = true;
-            this.Point.VisibleIndex = 1;
-            this.Point.Width = 53;
-            // 
-            // Bandpass
-            // 
-            this.Bandpass.Caption = "Bandpass";
-            this.Bandpass.FieldName = "Bandpass";
-            this.Bandpass.Name = "Bandpass";
-            this.Bandpass.OptionsColumn.AllowEdit = false;
-            this.Bandpass.OptionsColumn.AllowFocus = false;
-            this.Bandpass.Visible = true;
-            this.Bandpass.VisibleIndex = 2;
-            this.Bandpass.Width = 74;
-            // 
-            // Unit
-            // 
-            this.Unit.Caption = "Unit";
-            this.Unit.FieldName = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.OptionsColumn.AllowEdit = false;
-            this.Unit.OptionsColumn.AllowFocus = false;
-            this.Unit.Visible = true;
-            this.Unit.VisibleIndex = 3;
-            this.Unit.Width = 44;
-            // 
-            // Alarm
-            // 
-            this.Alarm.Caption = "Alarm";
-            this.Alarm.FieldName = "Alarm";
-            this.Alarm.Name = "Alarm";
-            this.Alarm.OptionsColumn.AllowEdit = false;
-            this.Alarm.OptionsColumn.AllowFocus = false;
-            this.Alarm.Visible = true;
-            this.Alarm.VisibleIndex = 4;
-            this.Alarm.Width = 47;
-            // 
-            // Max
-            // 
-            this.Max.Caption = "Max";
-            this.Max.FieldName = "Max";
-            this.Max.Name = "Max";
-            this.Max.OptionsColumn.AllowEdit = false;
-            this.Max.OptionsColumn.AllowFocus = false;
-            this.Max.Visible = true;
-            this.Max.VisibleIndex = 5;
-            this.Max.Width = 56;
-            // 
-            // Min
-            // 
-            this.Min.Caption = "Min";
-            this.Min.FieldName = "Min";
-            this.Min.Name = "Min";
-            this.Min.OptionsColumn.AllowEdit = false;
-            this.Min.OptionsColumn.AllowFocus = false;
-            this.Min.Visible = true;
-            this.Min.VisibleIndex = 6;
-            this.Min.Width = 48;
-            // 
-            // Avg
-            // 
-            this.Avg.Caption = "Avg";
-            this.Avg.FieldName = "Avg";
-            this.Avg.Name = "Avg";
-            this.Avg.OptionsColumn.AllowEdit = false;
-            this.Avg.OptionsColumn.AllowFocus = false;
-            this.Avg.Visible = true;
-            this.Avg.VisibleIndex = 7;
-            this.Avg.Width = 72;
-            // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.BtnPreview_Repair);
@@ -487,7 +555,7 @@
             // BtnPreview_Repair
             // 
             this.BtnPreview_Repair.AllowFocus = false;
-            this.BtnPreview_Repair.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnPreview_Repair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnPreview_Repair.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_Repair.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_Repair.Appearance.Options.UseFont = true;
@@ -508,7 +576,7 @@
             // BtnPreview_Daily
             // 
             this.BtnPreview_Daily.AllowFocus = false;
-            this.BtnPreview_Daily.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnPreview_Daily.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnPreview_Daily.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_Daily.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_Daily.Appearance.Options.UseFont = true;
@@ -529,7 +597,7 @@
             // BtnConfig_Repair
             // 
             this.BtnConfig_Repair.AllowFocus = false;
-            this.BtnConfig_Repair.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnConfig_Repair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnConfig_Repair.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_Repair.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_Repair.Appearance.Options.UseFont = true;
@@ -550,7 +618,7 @@
             // BtnReport_Repair
             // 
             this.BtnReport_Repair.AllowFocus = false;
-            this.BtnReport_Repair.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnReport_Repair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnReport_Repair.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnReport_Repair.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_Repair.Appearance.Options.UseFont = true;
@@ -564,11 +632,12 @@
             this.BtnReport_Repair.Size = new System.Drawing.Size(133, 58);
             this.BtnReport_Repair.TabIndex = 12;
             this.BtnReport_Repair.Text = "보전활동";
+            this.BtnReport_Repair.Click += new System.EventHandler(this.BtnReport_Repair_Click);
             // 
             // BtnConfig_Daily
             // 
             this.BtnConfig_Daily.AllowFocus = false;
-            this.BtnConfig_Daily.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnConfig_Daily.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnConfig_Daily.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_Daily.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_Daily.Appearance.Options.UseFont = true;
@@ -589,7 +658,7 @@
             // BtnReport_Daily
             // 
             this.BtnReport_Daily.AllowFocus = false;
-            this.BtnReport_Daily.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnReport_Daily.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnReport_Daily.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnReport_Daily.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_Daily.Appearance.Options.UseFont = true;
@@ -603,6 +672,7 @@
             this.BtnReport_Daily.Size = new System.Drawing.Size(133, 58);
             this.BtnReport_Daily.TabIndex = 6;
             this.BtnReport_Daily.Text = "일간";
+            this.BtnReport_Daily.Click += new System.EventHandler(this.BtnReport_Daily_Click);
             // 
             // Gr_Compare
             // 
@@ -640,8 +710,8 @@
             // 
             // groupControl9
             // 
-            this.groupControl9.Controls.Add(this.Tchart_Period);
             this.groupControl9.Controls.Add(this.Tchart_DayOfWeek);
+            this.groupControl9.Controls.Add(this.Tchart_Period);
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl9.Location = new System.Drawing.Point(367, 16);
             this.groupControl9.Name = "groupControl9";
@@ -649,6 +719,101 @@
             this.groupControl9.Size = new System.Drawing.Size(531, 220);
             this.groupControl9.TabIndex = 16;
             this.groupControl9.Text = "groupControl9";
+            // 
+            // Tchart_DayOfWeek
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Aspect.View3D = false;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Axes.Bottom.MaximumOffset = 78;
+            this.Tchart_DayOfWeek.Axes.Bottom.MinimumOffset = 1;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Axes.Right.MinimumOffset = 1;
+            this.Tchart_DayOfWeek.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Tchart_DayOfWeek.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_DayOfWeek.Header.Font.Name = "굴림";
+            this.Tchart_DayOfWeek.Header.Lines = new string[] {
+        "Preview"};
+            this.Tchart_DayOfWeek.Header.TextAlign = System.Drawing.StringAlignment.Center;
+            this.Tchart_DayOfWeek.Header.Visible = false;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
+            this.Tchart_DayOfWeek.Location = new System.Drawing.Point(2, 2);
+            this.Tchart_DayOfWeek.Name = "Tchart_DayOfWeek";
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Panel.MarginBottom = 5D;
+            this.Tchart_DayOfWeek.Panel.MarginLeft = 1D;
+            this.Tchart_DayOfWeek.Panel.MarginRight = 2D;
+            this.Tchart_DayOfWeek.Panel.MarginTop = 5D;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
+            this.Tchart_DayOfWeek.Series.Add(this.horizBar1);
+            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(527, 216);
+            this.Tchart_DayOfWeek.TabIndex = 1;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
+            // 
+            // horizBar1
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
+            // 
+            // 
+            // 
+            this.horizBar1.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.horizBar1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
+            this.horizBar1.ColorEach = true;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.horizBar1.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.horizBar1.Title = "Bandpass";
+            // 
+            // 
+            // 
+            this.horizBar1.XValues.DataMember = "X";
+            // 
+            // 
+            // 
+            this.horizBar1.YValues.DataMember = "막대";
+            this.horizBar1.YValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
             // 
             // Tchart_Period
             // 
@@ -697,7 +862,7 @@
             // 
             this.Tchart_Period.Panel.MarginBottom = 9D;
             this.Tchart_Period.Panel.MarginLeft = 1D;
-            this.Tchart_Period.Panel.MarginRight = 1D;
+            this.Tchart_Period.Panel.MarginRight = 2D;
             this.Tchart_Period.Panel.MarginTop = 2D;
             // 
             // 
@@ -805,103 +970,6 @@
             // 
             this.bar3.YValues.DataMember = "막대";
             // 
-            // Tchart_DayOfWeek
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Aspect.View3D = false;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Axes.Bottom.MaximumOffset = 78;
-            this.Tchart_DayOfWeek.Axes.Bottom.MinimumOffset = 1;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Axes.Right.MinimumOffset = 1;
-            this.Tchart_DayOfWeek.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Tchart_DayOfWeek.Dock = System.Windows.Forms.DockStyle.Fill;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Header.Font.Bold = true;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Tchart_DayOfWeek.Header.Font.Name = "굴림";
-            this.Tchart_DayOfWeek.Header.Lines = new string[] {
-        "Preview"};
-            this.Tchart_DayOfWeek.Header.TextAlign = System.Drawing.StringAlignment.Center;
-            this.Tchart_DayOfWeek.Header.Visible = false;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
-            this.Tchart_DayOfWeek.Location = new System.Drawing.Point(2, 2);
-            this.Tchart_DayOfWeek.Name = "Tchart_DayOfWeek";
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Panel.MarginBottom = 5D;
-            this.Tchart_DayOfWeek.Panel.MarginLeft = 1D;
-            this.Tchart_DayOfWeek.Panel.MarginRight = 1D;
-            this.Tchart_DayOfWeek.Panel.MarginTop = 5D;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
-            this.Tchart_DayOfWeek.Series.Add(this.horizBar2);
-            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(527, 216);
-            this.Tchart_DayOfWeek.TabIndex = 1;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
-            // 
-            // horizBar2
-            // 
-            // 
-            // 
-            // 
-            this.horizBar2.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
-            this.horizBar2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
-            this.horizBar2.ColorEach = true;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.horizBar2.Marks.Brush.Visible = false;
-            // 
-            // 
-            // 
-            this.horizBar2.Marks.Font.Bold = true;
-            this.horizBar2.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Value;
-            this.horizBar2.Marks.Transparent = true;
-            // 
-            // 
-            // 
-            this.horizBar2.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
-            this.horizBar2.Title = "Bandpass";
-            // 
-            // 
-            // 
-            this.horizBar2.XValues.DataMember = "X";
-            // 
-            // 
-            // 
-            this.horizBar2.YValues.DataMember = "막대";
-            this.horizBar2.YValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
-            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.BtnPreview_Period);
@@ -921,7 +989,7 @@
             // BtnPreview_Period
             // 
             this.BtnPreview_Period.AllowFocus = false;
-            this.BtnPreview_Period.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnPreview_Period.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnPreview_Period.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_Period.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_Period.Appearance.Options.UseFont = true;
@@ -942,7 +1010,7 @@
             // BtnPreview_DayOfWeek
             // 
             this.BtnPreview_DayOfWeek.AllowFocus = false;
-            this.BtnPreview_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnPreview_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnPreview_DayOfWeek.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_DayOfWeek.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_DayOfWeek.Appearance.Options.UseFont = true;
@@ -963,7 +1031,7 @@
             // BtnConfig_Period
             // 
             this.BtnConfig_Period.AllowFocus = false;
-            this.BtnConfig_Period.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnConfig_Period.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnConfig_Period.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_Period.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_Period.Appearance.Options.UseFont = true;
@@ -984,7 +1052,7 @@
             // BtnReport_Period
             // 
             this.BtnReport_Period.AllowFocus = false;
-            this.BtnReport_Period.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnReport_Period.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnReport_Period.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnReport_Period.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_Period.Appearance.Options.UseFont = true;
@@ -997,11 +1065,12 @@
             this.BtnReport_Period.Size = new System.Drawing.Size(133, 58);
             this.BtnReport_Period.TabIndex = 12;
             this.BtnReport_Period.Text = "기간 비교";
+            this.BtnReport_Period.Click += new System.EventHandler(this.BtnReport_Period_Click);
             // 
             // BtnConfig_DayOfWeek
             // 
             this.BtnConfig_DayOfWeek.AllowFocus = false;
-            this.BtnConfig_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnConfig_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnConfig_DayOfWeek.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_DayOfWeek.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_DayOfWeek.Appearance.Options.UseFont = true;
@@ -1022,7 +1091,7 @@
             // BtnReport_DayOfWeek
             // 
             this.BtnReport_DayOfWeek.AllowFocus = false;
-            this.BtnReport_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnReport_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnReport_DayOfWeek.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnReport_DayOfWeek.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_DayOfWeek.Appearance.Options.UseFont = true;
@@ -1077,7 +1146,7 @@
             this.BtnPreview_BandpassTrend.AllowFocus = false;
             this.BtnPreview_BandpassTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnPreview_BandpassTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
-            this.BtnPreview_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnPreview_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnPreview_BandpassTrend.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_BandpassTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_BandpassTrend.Appearance.Options.UseFont = true;
@@ -1100,7 +1169,7 @@
             this.BtnPreview_PointTrend.AllowFocus = false;
             this.BtnPreview_PointTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnPreview_PointTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
-            this.BtnPreview_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnPreview_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnPreview_PointTrend.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_PointTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_PointTrend.Appearance.Options.UseFont = true;
@@ -1123,7 +1192,7 @@
             this.BtnConfig_BandpassTrend.AllowFocus = false;
             this.BtnConfig_BandpassTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnConfig_BandpassTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
-            this.BtnConfig_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnConfig_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnConfig_BandpassTrend.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_BandpassTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_BandpassTrend.Appearance.Options.UseFont = true;
@@ -1146,7 +1215,7 @@
             this.BtnReport_BandpassTrend.AllowFocus = false;
             this.BtnReport_BandpassTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnReport_BandpassTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
-            this.BtnReport_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnReport_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnReport_BandpassTrend.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnReport_BandpassTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_BandpassTrend.Appearance.Options.UseFont = true;
@@ -1167,7 +1236,7 @@
             this.BtnConfig_PointTrend.AllowFocus = false;
             this.BtnConfig_PointTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnConfig_PointTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
-            this.BtnConfig_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnConfig_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnConfig_PointTrend.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_PointTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_PointTrend.Appearance.Options.UseFont = true;
@@ -1190,7 +1259,7 @@
             this.BtnReport_PointTrend.AllowFocus = false;
             this.BtnReport_PointTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnReport_PointTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
-            this.BtnReport_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnReport_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnReport_PointTrend.Appearance.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold);
             this.BtnReport_PointTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_PointTrend.Appearance.Options.UseFont = true;
@@ -1689,6 +1758,10 @@
             this.Gr_Variation.Size = new System.Drawing.Size(995, 256);
             this.Gr_Variation.TabIndex = 17;
             // 
+            // bandpassConfigBindingSource
+            // 
+            this.bandpassConfigBindingSource.DataSource = typeof(MMXReport.TsiConfig.BandpassConfig);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1725,6 +1798,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Gr_Variation)).EndInit();
             this.Gr_Variation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bandpassConfigBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1769,7 +1843,6 @@
         private Steema.TeeChart.Styles.FastLine fastLine1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.GroupControl Gr_Variation;
-        private Steema.TeeChart.Styles.HorizBar horizBar2;
         private Steema.TeeChart.TChart Tchart_RepairTrend;
         private Steema.TeeChart.Styles.FastLine fastLine2;
         private Steema.TeeChart.Tools.ColorBand colorBand1;
@@ -1779,12 +1852,19 @@
         private DevExpress.XtraGrid.Columns.GridColumn ChannelId;
         private DevExpress.XtraGrid.Columns.GridColumn Machine;
         private DevExpress.XtraGrid.Columns.GridColumn Point;
-        private DevExpress.XtraGrid.Columns.GridColumn Bandpass;
+        private DevExpress.XtraGrid.Columns.GridColumn Function;
         private DevExpress.XtraGrid.Columns.GridColumn Unit;
-        private DevExpress.XtraGrid.Columns.GridColumn Alarm;
-        private DevExpress.XtraGrid.Columns.GridColumn Max;
-        private DevExpress.XtraGrid.Columns.GridColumn Min;
-        private DevExpress.XtraGrid.Columns.GridColumn Avg;
+        private DevExpress.XtraGrid.Columns.GridColumn Caution;
+        private DevExpress.XtraGrid.Columns.GridColumn MAX;
+        private DevExpress.XtraGrid.Columns.GridColumn MIN;
+        private DevExpress.XtraGrid.Columns.GridColumn AVG;
+        private Steema.TeeChart.Styles.HorizBar horizBar1;
+        private DevExpress.XtraGrid.Columns.GridColumn Failure;
+        private DevExpress.XtraGrid.Columns.GridColumn Repair;
+        private DevExpress.XtraGrid.Columns.GridColumn Stop;
+        private DevExpress.XtraGrid.Columns.GridColumn Status;
+        private DevExpress.XtraGrid.Columns.GridColumn Remark;
+        private System.Windows.Forms.BindingSource bandpassConfigBindingSource;
 
 
     }

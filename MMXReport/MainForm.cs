@@ -5,6 +5,7 @@ using MMXReport.Properties;
 using MMXReport.Dialog;
 using System.Data;
 using Steema.TeeChart.Styles;
+using System.ComponentModel;
 using MMXReport.TsiConfig;
 using System.Collections.Generic;
 using System.Drawing;
@@ -31,13 +32,14 @@ namespace MMXReport
         private PeriodConfigDlg PeriodConfigDlg { get; set; }
         private RepairConfiguration RepairConf { get; set; }
         private RepairConfigDlg RepairConfigDlg { get; set; }
+        private ExcelIOManager ExcelManager { get; set; }
         public MainForm()
         {
             InitializeComponent();
-            
-            CreateTempPreview();
-            DBConn = new DBConnector();
 
+            CreatePreviewSample();
+            DBConn = new DBConnector();
+            ExcelManager = new ExcelIOManager();
             CommonConf = new CommonConfig(DBConn);
             MultiBandConf = new MultiBandpassConfiguration(DBConn);
             MultiPointConf = new MultiPointConfiguration(DBConn);
@@ -54,16 +56,20 @@ namespace MMXReport
             RepairConfigDlg = new RepairConfigDlg(CommonConf,RepairConf) { Owner = this };
         }
 
-        private void CreateTempPreview()
+        private void CreatePreviewSample()
         {
             string[] week = new string[5] { "금", "목", "수", "화", "월" };
             Random rand = new Random();
             for (int i = 0; i < 5; i++)
                 Tchart_DayOfWeek.Series[0].Add(rand.Next(5, 10), week[i]);
             Tchart_Trend.Series[0].FillSampleValues();
-            Tchart_Period.Series[0].FillSampleValues();
-            Tchart_Period.Series[1].FillSampleValues();
-            Tchart_Period.Series[2].FillSampleValues();
+            Tchart_Period.Series[0].FillSampleValues(4);
+            Tchart_Period.Series[1].FillSampleValues(4);
+            Tchart_Period.Series[2].FillSampleValues(4);
+            BindingList<DailyReportItem> items = new BindingList<DailyReportItem>();
+            items.Add(new DailyReportItem());
+            items.Add(new DailyReportItem());
+            Grid_DailyData.DataSource = items;
             Tchart_RepairTrend.Series[0].FillSampleValues();
         }
 
@@ -80,6 +86,26 @@ namespace MMXReport
         private void BtnConfig_MultiPointTrend_Click(object sender, EventArgs e)
         {
             MultiPointConfigDlg.Show();
+        }
+
+        private void BtnConfig_DayOfWeek_Click(object sender, EventArgs e)
+        {
+            DayOfWeekConfigDlg.Show();
+        }
+
+        private void BtnConfig_Period_Click(object sender, EventArgs e)
+        {
+            PeriodConfigDlg.Show();
+        }
+
+        private void BtnConfig_Daily_Click(object sender, EventArgs e)
+        {
+            DailyConfDlg.Show();
+        }
+
+        private void BtnConfig_Repair_Click(object sender, EventArgs e)
+        {
+            RepairConfigDlg.Show();
         }
 
         private void BtnPreview_DayOfWeek_Click(object sender, EventArgs e)
@@ -123,39 +149,8 @@ namespace MMXReport
             }
         }
 
-        private void BtnReport_DayOfWeek_Click(object sender, EventArgs e)
-        {
-             BtnPreview_DayOfWeek_Click(null, null);
-            if (DayOfWeekConf.Channel != null)
-            {
-                new ExcelIOManager("Template_CommonReport.xlsx", new ReportItem()
-                {
-                    DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
-                    Name = "요일별 비교 분석 보고서",
-                    Machine = DayOfWeekConf.Channel.MachineName,
-                    Ref = "Point",
-                    Value = DayOfWeekConf.Channel.PointName,
-                    AnalysisType = "* BarChart Analysis",
-                    Img = ChartCaptur(Tchart_DayOfWeek)
-                });
-            }
-        }
-
-        private void BtnConfig_DayOfWeek_Click(object sender, EventArgs e)
-        {
-            DayOfWeekConfigDlg.Show();
-        }
-
-        private void BtnConfig_Period_Click(object sender, EventArgs e)
-        {
-            PeriodConfigDlg.Show();
-        }
-
-        
-
         private void BtnPreview_MultiBandTrend_Click(object sender, EventArgs e)
         {
-            Tchart_Trend.Visible = true;
             if (MultiBandConf.Channel != null)
             {
                 Tchart_Trend.Series.Clear();
@@ -188,35 +183,7 @@ namespace MMXReport
                         } break;
                 }
             }
-        }
-
-        private void BtnConfig_Daily_Click(object sender, EventArgs e)
-        {
-            DailyConfDlg.Show();
-        }
-
-        private void BtnConfig_Repair_Click(object sender, EventArgs e)
-        {
-            RepairConfigDlg.Show();
-        }
-
-        private void BtnReport_MultiBand_Click(object sender, EventArgs e)
-        {
-            BtnPreview_MultiBandTrend_Click(null, null); 
-            if (MultiBandConf.Channel != null)
-            {
-                new ExcelIOManager("Template_CommonReport.xlsx", new ReportItem()
-                {
-                    DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
-                    Name = "포인트별 추이 분석 보고서",
-                    Machine = MultiBandConf.Channel.MachineName,
-                    Ref = "Point",
-                    Value = MultiBandConf.Channel.PointName,
-                    AnalysisType ="* Trend Analysis",
-                    Img = ChartCaptur(Tchart_Trend)
-                });
-            }
-        }
+        }       
 
         private void BtnPreview_MultPointTrend_Click(object sender, EventArgs e)
         {
@@ -254,42 +221,10 @@ namespace MMXReport
             }
         }
 
-        private void BtnReport_MultiPointTrend_Click(object sender, EventArgs e)
-        {
-            BtnPreview_MultPointTrend_Click(null, null);
-            if (MultiPointConf.SelectedChannelList.Count > 0)
-            {
-                new ExcelIOManager("Template_CommonReport.xlsx", new ReportItem()
-                {
-                    DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
-                    Name = "밴드별 추이 분석 보고서",
-                    Machine = MultiPointConf.SelectedChannelList[0].MachineName,
-                    Ref = "Measure",
-                    Value = MultiPointConf.SelectedBandpass.DisplayName,
-                    AnalysisType = "* Trend Analysis",
-                    Img = ChartCaptur(Tchart_Trend)
-                });
-            }
-        }
-
         private void BtnPreview_Daily_Click(object sender, EventArgs e)
         {
             Tchart_RepairTrend.Visible = false;
             Grid_DailyData.Visible = true;
-            DataTable table = DBConn.LoadDailyData(DailyConf);
-            //Grid_DailyData.DataSource = table;
-            var overrideOrder = Enum.GetNames(typeof(VectorOverrideOrder));
-            foreach (DataRow row in table.Rows) // 0 chid, 3 overrideName, 4 unit, 5 alarm
-            {
-                int chid = Convert.ToInt32(row.ItemArray[0]);
-                DspVectorOverride[] overrides = DBConn.LoadExtraJSON(chid).VectorOverrides;
-                string bandpassName = row.ItemArray[3].ToString();
-                int idx = Array.IndexOf(overrideOrder, bandpassName);
-                DspVectorOverride vectorOverride = overrides[idx];
-                if (vectorOverride.Override && vectorOverride.OverrideName != string.Empty)
-                    row.ItemArray[3] = vectorOverride.OverrideName; //값 update 안됨!
-                row.ItemArray[4] = vectorOverride.OverrideUnit;
-            }
         }
 
         private void BtnPreview_Repair_Click(object sender, EventArgs e)
@@ -300,7 +235,7 @@ namespace MMXReport
             {
                 Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년\nM월 d일";
                 Tchart_RepairTrend.Series.Clear();
-                Tchart_RepairTrend.Header.Lines = new string[] { RepairConf.Channel.PointName};
+                Tchart_RepairTrend.Header.Lines = new string[] { RepairConf.Channel.PointName };
                 colorBand1.Start = RepairConf.BeforeRepairDate.ToOADate();
                 colorBand1.End = RepairConf.AfterRepairDate.ToOADate();
                 RepairConf.StartDate = RepairConf.BeforeRepairDate.AddDays(-1 * RepairConf.RepairOffsetDay);
@@ -314,6 +249,102 @@ namespace MMXReport
                 }
             }
         }
+
+        private void BtnReport_DayOfWeek_Click(object sender, EventArgs e)
+        {
+            BtnPreview_DayOfWeek_Click(null, null);
+            if (DayOfWeekConf.Channel != null)
+            {
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                {
+                    DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
+                    Name = "요일별 비교 분석 보고서",
+                    Machine = DayOfWeekConf.Channel.MachineName,
+                    Ref = "Point",
+                    Value = DayOfWeekConf.Channel.PointName,
+                    AnalysisType = "* BarChart Analysis",
+                    Img = ChartCaptur(Tchart_DayOfWeek)
+                });
+            }
+        }
+
+        private void BtnReport_MultiBand_Click(object sender, EventArgs e)
+        {
+            BtnPreview_MultiBandTrend_Click(null, null);
+            if (MultiBandConf.Channel != null)
+            {
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                {
+                    DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
+                    Name = "포인트별 추이 분석 보고서",
+                    Machine = MultiBandConf.Channel.MachineName,
+                    Ref = "Point",
+                    Value = MultiBandConf.Channel.PointName,
+                    AnalysisType = "* Trend Analysis",
+                    Img = ChartCaptur(Tchart_Trend)
+                });
+            }
+        }
+        private void BtnReport_MultiPointTrend_Click(object sender, EventArgs e)
+        {
+            BtnPreview_MultPointTrend_Click(null, null);
+            if (MultiPointConf.SelectedChannelList != null)
+            {
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                {
+                    DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
+                    Name = "밴드별 추이 분석 보고서",
+                    Machine = MultiPointConf.SelectedChannelList[0].MachineName,
+                    Ref = "Measure",
+                    Value = MultiPointConf.SelectedBandpass.DisplayName,
+                    AnalysisType = "* Trend Analysis",
+                    Img = ChartCaptur(Tchart_Trend)
+                });
+            }
+        }
+
+        private void BtnReport_Period_Click(object sender, EventArgs e)
+        {
+            BtnPreview_Period_Click(null, null);
+            if (PeriodConf.SelectedChannelList != null)
+            {
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                {
+                    DateTime = PeriodConf.StartDateStr + " ~ " + PeriodConf.EndDateStr,
+                    Name = "유사설비/기간별 비교 분석 보고서",
+                    Machine = PeriodConf.SelectedChannelList[0].MachineName,
+                    Ref = "Measure",
+                    Value = PeriodConf.SelectedBandpass.DisplayName,
+                    AnalysisType = "* BarChart Analysis",
+                    Img = ChartCaptur(Tchart_Period)
+                });
+            }
+        } 
+
+        private void BtnReport_Repair_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnReport_Daily_Click(object sender, EventArgs e)
+        {
+            BtnPreview_Daily_Click(null,null);
+            DataTable table = DBConn.LoadDailyData(DailyConf);
+            List<DailyReportItem> items = new List<DailyReportItem>();
+            foreach (DataRow row in table.Rows)
+            {
+                DailyReportItem item = new DailyReportItem(row);
+                if(item.Function != null)
+                    items.Add(item);
+            }
+            ExcelManager.CreateExcel("Template_DailyReport.xlsx", new ReportItems()
+            {
+                DateTime = "Date : "+DailyConf.StartDateStr,
+                Name = "CMS Daily Report",
+                DailyDatas = items
+            });
+        }
+
         private Bitmap ChartCaptur(TChart tchart)
         {
             tchart.Graphics3D.UseBuffer = false;
@@ -323,6 +354,7 @@ namespace MMXReport
             tchart.DrawToBitmap(screenshot, rect);
             return ResizeBitmap(screenshot, 740);
         }
+
         private Bitmap ResizeBitmap(Bitmap sourceBMP, int width)
         {
             int height = Convert.ToInt32(sourceBMP.Height * (width / (float)sourceBMP.Width));
@@ -330,6 +362,23 @@ namespace MMXReport
             using (Graphics g = Graphics.FromImage(result))
                 g.DrawImage(sourceBMP, 0, 0, width, height);
             return result;
+        }
+
+        
+
+        private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if (e.Column.FieldName == "Status")
+            {
+                string status = (sender as DevExpress.XtraGrid.Views.Grid.GridView).GetRowCellValue(e.RowHandle, "Status").ToString();
+                switch (status)
+                {
+                    case "Good": e.Appearance.BackColor = Color.LightGreen; break;
+                    case "Caution": e.Appearance.BackColor = Color.Pink; break;
+                    case "Repair": e.Appearance.BackColor = Color.Orange; break;
+                    case "Stop": e.Appearance.BackColor = Color.Red; break;
+                }
+            }
         }
     }
 }
