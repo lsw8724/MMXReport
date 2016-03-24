@@ -34,6 +34,14 @@
             this.Gr_Report = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.TChart_Spectrum = new Steema.TeeChart.TChart();
+            this.fastLine4 = new Steema.TeeChart.Styles.FastLine();
+            this.TChart_Time = new Steema.TeeChart.TChart();
+            this.fastLine3 = new Steema.TeeChart.Styles.FastLine();
+            this.Tchart_RepairTrend = new Steema.TeeChart.TChart();
+            this.fastLine2 = new Steema.TeeChart.Styles.FastLine();
+            this.colorBand1 = new Steema.TeeChart.Tools.ColorBand();
+            this.annotation1 = new Steema.TeeChart.Tools.Annotation();
             this.Grid_DailyData = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ChannelId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,10 +58,6 @@
             this.AVG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Remark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Tchart_RepairTrend = new Steema.TeeChart.TChart();
-            this.fastLine2 = new Steema.TeeChart.Styles.FastLine();
-            this.colorBand1 = new Steema.TeeChart.Tools.ColorBand();
-            this.annotation1 = new Steema.TeeChart.Tools.Annotation();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.BtnPreview_Repair = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPreview_Daily = new DevExpress.XtraEditors.SimpleButton();
@@ -64,12 +68,12 @@
             this.Gr_Compare = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl9 = new DevExpress.XtraEditors.GroupControl();
-            this.Tchart_DayOfWeek = new Steema.TeeChart.TChart();
-            this.horizBar1 = new Steema.TeeChart.Styles.HorizBar();
             this.Tchart_Period = new Steema.TeeChart.TChart();
             this.bar1 = new Steema.TeeChart.Styles.Bar();
             this.bar2 = new Steema.TeeChart.Styles.Bar();
             this.bar3 = new Steema.TeeChart.Styles.Bar();
+            this.Tchart_DayOfWeek = new Steema.TeeChart.TChart();
+            this.horizBar1 = new Steema.TeeChart.Styles.HorizBar();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.BtnPreview_Period = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPreview_DayOfWeek = new DevExpress.XtraEditors.SimpleButton();
@@ -163,8 +167,10 @@
             // 
             // groupControl4
             // 
-            this.groupControl4.Controls.Add(this.Grid_DailyData);
             this.groupControl4.Controls.Add(this.Tchart_RepairTrend);
+            this.groupControl4.Controls.Add(this.Grid_DailyData);
+            this.groupControl4.Controls.Add(this.TChart_Spectrum);
+            this.groupControl4.Controls.Add(this.TChart_Time);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(367, 16);
             this.groupControl4.Name = "groupControl4";
@@ -172,6 +178,306 @@
             this.groupControl4.Size = new System.Drawing.Size(531, 222);
             this.groupControl4.TabIndex = 4;
             this.groupControl4.Text = "groupControl4";
+            // 
+            // TChart_Spectrum
+            // 
+            // 
+            // 
+            // 
+            this.TChart_Spectrum.Aspect.View3D = false;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.TChart_Spectrum.Axes.Left.Labels.ValueFormat = "#,##0";
+            this.TChart_Spectrum.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            this.TChart_Spectrum.Header.Lines = new string[] {
+        "Spectrum"};
+            // 
+            // 
+            // 
+            this.TChart_Spectrum.Legend.Visible = false;
+            this.TChart_Spectrum.Location = new System.Drawing.Point(2, 2);
+            this.TChart_Spectrum.Name = "TChart_Spectrum";
+            // 
+            // 
+            // 
+            this.TChart_Spectrum.Panel.MarginLeft = 1D;
+            this.TChart_Spectrum.Panel.MarginRight = 2D;
+            this.TChart_Spectrum.Panel.MarginTop = 2D;
+            this.TChart_Spectrum.Series.Add(this.fastLine4);
+            this.TChart_Spectrum.Size = new System.Drawing.Size(527, 218);
+            this.TChart_Spectrum.TabIndex = 3;
+            // 
+            // fastLine4
+            // 
+            this.fastLine4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
+            this.fastLine4.ColorEach = false;
+            // 
+            // 
+            // 
+            this.fastLine4.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
+            this.fastLine4.Title = "얇은선형1";
+            this.fastLine4.TreatNulls = Steema.TeeChart.Styles.TreatNullsStyle.Ignore;
+            // 
+            // 
+            // 
+            this.fastLine4.XValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
+            // 
+            // TChart_Time
+            // 
+            // 
+            // 
+            // 
+            this.TChart_Time.Aspect.View3D = false;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.TChart_Time.Axes.Bottom.Increment = 0.1D;
+            // 
+            // 
+            // 
+            this.TChart_Time.Axes.Bottom.Labels.ValueFormat = "#,##0.#";
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.TChart_Time.Axes.Left.Grid.DrawEvery = 2;
+            // 
+            // 
+            // 
+            this.TChart_Time.Axes.Left.Labels.ValueFormat = "#,##0.##";
+            this.TChart_Time.Cursor = System.Windows.Forms.Cursors.Default;
+            this.TChart_Time.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            this.TChart_Time.Header.Lines = new string[] {
+        "TimeBase"};
+            // 
+            // 
+            // 
+            this.TChart_Time.Legend.Visible = false;
+            this.TChart_Time.Location = new System.Drawing.Point(2, 2);
+            this.TChart_Time.Name = "TChart_Time";
+            // 
+            // 
+            // 
+            this.TChart_Time.Panel.MarginLeft = 4D;
+            this.TChart_Time.Panel.MarginRight = 2D;
+            this.TChart_Time.Panel.MarginTop = 2D;
+            this.TChart_Time.Series.Add(this.fastLine3);
+            this.TChart_Time.Size = new System.Drawing.Size(527, 218);
+            this.TChart_Time.TabIndex = 2;
+            // 
+            // fastLine3
+            // 
+            this.fastLine3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
+            this.fastLine3.ColorEach = false;
+            this.fastLine3.Depth = 0;
+            // 
+            // 
+            // 
+            this.fastLine3.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
+            this.fastLine3.Title = "얇은선형1";
+            this.fastLine3.TreatNulls = Steema.TeeChart.Styles.TreatNullsStyle.Ignore;
+            // 
+            // 
+            // 
+            this.fastLine3.XValues.DataMember = "X";
+            this.fastLine3.XValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
+            // 
+            // 
+            // 
+            this.fastLine3.YValues.DataMember = "Y";
+            // 
+            // Tchart_RepairTrend
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Aspect.View3D = false;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Axes.Bottom.Increment = 1D;
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년 M월 d일";
+            this.Tchart_RepairTrend.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Tchart_RepairTrend.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Header.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_RepairTrend.Header.Font.Name = "굴림";
+            this.Tchart_RepairTrend.Header.Lines = new string[] {
+        "Preview"};
+            this.Tchart_RepairTrend.Header.TextAlign = System.Drawing.StringAlignment.Center;
+            this.Tchart_RepairTrend.Header.Visible = false;
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
+            this.Tchart_RepairTrend.Location = new System.Drawing.Point(2, 2);
+            this.Tchart_RepairTrend.Name = "Tchart_RepairTrend";
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Panel.MarginBottom = 9D;
+            this.Tchart_RepairTrend.Panel.MarginRight = 1D;
+            this.Tchart_RepairTrend.Panel.MarginTop = 5D;
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Panning.Allow = Steema.TeeChart.ScrollModes.None;
+            this.Tchart_RepairTrend.Series.Add(this.fastLine2);
+            this.Tchart_RepairTrend.Size = new System.Drawing.Size(527, 218);
+            this.Tchart_RepairTrend.TabIndex = 0;
+            this.Tchart_RepairTrend.Tools.Add(this.colorBand1);
+            this.Tchart_RepairTrend.Tools.Add(this.annotation1);
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
+            // 
+            // fastLine2
+            // 
+            this.fastLine2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
+            this.fastLine2.ColorEach = false;
+            // 
+            // 
+            // 
+            this.fastLine2.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
+            // 
+            // 
+            // 
+            this.fastLine2.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Value;
+            this.fastLine2.Title = "Direct";
+            this.fastLine2.TreatNulls = Steema.TeeChart.Styles.TreatNullsStyle.Ignore;
+            // 
+            // 
+            // 
+            this.fastLine2.XValues.DataMember = "X";
+            this.fastLine2.XValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
+            // 
+            // 
+            // 
+            this.fastLine2.YValues.DataMember = "Y";
+            // 
+            // colorBand1
+            // 
+            this.colorBand1.Axis = this.Tchart_RepairTrend.Axes.Bottom;
+            // 
+            // 
+            // 
+            this.colorBand1.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(56)))), ((int)(((byte)(111)))), ((int)(((byte)(252)))));
+            // 
+            // 
+            // 
+            this.colorBand1.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.colorBand1.End = 20D;
+            // 
+            // 
+            // 
+            this.colorBand1.EndLinePen.Visible = false;
+            // 
+            // 
+            // 
+            this.colorBand1.Pen.Visible = false;
+            this.colorBand1.ResizeEnd = false;
+            this.colorBand1.ResizeStart = false;
+            this.colorBand1.Start = 5D;
+            // 
+            // 
+            // 
+            this.colorBand1.StartLinePen.Visible = false;
+            // 
+            // annotation1
+            // 
+            this.annotation1.Active = false;
+            this.annotation1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.annotation1.Callout.ArrowHead = Steema.TeeChart.Styles.ArrowHeadStyles.None;
+            this.annotation1.Callout.ArrowHeadDirection = Steema.TeeChart.Styles.ArrowHeadDirection.FromPoint;
+            this.annotation1.Callout.ArrowHeadSize = 8;
+            // 
+            // 
+            // 
+            this.annotation1.Callout.Brush.Color = System.Drawing.Color.Black;
+            this.annotation1.Callout.Distance = 0;
+            this.annotation1.Callout.Draw3D = false;
+            this.annotation1.Callout.SizeDouble = 0D;
+            this.annotation1.Callout.SizeUnits = Steema.TeeChart.Styles.PointerSizeUnits.Pixels;
+            this.annotation1.Callout.XPosition = 0;
+            this.annotation1.Callout.YPosition = 0;
+            this.annotation1.Callout.ZPosition = 0;
+            this.annotation1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.annotation1.Left = 50;
+            this.annotation1.Position = Steema.TeeChart.Tools.AnnotationPositions.RightBottom;
+            this.annotation1.PositionUnits = Steema.TeeChart.PositionUnits.Percent;
+            // 
+            // 
+            // 
+            this.annotation1.Shape.Bottom = 60;
+            this.annotation1.Shape.CustomPosition = true;
+            // 
+            // 
+            // 
+            this.annotation1.Shape.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.annotation1.Shape.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(106)))));
+            this.annotation1.Shape.Font.Name = "휴먼둥근헤드라인";
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.annotation1.Shape.Font.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(137)))), ((int)(((byte)(255)))));
+            this.annotation1.Shape.Font.Shadow.Visible = true;
+            this.annotation1.Shape.Font.Size = 15;
+            this.annotation1.Shape.Font.SizeFloat = 15F;
+            this.annotation1.Shape.Left = 50;
+            this.annotation1.Shape.Lines = new string[] {
+        "수리기간"};
+            this.annotation1.Shape.Right = 60;
+            // 
+            // 
+            // 
+            this.annotation1.Shape.Shadow.Visible = false;
+            this.annotation1.Shape.Top = 50;
+            this.annotation1.Shape.Transparent = true;
+            this.annotation1.Text = "수리기간";
+            this.annotation1.Top = 50;
             // 
             // Grid_DailyData
             // 
@@ -360,182 +666,6 @@
             this.Remark.VisibleIndex = 12;
             this.Remark.Width = 58;
             // 
-            // Tchart_RepairTrend
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Aspect.View3D = false;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Axes.Bottom.Increment = 1D;
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년 M월 d일";
-            this.Tchart_RepairTrend.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Tchart_RepairTrend.Dock = System.Windows.Forms.DockStyle.Fill;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Header.Font.Bold = true;
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Tchart_RepairTrend.Header.Font.Name = "굴림";
-            this.Tchart_RepairTrend.Header.Lines = new string[] {
-        "Preview"};
-            this.Tchart_RepairTrend.Header.TextAlign = System.Drawing.StringAlignment.Center;
-            this.Tchart_RepairTrend.Header.Visible = false;
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
-            this.Tchart_RepairTrend.Location = new System.Drawing.Point(2, 2);
-            this.Tchart_RepairTrend.Name = "Tchart_RepairTrend";
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Panel.MarginBottom = 9D;
-            this.Tchart_RepairTrend.Panel.MarginLeft = 1D;
-            this.Tchart_RepairTrend.Panel.MarginRight = 1D;
-            this.Tchart_RepairTrend.Panel.MarginTop = 5D;
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Panning.Allow = Steema.TeeChart.ScrollModes.None;
-            this.Tchart_RepairTrend.Series.Add(this.fastLine2);
-            this.Tchart_RepairTrend.Size = new System.Drawing.Size(527, 218);
-            this.Tchart_RepairTrend.TabIndex = 0;
-            this.Tchart_RepairTrend.Tools.Add(this.colorBand1);
-            this.Tchart_RepairTrend.Tools.Add(this.annotation1);
-            // 
-            // 
-            // 
-            this.Tchart_RepairTrend.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
-            // 
-            // fastLine2
-            // 
-            this.fastLine2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
-            this.fastLine2.ColorEach = false;
-            // 
-            // 
-            // 
-            this.fastLine2.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(102)))), ((int)(((byte)(163)))));
-            // 
-            // 
-            // 
-            this.fastLine2.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Value;
-            this.fastLine2.Title = "Direct";
-            this.fastLine2.TreatNulls = Steema.TeeChart.Styles.TreatNullsStyle.Ignore;
-            // 
-            // 
-            // 
-            this.fastLine2.XValues.DataMember = "X";
-            this.fastLine2.XValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
-            // 
-            // 
-            // 
-            this.fastLine2.YValues.DataMember = "Y";
-            // 
-            // colorBand1
-            // 
-            this.colorBand1.Axis = this.Tchart_RepairTrend.Axes.Bottom;
-            // 
-            // 
-            // 
-            this.colorBand1.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(56)))), ((int)(((byte)(111)))), ((int)(((byte)(252)))));
-            // 
-            // 
-            // 
-            this.colorBand1.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.colorBand1.End = 20D;
-            // 
-            // 
-            // 
-            this.colorBand1.EndLinePen.Visible = false;
-            // 
-            // 
-            // 
-            this.colorBand1.Pen.Visible = false;
-            this.colorBand1.ResizeEnd = false;
-            this.colorBand1.ResizeStart = false;
-            this.colorBand1.Start = 5D;
-            // 
-            // 
-            // 
-            this.colorBand1.StartLinePen.Visible = false;
-            // 
-            // annotation1
-            // 
-            this.annotation1.Active = false;
-            this.annotation1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.annotation1.Callout.ArrowHead = Steema.TeeChart.Styles.ArrowHeadStyles.None;
-            this.annotation1.Callout.ArrowHeadDirection = Steema.TeeChart.Styles.ArrowHeadDirection.FromPoint;
-            this.annotation1.Callout.ArrowHeadSize = 8;
-            // 
-            // 
-            // 
-            this.annotation1.Callout.Brush.Color = System.Drawing.Color.Black;
-            this.annotation1.Callout.Distance = 0;
-            this.annotation1.Callout.Draw3D = false;
-            this.annotation1.Callout.SizeDouble = 0D;
-            this.annotation1.Callout.SizeUnits = Steema.TeeChart.Styles.PointerSizeUnits.Pixels;
-            this.annotation1.Callout.XPosition = 0;
-            this.annotation1.Callout.YPosition = 0;
-            this.annotation1.Callout.ZPosition = 0;
-            this.annotation1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.annotation1.Left = 50;
-            this.annotation1.Position = Steema.TeeChart.Tools.AnnotationPositions.RightBottom;
-            this.annotation1.PositionUnits = Steema.TeeChart.PositionUnits.Percent;
-            // 
-            // 
-            // 
-            this.annotation1.Shape.Bottom = 60;
-            this.annotation1.Shape.CustomPosition = true;
-            // 
-            // 
-            // 
-            this.annotation1.Shape.Font.Bold = true;
-            // 
-            // 
-            // 
-            this.annotation1.Shape.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(106)))));
-            this.annotation1.Shape.Font.Name = "휴먼둥근헤드라인";
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.annotation1.Shape.Font.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(137)))), ((int)(((byte)(255)))));
-            this.annotation1.Shape.Font.Shadow.Visible = true;
-            this.annotation1.Shape.Font.Size = 15;
-            this.annotation1.Shape.Font.SizeFloat = 15F;
-            this.annotation1.Shape.Left = 50;
-            this.annotation1.Shape.Lines = new string[] {
-        "수리기간"};
-            this.annotation1.Shape.Right = 60;
-            // 
-            // 
-            // 
-            this.annotation1.Shape.Shadow.Visible = false;
-            this.annotation1.Shape.Top = 50;
-            this.annotation1.Shape.Transparent = true;
-            this.annotation1.Text = "수리기간";
-            this.annotation1.Top = 50;
-            // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.BtnPreview_Repair);
@@ -710,8 +840,8 @@
             // 
             // groupControl9
             // 
-            this.groupControl9.Controls.Add(this.Tchart_DayOfWeek);
             this.groupControl9.Controls.Add(this.Tchart_Period);
+            this.groupControl9.Controls.Add(this.Tchart_DayOfWeek);
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl9.Location = new System.Drawing.Point(367, 16);
             this.groupControl9.Name = "groupControl9";
@@ -719,101 +849,6 @@
             this.groupControl9.Size = new System.Drawing.Size(531, 220);
             this.groupControl9.TabIndex = 16;
             this.groupControl9.Text = "groupControl9";
-            // 
-            // Tchart_DayOfWeek
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Aspect.View3D = false;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Axes.Bottom.MaximumOffset = 78;
-            this.Tchart_DayOfWeek.Axes.Bottom.MinimumOffset = 1;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Axes.Right.MinimumOffset = 1;
-            this.Tchart_DayOfWeek.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Tchart_DayOfWeek.Dock = System.Windows.Forms.DockStyle.Fill;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Header.Font.Bold = true;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Tchart_DayOfWeek.Header.Font.Name = "굴림";
-            this.Tchart_DayOfWeek.Header.Lines = new string[] {
-        "Preview"};
-            this.Tchart_DayOfWeek.Header.TextAlign = System.Drawing.StringAlignment.Center;
-            this.Tchart_DayOfWeek.Header.Visible = false;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
-            this.Tchart_DayOfWeek.Location = new System.Drawing.Point(2, 2);
-            this.Tchart_DayOfWeek.Name = "Tchart_DayOfWeek";
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Panel.MarginBottom = 5D;
-            this.Tchart_DayOfWeek.Panel.MarginLeft = 1D;
-            this.Tchart_DayOfWeek.Panel.MarginRight = 2D;
-            this.Tchart_DayOfWeek.Panel.MarginTop = 5D;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
-            this.Tchart_DayOfWeek.Series.Add(this.horizBar1);
-            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(527, 216);
-            this.Tchart_DayOfWeek.TabIndex = 1;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
-            // 
-            // horizBar1
-            // 
-            // 
-            // 
-            // 
-            this.horizBar1.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
-            // 
-            // 
-            // 
-            this.horizBar1.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.horizBar1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
-            this.horizBar1.ColorEach = true;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.horizBar1.Marks.Font.Bold = true;
-            // 
-            // 
-            // 
-            this.horizBar1.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
-            this.horizBar1.Title = "Bandpass";
-            // 
-            // 
-            // 
-            this.horizBar1.XValues.DataMember = "X";
-            // 
-            // 
-            // 
-            this.horizBar1.YValues.DataMember = "막대";
-            this.horizBar1.YValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
             // 
             // Tchart_Period
             // 
@@ -861,7 +896,6 @@
             // 
             // 
             this.Tchart_Period.Panel.MarginBottom = 9D;
-            this.Tchart_Period.Panel.MarginLeft = 1D;
             this.Tchart_Period.Panel.MarginRight = 2D;
             this.Tchart_Period.Panel.MarginTop = 2D;
             // 
@@ -969,6 +1003,101 @@
             // 
             // 
             this.bar3.YValues.DataMember = "막대";
+            // 
+            // Tchart_DayOfWeek
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Aspect.View3D = false;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Axes.Bottom.MaximumOffset = 78;
+            this.Tchart_DayOfWeek.Axes.Bottom.MinimumOffset = 1;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Axes.Right.MinimumOffset = 1;
+            this.Tchart_DayOfWeek.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Tchart_DayOfWeek.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_DayOfWeek.Header.Font.Name = "굴림";
+            this.Tchart_DayOfWeek.Header.Lines = new string[] {
+        "Preview"};
+            this.Tchart_DayOfWeek.Header.TextAlign = System.Drawing.StringAlignment.Center;
+            this.Tchart_DayOfWeek.Header.Visible = false;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
+            this.Tchart_DayOfWeek.Location = new System.Drawing.Point(2, 2);
+            this.Tchart_DayOfWeek.Name = "Tchart_DayOfWeek";
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Panel.MarginBottom = 5D;
+            this.Tchart_DayOfWeek.Panel.MarginLeft = 1D;
+            this.Tchart_DayOfWeek.Panel.MarginRight = 2D;
+            this.Tchart_DayOfWeek.Panel.MarginTop = 5D;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
+            this.Tchart_DayOfWeek.Series.Add(this.horizBar1);
+            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(527, 216);
+            this.Tchart_DayOfWeek.TabIndex = 1;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
+            // 
+            // horizBar1
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
+            // 
+            // 
+            // 
+            this.horizBar1.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.horizBar1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
+            this.horizBar1.ColorEach = true;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.horizBar1.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.horizBar1.Title = "Bandpass";
+            // 
+            // 
+            // 
+            this.horizBar1.XValues.DataMember = "X";
+            // 
+            // 
+            // 
+            this.horizBar1.YValues.DataMember = "막대";
+            this.horizBar1.YValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
             // 
             // groupControl1
             // 
@@ -1591,7 +1720,6 @@
             this.Tchart_Trend.Panel.Brush.Gradient.UseMiddle = false;
             this.Tchart_Trend.Panel.Brush.Gradient.Visible = false;
             this.Tchart_Trend.Panel.MarginBottom = 9D;
-            this.Tchart_Trend.Panel.MarginLeft = 1D;
             this.Tchart_Trend.Panel.MarginRight = 1D;
             this.Tchart_Trend.Panel.MarginTop = 5D;
             // 
@@ -1865,6 +1993,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn Status;
         private DevExpress.XtraGrid.Columns.GridColumn Remark;
         private System.Windows.Forms.BindingSource bandpassConfigBindingSource;
+        private Steema.TeeChart.TChart TChart_Spectrum;
+        private Steema.TeeChart.Styles.FastLine fastLine4;
+        private Steema.TeeChart.TChart TChart_Time;
+        private Steema.TeeChart.Styles.FastLine fastLine3;
 
 
     }

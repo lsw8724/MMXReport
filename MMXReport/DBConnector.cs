@@ -7,6 +7,7 @@ using MMXReport.Properties;
 using System.Windows.Forms;
 using MMXReport.TsiConfig;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace MMXReport
 {
@@ -30,26 +31,65 @@ namespace MMXReport
         private DataTable GetResultByQuery(string query, SqlConnection conn)
         {
             DataTable dataTable = new DataTable();
+            SqlDataAdapter da = null;
             try
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.CommandTimeout = 0;
                 conn.Open();
 
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd);
 
                 da.Fill(dataTable);
-                da.Dispose();
-                conn.Close();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                da.Dispose();
+                conn.Close();
+            }
             return dataTable;
         }
 
         #region 쿼리문
+        public WaveData[] LoadWaveDatas(RepairConfiguration repairConf)
+        {
+            WaveData[] datas = new WaveData[2];
+            string query =
+                   "SELECT TOP 1 [AsyncData],[AsyncFMax],[AsyncLine] " +
+                   "FROM [" + DataConnection.Database + "].[dbo].[WaveData] " +
+                   "WHERE [ChannelId]=" + 16 + " AND [DateTime] BETWEEN '" + repairConf.StartDateStr + "' AND '" + repairConf.BeforeRepairDate.ToString("yyyy-MM-dd") + "' ";
+            DataTable table = GetResultByQuery(query, DataConnection);
+            if (table.Rows.Count > 0)
+            {
+                DataRow data = table.Rows[0];
+                byte[] binData = data.ItemArray[0] as byte[];
+                float[] waveArr = new float[binData.Length / 4];
+                for (int i = 0; i < waveArr.Length; i++)
+                    waveArr[i] = BitConverter.ToSingle(binData, i * 4);
+                datas[0] = new WaveData() { AsyncData = waveArr, FMax = Convert.ToInt32(data.ItemArray[1]), Line = Convert.ToInt32(data.ItemArray[2]) };
+            }
+            query =
+                  "SELECT TOP 1 [AsyncData],[AsyncFMax],[AsyncLine] " +
+                  "FROM [" + DataConnection.Database + "].[dbo].[WaveData] " +
+                  "WHERE [ChannelId]=" + 16 + " AND [DateTime] BETWEEN '" + repairConf.EndDateStr + "' AND '" + repairConf.AfterRepairDate.ToString("yyyy-MM-dd") + "' ";
+            table = GetResultByQuery(query, DataConnection);
+            if (table.Rows.Count > 0)
+            {
+                DataRow data = table.Rows[0];
+                byte[] binData = data.ItemArray[0] as byte[];
+                float[] waveArr = new float[binData.Length / 4];
+                for (int i = 0; i < waveArr.Length; i++)
+                    waveArr[i] = BitConverter.ToSingle(binData, i * 4);
+                datas[1] = new WaveData() { AsyncData = waveArr, FMax = Convert.ToInt32(data.ItemArray[1]), Line = Convert.ToInt32(data.ItemArray[2]) };
+            }
+            return datas;
+        }
+
         public ExtraChannelConfig LoadExtraJSON(int chid)
         {
             string query = "SELECT [ExtraJson] " +
@@ -268,15 +308,15 @@ namespace MMXReport
                     "Ch.ExtraJson " +
                     "FROM [MMX_MODULE_Config].[dbo].[MimicNode]  as point " +
                     "JOIN [MMX_MODULE_Config].[dbo].[MimicNode] as machine " +
-                    "ON point.ParentId = machine.Id " +
-                    "JOIN MMX_MODULE_Data.dbo.VectorData_day_min as data_min ON point.ChannelId = data_min.ChannelId " +
-                    "JOIN MMX_MODULE_Data.dbo.VectorData_day_max as data_max ON point.ChannelId = data_max.ChannelId " +
-                    "JOIN MMX_MODULE_Data.dbo.VectorData_day_avg as data_avg ON point.ChannelId = data_avg.ChannelId " +
-                    "JOIN MMX_MODULE_Config.dbo.SensorChannel as Ch ON point.ChannelId = Ch.Id " +
-                    "WHERE point.[NodeType]=300 AND point.Name != 'spare' AND point.[Name] NOT LIKE 'Trigger%' AND data_min.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_max.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_avg.[DateTime] = '" + dailyConf.StartDateStr + "' "+
-                    "GROUP BY point.ChannelId, point.Name, machine.Name, ch.ExtraJson ";
+                    "ON point.[ParentId] = machine.[Id] " +
+                    "JOIN ["+DataConnection.Database+"].[dbo].[VectorData_day_min] as data_min ON point.[ChannelId] = data_min.[ChannelId] " +
+                    "JOIN ["+DataConnection.Database+"].[dbo].[VectorData_day_max] as data_max ON point.[ChannelId] = data_max.[ChannelId] " +
+                    "JOIN ["+DataConnection.Database+"].[dbo].[VectorData_day_avg] as data_avg ON point.[ChannelId] = data_avg.[ChannelId] " +
+                    "JOIN ["+ConfigConnection.Database+"].[dbo].[SensorChannel] as Ch ON point.[ChannelId] = Ch.[Id] " +
+                    "WHERE point.[NodeType]=300 AND point.[Name] != 'spare' AND point.[Name] NOT LIKE 'Trigger%' AND data_min.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_max.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_avg.[DateTime] = '" + dailyConf.StartDateStr + "' "+
+                    "GROUP BY point.[ChannelId], point.[Name], machine.[Name], ch.[ExtraJson]";
                 if (i < bandpassStringArr.Length - 1)
-                    query += "UNION ";
+                    query += " UNION ";
             }
             return GetResultByQuery(query, DataConnection);
         }

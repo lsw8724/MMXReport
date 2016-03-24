@@ -233,7 +233,7 @@ namespace MMXReport
             Grid_DailyData.Visible = false;
             if (RepairConf.Channel != null)
             {
-                Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년\nM월 d일";
+                Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy\nM.d";
                 Tchart_RepairTrend.Series.Clear();
                 Tchart_RepairTrend.Header.Lines = new string[] { RepairConf.Channel.PointName };
                 colorBand1.Start = RepairConf.BeforeRepairDate.ToOADate();
@@ -255,7 +255,7 @@ namespace MMXReport
             BtnPreview_DayOfWeek_Click(null, null);
             if (DayOfWeekConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
                     DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
                     Name = "요일별 비교 분석 보고서",
@@ -263,7 +263,7 @@ namespace MMXReport
                     Ref = "Point",
                     Value = DayOfWeekConf.Channel.PointName,
                     AnalysisType = "* BarChart Analysis",
-                    Img = ChartCaptur(Tchart_DayOfWeek)
+                    Img = ChartCaptur(Tchart_DayOfWeek, 740)
                 });
             }
         }
@@ -273,7 +273,7 @@ namespace MMXReport
             BtnPreview_MultiBandTrend_Click(null, null);
             if (MultiBandConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
                     DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
                     Name = "포인트별 추이 분석 보고서",
@@ -281,7 +281,7 @@ namespace MMXReport
                     Ref = "Point",
                     Value = MultiBandConf.Channel.PointName,
                     AnalysisType = "* Trend Analysis",
-                    Img = ChartCaptur(Tchart_Trend)
+                    Img = ChartCaptur(Tchart_Trend, 740)
                 });
             }
         }
@@ -290,7 +290,7 @@ namespace MMXReport
             BtnPreview_MultPointTrend_Click(null, null);
             if (MultiPointConf.SelectedChannelList != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
                     DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
                     Name = "밴드별 추이 분석 보고서",
@@ -298,7 +298,7 @@ namespace MMXReport
                     Ref = "Measure",
                     Value = MultiPointConf.SelectedBandpass.DisplayName,
                     AnalysisType = "* Trend Analysis",
-                    Img = ChartCaptur(Tchart_Trend)
+                    Img = ChartCaptur(Tchart_Trend, 740)
                 });
             }
         }
@@ -308,22 +308,73 @@ namespace MMXReport
             BtnPreview_Period_Click(null, null);
             if (PeriodConf.SelectedChannelList != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new ReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
-                    DateTime = PeriodConf.StartDateStr + " ~ " + PeriodConf.EndDateStr,
-                    Name = "유사설비/기간별 비교 분석 보고서",
+                    DateTime = PeriodConf.StartDate.ToString("yyyy년도"),
+                    Name = "유사설비/분기별 비교 분석 보고서",
                     Machine = PeriodConf.SelectedChannelList[0].MachineName,
                     Ref = "Measure",
                     Value = PeriodConf.SelectedBandpass.DisplayName,
                     AnalysisType = "* BarChart Analysis",
-                    Img = ChartCaptur(Tchart_Period)
+                    Img = ChartCaptur(Tchart_Period, 740)
                 });
             }
         } 
 
         private void BtnReport_Repair_Click(object sender, EventArgs e)
         {
+            BtnPreview_Repair_Click(null, null);
+            int timeWidth = 347;
+            int fftWidth = 393;
+            int height = 165;
+            FFTConvertor convertor = new FFTConvertor();
+            Bitmap time_beforeImg = ChartCaptur(TChart_Time, timeWidth, height); ;
+            Bitmap time_afterImg = ChartCaptur(TChart_Time, timeWidth, height); ;
+            Bitmap fft_beforeImg = ChartCaptur(TChart_Spectrum, fftWidth, height); ;
+            Bitmap fft_afterImg = ChartCaptur(TChart_Spectrum, fftWidth, height); ;
+            WaveData[] datas = DBConn.LoadWaveDatas(RepairConf);
 
+            if (datas[0] != null)
+            {
+                int dataCount = datas[0].AsyncData.Length;
+                for (int i = 0; i < dataCount; i++)
+                    TChart_Time.Series[0].Add(i * datas[0].Duration / (double)dataCount, datas[0].AsyncData[i]);
+
+                time_beforeImg = ChartCaptur(TChart_Time, timeWidth, height);
+
+                SpectrumData spectrumData = convertor.CalcSpectrumData(datas[0]);
+                for (int i = 0; i < spectrumData.XValues.Length; i++)
+                    TChart_Spectrum.Series[0].Add(spectrumData.XValues[i], spectrumData.YValues[i]);
+                fft_beforeImg = ChartCaptur(TChart_Spectrum, fftWidth, height);
+            }
+
+            if (datas[1] != null)
+            {
+                int dataCount = datas[1].AsyncData.Length;
+                for (int i = 0; i < dataCount; i++)
+                    TChart_Spectrum.Series[0].Add(i * datas[1].Duration / (double)dataCount, datas[1].AsyncData[i]);
+                time_afterImg = ChartCaptur(TChart_Spectrum, timeWidth, height);
+
+                SpectrumData spectrumData = convertor.CalcSpectrumData(datas[1]);
+                for (int i = 0; i < spectrumData.XValues.Length; i++)
+                    TChart_Spectrum.Series[0].Add(spectrumData.XValues[i], spectrumData.YValues[i]);
+                fft_afterImg = ChartCaptur(TChart_Spectrum, fftWidth, height);
+            }
+            if (RepairConf.Channel != null)
+            {
+                ExcelManager.CreateExcel("Template_Maintenance.xlsx", new CommonReportItems()
+                {
+                    DateTime = RepairConf.StartDateStr + " ~ " + RepairConf.EndDateStr,
+                    Name = "보전활동 보고서",
+                    Machine = RepairConf.Channel.MachineName,
+                    Value = RepairConf.Channel.PointName,
+                    Img = ChartCaptur(Tchart_RepairTrend, 740),
+                    Img_BeforTime = time_beforeImg,
+                    Img_BeforFFT = fft_beforeImg,
+                    Img_AfterTime = time_afterImg,
+                    Img_AfterFFT = fft_afterImg
+                });
+            }
         }
 
         private void BtnReport_Daily_Click(object sender, EventArgs e)
@@ -337,7 +388,7 @@ namespace MMXReport
                 if(item.Function != null)
                     items.Add(item);
             }
-            ExcelManager.CreateExcel("Template_DailyReport.xlsx", new ReportItems()
+            ExcelManager.CreateExcel("Template_DailyReport.xlsx", new CommonReportItems()
             {
                 DateTime = "Date : "+DailyConf.StartDateStr,
                 Name = "CMS Daily Report",
@@ -345,22 +396,26 @@ namespace MMXReport
             });
         }
 
-        private Bitmap ChartCaptur(TChart tchart)
+        private Bitmap ChartCaptur(TChart tchart, int width, int height = -1)
         {
             tchart.Graphics3D.UseBuffer = false;
             Rectangle rect = new Rectangle(0, 0, tchart.Width, tchart.Height);
             Bitmap screenshot = new Bitmap(rect.Width, rect.Height, PixelFormat.Format64bppArgb);
 
             tchart.DrawToBitmap(screenshot, rect);
-            return ResizeBitmap(screenshot, 740);
+            return ResizeBitmap(screenshot, width, height);
         }
 
-        private Bitmap ResizeBitmap(Bitmap sourceBMP, int width)
+        private Bitmap ResizeBitmap(Bitmap sourceBMP, int width, int height)
         {
-            int height = Convert.ToInt32(sourceBMP.Height * (width / (float)sourceBMP.Width));
-            Bitmap result = new Bitmap(width, height);
+            int h = 0;
+            if (height == -1)
+                h = Convert.ToInt32(sourceBMP.Height * (width / (float)sourceBMP.Width));
+            else
+                h= height;
+            Bitmap result = new Bitmap(width, h);
             using (Graphics g = Graphics.FromImage(result))
-                g.DrawImage(sourceBMP, 0, 0, width, height);
+                g.DrawImage(sourceBMP, 0, 0, width, h);
             return result;
         }
 

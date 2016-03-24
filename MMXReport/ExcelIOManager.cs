@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.IO;
-using Excel=Microsoft.Office.Interop.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Collections;
@@ -13,7 +12,7 @@ using System.Drawing;
 
 namespace MMXReport
 {
-    public class ReportItems
+    public class CommonReportItems
     {
         public string DateTime;
         public string Name;
@@ -22,16 +21,20 @@ namespace MMXReport
         public string Machine;
         public string AnalysisType;
         //public string Alarm;
-        public System.Drawing.Bitmap Img;
+        public Bitmap Img;
+        public Bitmap Img_BeforTime;
+        public Bitmap Img_AfterTime;
+        public Bitmap Img_BeforFFT;
+        public Bitmap Img_AfterFFT;
         public List<DailyReportItem> DailyDatas;
     }
     public class ExcelIOManager
     {
-        public void CreateExcel(string templateFileName, ReportItems items)
+        public void CreateExcel(string templateFileName, CommonReportItems items)
         {
             Excel.Application excel = null;
             Excel.Workbook workbook = null;
-            
+
             var dlg = new SaveFileDialog();
             string startPath = System.Windows.Forms.Application.StartupPath;
             string templateFilePath = startPath + "\\ReportTemplate\\" + templateFileName;
@@ -61,7 +64,7 @@ namespace MMXReport
             }
         }
 
-        private void GenerateReport(Excel.Workbook workbook, ReportItems items)
+        private void GenerateReport(Excel.Workbook workbook, CommonReportItems items)
         {
             Excel.Worksheet worksheet = workbook.Worksheets.get_Item(1) as Excel.Worksheet;
 
@@ -91,6 +94,39 @@ namespace MMXReport
                 cell_PlotImg.Value = "";
             }
 
+            var cell_bfTime = worksheet.Cells.Find("$BeforeTime");
+            if (cell_bfTime != null)
+            {
+                Clipboard.SetDataObject(items.Img_BeforTime, true);
+                worksheet.Paste(cell_bfTime, false);
+                cell_bfTime.Value = "";
+            }
+
+            var cell_bfFFT = worksheet.Cells.Find("$BeforeFFT");
+            if (cell_bfFFT != null)
+            {
+                Clipboard.SetDataObject(items.Img_BeforFFT, true);
+                worksheet.Paste(cell_bfFFT, false);
+                cell_bfFFT.Value = "";
+            }
+
+            var cell_afTime = worksheet.Cells.Find("$AfterTime");
+            if (cell_afTime != null)
+            {
+                Clipboard.SetDataObject(items.Img_AfterTime, true);
+                worksheet.Paste(cell_afTime, false);
+                cell_afTime.Value = "";
+            }
+
+            var cell_afFFT = worksheet.Cells.Find("$AfterFFT");
+            if (cell_afFFT != null)
+            {
+                Clipboard.SetDataObject(items.Img_AfterFFT, true);
+                worksheet.Paste(cell_afFFT, false);
+                cell_afFFT.Value = "";
+            }
+
+
             var cell_DailyData = worksheet.Cells.Find("$DailyData");
             if (cell_DailyData != null)
             {
@@ -98,25 +134,25 @@ namespace MMXReport
                 int num = 10;
                 foreach (var item in items.DailyDatas)
                 {
-                    if (num < items.DailyDatas.Count+8)
+                    if (num < items.DailyDatas.Count + 8)
                         range1.EntireRow.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
-                    worksheet.Cells[num,"A"] = item.Machine;
-                    worksheet.Cells[num,"B"] = item.Point;
-                    worksheet.Cells[num,"C"] = item.Function;
-                    worksheet.Cells[num,"D"] = item.Unit;
-                    worksheet.Cells[num,"E"] = item.Caution;
-                    worksheet.Cells[num,"F"] = item.Failure;
-                    worksheet.Cells[num,"G"] = item.Repair;
+                    worksheet.Cells[num, "A"] = item.Machine;
+                    worksheet.Cells[num, "B"] = item.Point;
+                    worksheet.Cells[num, "C"] = item.Function;
+                    worksheet.Cells[num, "D"] = item.Unit;
+                    worksheet.Cells[num, "E"] = item.Caution;
+                    worksheet.Cells[num, "F"] = item.Failure;
+                    worksheet.Cells[num, "G"] = item.Repair;
                     worksheet.Cells[num, "H"] = item.Stop;
                     worksheet.Cells[num, "I"] = item.MIN.ToString("#.00");
                     worksheet.Cells[num, "J"] = item.MAX.ToString("#.00");
                     worksheet.Cells[num, "K"] = item.AVG.ToString("#.00");
-                    
+
                     Excel.Range range = worksheet.Cells[num, "L"] as Excel.Range;
                     range.Value = item.Status;
-                    switch(item.Status)
+                    switch (item.Status)
                     {
-                        case "Good": 
+                        case "Good":
                             range.Interior.Color = Color.LightGreen;
                             range.Font.Color = Color.Black;
                             break;
@@ -141,7 +177,7 @@ namespace MMXReport
                 }
                 ReleaseObject(ref range1);
             }
-            
+
             ReleaseObject(ref worksheet);
         }
 

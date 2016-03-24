@@ -24,6 +24,7 @@ namespace MMXReport.Dialog
             InitializeComponent();
             MimicNodeTree.DataSource = common.MimicNodes;
             MimicNodeTree.BestFitColumns();
+            Numeric_RepairOffset.Value = RepairConf.RepairOffsetDay;
             DateEdit_Before.DateTime = BaseConfig.StartDate;
             DateEdit_After.DateTime = BaseConfig.EndDate;
         }
@@ -31,11 +32,13 @@ namespace MMXReport.Dialog
         private void StartDateEdit_EditValueChanged(object sender, EventArgs e)
         {
             RepairConf.BeforeRepairDate = DateEdit_Before.DateTime.Date;
+            RepairConf.StartDate = DateEdit_Before.DateTime.AddDays(-1 * RepairConf.RepairOffsetDay).Date;
         }
 
         private void EndDateEdit_EditValueChanged(object sender, EventArgs e)
         {
             RepairConf.AfterRepairDate = DateEdit_After.DateTime.Date;
+            RepairConf.EndDate = DateEdit_After.DateTime.AddDays(RepairConf.RepairOffsetDay).Date;
         }
 
         private void Radio_Max_CheckedChanged_1(object sender, EventArgs e)

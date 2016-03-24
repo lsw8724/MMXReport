@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAO
-        UAAAAk1TRnQBSQFMAgEBBwEAAXgBAAF4AQABIAEAASABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAGA
+        UAAAAk1TRnQBSQFMAgEBBwEAAeABAAHgAQABIAEAASABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAGA
         AwABQAMAAQEBAAEYBgABYBIAA/UD01TSA9MG9QPTVNID0wP1AwAD+1T5A/oD/2AAA9MBjgGNAY4DhAKH
         AYgDgwOHA4QDhQGGAYcBhgODAYcCiAKEAYMGhgOEA4gDgwOHBoUDhwODAocBiAOEBoYDhAOIA4MDhwOB
         BtMDlgOLA44DjQOMA48DiwOPA4wDjQOOA4sDjwOLA44CjQGOA4wDjwOLA48BjQKMA40DjwOLA48DjAGN
@@ -563,6 +563,12 @@
   <metadata name="annotation1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>520, 21</value>
   </metadata>
+  <metadata name="fastLine4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>348, 63</value>
+  </metadata>
+  <metadata name="fastLine3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>239, 63</value>
+  </metadata>
   <data name="Gr_Compare.CaptionImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -653,9 +659,6 @@
         60cvPrpC7/8A1UhA9aONJLkAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="horizBar1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>996, 18</value>
-  </metadata>
   <metadata name="bar1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>264, 17</value>
   </metadata>
@@ -674,6 +677,9 @@
   <data name="bar3.SeriesData" xml:space="preserve">
     <value>PFRlZURhdGFTZXQ+DQogIDxUZWVEYXRhVGFibGU+DQogICAgPFg+MDwvWD4NCiAgICA866eJ64yAPjg1PC/rp4nrjIA+DQogIDwvVGVlRGF0YVRhYmxlPg0KICA8VGVlRGF0YVRhYmxlPg0KICAgIDxYPjE8L1g+DQogICAgPOunieuMgD43PC/rp4nrjIA+DQogIDwvVGVlRGF0YVRhYmxlPg0KICA8VGVlRGF0YVRhYmxlPg0KICAgIDxYPjI8L1g+DQogICAgPOunieuMgD4xNjwv66eJ64yAPg0KICA8L1RlZURhdGFUYWJsZT4NCiAgPFRlZURhdGFUYWJsZT4NCiAgICA8WD4zPC9YPg0KICAgIDzrp4nrjIA+MTA4PC/rp4nrjIA+DQogIDwvVGVlRGF0YVRhYmxlPg0KICA8VGVlRGF0YVRhYmxlPg0KICAgIDxYPjQ8L1g+DQogICAgPOunieuMgD4xMDwv66eJ64yAPg0KICA8L1RlZURhdGFUYWJsZT4NCiAgPFRlZURhdGFUYWJsZT4NCiAgICA8WD41PC9YPg0KICAgIDzrp4nrjIA+MTI8L+unieuMgD4NCiAgPC9UZWVEYXRhVGFibGU+DQo8L1RlZURhdGFTZXQ+</value>
   </data>
+  <metadata name="horizBar1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>996, 18</value>
+  </metadata>
   <metadata name="fastLine1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>655, 17</value>
   </metadata>
