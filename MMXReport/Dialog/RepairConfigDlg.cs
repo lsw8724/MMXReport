@@ -90,5 +90,62 @@ namespace MMXReport.Dialog
         {
             RepairConf.RepairOffsetDay = Convert.ToInt16(Numeric_RepairOffset.Value);
         }
+
+        private double GetScaleMax(TextEdit te)
+        {
+            if (te.Text == string.Empty) return 0;
+            else return Convert.ToDouble(te.Text);
+        }
+
+        private void Radio_CustomScale_CheckedChanged(object sender, EventArgs e)
+        {
+            switch((sender as RadioButton).Name)
+            {
+                case "Radio_CustomScale":
+                    RepairConf.AutoScale = false;
+                    TextEdit_Scale.Enabled = true;
+                    RepairConf.MaxScale = GetScaleMax(TextEdit_Scale);
+                    break;
+                case "Radio_CustomScale_Time":
+                    RepairConf.AutoScale_Time = false;
+                    TextEdit_Scale_Time.Enabled = true;
+                    RepairConf.MaxScale_Time = GetScaleMax(TextEdit_Scale_Time);
+                    break;
+                case "Radio_CustomScale_FFT":
+                    RepairConf.AutoScale_FFT = false;
+                    TextEdit_Scale_FFT.Enabled = true;
+                    RepairConf.MaxScale_FFT = GetScaleMax(TextEdit_Scale_FFT);
+                    break;
+            }
+        }
+
+        private void Radio_AutoScale_CheckedChanged(object sender, EventArgs e)
+        {
+            switch ((sender as RadioButton).Name)
+            {
+                case "Radio_AutoScale":
+                    RepairConf.AutoScale = true;
+                    TextEdit_Scale.Enabled = false;
+                    break;
+                case "Radio_AutoScale_Time":
+                    RepairConf.AutoScale_Time = true;
+                    TextEdit_Scale_Time.Enabled = false;
+                    break;
+                case "Radio_AutoScale_FFT":
+                    RepairConf.AutoScale_FFT = true;
+                    TextEdit_Scale_FFT.Enabled = false;
+                    break;
+            }
+        }
+
+        private void TextEdit_Scale_EditValueChanged(object sender, EventArgs e)
+        {
+            switch ((sender as TextEdit).Name)
+            {
+                case "TextEdit_Scale": RepairConf.MaxScale = GetScaleMax(TextEdit_Scale); break;
+                case "TextEdit_Scale_Time": RepairConf.MaxScale_Time = GetScaleMax(TextEdit_Scale_Time); break;
+                case "TextEdit_Scale_FFT": RepairConf.MaxScale_FFT = GetScaleMax(TextEdit_Scale_FFT); break;
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace MMXReport
         public MultiPointConfiguration(DBConnector dbconn) : base(dbconn)
         {
             StatTermType = "day";
+            CommonBandpassList = new List<BandpassConfig>();
         }
 
         public void SetChannelList(IEnumerable<MimicNode> mimicNodes)
@@ -49,7 +50,8 @@ namespace MMXReport
                     if (!isNotCommonBandpass[i])
                         commonBandList.Add(bandArr[i]);
                 }
-                commonBandList[0].Active = true;
+                if(commonBandList.Count > 0)
+                    commonBandList[0].Active = true;
             }
             return commonBandList;
         }

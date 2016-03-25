@@ -107,5 +107,25 @@ namespace MMXReport.Dialog
                     MultiPointConf.CommonBandpassList[i].Active = false;
             }  
         }
+
+        private void Radio_CustomScale_CheckedChanged(object sender, EventArgs e)
+        {
+            BaseConfig.AutoScale = false;
+            TextEdit_Scale.Enabled = true;
+            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
+            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
+        }
+
+        private void Radio_AutoScale_CheckedChanged(object sender, EventArgs e)
+        {
+            BaseConfig.AutoScale = true;
+            TextEdit_Scale.Enabled = false;
+        }
+
+        private void TextEdit_Scale_EditValueChanged(object sender, EventArgs e)
+        {
+            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
+            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
+        }
     }
 }

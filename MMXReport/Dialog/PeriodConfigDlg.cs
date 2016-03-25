@@ -59,11 +59,14 @@ namespace MMXReport.Dialog
 
         private void TreeChildAllCheck(TreeListNodes nodes)
         {
-            if (nodes.Count == 0) return;
+            if (nodes.Count == 0)
+            {
+                (MimicNodeTree.GetDataRecordByNode(nodes.ParentNode) as MimicNode).Active = nodes.ParentNode.Checked;
+                return;
+            }
             foreach (TreeListNode node in nodes)
             {
                 node.Checked = nodes.ParentNode.Checked;
-                (MimicNodeTree.GetDataRecordByNode(node) as MimicNode).Active = node.Checked;
                 TreeChildAllCheck(node.Nodes);
             }
         }
@@ -80,6 +83,26 @@ namespace MMXReport.Dialog
                 else
                     PeriodConf.CommonBandpassList[i].Active = false;
             }
+        }
+
+        private void Radio_CustomScale_CheckedChanged(object sender, EventArgs e)
+        {
+            BaseConfig.AutoScale = false;
+            TextEdit_Scale.Enabled = true;
+            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
+            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
+        }
+
+        private void Radio_AutoScale_CheckedChanged(object sender, EventArgs e)
+        {
+            BaseConfig.AutoScale = true;
+            TextEdit_Scale.Enabled = false;
+        }
+
+        private void TextEdit_Scale_EditValueChanged(object sender, EventArgs e)
+        {
+            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
+            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
         }
     }
 }

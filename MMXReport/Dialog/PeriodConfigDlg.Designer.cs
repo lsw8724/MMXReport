@@ -43,6 +43,10 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.Radio_CustomScale = new System.Windows.Forms.RadioButton();
+            this.TextEdit_Scale = new DevExpress.XtraEditors.TextEdit();
+            this.Radio_AutoScale = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Start.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Start.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -58,6 +62,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.List_Bandpass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEdit_Scale.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // DateEdit_Start
@@ -153,6 +160,7 @@
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.Gr_Machine, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.Gr_Bandpass, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.groupControl3, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -161,6 +169,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(544, 453);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
@@ -278,6 +287,52 @@
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             this.repositoryItemCheckEdit1.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.Radio_CustomScale);
+            this.groupControl3.Controls.Add(this.TextEdit_Scale);
+            this.groupControl3.Controls.Add(this.Radio_AutoScale);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Location = new System.Drawing.Point(275, 3);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(263, 64);
+            this.groupControl3.TabIndex = 16;
+            this.groupControl3.Text = "Y 스케일";
+            // 
+            // Radio_CustomScale
+            // 
+            this.Radio_CustomScale.AutoSize = true;
+            this.Radio_CustomScale.Location = new System.Drawing.Point(12, 31);
+            this.Radio_CustomScale.Name = "Radio_CustomScale";
+            this.Radio_CustomScale.Size = new System.Drawing.Size(14, 13);
+            this.Radio_CustomScale.TabIndex = 21;
+            this.Radio_CustomScale.TabStop = true;
+            this.Radio_CustomScale.UseVisualStyleBackColor = true;
+            this.Radio_CustomScale.CheckedChanged += new System.EventHandler(this.Radio_CustomScale_CheckedChanged);
+            // 
+            // TextEdit_Scale
+            // 
+            this.TextEdit_Scale.EditValue = "100.0";
+            this.TextEdit_Scale.Enabled = false;
+            this.TextEdit_Scale.Location = new System.Drawing.Point(32, 27);
+            this.TextEdit_Scale.Name = "TextEdit_Scale";
+            this.TextEdit_Scale.Size = new System.Drawing.Size(100, 20);
+            this.TextEdit_Scale.TabIndex = 20;
+            this.TextEdit_Scale.EditValueChanged += new System.EventHandler(this.TextEdit_Scale_EditValueChanged);
+            // 
+            // Radio_AutoScale
+            // 
+            this.Radio_AutoScale.AutoSize = true;
+            this.Radio_AutoScale.Checked = true;
+            this.Radio_AutoScale.Location = new System.Drawing.Point(138, 28);
+            this.Radio_AutoScale.Name = "Radio_AutoScale";
+            this.Radio_AutoScale.Size = new System.Drawing.Size(52, 18);
+            this.Radio_AutoScale.TabIndex = 19;
+            this.Radio_AutoScale.TabStop = true;
+            this.Radio_AutoScale.Text = "Auto";
+            this.Radio_AutoScale.UseVisualStyleBackColor = true;
+            this.Radio_AutoScale.CheckedChanged += new System.EventHandler(this.Radio_AutoScale_CheckedChanged);
+            // 
             // PeriodConfigDlg
             // 
             this.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
@@ -309,6 +364,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.List_Bandpass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEdit_Scale.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,5 +389,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private System.Windows.Forms.RadioButton Radio_CustomScale;
+        private DevExpress.XtraEditors.TextEdit TextEdit_Scale;
+        private System.Windows.Forms.RadioButton Radio_AutoScale;
     }
 }

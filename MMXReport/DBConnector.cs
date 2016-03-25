@@ -302,19 +302,19 @@ namespace MMXReport
             for (int i = 0; i < bandpassStringArr.Length; i++)
             {
                 query +=
-                    "SELECT point.[ChannelId], machine.[Name] as Machine, point.[Name] as Point, "+
-                    "Bandpass = '" + bandpassStringArr[i] + "', "+
-                    "MIN(data_min.[" + bandpassStringArr[i] + "]) as 'MIN', MAX(data_max.[" + bandpassStringArr[i] + "]) as 'MAX', AVG(data_avg.[" + bandpassStringArr[i] + "]) as 'AVG', "+
+                    "SELECT DISTINCT point.[ChannelId], machine.[Name] as Machine, point.[Name] as Point, " +
+                    "Bandpass = '" + bandpassStringArr[i] + "', " +
+                    "data_min.[" + bandpassStringArr[i] + "] as 'MIN', data_max.[" + bandpassStringArr[i] + "] as 'MAX', data_avg.[" + bandpassStringArr[i] + "] as 'AVG', " +
                     "Ch.ExtraJson " +
                     "FROM [MMX_MODULE_Config].[dbo].[MimicNode]  as point " +
                     "JOIN [MMX_MODULE_Config].[dbo].[MimicNode] as machine " +
                     "ON point.[ParentId] = machine.[Id] " +
-                    "JOIN ["+DataConnection.Database+"].[dbo].[VectorData_day_min] as data_min ON point.[ChannelId] = data_min.[ChannelId] " +
-                    "JOIN ["+DataConnection.Database+"].[dbo].[VectorData_day_max] as data_max ON point.[ChannelId] = data_max.[ChannelId] " +
-                    "JOIN ["+DataConnection.Database+"].[dbo].[VectorData_day_avg] as data_avg ON point.[ChannelId] = data_avg.[ChannelId] " +
-                    "JOIN ["+ConfigConnection.Database+"].[dbo].[SensorChannel] as Ch ON point.[ChannelId] = Ch.[Id] " +
-                    "WHERE point.[NodeType]=300 AND point.[Name] != 'spare' AND point.[Name] NOT LIKE 'Trigger%' AND data_min.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_max.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_avg.[DateTime] = '" + dailyConf.StartDateStr + "' "+
-                    "GROUP BY point.[ChannelId], point.[Name], machine.[Name], ch.[ExtraJson]";
+                    "JOIN [" + DataConnection.Database + "].[dbo].[VectorData_day_min] as data_min ON point.[ChannelId] = data_min.[ChannelId] " +
+                    "JOIN [" + DataConnection.Database + "].[dbo].[VectorData_day_max] as data_max ON point.[ChannelId] = data_max.[ChannelId] " +
+                    "JOIN [" + DataConnection.Database + "].[dbo].[VectorData_day_avg] as data_avg ON point.[ChannelId] = data_avg.[ChannelId] " +
+                    "JOIN [" + ConfigConnection.Database + "].[dbo].[SensorChannel] as Ch ON point.[ChannelId] = Ch.[Id] " +
+                    "WHERE point.[NodeType]=300 AND point.[Name] != 'spare' AND point.[Name] NOT LIKE 'Trigger%' AND data_min.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_max.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_avg.[DateTime] = '" + dailyConf.StartDateStr + "' ";
+                   
                 if (i < bandpassStringArr.Length - 1)
                     query += " UNION ";
             }

@@ -19,7 +19,7 @@ namespace MMXReport.Dialog
             MimicNodeTree.DataSource = common.MimicNodes;
             MimicNodeTree.BestFitColumns();
             DateEdit_Start.DateTime = BaseConfig.StartDate;
-            DateEdit_End.DateTime = BaseConfig.EndDate;
+            DateEdit_End.DateTime = BaseConfig.EndDate;            
         }
 
         private void StartDateEdit_EditValueChanged(object sender, EventArgs e)
@@ -75,6 +75,26 @@ namespace MMXReport.Dialog
                     band.Active = CheckEdit_All.Checked;
                 CheckList_Bandpass.RefreshDataSource();
             }
+        }
+
+        private void Radio_CustomScale_CheckedChanged(object sender, EventArgs e)
+        {
+            BaseConfig.AutoScale = false;
+            TextEdit_Scale.Enabled = true;
+            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
+            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
+        }
+
+        private void Radio_AutoScale_CheckedChanged(object sender, EventArgs e)
+        {
+            BaseConfig.AutoScale = true;
+            TextEdit_Scale.Enabled = false;
+        }
+
+        private void TextEdit_Scale_EditValueChanged(object sender, EventArgs e)
+        {
+            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
+            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
         }
     }
 }

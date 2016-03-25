@@ -110,9 +110,13 @@ namespace MMXReport
 
         private void BtnPreview_DayOfWeek_Click(object sender, EventArgs e)
         {
-            Tchart_DayOfWeek.Visible = true;
-            if (DayOfWeekConf.Channel != null)
+            Tchart_DayOfWeek.Show();
+            Tchart_Period.Hide();
+            if (DayOfWeekConf.Channel != null && DayOfWeekConf.Channel.BandpassArr.Where(x => x.Active).Count() > 0)
             {
+                Tchart_DayOfWeek.Axes.Bottom.AutomaticMaximum = DayOfWeekConf.AutoScale;
+                if(!DayOfWeekConf.AutoScale) 
+                    Tchart_DayOfWeek.Axes.Bottom.Maximum = DayOfWeekConf.MaxScale;
                 Tchart_DayOfWeek.Series.Clear();
                 Tchart_DayOfWeek.Header.Lines = new string[] { DayOfWeekConf.Channel.BandpassArr.Where(x=>x.Active).First().DisplayName };
                 var datas = DBConn.LoadDayOfWeekData(DayOfWeekConf);
@@ -134,9 +138,12 @@ namespace MMXReport
         {
             Tchart_DayOfWeek.Hide();
             Tchart_Period.Show();
-            if (PeriodConf.SelectedChannelList != null)
+            if (PeriodConf.CommonBandpassList.Count > 0)
             {
                 Tchart_Period.Series.Clear();
+                Tchart_Period.Axes.Left.AutomaticMaximum = PeriodConf.AutoScale;
+                if (!PeriodConf.AutoScale)
+                    Tchart_Period.Axes.Left.Maximum = PeriodConf.MaxScale;
                 Tchart_Period.Header.Lines = new string[] { PeriodConf.SelectedBandpass.DisplayName };
                 foreach (DataTable table in DBConn.LoadPeriodData(PeriodConf))
                 {
@@ -154,6 +161,9 @@ namespace MMXReport
             if (MultiBandConf.Channel != null)
             {
                 Tchart_Trend.Series.Clear();
+                Tchart_Trend.Axes.Left.AutomaticMaximum = MultiBandConf.AutoScale;
+                if (!MultiBandConf.AutoScale)
+                    Tchart_Trend.Axes.Left.Maximum = MultiBandConf.MaxScale;
                 Tchart_Trend.Header.Lines = new string[] { MultiBandConf.Channel.PointName };
                 switch (MultiBandConf.StatTermType)
                 {
@@ -187,9 +197,12 @@ namespace MMXReport
 
         private void BtnPreview_MultPointTrend_Click(object sender, EventArgs e)
         {
-            if (MultiPointConf.SelectedChannelList != null)
+            if (MultiPointConf.CommonBandpassList.Count > 0)
             {
                 Tchart_Trend.Series.Clear();
+                Tchart_Trend.Axes.Left.AutomaticMaximum = MultiPointConf.AutoScale;
+                if (!MultiPointConf.AutoScale)
+                    Tchart_Trend.Axes.Left.Maximum = MultiPointConf.MaxScale;
                 Tchart_Trend.Header.Lines = new string[] { MultiPointConf.SelectedBandpass.DisplayName };
                 switch (MultiPointConf.StatTermType)
                 {
@@ -223,18 +236,21 @@ namespace MMXReport
 
         private void BtnPreview_Daily_Click(object sender, EventArgs e)
         {
-            Tchart_RepairTrend.Visible = false;
-            Grid_DailyData.Visible = true;
+            Tchart_RepairTrend.Hide();
+            Grid_DailyData.Show();
         }
 
         private void BtnPreview_Repair_Click(object sender, EventArgs e)
         {
-            Tchart_RepairTrend.Visible = true;
-            Grid_DailyData.Visible = false;
+            Tchart_RepairTrend.Show();
+            Grid_DailyData.Hide();
             if (RepairConf.Channel != null)
             {
                 Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy\nM.d";
                 Tchart_RepairTrend.Series.Clear();
+                Tchart_RepairTrend.Axes.Left.AutomaticMaximum = RepairConf.AutoScale;
+                if (!RepairConf.AutoScale)
+                    Tchart_RepairTrend.Axes.Left.Maximum = RepairConf.MaxScale;
                 Tchart_RepairTrend.Header.Lines = new string[] { RepairConf.Channel.PointName };
                 colorBand1.Start = RepairConf.BeforeRepairDate.ToOADate();
                 colorBand1.End = RepairConf.AfterRepairDate.ToOADate();
@@ -288,7 +304,7 @@ namespace MMXReport
         private void BtnReport_MultiPointTrend_Click(object sender, EventArgs e)
         {
             BtnPreview_MultPointTrend_Click(null, null);
-            if (MultiPointConf.SelectedChannelList != null)
+            if (MultiPointConf.CommonBandpassList.Count > 0)
             {
                 ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
@@ -306,7 +322,7 @@ namespace MMXReport
         private void BtnReport_Period_Click(object sender, EventArgs e)
         {
             BtnPreview_Period_Click(null, null);
-            if (PeriodConf.SelectedChannelList != null)
+            if (PeriodConf.CommonBandpassList.Count > 0)
             {
                 ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
@@ -324,6 +340,18 @@ namespace MMXReport
         private void BtnReport_Repair_Click(object sender, EventArgs e)
         {
             BtnPreview_Repair_Click(null, null);
+
+            TChart_Time.Axes.Left.AutomaticMaximum = RepairConf.AutoScale_Time;
+            if (!RepairConf.AutoScale_Time)
+                TChart_Time.Axes.Left.Maximum = RepairConf.MaxScale_Time;
+
+            TChart_Spectrum.Axes.Left.AutomaticMaximum = RepairConf.AutoScale_FFT;
+            if (!RepairConf.AutoScale_FFT)
+                TChart_Spectrum.Axes.Left.Maximum = RepairConf.MaxScale_FFT;
+
+            TChart_Time.Series[0].Clear();
+            TChart_Spectrum.Series[0].Clear();
+
             int timeWidth = 347;
             int fftWidth = 393;
             int height = 165;
@@ -336,10 +364,10 @@ namespace MMXReport
 
             if (datas[0] != null)
             {
+               
                 int dataCount = datas[0].AsyncData.Length;
                 for (int i = 0; i < dataCount; i++)
                     TChart_Time.Series[0].Add(i * datas[0].Duration / (double)dataCount, datas[0].AsyncData[i]);
-
                 time_beforeImg = ChartCaptur(TChart_Time, timeWidth, height);
 
                 SpectrumData spectrumData = convertor.CalcSpectrumData(datas[0]);
@@ -352,8 +380,8 @@ namespace MMXReport
             {
                 int dataCount = datas[1].AsyncData.Length;
                 for (int i = 0; i < dataCount; i++)
-                    TChart_Spectrum.Series[0].Add(i * datas[1].Duration / (double)dataCount, datas[1].AsyncData[i]);
-                time_afterImg = ChartCaptur(TChart_Spectrum, timeWidth, height);
+                    TChart_Time.Series[0].Add(i * datas[1].Duration / (double)dataCount, datas[1].AsyncData[i]);
+                time_afterImg = ChartCaptur(TChart_Time, timeWidth, height);
 
                 SpectrumData spectrumData = convertor.CalcSpectrumData(datas[1]);
                 for (int i = 0; i < spectrumData.XValues.Length; i++)

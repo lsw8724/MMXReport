@@ -12,6 +12,8 @@ namespace MMXReport
 {
     public abstract class BaseConfiguration
     {
+        public double MaxScale { get; set; }
+        public bool AutoScale { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string StartDateStr { get { return StartDate.ToString("yyyy-MM-dd"); }}
@@ -31,6 +33,7 @@ namespace MMXReport
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
             ValueMeasureType = "max";
+            AutoScale = true;
         }
     }
 }
