@@ -220,11 +220,13 @@
             // 
             this.Radio_Avg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Radio_Avg.AutoSize = true;
+            this.Radio_Avg.Checked = true;
             this.Radio_Avg.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.Radio_Avg.Location = new System.Drawing.Point(203, 26);
             this.Radio_Avg.Name = "Radio_Avg";
             this.Radio_Avg.Size = new System.Drawing.Size(49, 18);
             this.Radio_Avg.TabIndex = 2;
+            this.Radio_Avg.TabStop = true;
             this.Radio_Avg.Text = "Avg";
             this.Radio_Avg.UseVisualStyleBackColor = true;
             this.Radio_Avg.CheckedChanged += new System.EventHandler(this.Radio_Avg_CheckedChanged_1);
@@ -245,13 +247,11 @@
             // Radio_Max
             // 
             this.Radio_Max.AutoSize = true;
-            this.Radio_Max.Checked = true;
             this.Radio_Max.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.Radio_Max.Location = new System.Drawing.Point(12, 26);
             this.Radio_Max.Name = "Radio_Max";
             this.Radio_Max.Size = new System.Drawing.Size(50, 18);
             this.Radio_Max.TabIndex = 0;
-            this.Radio_Max.TabStop = true;
             this.Radio_Max.Text = "Max";
             this.Radio_Max.UseVisualStyleBackColor = true;
             this.Radio_Max.CheckedChanged += new System.EventHandler(this.Radio_Max_CheckedChanged_1);

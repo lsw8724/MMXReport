@@ -46,7 +46,7 @@ namespace MMXReport.TsiConfig
                 {
                     Visible = (Overrides[i].OverrideName == null || Overrides[i].OverrideName == string.Empty)? false:true,
                     OverrideInfo = Overrides[i],
-                    DisplayName = (Overrides[i].Override )? Overrides[i].OverrideName : bandpassName,
+                    DisplayName =  Overrides[i].OverrideName,
                     BandpassName = bandpassName
                 };
             }

@@ -160,6 +160,7 @@
     <Compile Include="DBConnector.cs" />
     <Compile Include="FilterConfig\MultiPointConfiguration.cs" />
     <Compile Include="FilterConfig\RepairConfiguration.cs" />
+    <Compile Include="LogGenerator.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

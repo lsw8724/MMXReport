@@ -32,7 +32,7 @@ namespace MMXReport
         {
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
-            ValueMeasureType = "max";
+            ValueMeasureType = "avg";
             AutoScale = true;
         }
     }

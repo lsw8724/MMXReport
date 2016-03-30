@@ -47,12 +47,14 @@ namespace MMXReport
                 excel = new Excel.Application();
                 workbook = excel.Workbooks.Open(templateFilePath);
                 DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Dialog.WaitLoadingDlg), false, false);
+                LogGenerator.AppendLog("Excel Generate "+items.Name, LogType.Common, this);
                 GenerateReport(workbook, items);
                 workbook.SaveAs(dlg.FileName);
                 DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
             }
             catch (Exception ex)
             {
+                LogGenerator.AppendLog(ex.StackTrace, LogType.Exception, this);
                 MessageBox.Show(ex.Message);
             }
             finally
@@ -134,50 +136,38 @@ namespace MMXReport
                 int num = 10;
                 foreach (var item in items.DailyDatas)
                 {
+                    object[,] values =
+                    {{
+                         item.Machine,
+                         item.Point,
+                         item.Function,
+                         item.Unit,
+                         item.Caution,
+                         item.Failure,
+                         item.Repair,
+                         item.Stop,
+                         item.MIN.ToString("#.00"),
+                         item.MAX.ToString("#.00"),
+                         item.AVG.ToString("#.00"),
+                         item.Status.Stat,
+                         "",
+                    }};
+
                     if (num < items.DailyDatas.Count + 8)
                         range1.EntireRow.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
-                    worksheet.Cells[num, "A"] = item.Machine;
-                    worksheet.Cells[num, "B"] = item.Point;
-                    worksheet.Cells[num, "C"] = item.Function;
-                    worksheet.Cells[num, "D"] = item.Unit;
-                    worksheet.Cells[num, "E"] = item.Caution;
-                    worksheet.Cells[num, "F"] = item.Failure;
-                    worksheet.Cells[num, "G"] = item.Repair;
-                    worksheet.Cells[num, "H"] = item.Stop;
-                    worksheet.Cells[num, "I"] = item.MIN.ToString("#.00");
-                    worksheet.Cells[num, "J"] = item.MAX.ToString("#.00");
-                    worksheet.Cells[num, "K"] = item.AVG.ToString("#.00");
+
+                    var range2 = worksheet.get_Range("A" + num, "M" + num);
+                    range2.Value2 = values;
 
                     Excel.Range range = worksheet.Cells[num, "L"] as Excel.Range;
-                    range.Value = item.Status;
-                    switch (item.Status)
-                    {
-                        case "Good":
-                            range.Interior.Color = Color.LightGreen;
-                            range.Font.Color = Color.Black;
-                            break;
-                        case "Caution":
-                            range.Interior.Color = Color.Pink;
-                            range.Font.Color = Color.Black;
-                            break;
-                        case "Failure":
-                            range.Interior.Color = Color.Yellow;
-                            range.Font.Color = Color.Black;
-                            break;
-                        case "Repair":
-                            range.Interior.Color = Color.OrangeRed;
-                            range.Font.Color = Color.White;
-                            break;
-                        case "Stop":
-                            range.Interior.Color = Color.Red;
-                            range.Font.Color = Color.White;
-                            break;
-                    }
+                    range.Interior.Color = item.Status.StatColor;
+                    range.Font.Color = item.Status.StatColor_Font;
+                    
                     num++;
+                    ReleaseObject(ref range2);
                 }
                 ReleaseObject(ref range1);
             }
-
             ReleaseObject(ref worksheet);
         }
 
