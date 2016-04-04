@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,8 +74,7 @@ namespace MMXReport.Dialog
         {
             TreeChildAllCheck(e.Node.Nodes);
             MimicNodes pointNodes = (MimicNodeTree.DataSource as MimicNodes).SearchNodes(300);
-            var temp = pointNodes.Where(x => x.Active);
-            MultiPointConf.SetChannelList(temp);
+            MultiPointConf.SetChannelList(pointNodes.Where(x => x.Active));
             List_Bandpass.DataSource = MultiPointConf.CommonBandpassList;
         }
 

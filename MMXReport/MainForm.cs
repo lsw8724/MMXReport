@@ -36,7 +36,7 @@ namespace MMXReport
         public MainForm()
         {
             InitializeComponent();
-
+            LogGenerator.CreateLogFile();
             CreatePreviewSample();
             DBConn = new DBConnector();
             ExcelManager = new ExcelIOManager();
@@ -58,7 +58,7 @@ namespace MMXReport
 
         private void CreatePreviewSample()
         {
-            string[] week = new string[5] { "금", "목", "수", "화", "월" };
+            string[] week = new string[5] { "Fri", "Thu", "Wed", "Tue", "Mon" };
             Random rand = new Random();
             for (int i = 0; i < 5; i++)
                 Tchart_DayOfWeek.Series[0].Add(rand.Next(5, 10), week[i]);
@@ -118,7 +118,7 @@ namespace MMXReport
                 if(!DayOfWeekConf.AutoScale) 
                     Tchart_DayOfWeek.Axes.Bottom.Maximum = DayOfWeekConf.MaxScale;
                 Tchart_DayOfWeek.Series.Clear();
-                Tchart_DayOfWeek.Header.Lines = new string[] { DayOfWeekConf.Channel.BandpassArr.Where(x=>x.Active).First().DisplayName };
+                Tchart_DayOfWeek.Header.Lines = new string[] { DayOfWeekConf.Channel.BandpassArr.Where(x => x.Active).First().OverrideInfo.OverrideName };
                 var datas = DBConn.LoadDayOfWeekData(DayOfWeekConf);
                 Tchart_DayOfWeek.Legend.Visible = (datas.Count != 1) ? true : false;
                 Tchart_DayOfWeek.Header.Visible = (datas.Count != 1) ? false : true;
@@ -144,7 +144,7 @@ namespace MMXReport
                 Tchart_Period.Axes.Left.AutomaticMaximum = PeriodConf.AutoScale;
                 if (!PeriodConf.AutoScale)
                     Tchart_Period.Axes.Left.Maximum = PeriodConf.MaxScale;
-                Tchart_Period.Header.Lines = new string[] { PeriodConf.SelectedBandpass.DisplayName };
+                Tchart_Period.Header.Lines = new string[] { PeriodConf.SelectedBandpass.OverrideInfo.OverrideName };
                 foreach (DataTable table in DBConn.LoadPeriodData(PeriodConf))
                 {
                     Bar barSeries = new Bar() { Title = table.TableName };
@@ -181,7 +181,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "주");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Week");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiBandpassTrendData(MultiBandConf))
@@ -189,7 +189,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Month");
                         } break;
                 }
             }
@@ -203,7 +203,7 @@ namespace MMXReport
                 Tchart_Trend.Axes.Left.AutomaticMaximum = MultiPointConf.AutoScale;
                 if (!MultiPointConf.AutoScale)
                     Tchart_Trend.Axes.Left.Maximum = MultiPointConf.MaxScale;
-                Tchart_Trend.Header.Lines = new string[] { MultiPointConf.SelectedBandpass.DisplayName };
+                Tchart_Trend.Header.Lines = new string[] { MultiPointConf.SelectedBandpass.OverrideInfo.OverrideName };
                 switch (MultiPointConf.StatTermType)
                 {
                     case "day":
@@ -220,7 +220,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "주");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Week");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiPointTrendData(MultiPointConf))
@@ -228,7 +228,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "월");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Month");
                         } break;
                 }
             }
@@ -312,7 +312,7 @@ namespace MMXReport
                     Name = "밴드별 추이 분석 보고서",
                     Machine = MultiPointConf.SelectedChannelList[0].MachineName,
                     Ref = "Measure",
-                    Value = MultiPointConf.SelectedBandpass.DisplayName,
+                    Value = MultiPointConf.SelectedBandpass.OverrideInfo.OverrideName,
                     AnalysisType = "* Trend Analysis",
                     Img = ChartCaptur(Tchart_Trend, 740)
                 });
@@ -330,7 +330,7 @@ namespace MMXReport
                     Name = "유사설비/분기별 비교 분석 보고서",
                     Machine = PeriodConf.SelectedChannelList[0].MachineName,
                     Ref = "Measure",
-                    Value = PeriodConf.SelectedBandpass.DisplayName,
+                    Value = PeriodConf.SelectedBandpass.OverrideInfo.OverrideName,
                     AnalysisType = "* BarChart Analysis",
                     Img = ChartCaptur(Tchart_Period, 740)
                 });

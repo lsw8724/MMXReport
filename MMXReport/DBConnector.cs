@@ -37,7 +37,7 @@ namespace MMXReport
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.CommandTimeout = 0;
                 conn.Open();
-
+                LogGenerator.AppendLog(query, LogType.SQLQuery, this);
                 da = new SqlDataAdapter(cmd);
 
                 da.Fill(dataTable);
@@ -45,6 +45,7 @@ namespace MMXReport
             }
             catch (Exception ex)
             {
+                LogGenerator.AppendLog(ex.StackTrace, LogType.Exception, this);
                 MessageBox.Show(ex.Message);
             }
             finally
@@ -184,7 +185,7 @@ namespace MMXReport
                                 "GROUP BY DATEPART(yy, [DateTime]),DATEPART(ww, [DateTime]) " +
                                 "ORDER BY DATEPART(yy, [DateTime]),DATEPART(ww, [DateTime])";
                             DataTable dt = GetResultByQuery(query, DataConnection);
-                            dt.TableName = bandpass.DisplayName;
+                            dt.TableName = bandpass.OverrideInfo.OverrideName;
                             dataList.Add(dt);
                         }
                     }
@@ -202,7 +203,7 @@ namespace MMXReport
                                 "GROUP BY DATEPART(yy, [DateTime]),DATEPART(mm, [DateTime]),DATEPART(dd, [DateTime]) " +
                                 "ORDER BY DATEPART(yy, [DateTime]),DATEPART(mm, [DateTime]),DATEPART(dd, [DateTime])";
                             DataTable dt = GetResultByQuery(query, DataConnection);
-                            dt.TableName = bandpass.DisplayName;
+                            dt.TableName = bandpass.OverrideInfo.OverrideName;
                             dataList.Add(dt);
                         }
                     }
@@ -220,7 +221,7 @@ namespace MMXReport
                             "GROUP BY DATEPART(yy, [DateTime]),DATEPART(mm, [DateTime]) " +
                             "ORDER BY DATEPART(yy, [DateTime]),DATEPART(mm, [DateTime]) ";
                             DataTable dt = GetResultByQuery(query, DataConnection);
-                            dt.TableName = bandpass.DisplayName;
+                            dt.TableName = bandpass.OverrideInfo.OverrideName;
                             dataList.Add(dt);
                         }
                     }
@@ -239,32 +240,32 @@ namespace MMXReport
                     string query =
                         "SELECT WEEK_NAME, " + dowConf.ValueMeasureType + "([" + bandpass.BandpassName + "]) " +
                         "FROM(SELECT CASE " +
-                        "WHEN DATEPART(dw, [DateTime]) = 1 THEN '일' " +
-                        "WHEN DATEPART(dw, [DateTime]) = 2 THEN '월' " +
-                        "WHEN DATEPART(dw, [DateTime]) = 3 THEN '화' " +
-                        "WHEN DATEPART(dw, [DateTime]) = 4 THEN '수' " +
-                        "WHEN DATEPART(dw, [DateTime]) = 5 THEN '목' " +
-                        "WHEN DATEPART(dw, [DateTime]) = 6 THEN '금' " +
-                        "WHEN DATEPART(dw, [DateTime]) = 7 THEN '토' " +
+                        "WHEN DATEPART(dw, [DateTime]) = 1 THEN 'Sun' " +
+                        "WHEN DATEPART(dw, [DateTime]) = 2 THEN 'Mon' " +
+                        "WHEN DATEPART(dw, [DateTime]) = 3 THEN 'Tue' " +
+                        "WHEN DATEPART(dw, [DateTime]) = 4 THEN 'Wed' " +
+                        "WHEN DATEPART(dw, [DateTime]) = 5 THEN 'Thu' " +
+                        "WHEN DATEPART(dw, [DateTime]) = 6 THEN 'Fri' " +
+                        "WHEN DATEPART(dw, [DateTime]) = 7 THEN 'Sat' " +
                         "END WEEK_NAME,[" + bandpass.BandpassName + "]" +
                         "FROM [" + DataConnection.Database + "].[dbo].[VectorData_Day_" + dowConf.ValueMeasureType + "] " +
                         "WHERE [ChannelId]=" + dowConf.Channel.Id + " AND [DateTime] BETWEEN '" + dowConf.StartDateStr + "' AND '" + dowConf.EndDateStr + "' " +
                         "GROUP BY DATEPART(dw, [DateTime]),[" + bandpass.BandpassName + "])AS t1 " +
 
-                        "WHERE WEEK_NAME != '일' AND WEEK_NAME != '토' " +
+                        "WHERE WEEK_NAME != 'Sun' AND WEEK_NAME != 'Sat' " +
 
                         "GROUP BY WEEK_NAME " +
                         "ORDER BY CASE " +
-                        "WHEN WEEK_NAME = '토' THEN 1 " +
-                        "WHEN WEEK_NAME = '금' THEN 2 " +
-                        "WHEN WEEK_NAME = '목' THEN 3 " +
-                        "WHEN WEEK_NAME = '수' THEN 4 " +
-                        "WHEN WEEK_NAME = '화' THEN 5 " +
-                        "WHEN WEEK_NAME = '월' THEN 6 " +
-                        "WHEN WEEK_NAME = '일' THEN 7 " +
+                        "WHEN WEEK_NAME = 'Sun' THEN 7 " +
+                        "WHEN WEEK_NAME = 'Mon' THEN 6 " +
+                        "WHEN WEEK_NAME = 'Tue' THEN 5 " +
+                        "WHEN WEEK_NAME = 'Wed' THEN 4 " +
+                        "WHEN WEEK_NAME = 'Thu' THEN 3 " +
+                        "WHEN WEEK_NAME = 'Fri' THEN 2 " +
+                        "WHEN WEEK_NAME = 'Sat' THEN 1 " +
                         "END";
                     DataTable dt = GetResultByQuery(query, DataConnection);
-                    dt.TableName = bandpass.DisplayName;
+                    dt.TableName = bandpass.OverrideInfo.OverrideName;
                     dataList.Add(dt);
                 }
             }
@@ -279,10 +280,10 @@ namespace MMXReport
                 string query =
                     "SELECT DATEPART(yy, [DateTime]),Year_Quarter, " + periodConf.ValueMeasureType + "([" + periodConf.SelectedBandpass.BandpassName + "]) " +
                     "FROM(SELECT CASE " +
-                    "WHEN DATEPART(mm, [DateTime]) = 1 THEN '1분기' WHEN DATEPART(mm, [DateTime]) = 2 THEN '1분기' WHEN DATEPART(mm, [DateTime]) = 3 THEN '1분기' " +
-                    "WHEN DATEPART(mm, [DateTime]) = 4 THEN '2분기' WHEN DATEPART(mm, [DateTime]) = 5 THEN '2분기' WHEN DATEPART(mm, [DateTime]) = 6 THEN '2분기' " +
-                    "WHEN DATEPART(mm, [DateTime]) = 7 THEN '3분기' WHEN DATEPART(mm, [DateTime]) = 8 THEN '3분기' WHEN DATEPART(mm, [DateTime]) = 9 THEN '3분기' " +
-                    "WHEN DATEPART(mm, [DateTime]) = 10 THEN '4분기' WHEN DATEPART(mm, [DateTime]) = 11 THEN '4분기' WHEN DATEPART(mm, [DateTime]) = 12 THEN '4분기' " +
+                    "WHEN DATEPART(mm, [DateTime]) = 1 THEN '1th' WHEN DATEPART(mm, [DateTime]) = 2 THEN '1th' WHEN DATEPART(mm, [DateTime]) = 3 THEN '1th' " +
+                    "WHEN DATEPART(mm, [DateTime]) = 4 THEN '2nd' WHEN DATEPART(mm, [DateTime]) = 5 THEN '2nd' WHEN DATEPART(mm, [DateTime]) = 6 THEN '2nd' " +
+                    "WHEN DATEPART(mm, [DateTime]) = 7 THEN '3rd' WHEN DATEPART(mm, [DateTime]) = 8 THEN '3rd' WHEN DATEPART(mm, [DateTime]) = 9 THEN '3rd' " +
+                    "WHEN DATEPART(mm, [DateTime]) = 10 THEN '4th' WHEN DATEPART(mm, [DateTime]) = 11 THEN '4th' WHEN DATEPART(mm, [DateTime]) = 12 THEN '4th' " +
                     "END Year_Quarter,[" + periodConf.SelectedBandpass.BandpassName + "],[DateTime] " +
                     "FROM " + DataConnection.Database + ".[dbo].[VectorData_month_" + periodConf.ValueMeasureType + "] " +
                     "WHERE [ChannelId]=" + channel.Id + " AND [DateTime] >= '" + periodConf.StartDateStr + "' AND  [DateTime] < '" + periodConf.StartDate.AddYears(1).ToString("yyyy-MM-dd") + "')AS T " +
@@ -336,7 +337,7 @@ namespace MMXReport
                         "GROUP BY [DateTime] " +
                         "ORDER BY [DateTime]";
                     DataTable dt = GetResultByQuery(query, DataConnection);
-                    dt.TableName = bandpass.DisplayName;
+                    dt.TableName = bandpass.OverrideInfo.OverrideName;
                     dataList.Add(dt);
                 }
             }

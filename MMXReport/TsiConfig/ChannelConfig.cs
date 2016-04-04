@@ -13,9 +13,8 @@ namespace MMXReport.TsiConfig
         public bool Visible { get; set; }
         public bool Active { get; set; }
         public string BandpassName { get; set; }
-        public DspVectorOverride OverrideInfo { get; set; }
         public string DisplayName { get; set; }
-        public string DisplayUnit { get; set; }
+        public DspVectorOverride OverrideInfo { get; set; }
     }
 
     public class ChannelConfig
@@ -45,8 +44,8 @@ namespace MMXReport.TsiConfig
                 BandpassArr[i] = new BandpassConfig()
                 {
                     Visible = (Overrides[i].OverrideName == null || Overrides[i].OverrideName == string.Empty)? false:true,
+                    DisplayName = Overrides[i].OverrideName,
                     OverrideInfo = Overrides[i],
-                    DisplayName =  Overrides[i].OverrideName,
                     BandpassName = bandpassName
                 };
             }

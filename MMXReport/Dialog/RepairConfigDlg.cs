@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -63,7 +64,7 @@ namespace MMXReport.Dialog
             {
                 ChannelConfig channel = new ChannelConfig(mimicNode, BaseConfig.DBConn);
                 BaseConfig.Channel = channel;
-                CheckList_Bandpass.DataSource = channel.BandpassArr;
+                CheckList_Bandpass.DataSource = channel.BandpassArr.Where(x => x.Visible);
             }
             else
             {

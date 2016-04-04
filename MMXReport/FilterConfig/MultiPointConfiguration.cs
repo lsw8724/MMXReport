@@ -41,7 +41,7 @@ namespace MMXReport
                     foreach (var ch in SelectedChannelList)
                     {
                         if (isNotCommonBandpass[i]) break;
-                        if (bandArr[i].DisplayName != ch.BandpassArr[i].DisplayName || !ch.BandpassArr[i].Visible)
+                        if (bandArr[i].OverrideInfo.OverrideName != ch.BandpassArr[i].OverrideInfo.OverrideName || !ch.BandpassArr[i].Visible)
                         {
                             isNotCommonBandpass[i] = true;
                             break;
