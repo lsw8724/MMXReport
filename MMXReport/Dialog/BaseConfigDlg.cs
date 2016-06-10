@@ -15,7 +15,8 @@ namespace MMXReport.Dialog
 
         public BaseConfigDlg()
         {
-            InitializeComponent();  
+            InitializeComponent();
+            Btn_Close.Text = MultiLang.Close;
         }
 
         public BaseConfigDlg(BaseConfiguration baseConf)

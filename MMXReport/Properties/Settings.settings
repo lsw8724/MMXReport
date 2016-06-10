@@ -12,10 +12,16 @@
       <Value Profile="(Default)">sa</Value>
     </Setting>
     <Setting Name="DB_Pwd" Type="System.String" Scope="User">
-      <Value Profile="(Default)">nada123!</Value>
+      <Value Profile="(Default)">nada1234</Value>
     </Setting>
     <Setting Name="ServerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">127.0.0.1\SQL2014</Value>
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="ProjectSite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MMX</Value>
+    </Setting>
+    <Setting Name="LastUICulture" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en-US</Value>
     </Setting>
   </Settings>
 </SettingsFile>

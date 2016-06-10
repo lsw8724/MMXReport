@@ -36,6 +36,30 @@ namespace MMXReport
         public MainForm()
         {
             InitializeComponent();
+
+            #region MultiLang
+            BtnReport_BandpassTrend.Text = MultiLang.TrendOfMeasure;
+            BtnReport_PointTrend.Text = MultiLang.TrendOfPoint;
+            BtnReport_DayOfWeek.Text = MultiLang.WeeklyCompare;
+            BtnReport_Period.Text = MultiLang.PeriodCompare;
+            BtnReport_Daily.Text = MultiLang.Daily;
+            BtnReport_Repair.Text = MultiLang.RepairTask;
+
+            BtnConfig_BandpassTrend.Text = MultiLang.Configuration;
+            BtnConfig_PointTrend.Text = MultiLang.Configuration;
+            BtnConfig_DayOfWeek.Text = MultiLang.Configuration;
+            BtnConfig_Period.Text = MultiLang.Configuration;
+            BtnConfig_Daily.Text = MultiLang.Configuration;
+            BtnConfig_Repair.Text = MultiLang.Configuration;
+
+            BtnPreview_BandpassTrend.Text = MultiLang.Preview;
+            BtnPreview_PointTrend.Text = MultiLang.Preview;
+            BtnPreview_DayOfWeek.Text = MultiLang.Preview;
+            BtnPreview_Period.Text = MultiLang.Preview;
+            BtnPreview_Daily.Text = MultiLang.Preview;
+            BtnPreview_Repair.Text = MultiLang.Preview;
+            #endregion
+
             LogGenerator.CreateLogFile();
             CreatePreviewSample();
             DBConn = new DBConnector();
@@ -75,7 +99,7 @@ namespace MMXReport
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Text = "MMX 보고서 프로그램 v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            Text = Settings.Default.ProjectSite +" "+ MultiLang.ProgramName +" v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
         }
 
         private void BtnConfig_BandTrend_Click(object sender, EventArgs e)
@@ -276,6 +300,7 @@ namespace MMXReport
                     DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
                     Name = "요일별 비교 분석 보고서",
                     Machine = DayOfWeekConf.Channel.MachineName,
+                    Line = DayOfWeekConf.Channel.LineName,
                     Ref = "Point",
                     Value = DayOfWeekConf.Channel.PointName,
                     AnalysisType = "* BarChart Analysis",
@@ -294,6 +319,7 @@ namespace MMXReport
                     DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
                     Name = "포인트별 추이 분석 보고서",
                     Machine = MultiBandConf.Channel.MachineName,
+                    Line = MultiBandConf.Channel.LineName,
                     Ref = "Point",
                     Value = MultiBandConf.Channel.PointName,
                     AnalysisType = "* Trend Analysis",
@@ -311,6 +337,7 @@ namespace MMXReport
                     DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
                     Name = "밴드별 추이 분석 보고서",
                     Machine = MultiPointConf.SelectedChannelList[0].MachineName,
+                    Line = MultiPointConf.SelectedChannelList[0].LineName,
                     Ref = "Measure",
                     Value = MultiPointConf.SelectedBandpass.OverrideInfo.OverrideName,
                     AnalysisType = "* Trend Analysis",
@@ -329,6 +356,7 @@ namespace MMXReport
                     DateTime = PeriodConf.StartDate.ToString("yyyy년도"),
                     Name = "유사설비/분기별 비교 분석 보고서",
                     Machine = PeriodConf.SelectedChannelList[0].MachineName,
+                    Line = PeriodConf.SelectedChannelList[0].LineName,
                     Ref = "Measure",
                     Value = PeriodConf.SelectedBandpass.OverrideInfo.OverrideName,
                     AnalysisType = "* BarChart Analysis",
@@ -395,6 +423,7 @@ namespace MMXReport
                     DateTime = RepairConf.StartDateStr + " ~ " + RepairConf.EndDateStr,
                     Name = "보전활동 보고서",
                     Machine = RepairConf.Channel.MachineName,
+                    Line = RepairConf.Channel.LineName,
                     Value = RepairConf.Channel.PointName,
                     Img = ChartCaptur(Tchart_RepairTrend, 740),
                     Img_BeforTime = time_beforeImg,

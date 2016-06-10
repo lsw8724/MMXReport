@@ -20,6 +20,7 @@ namespace MMXReport
         public string Value;
         public string Machine;
         public string AnalysisType;
+        public string Line;
         //public string Alarm;
         public Bitmap Img;
         public Bitmap Img_BeforTime;
@@ -75,6 +76,9 @@ namespace MMXReport
 
             var cell_name = worksheet.Cells.Find("$Name");
             if (cell_name != null) cell_name.Value = items.Name;
+
+            var cell_line = worksheet.Cells.Find("$Line");
+            if (cell_line != null) cell_line.Value = items.Line;
 
             var cell_machine = worksheet.Cells.Find("$Machine");
             if (cell_machine != null) cell_machine.Value = items.Machine;

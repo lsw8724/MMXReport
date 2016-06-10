@@ -77,7 +77,7 @@ namespace MMXReport
             query =
                   "SELECT TOP 1 [AsyncData],[AsyncFMax],[AsyncLine] " +
                   "FROM [" + DataConnection.Database + "].[dbo].[WaveData] " +
-                  "WHERE [ChannelId]=" + 16 + " AND [DateTime] BETWEEN '" + repairConf.EndDateStr + "' AND '" + repairConf.AfterRepairDate.ToString("yyyy-MM-dd") + "' ";
+                  "WHERE [ChannelId]=" + 16 + " AND [DateTime] BETWEEN '" + repairConf.AfterRepairDate.ToString("yyyy-MM-dd") + "' AND '" + repairConf.EndDateStr + "' ";
             table = GetResultByQuery(query, DataConnection);
             if (table.Rows.Count > 0)
             {
@@ -307,8 +307,8 @@ namespace MMXReport
                     "Bandpass = '" + bandpassStringArr[i] + "', " +
                     "data_min.[" + bandpassStringArr[i] + "] as 'MIN', data_max.[" + bandpassStringArr[i] + "] as 'MAX', data_avg.[" + bandpassStringArr[i] + "] as 'AVG', " +
                     "Ch.ExtraJson " +
-                    "FROM [MMX_MODULE_Config].[dbo].[MimicNode]  as point " +
-                    "JOIN [MMX_MODULE_Config].[dbo].[MimicNode] as machine " +
+                    "FROM [" + ConfigConnection.Database + "].[dbo].[MimicNode]  as point " +
+                    "JOIN [" + ConfigConnection.Database + "].[dbo].[MimicNode] as machine " +
                     "ON point.[ParentId] = machine.[Id] " +
                     "JOIN [" + DataConnection.Database + "].[dbo].[VectorData_day_min] as data_min ON point.[ChannelId] = data_min.[ChannelId] " +
                     "JOIN [" + DataConnection.Database + "].[dbo].[VectorData_day_max] as data_max ON point.[ChannelId] = data_max.[ChannelId] " +

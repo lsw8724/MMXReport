@@ -22,6 +22,8 @@ namespace MMXReport.Dialog
         {
             InitializeComponent();
 
+            DateEdit_Start.Properties.DisplayFormat.FormatString = "yyyy " + MultiLang.Years;
+
             MimicNodeTree.DataSource = common.LoadMimicNodes(baseConf.DBConn);
             MimicNodeTree.BestFitColumns();
             MimicNodeTree.ExpandAll();

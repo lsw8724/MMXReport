@@ -16,6 +16,7 @@ namespace MMXReport.Dialog
         {
             InitializeComponent();
             DateEdit.DateTime = DateTime.Now.Date;
+            groupControl1.Text = MultiLang.OperatingDate;
         }
 
         private void DateEdit_EditValueChanged(object sender, EventArgs e)

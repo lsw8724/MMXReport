@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
+using System.Threading;
+using System.Globalization;
+using MMXReport.Properties;
 
 namespace MMXReport
 {
@@ -14,12 +17,15 @@ namespace MMXReport
         static void Main()
         {
             Application.EnableVisualStyles();
+
+            if (!string.IsNullOrWhiteSpace(Settings.Default.LastUICulture))
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.LastUICulture);
+
             Application.SetCompatibleTextRenderingDefault(false);
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.BonusSkins.Register();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-
             Application.Run(new MainForm());
         }
     }
