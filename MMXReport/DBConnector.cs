@@ -41,16 +41,17 @@ namespace MMXReport
                 da = new SqlDataAdapter(cmd);
 
                 da.Fill(dataTable);
+                da.Dispose();
                 
             }
             catch (Exception ex)
             {
                 LogGenerator.AppendLog(ex.StackTrace, LogType.Exception, this);
                 MessageBox.Show(ex.Message);
+                throw ex;
             }
             finally
             {
-                da.Dispose();
                 conn.Close();
             }
             return dataTable;

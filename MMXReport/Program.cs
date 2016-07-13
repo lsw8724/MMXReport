@@ -17,16 +17,18 @@ namespace MMXReport
         static void Main()
         {
             Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            DevExpress.Skins.SkinManager.EnableFormSkins();
+            DevExpress.UserSkins.BonusSkins.Register();
+            UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
+
+            var dlg = new Dialog.LoginDialog();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
 
             if (!string.IsNullOrWhiteSpace(Settings.Default.LastUICulture))
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.LastUICulture);
 
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            DevExpress.Skins.SkinManager.EnableFormSkins();
-            DevExpress.UserSkins.BonusSkins.Register();
-            UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new MainForm());
+            Application.Run(new MainForm()); 
         }
     }
 }

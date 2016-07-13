@@ -121,6 +121,12 @@
     <Compile Include="Dialog\DayOfWeekConfigDlg.Designer.cs">
       <DependentUpon>DayOfWeekConfigDlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\LoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\LoginDialog.Designer.cs">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\RepairConfigDlg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DayOfWeekConfigDlg.resx">
       <DependentUpon>DayOfWeekConfigDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\LoginDialog.resx">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\RepairConfigDlg.resx">
       <DependentUpon>RepairConfigDlg.cs</DependentUpon>

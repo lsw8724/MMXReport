@@ -77,7 +77,7 @@ namespace MMXReport
             MultiPointConfigDlg = new MultiPointConfigDlg(CommonConf, MultiPointConf) { Owner = this };
             DayOfWeekConfigDlg = new DayOfWeekConfigDlg(CommonConf, DayOfWeekConf) { Owner = this };
             PeriodConfigDlg = new PeriodConfigDlg(CommonConf, PeriodConf) { Owner = this };
-            RepairConfigDlg = new RepairConfigDlg(CommonConf,RepairConf) { Owner = this };
+            RepairConfigDlg = new RepairConfigDlg(CommonConf, RepairConf) { Owner = this };
         }
 
         private void CreatePreviewSample()

@@ -21,7 +21,10 @@
       <Value Profile="(Default)">KMMG</Value>
     </Setting>
     <Setting Name="LastUICulture" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ko-KR</Value>
+      <Value Profile="(Default)">Ko-KR</Value>
+    </Setting>
+    <Setting Name="LanguageSelectedIdx" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>
