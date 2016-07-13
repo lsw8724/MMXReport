@@ -80,6 +80,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextEdit_Scale.Properties)).BeginInit();
             this.SuspendLayout();
             // 
+            // Btn_Close
+            // 
+            this.Btn_Close.Location = new System.Drawing.Point(0, 453);
+            this.Btn_Close.Size = new System.Drawing.Size(544, 23);
+            // 
             // DateEdit_Start
             // 
             this.DateEdit_Start.EditValue = null;
@@ -340,7 +345,7 @@
             this.CheckEdit_All.Location = new System.Drawing.Point(10, 258);
             this.CheckEdit_All.Name = "CheckEdit_All";
             this.CheckEdit_All.Properties.Caption = "일괄 체크";
-            this.CheckEdit_All.Size = new System.Drawing.Size(75, 19);
+            this.CheckEdit_All.Size = new System.Drawing.Size(109, 19);
             this.CheckEdit_All.TabIndex = 1;
             this.CheckEdit_All.CheckedChanged += new System.EventHandler(this.CheckEdit_All_CheckedChanged);
             // 
@@ -466,6 +471,7 @@
             this.Name = "MultiBandpassConfigDlg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "포인트별 추이 필터";
+            this.Controls.SetChildIndex(this.Btn_Close, 0);
             this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Start.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Start.Properties)).EndInit();

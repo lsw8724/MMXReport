@@ -60,6 +60,7 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.SimpleButton Btn_Close;
+        public DevExpress.XtraEditors.SimpleButton Btn_Close;
+
     }
 }

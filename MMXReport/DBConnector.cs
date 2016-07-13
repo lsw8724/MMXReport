@@ -63,7 +63,7 @@ namespace MMXReport
             string query =
                    "SELECT TOP 1 [AsyncData],[AsyncFMax],[AsyncLine] " +
                    "FROM [" + DataConnection.Database + "].[dbo].[WaveData] " +
-                   "WHERE [ChannelId]=" + 16 + " AND [DateTime] BETWEEN '" + repairConf.StartDateStr + "' AND '" + repairConf.BeforeRepairDate.ToString("yyyy-MM-dd") + "' ";
+                   "WHERE [ChannelId]=" + repairConf.Channel.Id + " AND [DateTime] BETWEEN '" + repairConf.StartDateStr + "' AND '" + repairConf.BeforeRepairDate.ToString("yyyy-MM-dd") + "' ";
             DataTable table = GetResultByQuery(query, DataConnection);
             if (table.Rows.Count > 0)
             {
@@ -77,7 +77,7 @@ namespace MMXReport
             query =
                   "SELECT TOP 1 [AsyncData],[AsyncFMax],[AsyncLine] " +
                   "FROM [" + DataConnection.Database + "].[dbo].[WaveData] " +
-                  "WHERE [ChannelId]=" + 16 + " AND [DateTime] BETWEEN '" + repairConf.AfterRepairDate.ToString("yyyy-MM-dd") + "' AND '" + repairConf.EndDateStr + "' ";
+                  "WHERE [ChannelId]=" + repairConf.Channel.Id + " AND [DateTime] BETWEEN '" + repairConf.AfterRepairDate.ToString("yyyy-MM-dd") + "' AND '" + repairConf.EndDateStr + "' ";
             table = GetResultByQuery(query, DataConnection);
             if (table.Rows.Count > 0)
             {
@@ -233,7 +233,7 @@ namespace MMXReport
         public List<DataTable> LoadDayOfWeekData(DayOfWeekConfiguration dowConf)
         {
             List<DataTable> dataList = new List<DataTable>();
-            foreach(var bandpass in dowConf.Channel.BandpassArr)
+            foreach(var bandpass in dowConf.Channel.BandpassArr.Where(x=>x.DisplayName != null))
             {
                 if (bandpass.Active)
                 {

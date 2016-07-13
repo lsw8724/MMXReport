@@ -30,7 +30,7 @@ namespace MMXReport.TsiConfig
                 {
                     case 100: mimicNodes.Add(new MimicNode(id, name, nodeType, chid)); break;
                     case 200: 
-                        var node = mimicNodes.Where(x => x.Id == parentId).First();
+                        var node = mimicNodes.Where(x => x.Id == parentId).FirstOrDefault();
                         node.ChildNodes.Add(new MimicNode(id, name, nodeType, chid, node)); break;
                     case 300:
                         foreach (var m in mimicNodes)

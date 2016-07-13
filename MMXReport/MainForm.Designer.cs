@@ -143,9 +143,9 @@
             this.Gr_Report.CaptionLocation = DevExpress.Utils.Locations.Left;
             this.Gr_Report.Controls.Add(this.tableLayoutPanel4);
             this.Gr_Report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Report.Location = new System.Drawing.Point(3, 527);
+            this.Gr_Report.Location = new System.Drawing.Point(3, 537);
             this.Gr_Report.Name = "Gr_Report";
-            this.Gr_Report.Size = new System.Drawing.Size(995, 258);
+            this.Gr_Report.Size = new System.Drawing.Size(1085, 262);
             this.Gr_Report.TabIndex = 17;
             // 
             // tableLayoutPanel4
@@ -162,7 +162,7 @@
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(904, 254);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(994, 258);
             this.tableLayoutPanel4.TabIndex = 11;
             // 
             // groupControl4
@@ -172,10 +172,10 @@
             this.groupControl4.Controls.Add(this.TChart_Spectrum);
             this.groupControl4.Controls.Add(this.TChart_Time);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(367, 16);
+            this.groupControl4.Location = new System.Drawing.Point(403, 16);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(531, 222);
+            this.groupControl4.Size = new System.Drawing.Size(585, 226);
             this.groupControl4.TabIndex = 4;
             this.groupControl4.Text = "groupControl4";
             // 
@@ -231,7 +231,7 @@
             // 
             this.Tchart_RepairTrend.Panning.Allow = Steema.TeeChart.ScrollModes.None;
             this.Tchart_RepairTrend.Series.Add(this.fastLine2);
-            this.Tchart_RepairTrend.Size = new System.Drawing.Size(527, 218);
+            this.Tchart_RepairTrend.Size = new System.Drawing.Size(581, 222);
             this.Tchart_RepairTrend.TabIndex = 0;
             this.Tchart_RepairTrend.Tools.Add(this.colorBand1);
             this.Tchart_RepairTrend.Tools.Add(this.annotation1);
@@ -361,7 +361,7 @@
             this.Grid_DailyData.Location = new System.Drawing.Point(2, 2);
             this.Grid_DailyData.MainView = this.gridView1;
             this.Grid_DailyData.Name = "Grid_DailyData";
-            this.Grid_DailyData.Size = new System.Drawing.Size(527, 218);
+            this.Grid_DailyData.Size = new System.Drawing.Size(581, 222);
             this.Grid_DailyData.TabIndex = 1;
             this.Grid_DailyData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -576,7 +576,7 @@
             this.TChart_Spectrum.Panel.MarginRight = 2D;
             this.TChart_Spectrum.Panel.MarginTop = 2D;
             this.TChart_Spectrum.Series.Add(this.fastLine4);
-            this.TChart_Spectrum.Size = new System.Drawing.Size(527, 218);
+            this.TChart_Spectrum.Size = new System.Drawing.Size(581, 222);
             this.TChart_Spectrum.TabIndex = 3;
             // 
             // fastLine4
@@ -647,7 +647,7 @@
             this.TChart_Time.Panel.MarginRight = 2D;
             this.TChart_Time.Panel.MarginTop = 2D;
             this.TChart_Time.Series.Add(this.fastLine3);
-            this.TChart_Time.Size = new System.Drawing.Size(527, 218);
+            this.TChart_Time.Size = new System.Drawing.Size(581, 222);
             this.TChart_Time.TabIndex = 2;
             // 
             // fastLine3
@@ -683,7 +683,7 @@
             this.groupControl3.Location = new System.Drawing.Point(6, 16);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.ShowCaption = false;
-            this.groupControl3.Size = new System.Drawing.Size(352, 222);
+            this.groupControl3.Size = new System.Drawing.Size(388, 226);
             this.groupControl3.TabIndex = 3;
             this.groupControl3.Text = "groupControl3";
             // 
@@ -691,7 +691,7 @@
             // 
             this.BtnPreview_Repair.AllowFocus = false;
             this.BtnPreview_Repair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnPreview_Repair.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnPreview_Repair.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_Repair.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_Repair.Appearance.Options.UseFont = true;
             this.BtnPreview_Repair.Appearance.Options.UseForeColor = true;
@@ -700,7 +700,7 @@
             this.BtnPreview_Repair.ImageList = this.SmallImageList;
             this.BtnPreview_Repair.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_Repair.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_Repair.Location = new System.Drawing.Point(259, 128);
+            this.BtnPreview_Repair.Location = new System.Drawing.Point(304, 132);
             this.BtnPreview_Repair.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_Repair.Name = "BtnPreview_Repair";
             this.BtnPreview_Repair.Size = new System.Drawing.Size(70, 70);
@@ -712,7 +712,7 @@
             // 
             this.BtnPreview_Daily.AllowFocus = false;
             this.BtnPreview_Daily.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnPreview_Daily.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnPreview_Daily.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_Daily.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_Daily.Appearance.Options.UseFont = true;
             this.BtnPreview_Daily.Appearance.Options.UseForeColor = true;
@@ -721,7 +721,7 @@
             this.BtnPreview_Daily.ImageList = this.SmallImageList;
             this.BtnPreview_Daily.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_Daily.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_Daily.Location = new System.Drawing.Point(259, 27);
+            this.BtnPreview_Daily.Location = new System.Drawing.Point(304, 27);
             this.BtnPreview_Daily.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_Daily.Name = "BtnPreview_Daily";
             this.BtnPreview_Daily.Size = new System.Drawing.Size(70, 70);
@@ -733,7 +733,7 @@
             // 
             this.BtnConfig_Repair.AllowFocus = false;
             this.BtnConfig_Repair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnConfig_Repair.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnConfig_Repair.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_Repair.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_Repair.Appearance.Options.UseFont = true;
             this.BtnConfig_Repair.Appearance.Options.UseForeColor = true;
@@ -742,7 +742,7 @@
             this.BtnConfig_Repair.ImageList = this.SmallImageList;
             this.BtnConfig_Repair.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_Repair.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_Repair.Location = new System.Drawing.Point(177, 128);
+            this.BtnConfig_Repair.Location = new System.Drawing.Point(228, 132);
             this.BtnConfig_Repair.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_Repair.Name = "BtnConfig_Repair";
             this.BtnConfig_Repair.Size = new System.Drawing.Size(70, 70);
@@ -754,17 +754,17 @@
             // 
             this.BtnReport_Repair.AllowFocus = false;
             this.BtnReport_Repair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnReport_Repair.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnReport_Repair.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnReport_Repair.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_Repair.Appearance.Options.UseFont = true;
             this.BtnReport_Repair.Appearance.Options.UseForeColor = true;
             this.BtnReport_Repair.ImageIndex = 6;
             this.BtnReport_Repair.ImageList = this.SmallImageList;
             this.BtnReport_Repair.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_Repair.Location = new System.Drawing.Point(25, 128);
+            this.BtnReport_Repair.Location = new System.Drawing.Point(15, 132);
             this.BtnReport_Repair.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_Repair.Name = "BtnReport_Repair";
-            this.BtnReport_Repair.Size = new System.Drawing.Size(150, 70);
+            this.BtnReport_Repair.Size = new System.Drawing.Size(207, 70);
             this.BtnReport_Repair.TabIndex = 12;
             this.BtnReport_Repair.Text = "보전활동";
             this.BtnReport_Repair.Click += new System.EventHandler(this.BtnReport_Repair_Click);
@@ -773,7 +773,7 @@
             // 
             this.BtnConfig_Daily.AllowFocus = false;
             this.BtnConfig_Daily.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnConfig_Daily.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnConfig_Daily.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_Daily.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_Daily.Appearance.Options.UseFont = true;
             this.BtnConfig_Daily.Appearance.Options.UseForeColor = true;
@@ -782,7 +782,7 @@
             this.BtnConfig_Daily.ImageList = this.SmallImageList;
             this.BtnConfig_Daily.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_Daily.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_Daily.Location = new System.Drawing.Point(177, 27);
+            this.BtnConfig_Daily.Location = new System.Drawing.Point(228, 27);
             this.BtnConfig_Daily.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_Daily.Name = "BtnConfig_Daily";
             this.BtnConfig_Daily.Size = new System.Drawing.Size(70, 70);
@@ -794,17 +794,17 @@
             // 
             this.BtnReport_Daily.AllowFocus = false;
             this.BtnReport_Daily.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnReport_Daily.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnReport_Daily.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnReport_Daily.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_Daily.Appearance.Options.UseFont = true;
             this.BtnReport_Daily.Appearance.Options.UseForeColor = true;
             this.BtnReport_Daily.ImageIndex = 3;
             this.BtnReport_Daily.ImageList = this.SmallImageList;
             this.BtnReport_Daily.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_Daily.Location = new System.Drawing.Point(25, 27);
+            this.BtnReport_Daily.Location = new System.Drawing.Point(15, 27);
             this.BtnReport_Daily.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_Daily.Name = "BtnReport_Daily";
-            this.BtnReport_Daily.Size = new System.Drawing.Size(150, 70);
+            this.BtnReport_Daily.Size = new System.Drawing.Size(207, 70);
             this.BtnReport_Daily.TabIndex = 6;
             this.BtnReport_Daily.Text = "일간";
             this.BtnReport_Daily.Click += new System.EventHandler(this.BtnReport_Daily_Click);
@@ -821,9 +821,9 @@
             this.Gr_Compare.CaptionLocation = DevExpress.Utils.Locations.Left;
             this.Gr_Compare.Controls.Add(this.tableLayoutPanel3);
             this.Gr_Compare.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Compare.Location = new System.Drawing.Point(3, 265);
+            this.Gr_Compare.Location = new System.Drawing.Point(3, 270);
             this.Gr_Compare.Name = "Gr_Compare";
-            this.Gr_Compare.Size = new System.Drawing.Size(995, 256);
+            this.Gr_Compare.Size = new System.Drawing.Size(1085, 261);
             this.Gr_Compare.TabIndex = 16;
             // 
             // tableLayoutPanel3
@@ -840,18 +840,18 @@
             this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(904, 252);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(994, 257);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // groupControl9
             // 
-            this.groupControl9.Controls.Add(this.Tchart_Period);
             this.groupControl9.Controls.Add(this.Tchart_DayOfWeek);
+            this.groupControl9.Controls.Add(this.Tchart_Period);
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl9.Location = new System.Drawing.Point(367, 16);
+            this.groupControl9.Location = new System.Drawing.Point(403, 16);
             this.groupControl9.Name = "groupControl9";
             this.groupControl9.ShowCaption = false;
-            this.groupControl9.Size = new System.Drawing.Size(531, 220);
+            this.groupControl9.Size = new System.Drawing.Size(585, 225);
             this.groupControl9.TabIndex = 16;
             this.groupControl9.Text = "groupControl9";
             // 
@@ -910,7 +910,7 @@
             this.Tchart_Period.Series.Add(this.bar1);
             this.Tchart_Period.Series.Add(this.bar2);
             this.Tchart_Period.Series.Add(this.bar3);
-            this.Tchart_Period.Size = new System.Drawing.Size(527, 216);
+            this.Tchart_Period.Size = new System.Drawing.Size(581, 221);
             this.Tchart_Period.TabIndex = 1;
             this.Tchart_Period.Visible = false;
             // 
@@ -1063,7 +1063,7 @@
             // 
             this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
             this.Tchart_DayOfWeek.Series.Add(this.horizBar1);
-            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(527, 216);
+            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(581, 221);
             this.Tchart_DayOfWeek.TabIndex = 1;
             // 
             // 
@@ -1088,7 +1088,29 @@
             // 
             // 
             // 
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            // 
+            // 
+            // 
             this.horizBar1.Marks.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(123)))), ((int)(((byte)(99)))));
+            this.horizBar1.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Value;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Symbol.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             // 
             // 
             // 
@@ -1116,7 +1138,7 @@
             this.groupControl1.Location = new System.Drawing.Point(6, 16);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(352, 220);
+            this.groupControl1.Size = new System.Drawing.Size(388, 225);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "groupControl1";
             // 
@@ -1124,7 +1146,7 @@
             // 
             this.BtnPreview_Period.AllowFocus = false;
             this.BtnPreview_Period.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnPreview_Period.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnPreview_Period.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_Period.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_Period.Appearance.Options.UseFont = true;
             this.BtnPreview_Period.Appearance.Options.UseForeColor = true;
@@ -1133,7 +1155,7 @@
             this.BtnPreview_Period.ImageList = this.SmallImageList;
             this.BtnPreview_Period.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_Period.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_Period.Location = new System.Drawing.Point(259, 126);
+            this.BtnPreview_Period.Location = new System.Drawing.Point(304, 131);
             this.BtnPreview_Period.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_Period.Name = "BtnPreview_Period";
             this.BtnPreview_Period.Size = new System.Drawing.Size(70, 70);
@@ -1145,7 +1167,7 @@
             // 
             this.BtnPreview_DayOfWeek.AllowFocus = false;
             this.BtnPreview_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnPreview_DayOfWeek.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnPreview_DayOfWeek.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_DayOfWeek.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_DayOfWeek.Appearance.Options.UseFont = true;
             this.BtnPreview_DayOfWeek.Appearance.Options.UseForeColor = true;
@@ -1154,7 +1176,7 @@
             this.BtnPreview_DayOfWeek.ImageList = this.SmallImageList;
             this.BtnPreview_DayOfWeek.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_DayOfWeek.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_DayOfWeek.Location = new System.Drawing.Point(259, 27);
+            this.BtnPreview_DayOfWeek.Location = new System.Drawing.Point(304, 27);
             this.BtnPreview_DayOfWeek.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_DayOfWeek.Name = "BtnPreview_DayOfWeek";
             this.BtnPreview_DayOfWeek.Size = new System.Drawing.Size(70, 70);
@@ -1166,7 +1188,7 @@
             // 
             this.BtnConfig_Period.AllowFocus = false;
             this.BtnConfig_Period.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnConfig_Period.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnConfig_Period.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_Period.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_Period.Appearance.Options.UseFont = true;
             this.BtnConfig_Period.Appearance.Options.UseForeColor = true;
@@ -1175,7 +1197,7 @@
             this.BtnConfig_Period.ImageList = this.SmallImageList;
             this.BtnConfig_Period.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_Period.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_Period.Location = new System.Drawing.Point(177, 126);
+            this.BtnConfig_Period.Location = new System.Drawing.Point(228, 131);
             this.BtnConfig_Period.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_Period.Name = "BtnConfig_Period";
             this.BtnConfig_Period.Size = new System.Drawing.Size(70, 70);
@@ -1187,16 +1209,16 @@
             // 
             this.BtnReport_Period.AllowFocus = false;
             this.BtnReport_Period.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnReport_Period.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnReport_Period.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnReport_Period.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_Period.Appearance.Options.UseFont = true;
             this.BtnReport_Period.Appearance.Options.UseForeColor = true;
             this.BtnReport_Period.ImageIndex = 4;
             this.BtnReport_Period.ImageList = this.SmallImageList;
             this.BtnReport_Period.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_Period.Location = new System.Drawing.Point(25, 126);
+            this.BtnReport_Period.Location = new System.Drawing.Point(15, 131);
             this.BtnReport_Period.Name = "BtnReport_Period";
-            this.BtnReport_Period.Size = new System.Drawing.Size(150, 70);
+            this.BtnReport_Period.Size = new System.Drawing.Size(207, 70);
             this.BtnReport_Period.TabIndex = 12;
             this.BtnReport_Period.Text = "기간 비교";
             this.BtnReport_Period.Click += new System.EventHandler(this.BtnReport_Period_Click);
@@ -1205,7 +1227,7 @@
             // 
             this.BtnConfig_DayOfWeek.AllowFocus = false;
             this.BtnConfig_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnConfig_DayOfWeek.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnConfig_DayOfWeek.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_DayOfWeek.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_DayOfWeek.Appearance.Options.UseFont = true;
             this.BtnConfig_DayOfWeek.Appearance.Options.UseForeColor = true;
@@ -1214,7 +1236,7 @@
             this.BtnConfig_DayOfWeek.ImageList = this.SmallImageList;
             this.BtnConfig_DayOfWeek.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_DayOfWeek.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_DayOfWeek.Location = new System.Drawing.Point(177, 27);
+            this.BtnConfig_DayOfWeek.Location = new System.Drawing.Point(228, 27);
             this.BtnConfig_DayOfWeek.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_DayOfWeek.Name = "BtnConfig_DayOfWeek";
             this.BtnConfig_DayOfWeek.Size = new System.Drawing.Size(70, 70);
@@ -1226,17 +1248,17 @@
             // 
             this.BtnReport_DayOfWeek.AllowFocus = false;
             this.BtnReport_DayOfWeek.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnReport_DayOfWeek.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnReport_DayOfWeek.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnReport_DayOfWeek.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_DayOfWeek.Appearance.Options.UseFont = true;
             this.BtnReport_DayOfWeek.Appearance.Options.UseForeColor = true;
             this.BtnReport_DayOfWeek.ImageIndex = 2;
             this.BtnReport_DayOfWeek.ImageList = this.SmallImageList;
             this.BtnReport_DayOfWeek.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_DayOfWeek.Location = new System.Drawing.Point(25, 27);
+            this.BtnReport_DayOfWeek.Location = new System.Drawing.Point(15, 27);
             this.BtnReport_DayOfWeek.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_DayOfWeek.Name = "BtnReport_DayOfWeek";
-            this.BtnReport_DayOfWeek.Size = new System.Drawing.Size(150, 70);
+            this.BtnReport_DayOfWeek.Size = new System.Drawing.Size(207, 70);
             this.BtnReport_DayOfWeek.TabIndex = 6;
             this.BtnReport_DayOfWeek.Text = "요일 비교";
             this.BtnReport_DayOfWeek.Click += new System.EventHandler(this.BtnReport_DayOfWeek_Click);
@@ -1256,7 +1278,7 @@
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(904, 232);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 237);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // groupControl2
@@ -1271,7 +1293,7 @@
             this.groupControl2.Location = new System.Drawing.Point(6, 8);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.ShowCaption = false;
-            this.groupControl2.Size = new System.Drawing.Size(352, 216);
+            this.groupControl2.Size = new System.Drawing.Size(388, 221);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "groupControl2";
             // 
@@ -1281,7 +1303,7 @@
             this.BtnPreview_BandpassTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnPreview_BandpassTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
             this.BtnPreview_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnPreview_BandpassTrend.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnPreview_BandpassTrend.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_BandpassTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_BandpassTrend.Appearance.Options.UseFont = true;
             this.BtnPreview_BandpassTrend.Appearance.Options.UseForeColor = true;
@@ -1290,7 +1312,7 @@
             this.BtnPreview_BandpassTrend.ImageList = this.SmallImageList;
             this.BtnPreview_BandpassTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_BandpassTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_BandpassTrend.Location = new System.Drawing.Point(259, 122);
+            this.BtnPreview_BandpassTrend.Location = new System.Drawing.Point(304, 127);
             this.BtnPreview_BandpassTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_BandpassTrend.Name = "BtnPreview_BandpassTrend";
             this.BtnPreview_BandpassTrend.Size = new System.Drawing.Size(70, 70);
@@ -1304,7 +1326,7 @@
             this.BtnPreview_PointTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnPreview_PointTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
             this.BtnPreview_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnPreview_PointTrend.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnPreview_PointTrend.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnPreview_PointTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnPreview_PointTrend.Appearance.Options.UseFont = true;
             this.BtnPreview_PointTrend.Appearance.Options.UseForeColor = true;
@@ -1313,7 +1335,7 @@
             this.BtnPreview_PointTrend.ImageList = this.SmallImageList;
             this.BtnPreview_PointTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_PointTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_PointTrend.Location = new System.Drawing.Point(259, 23);
+            this.BtnPreview_PointTrend.Location = new System.Drawing.Point(304, 23);
             this.BtnPreview_PointTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_PointTrend.Name = "BtnPreview_PointTrend";
             this.BtnPreview_PointTrend.Size = new System.Drawing.Size(70, 70);
@@ -1327,7 +1349,7 @@
             this.BtnConfig_BandpassTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnConfig_BandpassTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
             this.BtnConfig_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnConfig_BandpassTrend.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnConfig_BandpassTrend.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_BandpassTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_BandpassTrend.Appearance.Options.UseFont = true;
             this.BtnConfig_BandpassTrend.Appearance.Options.UseForeColor = true;
@@ -1336,7 +1358,7 @@
             this.BtnConfig_BandpassTrend.ImageList = this.SmallImageList;
             this.BtnConfig_BandpassTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_BandpassTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_BandpassTrend.Location = new System.Drawing.Point(177, 122);
+            this.BtnConfig_BandpassTrend.Location = new System.Drawing.Point(228, 127);
             this.BtnConfig_BandpassTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_BandpassTrend.Name = "BtnConfig_BandpassTrend";
             this.BtnConfig_BandpassTrend.Size = new System.Drawing.Size(70, 70);
@@ -1350,17 +1372,17 @@
             this.BtnReport_BandpassTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnReport_BandpassTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
             this.BtnReport_BandpassTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnReport_BandpassTrend.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnReport_BandpassTrend.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnReport_BandpassTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_BandpassTrend.Appearance.Options.UseFont = true;
             this.BtnReport_BandpassTrend.Appearance.Options.UseForeColor = true;
             this.BtnReport_BandpassTrend.ImageIndex = 5;
             this.BtnReport_BandpassTrend.ImageList = this.SmallImageList;
             this.BtnReport_BandpassTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_BandpassTrend.Location = new System.Drawing.Point(25, 122);
+            this.BtnReport_BandpassTrend.Location = new System.Drawing.Point(15, 127);
             this.BtnReport_BandpassTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_BandpassTrend.Name = "BtnReport_BandpassTrend";
-            this.BtnReport_BandpassTrend.Size = new System.Drawing.Size(150, 70);
+            this.BtnReport_BandpassTrend.Size = new System.Drawing.Size(207, 70);
             this.BtnReport_BandpassTrend.TabIndex = 12;
             this.BtnReport_BandpassTrend.Text = "밴드별 추이";
             this.BtnReport_BandpassTrend.Click += new System.EventHandler(this.BtnReport_MultiPointTrend_Click);
@@ -1371,7 +1393,7 @@
             this.BtnConfig_PointTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnConfig_PointTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
             this.BtnConfig_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnConfig_PointTrend.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnConfig_PointTrend.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnConfig_PointTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnConfig_PointTrend.Appearance.Options.UseFont = true;
             this.BtnConfig_PointTrend.Appearance.Options.UseForeColor = true;
@@ -1380,7 +1402,7 @@
             this.BtnConfig_PointTrend.ImageList = this.SmallImageList;
             this.BtnConfig_PointTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_PointTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_PointTrend.Location = new System.Drawing.Point(177, 23);
+            this.BtnConfig_PointTrend.Location = new System.Drawing.Point(228, 23);
             this.BtnConfig_PointTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_PointTrend.Name = "BtnConfig_PointTrend";
             this.BtnConfig_PointTrend.Size = new System.Drawing.Size(70, 70);
@@ -1394,17 +1416,17 @@
             this.BtnReport_PointTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
             this.BtnReport_PointTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
             this.BtnReport_PointTrend.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnReport_PointTrend.Appearance.Font = new System.Drawing.Font("Myanmar Text", 11F, System.Drawing.FontStyle.Bold);
+            this.BtnReport_PointTrend.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.BtnReport_PointTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
             this.BtnReport_PointTrend.Appearance.Options.UseFont = true;
             this.BtnReport_PointTrend.Appearance.Options.UseForeColor = true;
             this.BtnReport_PointTrend.ImageIndex = 5;
             this.BtnReport_PointTrend.ImageList = this.SmallImageList;
             this.BtnReport_PointTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_PointTrend.Location = new System.Drawing.Point(25, 23);
+            this.BtnReport_PointTrend.Location = new System.Drawing.Point(15, 23);
             this.BtnReport_PointTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_PointTrend.Name = "BtnReport_PointTrend";
-            this.BtnReport_PointTrend.Size = new System.Drawing.Size(150, 70);
+            this.BtnReport_PointTrend.Size = new System.Drawing.Size(207, 70);
             this.BtnReport_PointTrend.TabIndex = 6;
             this.BtnReport_PointTrend.Text = "포인트별 추이";
             this.BtnReport_PointTrend.Click += new System.EventHandler(this.BtnReport_MultiBand_Click);
@@ -1706,7 +1728,7 @@
             // 
             // 
             this.Tchart_Trend.Legend.Symbol.Width = 15;
-            this.Tchart_Trend.Location = new System.Drawing.Point(367, 8);
+            this.Tchart_Trend.Location = new System.Drawing.Point(403, 8);
             this.Tchart_Trend.Name = "Tchart_Trend";
             // 
             // 
@@ -1737,7 +1759,7 @@
             // 
             this.Tchart_Trend.Panning.Allow = Steema.TeeChart.ScrollModes.None;
             this.Tchart_Trend.Series.Add(this.fastLine1);
-            this.Tchart_Trend.Size = new System.Drawing.Size(531, 216);
+            this.Tchart_Trend.Size = new System.Drawing.Size(585, 221);
             this.Tchart_Trend.TabIndex = 1;
             // 
             // 
@@ -1870,7 +1892,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1001, 788);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1091, 802);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // Gr_Variation
@@ -1888,7 +1910,7 @@
             this.Gr_Variation.Location = new System.Drawing.Point(3, 3);
             this.Gr_Variation.Name = "Gr_Variation";
             this.Gr_Variation.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.Gr_Variation.Size = new System.Drawing.Size(995, 256);
+            this.Gr_Variation.Size = new System.Drawing.Size(1085, 261);
             this.Gr_Variation.TabIndex = 17;
             // 
             // bandpassConfigBindingSource
@@ -1899,7 +1921,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 788);
+            this.ClientSize = new System.Drawing.Size(1091, 802);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

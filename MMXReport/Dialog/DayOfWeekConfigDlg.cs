@@ -17,6 +17,15 @@ namespace MMXReport.Dialog
             : base(baseConf)
         {
             InitializeComponent();
+            Text = MultiLang.WeeklyComparison + " " + MultiLang.Filter;
+            Btn_Close.Text = MultiLang.Close;
+            groupControl1.Text = MultiLang.OperationPeriod;
+            groupControl2.Text = MultiLang.TypeOfMeasurement;
+            groupControl3.Text = "X " + MultiLang.Scale;
+            Gr_Machine.Text = MultiLang.PlantMap;
+            Gr_Bandpass.Text = MultiLang.BandPass;
+            CheckEdit_All.Text = MultiLang.BatchCheck;
+
             MimicNodeTree.DataSource = common.MimicNodes;
             MimicNodeTree.BestFitColumns();
             DateEdit_Start.DateTime = BaseConfig.StartDate;

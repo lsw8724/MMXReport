@@ -18,6 +18,18 @@ namespace MMXReport.Dialog
         public MultiBandpassConfigDlg(CommonConfig common, BaseConfiguration baseConf) :base(baseConf)
         {
             InitializeComponent();
+            Text = MultiLang.TrendOfPoint + " " + MultiLang.Filter;
+            Btn_Close.Text = MultiLang.Close;
+            groupControl1.Text = MultiLang.OperationPeriod;
+            groupControl2.Text = MultiLang.TypeOfMeasurement;
+            groupControl3.Text = MultiLang.Unit;
+            groupControl5.Text ="Y "+ MultiLang.Scale;
+            Gr_Machine.Text = MultiLang.PlantMap;
+            Gr_Bandpass.Text = MultiLang.BandPass;
+            Radio_Day.Text = MultiLang.Day;
+            Radio_Week.Text = MultiLang.Week;
+            Radio_Month.Text = MultiLang.Month;
+            CheckEdit_All.Text = MultiLang.BatchCheck;
             MimicNodeTree.DataSource = common.MimicNodes;
             MimicNodeTree.BestFitColumns();
             DateEdit_Start.DateTime = BaseConfig.StartDate;

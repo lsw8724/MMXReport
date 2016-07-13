@@ -21,7 +21,13 @@ namespace MMXReport.Dialog
             : base(baseConf)
         {
             InitializeComponent();
-
+            Text = MultiLang.PeriodicComparison + " " + MultiLang.Filter;
+            Btn_Close.Text = MultiLang.Close;
+            groupControl1.Text = MultiLang.OperationPeriod;
+            groupControl2.Text = MultiLang.TypeOfMeasurement;
+            groupControl3.Text = "Y " + MultiLang.Scale;
+            Gr_Machine.Text = MultiLang.PlantMap;
+            Gr_Bandpass.Text = MultiLang.BandPass;
             DateEdit_Start.Properties.DisplayFormat.FormatString = "yyyy " + MultiLang.Years;
 
             MimicNodeTree.DataSource = common.LoadMimicNodes(baseConf.DBConn);

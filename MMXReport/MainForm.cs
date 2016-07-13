@@ -38,12 +38,12 @@ namespace MMXReport
             InitializeComponent();
 
             #region MultiLang
-            BtnReport_BandpassTrend.Text = MultiLang.TrendOfMeasure;
+            BtnReport_BandpassTrend.Text = MultiLang.TrendOfMeasurements;
             BtnReport_PointTrend.Text = MultiLang.TrendOfPoint;
-            BtnReport_DayOfWeek.Text = MultiLang.WeeklyCompare;
-            BtnReport_Period.Text = MultiLang.PeriodCompare;
+            BtnReport_DayOfWeek.Text = MultiLang.WeeklyComparison;
+            BtnReport_Period.Text = MultiLang.PeriodicComparison;
             BtnReport_Daily.Text = MultiLang.Daily;
-            BtnReport_Repair.Text = MultiLang.RepairTask;
+            BtnReport_Repair.Text = MultiLang.MaintenanceTask;
 
             BtnConfig_BandpassTrend.Text = MultiLang.Configuration;
             BtnConfig_PointTrend.Text = MultiLang.Configuration;
@@ -298,7 +298,7 @@ namespace MMXReport
                 ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
                     DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
-                    Name = "요일별 비교 분석 보고서",
+                    Name = MultiLang.WeeklyComparison + " " + MultiLang.Report,
                     Machine = DayOfWeekConf.Channel.MachineName,
                     Line = DayOfWeekConf.Channel.LineName,
                     Ref = "Point",
@@ -317,7 +317,7 @@ namespace MMXReport
                 ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
                     DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
-                    Name = "포인트별 추이 분석 보고서",
+                    Name = MultiLang.TrendOfPoint + " " + MultiLang.Report,
                     Machine = MultiBandConf.Channel.MachineName,
                     Line = MultiBandConf.Channel.LineName,
                     Ref = "Point",
@@ -335,7 +335,7 @@ namespace MMXReport
                 ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
                     DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
-                    Name = "밴드별 추이 분석 보고서",
+                    Name = MultiLang.TrendOfMeasurements + " " + MultiLang.Report,
                     Machine = MultiPointConf.SelectedChannelList[0].MachineName,
                     Line = MultiPointConf.SelectedChannelList[0].LineName,
                     Ref = "Measure",
@@ -354,7 +354,7 @@ namespace MMXReport
                 ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
                 {
                     DateTime = PeriodConf.StartDate.ToString("yyyy년도"),
-                    Name = "유사설비/분기별 비교 분석 보고서",
+                    Name = MultiLang.PeriodicComparison + " " + MultiLang.Report,
                     Machine = PeriodConf.SelectedChannelList[0].MachineName,
                     Line = PeriodConf.SelectedChannelList[0].LineName,
                     Ref = "Measure",
@@ -421,7 +421,7 @@ namespace MMXReport
                 ExcelManager.CreateExcel("Template_Maintenance.xlsx", new CommonReportItems()
                 {
                     DateTime = RepairConf.StartDateStr + " ~ " + RepairConf.EndDateStr,
-                    Name = "보전활동 보고서",
+                    Name = MultiLang.MaintenanceTask +" "+ MultiLang.Report,
                     Machine = RepairConf.Channel.MachineName,
                     Line = RepairConf.Channel.LineName,
                     Value = RepairConf.Channel.PointName,
@@ -448,7 +448,7 @@ namespace MMXReport
             ExcelManager.CreateExcel("Template_DailyReport.xlsx", new CommonReportItems()
             {
                 DateTime = "Date : "+DailyConf.StartDateStr,
-                Name = "CMS Daily Report",
+                Name = MultiLang.Daily + " " + MultiLang.Report,
                 DailyDatas = items
             });
         }

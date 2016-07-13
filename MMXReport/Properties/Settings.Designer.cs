@@ -12,7 +12,7 @@ namespace MMXReport.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace MMXReport.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MMX_MODULE_Data")]
+        [global::System.Configuration.DefaultSettingValueAttribute("KMMG_LIFT_Data")]
         public string DataDBName {
             get {
                 return ((string)(this["DataDBName"]));
@@ -37,7 +37,7 @@ namespace MMXReport.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MMX_MODULE_Config")]
+        [global::System.Configuration.DefaultSettingValueAttribute("KMMG_LIFT_Config")]
         public string ConfigDBName {
             get {
                 return ((string)(this["ConfigDBName"]));
@@ -85,7 +85,7 @@ namespace MMXReport.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MMX")]
+        [global::System.Configuration.DefaultSettingValueAttribute("KMMG")]
         public string ProjectSite {
             get {
                 return ((string)(this["ProjectSite"]));
@@ -97,7 +97,7 @@ namespace MMXReport.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en-US")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ko-KR")]
         public string LastUICulture {
             get {
                 return ((string)(this["LastUICulture"]));

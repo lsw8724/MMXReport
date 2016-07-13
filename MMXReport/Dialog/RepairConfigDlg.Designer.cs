@@ -107,10 +107,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextEdit_Scale.Properties)).BeginInit();
             this.SuspendLayout();
             // 
+            // Btn_Close
+            // 
+            this.Btn_Close.Location = new System.Drawing.Point(0, 509);
+            this.Btn_Close.Size = new System.Drawing.Size(517, 23);
+            // 
             // DateEdit_Before
             // 
             this.DateEdit_Before.EditValue = null;
-            this.DateEdit_Before.Location = new System.Drawing.Point(57, 35);
+            this.DateEdit_Before.Location = new System.Drawing.Point(12, 47);
             this.DateEdit_Before.Name = "DateEdit_Before";
             this.DateEdit_Before.Properties.AllowMouseWheel = false;
             this.DateEdit_Before.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -125,7 +130,7 @@
             // 
             this.DateEdit_After.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DateEdit_After.EditValue = null;
-            this.DateEdit_After.Location = new System.Drawing.Point(57, 60);
+            this.DateEdit_After.Location = new System.Drawing.Point(12, 92);
             this.DateEdit_After.Name = "DateEdit_After";
             this.DateEdit_After.Properties.AllowMouseWheel = false;
             this.DateEdit_After.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -150,13 +155,13 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(6, 3);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(263, 89);
+            this.groupControl1.Size = new System.Drawing.Size(249, 120);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "수리 기간";
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(240, 49);
+            this.labelControl4.Location = new System.Drawing.Point(206, 71);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(12, 14);
             this.labelControl4.TabIndex = 7;
@@ -164,7 +169,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(177, 49);
+            this.labelControl3.Location = new System.Drawing.Point(143, 71);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(8, 14);
             this.labelControl3.TabIndex = 6;
@@ -172,7 +177,7 @@
             // 
             // Numeric_RepairOffset
             // 
-            this.Numeric_RepairOffset.Location = new System.Drawing.Point(191, 47);
+            this.Numeric_RepairOffset.Location = new System.Drawing.Point(157, 69);
             this.Numeric_RepairOffset.Name = "Numeric_RepairOffset";
             this.Numeric_RepairOffset.Size = new System.Drawing.Size(45, 22);
             this.Numeric_RepairOffset.TabIndex = 5;
@@ -186,7 +191,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(6, 63);
+            this.labelControl2.Location = new System.Drawing.Point(12, 71);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(36, 14);
             this.labelControl2.TabIndex = 4;
@@ -194,7 +199,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(6, 37);
+            this.labelControl1.Location = new System.Drawing.Point(12, 27);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(36, 14);
             this.labelControl1.TabIndex = 3;
@@ -206,10 +211,10 @@
             this.Gr_Machine.AppearanceCaption.Options.UseFont = true;
             this.Gr_Machine.Controls.Add(this.MimicNodeTree);
             this.Gr_Machine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Machine.Location = new System.Drawing.Point(6, 174);
+            this.Gr_Machine.Location = new System.Drawing.Point(6, 202);
             this.Gr_Machine.Name = "Gr_Machine";
             this.Gr_Machine.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.Gr_Machine.Size = new System.Drawing.Size(263, 276);
+            this.Gr_Machine.Size = new System.Drawing.Size(249, 304);
             this.Gr_Machine.TabIndex = 8;
             this.Gr_Machine.Text = "설비 목록";
             // 
@@ -233,7 +238,7 @@
             this.MimicNodeTree.OptionsView.ShowHorzLines = false;
             this.MimicNodeTree.OptionsView.ShowIndicator = false;
             this.MimicNodeTree.OptionsView.ShowVertLines = false;
-            this.MimicNodeTree.Size = new System.Drawing.Size(239, 242);
+            this.MimicNodeTree.Size = new System.Drawing.Size(225, 270);
             this.MimicNodeTree.TabIndex = 2;
             this.MimicNodeTree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.MimicNodeTree_FocusedNodeChanged);
             // 
@@ -267,11 +272,11 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(544, 453);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(517, 509);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // groupControl2
@@ -284,9 +289,9 @@
             this.groupControl2.Controls.Add(this.Radio_Min);
             this.groupControl2.Controls.Add(this.Radio_Max);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(6, 98);
+            this.groupControl2.Location = new System.Drawing.Point(6, 129);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(263, 70);
+            this.groupControl2.Size = new System.Drawing.Size(249, 67);
             this.groupControl2.TabIndex = 6;
             this.groupControl2.Text = "측정값";
             // 
@@ -296,7 +301,7 @@
             this.Radio_Avg.AutoSize = true;
             this.Radio_Avg.Checked = true;
             this.Radio_Avg.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.Radio_Avg.Location = new System.Drawing.Point(203, 26);
+            this.Radio_Avg.Location = new System.Drawing.Point(189, 26);
             this.Radio_Avg.Name = "Radio_Avg";
             this.Radio_Avg.Size = new System.Drawing.Size(49, 18);
             this.Radio_Avg.TabIndex = 2;
@@ -310,7 +315,7 @@
             this.Radio_Min.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Radio_Min.AutoSize = true;
             this.Radio_Min.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.Radio_Min.Location = new System.Drawing.Point(110, 26);
+            this.Radio_Min.Location = new System.Drawing.Point(103, 26);
             this.Radio_Min.Name = "Radio_Min";
             this.Radio_Min.Size = new System.Drawing.Size(47, 18);
             this.Radio_Min.TabIndex = 1;
@@ -337,20 +342,20 @@
             this.Gr_Bandpass.Controls.Add(this.CheckEdit_All);
             this.Gr_Bandpass.Controls.Add(this.CheckList_Bandpass);
             this.Gr_Bandpass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Bandpass.Location = new System.Drawing.Point(275, 174);
+            this.Gr_Bandpass.Location = new System.Drawing.Point(261, 202);
             this.Gr_Bandpass.Name = "Gr_Bandpass";
             this.Gr_Bandpass.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.Gr_Bandpass.Size = new System.Drawing.Size(263, 276);
+            this.Gr_Bandpass.Size = new System.Drawing.Size(250, 304);
             this.Gr_Bandpass.TabIndex = 9;
             this.Gr_Bandpass.Text = "밴드패스";
             // 
             // CheckEdit_All
             // 
             this.CheckEdit_All.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CheckEdit_All.Location = new System.Drawing.Point(10, 250);
+            this.CheckEdit_All.Location = new System.Drawing.Point(10, 278);
             this.CheckEdit_All.Name = "CheckEdit_All";
             this.CheckEdit_All.Properties.Caption = "일괄 체크";
-            this.CheckEdit_All.Size = new System.Drawing.Size(75, 19);
+            this.CheckEdit_All.Size = new System.Drawing.Size(100, 19);
             this.CheckEdit_All.TabIndex = 1;
             this.CheckEdit_All.CheckedChanged += new System.EventHandler(this.CheckEdit_All_CheckedChanged);
             // 
@@ -362,7 +367,7 @@
             this.CheckList_Bandpass.Name = "CheckList_Bandpass";
             this.CheckList_Bandpass.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.CheckList_Bandpass.Size = new System.Drawing.Size(239, 242);
+            this.CheckList_Bandpass.Size = new System.Drawing.Size(226, 270);
             this.CheckList_Bandpass.TabIndex = 0;
             this.CheckList_Bandpass.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -420,10 +425,10 @@
             // 
             this.groupControl3.Controls.Add(this.tableLayoutPanel2);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(275, 3);
+            this.groupControl3.Location = new System.Drawing.Point(261, 3);
             this.groupControl3.Name = "groupControl3";
             this.tableLayoutPanel1.SetRowSpan(this.groupControl3, 2);
-            this.groupControl3.Size = new System.Drawing.Size(263, 165);
+            this.groupControl3.Size = new System.Drawing.Size(250, 193);
             this.groupControl3.TabIndex = 16;
             this.groupControl3.Text = "Y 스케일";
             // 
@@ -442,17 +447,17 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33555F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33223F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33223F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(259, 141);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(246, 169);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
             // groupControl6
             // 
             this.groupControl6.Controls.Add(this.tableLayoutPanel5);
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl6.Location = new System.Drawing.Point(3, 91);
+            this.groupControl6.Location = new System.Drawing.Point(3, 110);
             this.groupControl6.Name = "groupControl6";
             this.groupControl6.ShowCaption = false;
-            this.groupControl6.Size = new System.Drawing.Size(253, 32);
+            this.groupControl6.Size = new System.Drawing.Size(240, 41);
             this.groupControl6.TabIndex = 10;
             this.groupControl6.Text = "groupControl6";
             // 
@@ -472,13 +477,13 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(249, 28);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(236, 37);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // labelControl7
             // 
             this.labelControl7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl7.Location = new System.Drawing.Point(25, 7);
+            this.labelControl7.Location = new System.Drawing.Point(25, 11);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(20, 14);
             this.labelControl7.TabIndex = 14;
@@ -488,7 +493,7 @@
             // 
             this.Radio_CustomScale_FFT.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Radio_CustomScale_FFT.AutoSize = true;
-            this.Radio_CustomScale_FFT.Location = new System.Drawing.Point(74, 7);
+            this.Radio_CustomScale_FFT.Location = new System.Drawing.Point(74, 12);
             this.Radio_CustomScale_FFT.Name = "Radio_CustomScale_FFT";
             this.Radio_CustomScale_FFT.Size = new System.Drawing.Size(14, 13);
             this.Radio_CustomScale_FFT.TabIndex = 24;
@@ -501,7 +506,7 @@
             this.TextEdit_Scale_FFT.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextEdit_Scale_FFT.EditValue = "100.0";
             this.TextEdit_Scale_FFT.Enabled = false;
-            this.TextEdit_Scale_FFT.Location = new System.Drawing.Point(95, 4);
+            this.TextEdit_Scale_FFT.Location = new System.Drawing.Point(95, 8);
             this.TextEdit_Scale_FFT.Name = "TextEdit_Scale_FFT";
             this.TextEdit_Scale_FFT.Size = new System.Drawing.Size(79, 20);
             this.TextEdit_Scale_FFT.TabIndex = 23;
@@ -512,7 +517,7 @@
             this.Radio_AutoScale_FFT.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Radio_AutoScale_FFT.AutoSize = true;
             this.Radio_AutoScale_FFT.Checked = true;
-            this.Radio_AutoScale_FFT.Location = new System.Drawing.Point(187, 5);
+            this.Radio_AutoScale_FFT.Location = new System.Drawing.Point(187, 9);
             this.Radio_AutoScale_FFT.Name = "Radio_AutoScale_FFT";
             this.Radio_AutoScale_FFT.Size = new System.Drawing.Size(52, 18);
             this.Radio_AutoScale_FFT.TabIndex = 22;
@@ -525,10 +530,10 @@
             // 
             this.groupControl5.Controls.Add(this.tableLayoutPanel4);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl5.Location = new System.Drawing.Point(3, 55);
+            this.groupControl5.Location = new System.Drawing.Point(3, 64);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.ShowCaption = false;
-            this.groupControl5.Size = new System.Drawing.Size(253, 30);
+            this.groupControl5.Size = new System.Drawing.Size(240, 40);
             this.groupControl5.TabIndex = 9;
             this.groupControl5.Text = "groupControl5";
             // 
@@ -548,13 +553,13 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(249, 26);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(236, 36);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // labelControl6
             // 
             this.labelControl6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl6.Location = new System.Drawing.Point(9, 6);
+            this.labelControl6.Location = new System.Drawing.Point(9, 11);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(52, 14);
             this.labelControl6.TabIndex = 14;
@@ -565,7 +570,7 @@
             this.TextEdit_Scale_Time.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextEdit_Scale_Time.EditValue = "100.0";
             this.TextEdit_Scale_Time.Enabled = false;
-            this.TextEdit_Scale_Time.Location = new System.Drawing.Point(95, 3);
+            this.TextEdit_Scale_Time.Location = new System.Drawing.Point(95, 8);
             this.TextEdit_Scale_Time.Name = "TextEdit_Scale_Time";
             this.TextEdit_Scale_Time.Size = new System.Drawing.Size(79, 20);
             this.TextEdit_Scale_Time.TabIndex = 23;
@@ -576,7 +581,7 @@
             this.Radio_AutoScale_Time.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Radio_AutoScale_Time.AutoSize = true;
             this.Radio_AutoScale_Time.Checked = true;
-            this.Radio_AutoScale_Time.Location = new System.Drawing.Point(187, 4);
+            this.Radio_AutoScale_Time.Location = new System.Drawing.Point(187, 9);
             this.Radio_AutoScale_Time.Name = "Radio_AutoScale_Time";
             this.Radio_AutoScale_Time.Size = new System.Drawing.Size(52, 18);
             this.Radio_AutoScale_Time.TabIndex = 22;
@@ -589,7 +594,7 @@
             // 
             this.Radio_CustomScale_Time.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Radio_CustomScale_Time.AutoSize = true;
-            this.Radio_CustomScale_Time.Location = new System.Drawing.Point(74, 6);
+            this.Radio_CustomScale_Time.Location = new System.Drawing.Point(74, 11);
             this.Radio_CustomScale_Time.Name = "Radio_CustomScale_Time";
             this.Radio_CustomScale_Time.Size = new System.Drawing.Size(14, 13);
             this.Radio_CustomScale_Time.TabIndex = 24;
@@ -604,7 +609,7 @@
             this.groupControl4.Location = new System.Drawing.Point(3, 18);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(253, 31);
+            this.groupControl4.Size = new System.Drawing.Size(240, 40);
             this.groupControl4.TabIndex = 8;
             this.groupControl4.Text = "groupControl4";
             // 
@@ -624,13 +629,13 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(249, 27);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(236, 36);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // labelControl5
             // 
             this.labelControl5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl5.Location = new System.Drawing.Point(19, 6);
+            this.labelControl5.Location = new System.Drawing.Point(19, 11);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(33, 14);
             this.labelControl5.TabIndex = 14;
@@ -641,7 +646,7 @@
             this.TextEdit_Scale.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextEdit_Scale.EditValue = "100.0";
             this.TextEdit_Scale.Enabled = false;
-            this.TextEdit_Scale.Location = new System.Drawing.Point(95, 3);
+            this.TextEdit_Scale.Location = new System.Drawing.Point(95, 8);
             this.TextEdit_Scale.Name = "TextEdit_Scale";
             this.TextEdit_Scale.Size = new System.Drawing.Size(79, 20);
             this.TextEdit_Scale.TabIndex = 23;
@@ -652,7 +657,7 @@
             this.Radio_AutoScale.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Radio_AutoScale.AutoSize = true;
             this.Radio_AutoScale.Checked = true;
-            this.Radio_AutoScale.Location = new System.Drawing.Point(187, 4);
+            this.Radio_AutoScale.Location = new System.Drawing.Point(187, 9);
             this.Radio_AutoScale.Name = "Radio_AutoScale";
             this.Radio_AutoScale.Size = new System.Drawing.Size(52, 18);
             this.Radio_AutoScale.TabIndex = 22;
@@ -665,7 +670,7 @@
             // 
             this.Radio_CustomScale.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Radio_CustomScale.AutoSize = true;
-            this.Radio_CustomScale.Location = new System.Drawing.Point(74, 7);
+            this.Radio_CustomScale.Location = new System.Drawing.Point(74, 11);
             this.Radio_CustomScale.Name = "Radio_CustomScale";
             this.Radio_CustomScale.Size = new System.Drawing.Size(14, 13);
             this.Radio_CustomScale.TabIndex = 24;
@@ -679,7 +684,7 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 476);
+            this.ClientSize = new System.Drawing.Size(517, 532);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.LookAndFeel.SkinName = "Office 2013";
@@ -687,6 +692,7 @@
             this.Name = "RepairConfigDlg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "보전활동 보고서 필터";
+            this.Controls.SetChildIndex(this.Btn_Close, 0);
             this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Before.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Before.Properties)).EndInit();

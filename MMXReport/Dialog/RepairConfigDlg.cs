@@ -16,13 +16,24 @@ namespace MMXReport.Dialog
         private RepairConfiguration RepairConf { get { return (RepairConfiguration)BaseConfig; } }
         public RepairConfigDlg()
         {
-            InitializeComponent();  
+            InitializeComponent();           
         }
 
         public RepairConfigDlg(CommonConfig common, BaseConfiguration baseConf)
             : base(baseConf)
         {
             InitializeComponent();
+            Text = MultiLang.MaintenanceTask + " " + MultiLang.Report + " " + MultiLang.Filter;
+            Btn_Close.Text = MultiLang.Close;
+            groupControl1.Text = MultiLang.MaintenancePeriod;
+            groupControl2.Text = MultiLang.TypeOfMeasurement;
+            groupControl3.Text = "Y " + MultiLang.Scale;
+            Gr_Machine.Text = MultiLang.PlantMap;
+            Gr_Bandpass.Text = MultiLang.BandPass;
+            CheckEdit_All.Text = MultiLang.BatchCheck;
+            labelControl1.Text = MultiLang.BeforeMaintenance;
+            labelControl2.Text = MultiLang.AfterMaintenance;
+            labelControl4.Text = MultiLang.Days;
             MimicNodeTree.DataSource = common.MimicNodes;
             MimicNodeTree.BestFitColumns();
             Numeric_RepairOffset.Value = RepairConf.RepairOffsetDay;

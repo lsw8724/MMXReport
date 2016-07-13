@@ -21,7 +21,18 @@ namespace MMXReport.Dialog
             : base(baseConf)
         {
             InitializeComponent();
-
+            Text = MultiLang.TrendOfMeasurements + " " + MultiLang.Filter;
+            Btn_Close.Text = MultiLang.Close;
+            groupControl1.Text = MultiLang.OperationPeriod;
+            groupControl2.Text = MultiLang.TypeOfMeasurement;
+            groupControl3.Text = MultiLang.Unit;
+            groupControl4.Text = "Y " + MultiLang.Scale;
+            Gr_Machine.Text = MultiLang.PlantMap;
+            Gr_Bandpass.Text = MultiLang.BandPass;
+            Radio_Day.Text = MultiLang.Day;
+            Radio_Week.Text = MultiLang.Week;
+            Radio_Month.Text = MultiLang.Month;
+            
             MimicNodeTree.DataSource = common.LoadMimicNodes(baseConf.DBConn);
             MimicNodeTree.BestFitColumns();
             MimicNodeTree.ExpandAll();
