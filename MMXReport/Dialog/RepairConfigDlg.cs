@@ -70,10 +70,10 @@ namespace MMXReport.Dialog
 
         private void MimicNodeTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            MimicNode mimicNode = MimicNodeTree.GetDataRecordByNode(e.Node) as MimicNode;
-            if (mimicNode.NodeType == 300)
+            MimicTreeNode mimicNode = MimicNodeTree.GetDataRecordByNode(e.Node) as MimicTreeNode;
+            if (mimicNode.ThisNode.NodeType == 300)
             {
-                ChannelConfig channel = new ChannelConfig(mimicNode, BaseConfig.DBConn);
+                ChannelConfig channel = new ChannelConfig(mimicNode);
                 BaseConfig.Channel = channel;
                 CheckList_Bandpass.DataSource = channel.BandpassArr.Where(x => x.Visible);
             }

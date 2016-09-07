@@ -13,6 +13,8 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using Steema.TeeChart;
+using System.Windows.Forms;
+using MMXReport.DataBase;
 
 namespace MMXReport
 {
@@ -59,25 +61,32 @@ namespace MMXReport
             BtnPreview_Daily.Text = MultiLang.Preview;
             BtnPreview_Repair.Text = MultiLang.Preview;
             #endregion
+            try
+            {
+                SQLRepository.Init();
+                LogGenerator.CreateLogFile();
+                CreatePreviewSample();
+                DBConn = new DBConnector();
+                ExcelManager = new ExcelIOManager();
+                CommonConf = new CommonConfig();
+                MultiBandConf = new MultiBandpassConfiguration();
+                MultiPointConf = new MultiPointConfiguration();
+                DayOfWeekConf = new DayOfWeekConfiguration();
+                PeriodConf = new PeriodConfiguration();
+                DailyConf = new DailyConfiguration();
+                RepairConf = new RepairConfiguration();
 
-            LogGenerator.CreateLogFile();
-            CreatePreviewSample();
-            DBConn = new DBConnector();
-            ExcelManager = new ExcelIOManager();
-            CommonConf = new CommonConfig(DBConn);
-            MultiBandConf = new MultiBandpassConfiguration(DBConn);
-            MultiPointConf = new MultiPointConfiguration(DBConn);
-            DayOfWeekConf = new DayOfWeekConfiguration(DBConn);
-            PeriodConf = new PeriodConfiguration(DBConn);
-            DailyConf = new DailyConfiguration(DBConn);
-            RepairConf = new RepairConfiguration(DBConn);
-
-            DailyConfDlg = new DailyConfigDlg(DailyConf) { Owner = this };
-            MultiBandConfigDlg = new MultiBandpassConfigDlg(CommonConf, MultiBandConf) { Owner = this };
-            MultiPointConfigDlg = new MultiPointConfigDlg(CommonConf, MultiPointConf) { Owner = this };
-            DayOfWeekConfigDlg = new DayOfWeekConfigDlg(CommonConf, DayOfWeekConf) { Owner = this };
-            PeriodConfigDlg = new PeriodConfigDlg(CommonConf, PeriodConf) { Owner = this };
-            RepairConfigDlg = new RepairConfigDlg(CommonConf, RepairConf) { Owner = this };
+                DailyConfDlg = new DailyConfigDlg(DailyConf) { Owner = this };
+                MultiBandConfigDlg = new MultiBandpassConfigDlg(CommonConf, MultiBandConf) { Owner = this };
+                MultiPointConfigDlg = new MultiPointConfigDlg(CommonConf, MultiPointConf) { Owner = this };
+                DayOfWeekConfigDlg = new DayOfWeekConfigDlg(CommonConf, DayOfWeekConf) { Owner = this };
+                PeriodConfigDlg = new PeriodConfigDlg(CommonConf, PeriodConf) { Owner = this };
+                RepairConfigDlg = new RepairConfigDlg(CommonConf, RepairConf) { Owner = this };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CreatePreviewSample()
@@ -293,9 +302,10 @@ namespace MMXReport
         private void BtnReport_DayOfWeek_Click(object sender, EventArgs e)
         {
             BtnPreview_DayOfWeek_Click(null, null);
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (DayOfWeekConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new CommonReportItems()
                 {
                     DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
                     Name = MultiLang.WeeklyComparison + " " + MultiLang.Report,
@@ -312,9 +322,10 @@ namespace MMXReport
         private void BtnReport_MultiBand_Click(object sender, EventArgs e)
         {
             BtnPreview_MultiBandTrend_Click(null, null);
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (MultiBandConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new CommonReportItems()
                 {
                     DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
                     Name = MultiLang.TrendOfPoint + " " + MultiLang.Report,
@@ -330,9 +341,10 @@ namespace MMXReport
         private void BtnReport_MultiPointTrend_Click(object sender, EventArgs e)
         {
             BtnPreview_MultPointTrend_Click(null, null);
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (MultiPointConf.CommonBandpassList.Count > 0)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new CommonReportItems()
                 {
                     DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
                     Name = MultiLang.TrendOfMeasurements + " " + MultiLang.Report,
@@ -349,9 +361,10 @@ namespace MMXReport
         private void BtnReport_Period_Click(object sender, EventArgs e)
         {
             BtnPreview_Period_Click(null, null);
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (PeriodConf.CommonBandpassList.Count > 0)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx",saveFileDialog1.FileName, new CommonReportItems()
                 {
                     DateTime = PeriodConf.StartDate.ToString("yyyy년도"),
                     Name = MultiLang.PeriodicComparison + " " + MultiLang.Report,
@@ -368,7 +381,7 @@ namespace MMXReport
         private void BtnReport_Repair_Click(object sender, EventArgs e)
         {
             BtnPreview_Repair_Click(null, null);
-
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             TChart_Time.Axes.Left.AutomaticMaximum = RepairConf.AutoScale_Time;
             if (!RepairConf.AutoScale_Time)
                 TChart_Time.Axes.Left.Maximum = RepairConf.MaxScale_Time;
@@ -392,7 +405,6 @@ namespace MMXReport
 
             if (datas[0] != null)
             {
-               
                 int dataCount = datas[0].AsyncData.Length;
                 for (int i = 0; i < dataCount; i++)
                     TChart_Time.Series[0].Add(i * datas[0].Duration / (double)dataCount, datas[0].AsyncData[i]);
@@ -418,7 +430,7 @@ namespace MMXReport
             }
             if (RepairConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_Maintenance.xlsx", new CommonReportItems()
+                ExcelManager.CreateExcel("Template_Maintenance.xlsx",saveFileDialog1.FileName, new CommonReportItems()
                 {
                     DateTime = RepairConf.StartDateStr + " ~ " + RepairConf.EndDateStr,
                     Name = MultiLang.MaintenanceTask +" "+ MultiLang.Report,
@@ -437,20 +449,22 @@ namespace MMXReport
         private void BtnReport_Daily_Click(object sender, EventArgs e)
         {
             BtnPreview_Daily_Click(null,null);
-            DataTable table = DBConn.LoadDailyData(DailyConf);
-            List<DailyReportItem> items = new List<DailyReportItem>();
-            foreach (DataRow row in table.Rows)
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
+            DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Dialog.WaitLoadingDlg), false, false);
+            var shiftItem = DailyConf.SelectedItem;
+            DailyReportItem[] items = null;
+            if (shiftItem.To.Subtract(shiftItem.From) == new TimeSpan(23, 59, 59))
+                items = SQLRepository.VectorDatas.GetDailyData(DailyConf.StartDate);
+            else
+                items = SQLRepository.VectorDatas.GetShiftData(DailyConf.StartDate,DailyConf.SelectedItem.From, DailyConf.SelectedItem.To);
+
+            ExcelManager.CreateExcel("Template_DailyReport.xlsx",saveFileDialog1.FileName,new CommonReportItems()
             {
-                DailyReportItem item = new DailyReportItem(row);
-                if(item.Function != null)
-                    items.Add(item);
-            }
-            ExcelManager.CreateExcel("Template_DailyReport.xlsx", new CommonReportItems()
-            {
-                DateTime = "Date : "+DailyConf.StartDateStr,
+                DateTime = "Date : " + DailyConf.StartDateStr +" "+ DailyConf.SelectedItem.TimeStrFrom + "~" + DailyConf.SelectedItem.TimeStrTo,
                 Name = MultiLang.Daily + " " + MultiLang.Report,
                 DailyDatas = items
             });
+            DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
         }
 
         private Bitmap ChartCaptur(TChart tchart, int width, int height = -1)
@@ -475,8 +489,6 @@ namespace MMXReport
                 g.DrawImage(sourceBMP, 0, 0, width, h);
             return result;
         }
-
-        
 
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {

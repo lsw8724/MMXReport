@@ -118,5 +118,16 @@ namespace MMXReport.Properties {
                 this["LanguageSelectedIdx"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection ShiftItems {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["ShiftItems"]));
+            }
+            set {
+                this["ShiftItems"] = value;
+            }
+        }
     }
 }

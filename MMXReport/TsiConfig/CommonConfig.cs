@@ -4,42 +4,36 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MMXReport.DataBase;
 
 namespace MMXReport.TsiConfig
 {
     public class CommonConfig
     {
-        public MimicNodes MimicNodes { get; set; }
-        public CommonConfig(DBConnector dbconn)
+        public MimicTreeNodes MimicNodes { get; set; }
+        public CommonConfig()
         {
-            MimicNodes = LoadMimicNodes(dbconn);
+            MimicNodes = LoadMimicNodes();
         }
-        public MimicNodes LoadMimicNodes(DBConnector dbconn)
+        public MimicTreeNodes LoadMimicNodes()
         {
-            DataTable data = dbconn.LoadMimicNodeList();
-            MimicNodes mimicNodes = new MimicNodes();
-            foreach(DataRow row in data.Rows)
+            MimicTreeNodes mimicNodes = new MimicTreeNodes();
+            foreach(var node in SQLRepository.MimicNodeCache.Values)
             {
-                int id = Convert.ToInt32(row.ItemArray[0]);
-                string name = row.ItemArray[1].ToString();
-                int nodeType = Convert.ToInt16(row.ItemArray[2]);
-                int parentId = Convert.ToInt32(row.ItemArray[3]);
-                int chid = Convert.ToInt32(row.ItemArray[4]);
-                MimicNode mimicNode = new MimicNode(id, name, nodeType, chid);
-                switch(nodeType)
+                switch (node.NodeType)
                 {
-                    case 100: mimicNodes.Add(new MimicNode(id, name, nodeType, chid)); break;
-                    case 200: 
-                        var node = mimicNodes.Where(x => x.Id == parentId).FirstOrDefault();
-                        node.ChildNodes.Add(new MimicNode(id, name, nodeType, chid, node)); break;
+                    case 100: mimicNodes.Add(new MimicTreeNode(node)); break;
+                    case 200:
+                        var treeNode = mimicNodes.Where(x => x.ThisNode.Id == node.ParentId).FirstOrDefault();
+                        treeNode.ChildNodes.Add(new MimicTreeNode(node, treeNode)); break;
                     case 300:
                         foreach (var m in mimicNodes)
                         {
-                            var temp = m.ChildNodes.Where(x => x.Id == parentId);
+                            var temp = m.ChildNodes.Where(x => x.ThisNode.Id == node.ParentId);
                             if (temp.Count() > 0)
                             {
                                 var pNode = temp.First();
-                                pNode.ChildNodes.Add(new MimicNode(id, name, nodeType, chid, pNode));
+                                pNode.ChildNodes.Add(new MimicTreeNode(node, pNode));
                                 break;
                             }
                         }break;

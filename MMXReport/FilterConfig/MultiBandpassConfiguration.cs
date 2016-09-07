@@ -10,8 +10,7 @@ namespace MMXReport
     public class MultiBandpassConfiguration : BaseConfiguration
     {
         public string StatTermType { get; set; }
-        public MultiBandpassConfiguration(DBConnector dbconn)
-            : base(dbconn)
+        public MultiBandpassConfiguration()
         {
             StatTermType = "day";
         }

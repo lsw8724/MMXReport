@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MMXReport.DataBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -25,13 +26,13 @@ namespace MMXReport.TsiConfig
         public int Id { get; set; }
         public DspVectorOverride[] Overrides { get; set; }
         public BandpassConfig[] BandpassArr { get; set; }
-        public ChannelConfig(MimicNode mimicNode, DBConnector dbConn)
+        public ChannelConfig(MimicTreeNode treeNode)
         {
-            LineName = mimicNode.ParentNode.ParentNode.NodeName;
-            MachineName = mimicNode.ParentNode.NodeName;
-            PointName = mimicNode.NodeName;
-            Id = mimicNode.ChannelId;
-            Overrides = dbConn.LoadExtraJSON(mimicNode.ChannelId).VectorOverrides;
+            LineName = treeNode.ParentNode.ParentNode.ThisNode.Name;
+            MachineName = treeNode.ParentNode.ThisNode.Name;
+            PointName = treeNode.ThisNode.Name;
+            Id = treeNode.ThisNode.ChannelId;
+            Overrides = SQLRepository.SensorChannelCache.Where(x => x.Value.Id == treeNode.ThisNode.ChannelId).First().Value.ExtraJson.VectorOverrides;
             SetBandPass();
         }
 

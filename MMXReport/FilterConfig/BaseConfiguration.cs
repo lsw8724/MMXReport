@@ -20,11 +20,9 @@ namespace MMXReport
         public string EndDateStr { get { return EndDate.ToString("yyyy-MM-dd"); }}
         public ChannelConfig Channel { get; set; }
         public string ValueMeasureType { get; set; }
-        public DBConnector DBConn { get; set; }
        
-        public BaseConfiguration(DBConnector dbconn)
+        public BaseConfiguration()
         {
-            DBConn = dbconn;
             SetDefault();
         }
 

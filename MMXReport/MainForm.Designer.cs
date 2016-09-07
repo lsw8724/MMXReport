@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.SmallImageList = new System.Windows.Forms.ImageList(this.components);
+            this.SmallImageList = new System.Windows.Forms.ImageList();
             this.Gr_Report = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
@@ -68,12 +67,12 @@
             this.Gr_Compare = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl9 = new DevExpress.XtraEditors.GroupControl();
+            this.Tchart_DayOfWeek = new Steema.TeeChart.TChart();
+            this.horizBar1 = new Steema.TeeChart.Styles.HorizBar();
             this.Tchart_Period = new Steema.TeeChart.TChart();
             this.bar1 = new Steema.TeeChart.Styles.Bar();
             this.bar2 = new Steema.TeeChart.Styles.Bar();
             this.bar3 = new Steema.TeeChart.Styles.Bar();
-            this.Tchart_DayOfWeek = new Steema.TeeChart.TChart();
-            this.horizBar1 = new Steema.TeeChart.Styles.HorizBar();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.BtnPreview_Period = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPreview_DayOfWeek = new DevExpress.XtraEditors.SimpleButton();
@@ -93,7 +92,8 @@
             this.fastLine1 = new Steema.TeeChart.Styles.FastLine();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Gr_Variation = new DevExpress.XtraEditors.GroupControl();
-            this.bandpassConfigBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bandpassConfigBindingSource = new System.Windows.Forms.BindingSource();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Gr_Report)).BeginInit();
             this.Gr_Report.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -196,6 +196,14 @@
             // 
             // 
             this.Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy년 M월 d일";
+            // 
+            // 
+            // 
+            this.Tchart_RepairTrend.Axes.Left.Automatic = false;
+            this.Tchart_RepairTrend.Axes.Left.AutomaticMaximum = false;
+            this.Tchart_RepairTrend.Axes.Left.AutomaticMinimum = false;
+            this.Tchart_RepairTrend.Axes.Left.Maximum = 544D;
+            this.Tchart_RepairTrend.Axes.Left.Minimum = 0D;
             this.Tchart_RepairTrend.Cursor = System.Windows.Forms.Cursors.Default;
             this.Tchart_RepairTrend.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
@@ -855,6 +863,128 @@
             this.groupControl9.TabIndex = 16;
             this.groupControl9.Text = "groupControl9";
             // 
+            // Tchart_DayOfWeek
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Aspect.View3D = false;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Axes.Bottom.Automatic = false;
+            this.Tchart_DayOfWeek.Axes.Bottom.AutomaticMaximum = false;
+            this.Tchart_DayOfWeek.Axes.Bottom.AutomaticMinimum = false;
+            this.Tchart_DayOfWeek.Axes.Bottom.Maximum = 943D;
+            this.Tchart_DayOfWeek.Axes.Bottom.MaximumOffset = 78;
+            this.Tchart_DayOfWeek.Axes.Bottom.Minimum = 0D;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Axes.Right.MinimumOffset = 1;
+            this.Tchart_DayOfWeek.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Tchart_DayOfWeek.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tchart_DayOfWeek.Header.Font.Name = "굴림";
+            this.Tchart_DayOfWeek.Header.Lines = new string[] {
+        "Preview"};
+            this.Tchart_DayOfWeek.Header.TextAlign = System.Drawing.StringAlignment.Center;
+            this.Tchart_DayOfWeek.Header.Visible = false;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
+            this.Tchart_DayOfWeek.Location = new System.Drawing.Point(2, 2);
+            this.Tchart_DayOfWeek.Name = "Tchart_DayOfWeek";
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Panel.MarginBottom = 5D;
+            this.Tchart_DayOfWeek.Panel.MarginLeft = 1D;
+            this.Tchart_DayOfWeek.Panel.MarginRight = 2D;
+            this.Tchart_DayOfWeek.Panel.MarginTop = 5D;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
+            this.Tchart_DayOfWeek.Series.Add(this.horizBar1);
+            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(581, 221);
+            this.Tchart_DayOfWeek.TabIndex = 1;
+            // 
+            // 
+            // 
+            this.Tchart_DayOfWeek.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
+            // 
+            // horizBar1
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
+            // 
+            // 
+            // 
+            this.horizBar1.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.horizBar1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
+            this.horizBar1.ColorEach = true;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Font.Bold = true;
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(123)))), ((int)(((byte)(99)))));
+            this.horizBar1.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Value;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.horizBar1.Marks.Symbol.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.horizBar1.Marks.Visible = false;
+            // 
+            // 
+            // 
+            this.horizBar1.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.horizBar1.Title = "Bandpass";
+            // 
+            // 
+            // 
+            this.horizBar1.XValues.DataMember = "X";
+            // 
+            // 
+            // 
+            this.horizBar1.YValues.DataMember = "막대";
+            this.horizBar1.YValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
+            // 
             // Tchart_Period
             // 
             // 
@@ -867,7 +997,12 @@
             // 
             // 
             // 
+            this.Tchart_Period.Axes.Left.Automatic = false;
+            this.Tchart_Period.Axes.Left.AutomaticMaximum = false;
+            this.Tchart_Period.Axes.Left.AutomaticMinimum = false;
+            this.Tchart_Period.Axes.Left.Maximum = 816D;
             this.Tchart_Period.Axes.Left.MaximumOffset = 10;
+            this.Tchart_Period.Axes.Left.Minimum = 0D;
             this.Tchart_Period.Cursor = System.Windows.Forms.Cursors.Default;
             this.Tchart_Period.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
@@ -1008,123 +1143,6 @@
             // 
             // 
             this.bar3.YValues.DataMember = "막대";
-            // 
-            // Tchart_DayOfWeek
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Aspect.View3D = false;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Axes.Bottom.MaximumOffset = 78;
-            this.Tchart_DayOfWeek.Axes.Bottom.MinimumOffset = 1;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Axes.Right.MinimumOffset = 1;
-            this.Tchart_DayOfWeek.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Tchart_DayOfWeek.Dock = System.Windows.Forms.DockStyle.Fill;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Header.Font.Bold = true;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Tchart_DayOfWeek.Header.Font.Name = "굴림";
-            this.Tchart_DayOfWeek.Header.Lines = new string[] {
-        "Preview"};
-            this.Tchart_DayOfWeek.Header.TextAlign = System.Drawing.StringAlignment.Center;
-            this.Tchart_DayOfWeek.Header.Visible = false;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
-            this.Tchart_DayOfWeek.Location = new System.Drawing.Point(2, 2);
-            this.Tchart_DayOfWeek.Name = "Tchart_DayOfWeek";
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Panel.MarginBottom = 5D;
-            this.Tchart_DayOfWeek.Panel.MarginLeft = 1D;
-            this.Tchart_DayOfWeek.Panel.MarginRight = 2D;
-            this.Tchart_DayOfWeek.Panel.MarginTop = 5D;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
-            this.Tchart_DayOfWeek.Series.Add(this.horizBar1);
-            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(581, 221);
-            this.Tchart_DayOfWeek.TabIndex = 1;
-            // 
-            // 
-            // 
-            this.Tchart_DayOfWeek.Zoom.Direction = Steema.TeeChart.ZoomDirections.None;
-            // 
-            // horizBar1
-            // 
-            // 
-            // 
-            // 
-            this.horizBar1.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
-            // 
-            // 
-            // 
-            this.horizBar1.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.horizBar1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(53)))));
-            this.horizBar1.ColorEach = true;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.horizBar1.Marks.Brush.Gradient.Direction = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            // 
-            // 
-            // 
-            this.horizBar1.Marks.Font.Bold = true;
-            // 
-            // 
-            // 
-            this.horizBar1.Marks.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(123)))), ((int)(((byte)(99)))));
-            this.horizBar1.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Value;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.horizBar1.Marks.Symbol.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            // 
-            // 
-            // 
-            this.horizBar1.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
-            this.horizBar1.Title = "Bandpass";
-            // 
-            // 
-            // 
-            this.horizBar1.XValues.DataMember = "X";
-            // 
-            // 
-            // 
-            this.horizBar1.YValues.DataMember = "막대";
-            this.horizBar1.YValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
             // 
             // groupControl1
             // 
@@ -1554,6 +1572,9 @@
             // 
             // 
             // 
+            this.Tchart_Trend.Axes.Left.Automatic = false;
+            this.Tchart_Trend.Axes.Left.AutomaticMaximum = false;
+            this.Tchart_Trend.Axes.Left.AutomaticMinimum = false;
             // 
             // 
             // 
@@ -1571,6 +1592,8 @@
             // 
             // 
             this.Tchart_Trend.Axes.Left.Labels.Font.Name = "Arial";
+            this.Tchart_Trend.Axes.Left.Maximum = 372D;
+            this.Tchart_Trend.Axes.Left.Minimum = 0D;
             // 
             // 
             // 
@@ -1917,6 +1940,11 @@
             // 
             this.bandpassConfigBindingSource.DataSource = typeof(MMXReport.TsiConfig.BandpassConfig);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "xlsx";
+            this.saveFileDialog1.Filter = "(*.xlsx)|*.xlsx|\" + \" (*.*)|*.*";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -2024,6 +2052,7 @@
         private Steema.TeeChart.Styles.FastLine fastLine4;
         private Steema.TeeChart.TChart TChart_Time;
         private Steema.TeeChart.Styles.FastLine fastLine3;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 
 
     }

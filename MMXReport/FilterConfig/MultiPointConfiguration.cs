@@ -15,17 +15,17 @@ namespace MMXReport
         public List<ChannelConfig> SelectedChannelList { get; set; }
         public BandpassConfig SelectedBandpass { get; set; }
         public string StatTermType { get; set; }
-        public MultiPointConfiguration(DBConnector dbconn) : base(dbconn)
+        public MultiPointConfiguration()
         {
             StatTermType = "day";
             CommonBandpassList = new List<BandpassConfig>();
         }
 
-        public void SetChannelList(IEnumerable<MimicNode> mimicNodes)
+        public void SetChannelList(IEnumerable<MimicTreeNode> mimicNodes)
         {
             SelectedChannelList = new List<ChannelConfig>();
             foreach (var node in mimicNodes)
-                SelectedChannelList.Add(new ChannelConfig(node, DBConn));
+                SelectedChannelList.Add(new ChannelConfig(node));
             CommonBandpassList = CollectCommonOverrides();
         }
 

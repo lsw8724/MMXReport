@@ -50,33 +50,8 @@ namespace MMXReport
             Status = new ChannelStatus() { Stat = "Good", StatColor = Color.LightGreen };
             Remark = "";
         }
-        public DailyReportItem(DataRow row) // 0 chid, 1 Machine, 2 Point, 3 Bandpass, 4 MIN, 5 MAX, 6 AVG, 7 ExtraJSON
-        {
-            int chid = Convert.ToInt32(row.ItemArray[0]);
-            DspVectorOverride[] overrides = JsonConvert.DeserializeObject<ExtraChannelConfig>(row.ItemArray[7].ToString()).VectorOverrides;
-            int overrideIdx = Array.IndexOf(Enum.GetNames(typeof(VectorOverrideOrder)), row.ItemArray[3].ToString());
-            float[] alarms = overrides[overrideIdx].AlarmValues;
-            if (alarms == null) alarms = new float[] { 0f, 0f, 0f, 0f };
-            if (overrides[overrideIdx].OverrideName != null && overrides[overrideIdx].OverrideName != string.Empty)
-            {
-                ChannelId = chid;
-                Machine = row.ItemArray[1].ToString();
-                Point = row.ItemArray[2].ToString();
-                Function = overrides[overrideIdx].OverrideName;
-                Unit = overrides[overrideIdx].OverrideUnit;
-                Caution = alarms[0];
-                Failure = alarms[1];
-                Repair = alarms[2];
-                Stop = alarms[3];
-                MIN = Convert.ToSingle(row.ItemArray[4]);
-                MAX = Convert.ToSingle(row.ItemArray[5]);
-                AVG = Convert.ToSingle(row.ItemArray[6]);
-                Status = CheckStatus(alarms, MAX);
-                Remark = "";
-            }
-        }
 
-        private ChannelStatus CheckStatus(float[] alarms, float maxValue)
+        public static ChannelStatus CheckStatus(float[] alarms, float maxValue)
         {
             ChannelStatus status = new ChannelStatus();
             if (maxValue >= alarms[3])

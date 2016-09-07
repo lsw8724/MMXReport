@@ -57,7 +57,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl1.Location = new System.Drawing.Point(80, 161);
+            this.labelControl1.Location = new System.Drawing.Point(74, 161);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(15, 21);
             this.labelControl1.TabIndex = 6;
@@ -66,7 +66,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl2.Location = new System.Drawing.Point(32, 189);
+            this.labelControl2.Location = new System.Drawing.Point(26, 189);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(63, 21);
             this.labelControl2.TabIndex = 7;
@@ -75,7 +75,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl3.Location = new System.Drawing.Point(23, 217);
+            this.labelControl3.Location = new System.Drawing.Point(17, 217);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(72, 21);
             this.labelControl3.TabIndex = 8;
@@ -84,7 +84,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl4.Location = new System.Drawing.Point(244, 159);
+            this.labelControl4.Location = new System.Drawing.Point(234, 159);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(78, 21);
             this.labelControl4.TabIndex = 9;
@@ -93,7 +93,7 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl5.Location = new System.Drawing.Point(258, 186);
+            this.labelControl5.Location = new System.Drawing.Point(248, 186);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(64, 21);
             this.labelControl5.TabIndex = 10;
@@ -173,7 +173,7 @@
             // 
             this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::MMXReport.Properties.Settings.Default, "DataDBName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit5.EditValue = global::MMXReport.Properties.Settings.Default.DataDBName;
-            this.textEdit5.Location = new System.Drawing.Point(328, 186);
+            this.textEdit5.Location = new System.Drawing.Point(334, 186);
             this.textEdit5.Name = "textEdit5";
             this.textEdit5.Properties.Appearance.Font = new System.Drawing.Font("Gulim", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textEdit5.Properties.Appearance.Options.UseFont = true;
@@ -184,7 +184,7 @@
             // 
             this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::MMXReport.Properties.Settings.Default, "ConfigDBName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit4.EditValue = global::MMXReport.Properties.Settings.Default.ConfigDBName;
-            this.textEdit4.Location = new System.Drawing.Point(328, 161);
+            this.textEdit4.Location = new System.Drawing.Point(334, 161);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Properties.Appearance.Font = new System.Drawing.Font("Gulim", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textEdit4.Properties.Appearance.Options.UseFont = true;
@@ -195,7 +195,7 @@
             // 
             this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::MMXReport.Properties.Settings.Default, "DB_Pwd", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit3.EditValue = global::MMXReport.Properties.Settings.Default.DB_Pwd;
-            this.textEdit3.Location = new System.Drawing.Point(101, 219);
+            this.textEdit3.Location = new System.Drawing.Point(111, 219);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Gulim", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textEdit3.Properties.Appearance.Options.UseFont = true;
@@ -207,7 +207,7 @@
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::MMXReport.Properties.Settings.Default, "DB_Id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit2.EditValue = global::MMXReport.Properties.Settings.Default.DB_Id;
-            this.textEdit2.Location = new System.Drawing.Point(101, 191);
+            this.textEdit2.Location = new System.Drawing.Point(111, 191);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Gulim", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textEdit2.Properties.Appearance.Options.UseFont = true;
@@ -218,7 +218,7 @@
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::MMXReport.Properties.Settings.Default, "ServerIP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit1.EditValue = global::MMXReport.Properties.Settings.Default.ServerIP;
-            this.textEdit1.Location = new System.Drawing.Point(101, 163);
+            this.textEdit1.Location = new System.Drawing.Point(111, 163);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Gulim", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textEdit1.Properties.Appearance.Options.UseFont = true;

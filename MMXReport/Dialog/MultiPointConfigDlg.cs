@@ -33,7 +33,7 @@ namespace MMXReport.Dialog
             Radio_Week.Text = MultiLang.Week;
             Radio_Month.Text = MultiLang.Month;
             
-            MimicNodeTree.DataSource = common.LoadMimicNodes(baseConf.DBConn);
+            MimicNodeTree.DataSource = common.LoadMimicNodes();
             MimicNodeTree.BestFitColumns();
             MimicNodeTree.ExpandAll();
             MimicNodeTree.CollapseAll();
@@ -84,7 +84,7 @@ namespace MMXReport.Dialog
         private void MimicNodeTree_AfterCheckNode(object sender, NodeEventArgs e)
         {
             TreeChildAllCheck(e.Node.Nodes);
-            MimicNodes pointNodes = (MimicNodeTree.DataSource as MimicNodes).SearchNodes(300);
+            MimicTreeNodes pointNodes = (MimicNodeTree.DataSource as MimicTreeNodes).SearchNodes(300);
             MultiPointConf.SetChannelList(pointNodes.Where(x => x.Active));
             List_Bandpass.DataSource = MultiPointConf.CommonBandpassList;
         }
@@ -93,7 +93,7 @@ namespace MMXReport.Dialog
         {
             if (nodes.Count == 0)
             {
-                (MimicNodeTree.GetDataRecordByNode(nodes.ParentNode) as MimicNode).Active = nodes.ParentNode.Checked;
+                (MimicNodeTree.GetDataRecordByNode(nodes.ParentNode) as MimicTreeNode).Active = nodes.ParentNode.Checked;
                 return;
             }
 

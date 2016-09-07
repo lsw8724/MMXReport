@@ -7,7 +7,7 @@ namespace MMXReport
 {
     public class DayOfWeekConfiguration : BaseConfiguration
     {
-        public DayOfWeekConfiguration(DBConnector dbconn) : base(dbconn)
+        public DayOfWeekConfiguration()
         {} 
     }
 }

@@ -15,7 +15,7 @@ namespace MMXReport
         public DateTime BeforeRepairDate { get; set; }
         public DateTime AfterRepairDate { get; set; }
         public int RepairOffsetDay { get; set; }
-        public RepairConfiguration(DBConnector dbconn) : base(dbconn)
+        public RepairConfiguration()
         {
             RepairOffsetDay = 10;
             AutoScale_Time = true;

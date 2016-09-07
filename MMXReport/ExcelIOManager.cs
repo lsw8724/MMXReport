@@ -27,31 +27,24 @@ namespace MMXReport
         public Bitmap Img_AfterTime;
         public Bitmap Img_BeforFFT;
         public Bitmap Img_AfterFFT;
-        public List<DailyReportItem> DailyDatas;
+        public DailyReportItem[] DailyDatas;
     }
     public class ExcelIOManager
     {
-        public void CreateExcel(string templateFileName, CommonReportItems items)
+        public void CreateExcel(string templateFileName, string savePath, CommonReportItems items)
         {
             Excel.Application excel = null;
             Excel.Workbook workbook = null;
 
-            var dlg = new SaveFileDialog();
-            string startPath = System.Windows.Forms.Application.StartupPath;
-            string templateFilePath = startPath + "\\ReportTemplate\\" + templateFileName;
-            dlg.InitialDirectory = startPath;
-            dlg.DefaultExt = "xlsx";
-            dlg.Filter = " (*.xlsx)|*.xlsx|" + " (*.*)|*.*";
-            if (dlg.ShowDialog() != DialogResult.OK) return;
             try
             {
                 excel = new Excel.Application();
-                workbook = excel.Workbooks.Open(templateFilePath);
-                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Dialog.WaitLoadingDlg), false, false);
+                workbook = excel.Workbooks.Open( System.Windows.Forms.Application.StartupPath + "\\ReportTemplate\\"+ templateFileName);
+                
                 LogGenerator.AppendLog("Excel Generate "+items.Name, LogType.Common, this);
                 GenerateReport(workbook, items);
-                workbook.SaveAs(dlg.FileName);
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
+                workbook.SaveAs(savePath);
+                
             }
             catch (Exception ex)
             {
@@ -157,7 +150,7 @@ namespace MMXReport
                          "",
                     }};
 
-                    if (num < items.DailyDatas.Count + 8)
+                    if (num < items.DailyDatas.Length + 8)
                         range1.EntireRow.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
 
                     var range2 = worksheet.get_Range("A" + num, "M" + num);

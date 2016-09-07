@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraTreeList;
+using MMXReport.DataBase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,56 +9,41 @@ using System.Threading.Tasks;
 
 namespace MMXReport
 {
-    public class MimicNode
+    public class MimicTreeNode
     {
         public bool Active { get; set; }
-        public int Id { get; set; }
-        public string NodeName { get; set; }
-        public int NodeType { get; set; }
-        public int ChannelId { get; set; }
-        public MimicNode ParentNode { get; set; }
-        public MimicNodes Nodes { get; set; }
-        public MimicNodes ChildNodes { get; set; }
-        
-        public MimicNode() 
+        public MimicNode ThisNode { get; set; }
+        public MimicTreeNode ParentNode { get; set; }
+        public MimicTreeNodes Nodes { get; set; }
+        public MimicTreeNodes ChildNodes { get; set; }
+
+        public MimicTreeNode(MimicNode node)
         {
-            this.NodeName = "";
-            this.Nodes = null;
-            this.ChildNodes = new MimicNodes();
-        }
-        public MimicNode(int id, string name, int type, int chid)
-        {
-            this.Id = id;
-            this.NodeName = name;
-            this.NodeType = type;
-            this.ChannelId = chid;
-            this.ChildNodes = new MimicNodes();
+            this.ThisNode = node;
+            ChildNodes = new MimicTreeNodes();
         }
 
-        public MimicNode(int id,string name,int type, int chid, MimicNode pNode) {
-            this.Id = id;
-            this.NodeName = name;
-            this.NodeType = type;
-            this.ChannelId = chid;
-            this.ChildNodes = new MimicNodes();
+        public MimicTreeNode(MimicNode node, MimicTreeNode pNode) {
+            this.ThisNode = node;
+            this.ChildNodes = new MimicTreeNodes();
             this.ParentNode = pNode;
         }
     }
 
-    public class MimicNodes : BindingList<MimicNode>, TreeList.IVirtualTreeListData
+    public class MimicTreeNodes : BindingList<MimicTreeNode>, TreeList.IVirtualTreeListData
     {
-        private void AddRange(IEnumerable<MimicNode> collection)
+        private void AddRange(IEnumerable<MimicTreeNode> collection)
         {
             foreach (var item in collection)
                 this.Add(item);
         }
-        public MimicNodes SearchNodes(int nodeType)
+        public MimicTreeNodes SearchNodes(int nodeType)
         {
             if (this.Count == 0) return null;
-            MimicNodes result = new MimicNodes();
+            MimicTreeNodes result = new MimicTreeNodes();
             foreach (var node in this)
             {
-                if (node.NodeType == nodeType)
+                if (node.ThisNode.NodeType == nodeType)
                 {
                     result.Add(node);
                 }
@@ -68,13 +54,13 @@ namespace MMXReport
             }
             return result;
         }
-        public MimicNodes SearchNodes(int nodeType, MimicNodes nodes)
+        public MimicTreeNodes SearchNodes(int nodeType, MimicTreeNodes nodes)
         {
             if (nodes.Count == 0) return null;
-            MimicNodes result = new MimicNodes();
+            MimicTreeNodes result = new MimicTreeNodes();
             foreach (var node in nodes)
             {
-                if (node.NodeType == nodeType)
+                if (node.ThisNode.NodeType == nodeType)
                 {
                     result.Add(node);
                 }
@@ -88,31 +74,31 @@ namespace MMXReport
 
         void TreeList.IVirtualTreeListData.VirtualTreeGetChildNodes(VirtualTreeGetChildNodesInfo info)
         {
-            MimicNode obj = info.Node as MimicNode;
+            MimicTreeNode obj = info.Node as MimicTreeNode;
             info.Children = obj.ChildNodes;
         }
-        protected override void InsertItem(int index, MimicNode item)
+        protected override void InsertItem(int index, MimicTreeNode item)
         {
             item.Nodes = this;
             base.InsertItem(index, item);
         }
         void TreeList.IVirtualTreeListData.VirtualTreeGetCellValue(VirtualTreeGetCellValueInfo info)
         {
-            MimicNode obj = info.Node as MimicNode;
+            MimicTreeNode obj = info.Node as MimicTreeNode;
             switch (info.Column.Caption)
             {
                 case "Name":
-                    info.CellData = obj.NodeName;
+                    info.CellData = obj.ThisNode.Name;
                     break;
             }
         }
         void TreeList.IVirtualTreeListData.VirtualTreeSetCellValue(VirtualTreeSetCellValueInfo info)
         {
-            MimicNode obj = info.Node as MimicNode;
+            MimicTreeNode obj = info.Node as MimicTreeNode;
             switch (info.Column.Caption)
             {
                 case "Name":
-                    obj.NodeName = (string)info.NewCellData;
+                    obj.ThisNode.Name = (string)info.NewCellData;
                     break;
             }
         }

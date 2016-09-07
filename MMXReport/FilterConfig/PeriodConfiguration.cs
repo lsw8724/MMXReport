@@ -10,7 +10,7 @@ namespace MMXReport
 {
     public class PeriodConfiguration : MultiPointConfiguration
     {
-        public PeriodConfiguration(DBConnector dbconn): base(dbconn)
+        public PeriodConfiguration()
         {
             StartDate = new DateTime(StartDate.Year,1,1);
         }

@@ -15,6 +15,8 @@ namespace MMXReport
     { 
         public SqlConnection ConfigConnection { get; set; }
         public SqlConnection DataConnection { get; set; }
+        public string DataTableName { get; set; }
+
         public DBConnector()
         {
             ConfigConnection = new SqlConnection(
@@ -48,7 +50,6 @@ namespace MMXReport
             {
                 LogGenerator.AppendLog(ex.StackTrace, LogType.Exception, this);
                 MessageBox.Show(ex.Message);
-                throw ex;
             }
             finally
             {
@@ -90,24 +91,6 @@ namespace MMXReport
                 datas[1] = new WaveData() { AsyncData = waveArr, FMax = Convert.ToInt32(data.ItemArray[1]), Line = Convert.ToInt32(data.ItemArray[2]) };
             }
             return datas;
-        }
-
-        public ExtraChannelConfig LoadExtraJSON(int chid)
-        {
-            string query = "SELECT [ExtraJson] " +
-                           "FROM [" + ConfigConnection.Database + "].[dbo].[SensorChannel] " +
-                           "WHERE [Id] = " + chid;
-            DataTable data = GetResultByQuery(query, ConfigConnection);
-            return JsonConvert.DeserializeObject<ExtraChannelConfig>(data.Rows[0].ItemArray[0].ToString());
-        }
-
-        public DataTable LoadMimicNodeList()
-        {
-            string query = "SELECT [Id],[Name],[NodeType],[ParentId],[ChannelId]" +
-                           "FROM [" + ConfigConnection.Database + "].[dbo].[MimicNode] " +
-                           "WHERE [ParentId] != -1 AND [Name] != 'spare' AND [Name] NOT LIKE 'Trigger%' "+
-                           "ORDER BY [NodeType] ASC";
-            return GetResultByQuery(query, ConfigConnection);
         }
 
         public List<DataTable> LoadMultiPointTrendData(MultiPointConfiguration multiPointConf)
@@ -316,12 +299,43 @@ namespace MMXReport
                     "JOIN [" + DataConnection.Database + "].[dbo].[VectorData_day_avg] as data_avg ON point.[ChannelId] = data_avg.[ChannelId] " +
                     "JOIN [" + ConfigConnection.Database + "].[dbo].[SensorChannel] as Ch ON point.[ChannelId] = Ch.[Id] " +
                     "WHERE point.[NodeType]=300 AND point.[Name] != 'spare' AND point.[Name] NOT LIKE 'Trigger%' AND data_min.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_max.[DateTime] = '" + dailyConf.StartDateStr + "' AND data_avg.[DateTime] = '" + dailyConf.StartDateStr + "' ";
-                   
+                    
                 if (i < bandpassStringArr.Length - 1)
                     query += " UNION ";
             }
             return GetResultByQuery(query, DataConnection);
         }
+
+        public DataTable LoadShiftData(DailyConfiguration dailyConf)
+        {
+            string query = string.Empty;
+            string[] bandpassStringArr = Enum.GetNames(typeof(VectorOverrideOrder));
+            for (int i = 0; i < bandpassStringArr.Length; i++)
+            {
+                query += string.Format(
+                    "SELECT DISTINCT point.[ChannelId], machine.[Name] as Machine, point.[Name] as Point, " +
+                    "Bandpass = '{0}', " +
+                    "data_min.[{0}] as 'MIN', data_max.[{0}] as 'MAX', data_avg.[{0}] as 'AVG', " +
+                    "Ch.ExtraJson " +
+                    "FROM [{1}].[dbo].[MimicNode]  as point " +
+                    "JOIN [{1}].[dbo].[MimicNode] as machine " +
+                    "ON point.[ParentId] = machine.[Id] " +
+                    "JOIN [{2}].[dbo].[VectorData_hour_min] as data_min ON point.[ChannelId] = data_min.[ChannelId] " +
+                    "JOIN [{2}].[dbo].[VectorData_hour_max] as data_max ON point.[ChannelId] = data_max.[ChannelId] " +
+                    "JOIN [{2}].[dbo].[VectorData_hour_avg] as data_avg ON point.[ChannelId] = data_avg.[ChannelId] " +
+                    "JOIN [{1}].[dbo].[SensorChannel] as Ch ON point.[ChannelId] = Ch.[Id] " +
+                    "WHERE point.[NodeType]=300 AND point.[Name] != 'spare' AND point.[Name] NOT LIKE 'Trigger%' "+
+                    "AND data_min.[DateTime] >= '{3} {4}' AND data_min.[DateTime] <= '{3} {5}'"+
+                    "AND data_max.[DateTime] >= '{3} {4}' AND data_max.[DateTime] <= '{3} {5}'"+
+                    "AND data_avg.[DateTime] >= '{3} {4}' AND data_avg.[DateTime] <= '{3} {5}'"
+                    ,bandpassStringArr[i], ConfigConnection.Database, DataConnection.Database, dailyConf.StartDateStr, dailyConf.SelectedItem.TimeStrFrom, dailyConf.SelectedItem.TimeStrTo);
+
+                if (i < bandpassStringArr.Length - 1)
+                    query += " UNION ";
+            }
+            return GetResultByQuery(query, DataConnection);
+        }
+
 
         public List<DataTable> LoadRepairData(RepairConfiguration repairConf)
         {
