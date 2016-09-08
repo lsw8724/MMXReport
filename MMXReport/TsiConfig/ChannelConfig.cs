@@ -32,13 +32,13 @@ namespace MMXReport.TsiConfig
             MachineName = treeNode.ParentNode.ThisNode.Name;
             PointName = treeNode.ThisNode.Name;
             Id = treeNode.ThisNode.ChannelId;
-            Overrides = SQLRepository.SensorChannelCache.Where(x => x.Value.Id == treeNode.ThisNode.ChannelId).First().Value.ExtraJson.VectorOverrides;
+            Overrides = SQLRepository.SensorChannelCache.Where(x=>x.Value.Id == treeNode.ThisNode.ChannelId).First().Value.ExtraJson.VectorOverrides.Where(x=>! string.IsNullOrWhiteSpace(x.OverrideName)).ToArray();
             SetBandPass();
         }
 
         private void SetBandPass()
         {
-            BandpassArr = new BandpassConfig[Overrides.Count()];
+            BandpassArr = new BandpassConfig[Overrides.Length];
             
             for(int i=0 ; i<BandpassArr.Length; i++)
             {

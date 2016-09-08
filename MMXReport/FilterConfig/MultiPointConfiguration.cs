@@ -19,6 +19,7 @@ namespace MMXReport
         {
             StatTermType = "day";
             CommonBandpassList = new List<BandpassConfig>();
+            MaxScale = 100;
         }
 
         public void SetChannelList(IEnumerable<MimicTreeNode> mimicNodes)
@@ -32,27 +33,23 @@ namespace MMXReport
         private List<BandpassConfig> CollectCommonOverrides()
         {
             List<BandpassConfig> commonBandList = new List<BandpassConfig>();
-            if (SelectedChannelList.Count > 0)
+            List<BandpassConfig> noneCommonBandList = new List<BandpassConfig>();
+            if (SelectedChannelList.Count <= 0) return commonBandList;
+
+            for (int i=0; i<SelectedChannelList.Count; i++)
             {
-                BandpassConfig[] bandArr = SelectedChannelList.First().BandpassArr;
-                bool[] isNotCommonBandpass = new bool[9];
-                for (int i = 0; i < bandArr.Length; i++)
-                {
-                    foreach (var ch in SelectedChannelList)
+                if(i==0) 
+                    foreach(var measure in SelectedChannelList[i].BandpassArr)
+                        commonBandList.Add(measure);
+                else
+                    foreach (var measure in commonBandList)
                     {
-                        if (isNotCommonBandpass[i]) break;
-                        if (bandArr[i].OverrideInfo.OverrideName != ch.BandpassArr[i].OverrideInfo.OverrideName || !ch.BandpassArr[i].Visible)
-                        {
-                            isNotCommonBandpass[i] = true;
-                            break;
-                        }
-                    }
-                    if (!isNotCommonBandpass[i])
-                        commonBandList.Add(bandArr[i]);
-                }
-                if(commonBandList.Count > 0)
-                    commonBandList[0].Active = true;
+                        if (!SelectedChannelList[i].BandpassArr.Select(x => x.DisplayName).Contains(measure.DisplayName))
+                            noneCommonBandList.Add(measure);
+                    }                    
             }
+            foreach (var measure in noneCommonBandList)
+                commonBandList.Remove(measure);
             return commonBandList;
         }
     }

@@ -24,9 +24,5 @@ namespace MMXReport.Dialog
         }
 
         #endregion
-
-        public enum SplashScreenCommand
-        {
-        }
     }
 }

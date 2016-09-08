@@ -22,8 +22,8 @@ namespace MMXReport
     {
         public DBConnector DBConn { get; set; }
         public CommonConfig CommonConf { get; set; }
-        private MultiBandpassConfiguration MultiBandConf { get; set; }
-        private MultiBandpassConfigDlg MultiBandConfigDlg { get; set; }
+        private MultiMeasureConfiguration MultiBandConf { get; set; }
+        private MultiMeasureConfigDlg MultiBandConfigDlg { get; set; }
         private DayOfWeekConfiguration DayOfWeekConf { get; set; }
         private DayOfWeekConfigDlg DayOfWeekConfigDlg { get; set; }
         private DailyConfiguration DailyConf { get; set; }
@@ -69,7 +69,7 @@ namespace MMXReport
                 DBConn = new DBConnector();
                 ExcelManager = new ExcelIOManager();
                 CommonConf = new CommonConfig();
-                MultiBandConf = new MultiBandpassConfiguration();
+                MultiBandConf = new MultiMeasureConfiguration();
                 MultiPointConf = new MultiPointConfiguration();
                 DayOfWeekConf = new DayOfWeekConfiguration();
                 PeriodConf = new PeriodConfiguration();
@@ -77,7 +77,7 @@ namespace MMXReport
                 RepairConf = new RepairConfiguration();
 
                 DailyConfDlg = new DailyConfigDlg(DailyConf) { Owner = this };
-                MultiBandConfigDlg = new MultiBandpassConfigDlg(CommonConf, MultiBandConf) { Owner = this };
+                MultiBandConfigDlg = new MultiMeasureConfigDlg(CommonConf, MultiBandConf) { Owner = this };
                 MultiPointConfigDlg = new MultiPointConfigDlg(CommonConf, MultiPointConf) { Owner = this };
                 DayOfWeekConfigDlg = new DayOfWeekConfigDlg(CommonConf, DayOfWeekConf) { Owner = this };
                 PeriodConfigDlg = new PeriodConfigDlg(CommonConf, PeriodConf) { Owner = this };
@@ -194,9 +194,21 @@ namespace MMXReport
             if (MultiBandConf.Channel != null)
             {
                 Tchart_Trend.Series.Clear();
-                Tchart_Trend.Axes.Left.AutomaticMaximum = MultiBandConf.AutoScale;
-                if (!MultiBandConf.AutoScale)
-                    Tchart_Trend.Axes.Left.Maximum = MultiBandConf.MaxScale;
+                switch ((ScaleType)MultiPointConf.ScaleTypeIdx)
+                {
+                    case ScaleType.Auto:
+                        Tchart_Trend.Axes.Left.AutomaticMaximum = true;
+                        break;
+                    case ScaleType.Alarm:
+                        Tchart_Trend.Axes.Left.AutomaticMaximum = false;
+                        var alarms = MultiPointConf.Channel.Overrides[MultiPointConf.AlarmReferenceIdx].AlarmValues;
+                        Tchart_Trend.Axes.Left.Maximum = alarms.Last() + 5;
+                        break;
+                    case ScaleType.Custom:
+                        Tchart_Trend.Axes.Left.AutomaticMaximum = false;
+                        Tchart_Trend.Axes.Left.Maximum = MultiPointConf.MaxScale;
+                        break;
+                }
                 Tchart_Trend.Header.Lines = new string[] { MultiBandConf.Channel.PointName };
                 switch (MultiBandConf.StatTermType)
                 {
@@ -226,16 +238,29 @@ namespace MMXReport
                         } break;
                 }
             }
-        }       
+        }
 
         private void BtnPreview_MultPointTrend_Click(object sender, EventArgs e)
         {
             if (MultiPointConf.CommonBandpassList.Count > 0)
             {
                 Tchart_Trend.Series.Clear();
-                Tchart_Trend.Axes.Left.AutomaticMaximum = MultiPointConf.AutoScale;
-                if (!MultiPointConf.AutoScale)
-                    Tchart_Trend.Axes.Left.Maximum = MultiPointConf.MaxScale;
+                switch ((ScaleType)MultiPointConf.ScaleTypeIdx)
+                {
+                    case ScaleType.Auto:
+                        Tchart_Trend.Axes.Left.AutomaticMaximum = true;
+                        break;
+                    case ScaleType.Alarm:
+                        Tchart_Trend.Axes.Left.AutomaticMaximum = false;
+                        var alarms = MultiPointConf.SelectedChannelList[MultiPointConf.AlarmReferenceIdx]. Overrides.Where(x=>x.OverrideName == MultiPointConf.SelectedBandpass.DisplayName).First().AlarmValues;
+                        
+                        Tchart_Trend.Axes.Left.Maximum = alarms.Last() + 5;
+                        break;
+                    case ScaleType.Custom:
+                        Tchart_Trend.Axes.Left.AutomaticMaximum = false;
+                        Tchart_Trend.Axes.Left.Maximum = MultiPointConf.MaxScale;
+                        break;
+                }
                 Tchart_Trend.Header.Lines = new string[] { MultiPointConf.SelectedBandpass.OverrideInfo.OverrideName };
                 switch (MultiPointConf.StatTermType)
                 {
@@ -305,7 +330,7 @@ namespace MMXReport
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (DayOfWeekConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new SheetItems()
                 {
                     DateTime = DayOfWeekConf.StartDateStr + " ~ " + DayOfWeekConf.EndDateStr,
                     Name = MultiLang.WeeklyComparison + " " + MultiLang.Report,
@@ -325,7 +350,7 @@ namespace MMXReport
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (MultiBandConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new SheetItems()
                 {
                     DateTime = MultiBandConf.StartDateStr + " ~ " + MultiBandConf.EndDateStr,
                     Name = MultiLang.TrendOfPoint + " " + MultiLang.Report,
@@ -344,7 +369,7 @@ namespace MMXReport
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (MultiPointConf.CommonBandpassList.Count > 0)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx", saveFileDialog1.FileName, new SheetItems()
                 {
                     DateTime = MultiPointConf.StartDateStr + " ~ " + MultiPointConf.EndDateStr,
                     Name = MultiLang.TrendOfMeasurements + " " + MultiLang.Report,
@@ -364,7 +389,7 @@ namespace MMXReport
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             if (PeriodConf.CommonBandpassList.Count > 0)
             {
-                ExcelManager.CreateExcel("Template_CommonReport.xlsx",saveFileDialog1.FileName, new CommonReportItems()
+                ExcelManager.CreateExcel("Template_CommonReport.xlsx",saveFileDialog1.FileName, new SheetItems()
                 {
                     DateTime = PeriodConf.StartDate.ToString("yyyy년도"),
                     Name = MultiLang.PeriodicComparison + " " + MultiLang.Report,
@@ -430,7 +455,7 @@ namespace MMXReport
             }
             if (RepairConf.Channel != null)
             {
-                ExcelManager.CreateExcel("Template_Maintenance.xlsx",saveFileDialog1.FileName, new CommonReportItems()
+                ExcelManager.CreateExcel("Template_Maintenance.xlsx",saveFileDialog1.FileName, new SheetItems()
                 {
                     DateTime = RepairConf.StartDateStr + " ~ " + RepairConf.EndDateStr,
                     Name = MultiLang.MaintenanceTask +" "+ MultiLang.Report,
@@ -458,7 +483,7 @@ namespace MMXReport
             else
                 items = SQLRepository.VectorDatas.GetShiftData(DailyConf.StartDate,DailyConf.SelectedItem.From, DailyConf.SelectedItem.To);
 
-            ExcelManager.CreateExcel("Template_DailyReport.xlsx",saveFileDialog1.FileName,new CommonReportItems()
+            ExcelManager.CreateExcel("Template_DailyReport.xlsx",saveFileDialog1.FileName,new SheetItems()
             {
                 DateTime = "Date : " + DailyConf.StartDateStr +" "+ DailyConf.SelectedItem.TimeStrFrom + "~" + DailyConf.SelectedItem.TimeStrTo,
                 Name = MultiLang.Daily + " " + MultiLang.Report,

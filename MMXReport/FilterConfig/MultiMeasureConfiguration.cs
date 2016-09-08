@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace MMXReport
 {
-    public class MultiBandpassConfiguration : BaseConfiguration
+    public class MultiMeasureConfiguration : BaseConfiguration
     {
         public string StatTermType { get; set; }
-        public MultiBandpassConfiguration()
+       
+        public MultiMeasureConfiguration()
         {
             StatTermType = "day";
+            MaxScale = 100;
         }
     }
 }

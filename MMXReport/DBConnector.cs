@@ -96,7 +96,8 @@ namespace MMXReport
         public List<DataTable> LoadMultiPointTrendData(MultiPointConfiguration multiPointConf)
         {
             List<DataTable> dataList = new List<DataTable>();
-            BandpassConfig selectedbandpass = multiPointConf.CommonBandpassList.Where(x => x.Active).First() as BandpassConfig;
+            BandpassConfig selectedbandpass = multiPointConf.CommonBandpassList.Where(x => x.Active).FirstOrDefault() as BandpassConfig;
+            if (selectedbandpass == null) selectedbandpass = multiPointConf.CommonBandpassList.First();
             string query = string.Empty;
             switch (multiPointConf.StatTermType)
             {
@@ -112,7 +113,6 @@ namespace MMXReport
                         DataTable dt = GetResultByQuery(query, DataConnection);
                         dt.TableName = channel.PointName;
                         dataList.Add(dt);
-
                     }
                     break;
 
@@ -150,7 +150,7 @@ namespace MMXReport
             return dataList;
         }
 
-        public List<DataTable> LoadMultiBandpassTrendData(MultiBandpassConfiguration multiBandConf)
+        public List<DataTable> LoadMultiBandpassTrendData(MultiMeasureConfiguration multiBandConf)
         {
             List<DataTable> dataList = new List<DataTable>();
             

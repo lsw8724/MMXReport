@@ -10,6 +10,7 @@ using DevExpress.XtraEditors.Controls;
 using MMXReport.TsiConfig;
 using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraEditors.Repository;
 
 namespace MMXReport.Dialog
 {
@@ -39,6 +40,10 @@ namespace MMXReport.Dialog
             MimicNodeTree.CollapseAll();
             DateEdit_Start.DateTime = BaseConfig.StartDate;
             DateEdit_End.DateTime = BaseConfig.EndDate;
+
+            cbe_alarmScale.DataBindings.Add(new Binding("SelectedIndex", MultiPointConf, "AlarmReferenceIdx") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            radioGroupScale.DataBindings.Add(new Binding("SelectedIndex", MultiPointConf, "ScaleTypeIdx") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            te_Scale.DataBindings.Add(new Binding("EditValue", MultiPointConf, "MaxScale") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
         }
 
         private void StartDateEdit_EditValueChanged(object sender, EventArgs e)
@@ -87,6 +92,7 @@ namespace MMXReport.Dialog
             MimicTreeNodes pointNodes = (MimicNodeTree.DataSource as MimicTreeNodes).SearchNodes(300);
             MultiPointConf.SetChannelList(pointNodes.Where(x => x.Active));
             List_Bandpass.DataSource = MultiPointConf.CommonBandpassList;
+            cbeAlarmScale_Update();
         }
 
         private void TreeChildAllCheck(TreeListNodes nodes)
@@ -102,6 +108,7 @@ namespace MMXReport.Dialog
                 node.Checked = nodes.ParentNode.Checked;
                 TreeChildAllCheck(node.Nodes);
             }
+            cbeAlarmScale_Update();
         }
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -115,27 +122,23 @@ namespace MMXReport.Dialog
                 }
                 else
                     MultiPointConf.CommonBandpassList[i].Active = false;
-            }  
+            }
+            cbeAlarmScale_Update();
         }
 
-        private void Radio_CustomScale_CheckedChanged(object sender, EventArgs e)
+        private void cbeAlarmScale_Update()
         {
-            BaseConfig.AutoScale = false;
-            TextEdit_Scale.Enabled = true;
-            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
-            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
+            if (MultiPointConf.SelectedChannelList == null) return;
+            var cbItems = new ComboBoxItemCollection(new RepositoryItemComboBox());
+            foreach (var ch in MultiPointConf.SelectedChannelList)
+                cbItems.Add(Name = ch.PointName);
+            cbe_alarmScale.Properties.Items.Assign(cbItems);
         }
 
-        private void Radio_AutoScale_CheckedChanged(object sender, EventArgs e)
+        private void cbe_alarmScale_Properties_PropertiesChanged(object sender, EventArgs e)
         {
-            BaseConfig.AutoScale = true;
-            TextEdit_Scale.Enabled = false;
-        }
-
-        private void TextEdit_Scale_EditValueChanged(object sender, EventArgs e)
-        {
-            if (TextEdit_Scale.Text == string.Empty) BaseConfig.MaxScale = 0;
-            else BaseConfig.MaxScale = Convert.ToDouble(TextEdit_Scale.Text);
+            if (cbe_alarmScale.Properties.Items.Count == 0)
+                cbe_alarmScale.SelectedIndex = -1;
         }
     }
 }

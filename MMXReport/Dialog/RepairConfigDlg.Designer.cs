@@ -163,7 +163,7 @@
             // 
             this.labelControl4.Location = new System.Drawing.Point(206, 71);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(12, 14);
+            this.labelControl4.Size = new System.Drawing.Size(10, 14);
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "일";
             // 
@@ -193,7 +193,7 @@
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 71);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(36, 14);
+            this.labelControl2.Size = new System.Drawing.Size(30, 14);
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "수리후";
             // 
@@ -201,7 +201,7 @@
             // 
             this.labelControl1.Location = new System.Drawing.Point(12, 27);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 14);
+            this.labelControl1.Size = new System.Drawing.Size(30, 14);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "수리전";
             // 

@@ -12,7 +12,7 @@ using System.Drawing;
 
 namespace MMXReport
 {
-    public class CommonReportItems
+    public class SheetItems
     {
         public string DateTime;
         public string Name;
@@ -31,7 +31,7 @@ namespace MMXReport
     }
     public class ExcelIOManager
     {
-        public void CreateExcel(string templateFileName, string savePath, CommonReportItems items)
+        public void CreateExcel(string templateFileName, string savePath, SheetItems items)
         {
             Excel.Application excel = null;
             Excel.Workbook workbook = null;
@@ -60,7 +60,7 @@ namespace MMXReport
             }
         }
 
-        private void GenerateReport(Excel.Workbook workbook, CommonReportItems items)
+        private void GenerateReport(Excel.Workbook workbook, SheetItems items)
         {
             Excel.Worksheet worksheet = workbook.Worksheets.get_Item(1) as Excel.Worksheet;
 

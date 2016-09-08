@@ -10,9 +10,12 @@ using DevExpress.XtraTreeList;
 
 namespace MMXReport
 {
+    public enum ScaleType { Auto=0, Alarm=1, Custom=2 };
     public abstract class BaseConfiguration
     {
         public double MaxScale { get; set; }
+        public int ScaleTypeIdx { get; set; }
+        public int AlarmReferenceIdx { get; set; } 
         public bool AutoScale { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
