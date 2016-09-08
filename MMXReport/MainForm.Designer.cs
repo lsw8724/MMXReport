@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.SmallImageList = new System.Windows.Forms.ImageList();
+            this.SmallImageList = new System.Windows.Forms.ImageList(this.components);
             this.Gr_Report = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
@@ -92,7 +93,7 @@
             this.fastLine1 = new Steema.TeeChart.Styles.FastLine();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Gr_Variation = new DevExpress.XtraEditors.GroupControl();
-            this.bandpassConfigBindingSource = new System.Windows.Forms.BindingSource();
+            this.bandpassConfigBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Gr_Report)).BeginInit();
             this.Gr_Report.SuspendLayout();

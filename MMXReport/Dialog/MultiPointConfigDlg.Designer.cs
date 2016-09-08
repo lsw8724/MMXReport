@@ -51,9 +51,9 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.cbe_alarmScale = new DevExpress.XtraEditors.ComboBoxEdit();
             this.te_Scale = new DevExpress.XtraEditors.TextEdit();
             this.radioGroupScale = new DevExpress.XtraEditors.RadioGroup();
-            this.cbe_alarmScale = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Start.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_Start.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_End.Properties.VistaTimeProperties)).BeginInit();
@@ -76,9 +76,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbe_alarmScale.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_Scale.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupScale.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbe_alarmScale.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Close
@@ -135,7 +135,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(6, 3);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(263, 97);
+            this.groupControl1.Size = new System.Drawing.Size(263, 92);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "운전기간";
             // 
@@ -149,9 +149,9 @@
             this.groupControl3.Controls.Add(this.Radio_Week);
             this.groupControl3.Controls.Add(this.Radio_Day);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(275, 106);
+            this.groupControl3.Location = new System.Drawing.Point(275, 101);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(263, 57);
+            this.groupControl3.Size = new System.Drawing.Size(263, 61);
             this.groupControl3.TabIndex = 5;
             this.groupControl3.Text = "통계 단위";
             // 
@@ -201,10 +201,10 @@
             this.Gr_Machine.AppearanceCaption.Options.UseFont = true;
             this.Gr_Machine.Controls.Add(this.MimicNodeTree);
             this.Gr_Machine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Machine.Location = new System.Drawing.Point(6, 169);
+            this.Gr_Machine.Location = new System.Drawing.Point(6, 168);
             this.Gr_Machine.Name = "Gr_Machine";
             this.Gr_Machine.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.Gr_Machine.Size = new System.Drawing.Size(263, 329);
+            this.Gr_Machine.Size = new System.Drawing.Size(263, 308);
             this.Gr_Machine.TabIndex = 8;
             this.Gr_Machine.Text = "설비 목록";
             // 
@@ -231,7 +231,7 @@
             this.MimicNodeTree.OptionsView.ShowVertLines = false;
             this.MimicNodeTree.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.MimicNodeTree.Size = new System.Drawing.Size(239, 295);
+            this.MimicNodeTree.Size = new System.Drawing.Size(239, 274);
             this.MimicNodeTree.TabIndex = 2;
             this.MimicNodeTree.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.MimicNodeTree_AfterCheckNode);
             // 
@@ -271,12 +271,11 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 22);
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 103F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(544, 501);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
@@ -290,9 +289,9 @@
             this.groupControl2.Controls.Add(this.Radio_Min);
             this.groupControl2.Controls.Add(this.Radio_Max);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(6, 106);
+            this.groupControl2.Location = new System.Drawing.Point(6, 101);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(263, 57);
+            this.groupControl2.Size = new System.Drawing.Size(263, 61);
             this.groupControl2.TabIndex = 6;
             this.groupControl2.Text = "측정값";
             // 
@@ -342,10 +341,10 @@
             this.Gr_Bandpass.AppearanceCaption.Options.UseFont = true;
             this.Gr_Bandpass.Controls.Add(this.List_Bandpass);
             this.Gr_Bandpass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Bandpass.Location = new System.Drawing.Point(275, 169);
+            this.Gr_Bandpass.Location = new System.Drawing.Point(275, 168);
             this.Gr_Bandpass.Name = "Gr_Bandpass";
             this.Gr_Bandpass.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.Gr_Bandpass.Size = new System.Drawing.Size(263, 329);
+            this.Gr_Bandpass.Size = new System.Drawing.Size(263, 308);
             this.Gr_Bandpass.TabIndex = 9;
             this.Gr_Bandpass.Text = "밴드패스";
             // 
@@ -357,7 +356,7 @@
             this.List_Bandpass.Name = "List_Bandpass";
             this.List_Bandpass.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.List_Bandpass.Size = new System.Drawing.Size(239, 295);
+            this.List_Bandpass.Size = new System.Drawing.Size(239, 274);
             this.List_Bandpass.TabIndex = 0;
             this.List_Bandpass.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -402,16 +401,26 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(275, 3);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(263, 97);
+            this.groupControl4.Size = new System.Drawing.Size(263, 92);
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Text = "Y 스케일";
+            // 
+            // cbe_alarmScale
+            // 
+            this.cbe_alarmScale.Location = new System.Drawing.Point(103, 45);
+            this.cbe_alarmScale.Name = "cbe_alarmScale";
+            this.cbe_alarmScale.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbe_alarmScale.Properties.PropertiesChanged += new System.EventHandler(this.cbe_alarmScale_Properties_PropertiesChanged);
+            this.cbe_alarmScale.Size = new System.Drawing.Size(148, 20);
+            this.cbe_alarmScale.TabIndex = 23;
             // 
             // te_Scale
             // 
             this.te_Scale.EditValue = "100.0";
             this.te_Scale.Location = new System.Drawing.Point(103, 67);
             this.te_Scale.Name = "te_Scale";
-            this.te_Scale.Size = new System.Drawing.Size(100, 20);
+            this.te_Scale.Size = new System.Drawing.Size(148, 20);
             this.te_Scale.TabIndex = 22;
             // 
             // radioGroupScale
@@ -424,18 +433,8 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Auto"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Alarm"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Custom")});
-            this.radioGroupScale.Size = new System.Drawing.Size(259, 73);
+            this.radioGroupScale.Size = new System.Drawing.Size(259, 68);
             this.radioGroupScale.TabIndex = 21;
-            // 
-            // cbe_alarmScale
-            // 
-            this.cbe_alarmScale.Location = new System.Drawing.Point(103, 45);
-            this.cbe_alarmScale.Name = "cbe_alarmScale";
-            this.cbe_alarmScale.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbe_alarmScale.Properties.PropertiesChanged += new System.EventHandler(this.cbe_alarmScale_Properties_PropertiesChanged);
-            this.cbe_alarmScale.Size = new System.Drawing.Size(100, 20);
-            this.cbe_alarmScale.TabIndex = 23;
             // 
             // MultiPointConfigDlg
             // 
@@ -478,9 +477,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbe_alarmScale.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_Scale.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupScale.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbe_alarmScale.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

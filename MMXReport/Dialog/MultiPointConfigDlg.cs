@@ -41,7 +41,7 @@ namespace MMXReport.Dialog
             DateEdit_Start.DateTime = BaseConfig.StartDate;
             DateEdit_End.DateTime = BaseConfig.EndDate;
 
-            cbe_alarmScale.DataBindings.Add(new Binding("SelectedIndex", MultiPointConf, "AlarmReferenceIdx") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            cbe_alarmScale.DataBindings.Add(new Binding("EditValue", MultiPointConf, "AlarmReferenceName") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
             radioGroupScale.DataBindings.Add(new Binding("SelectedIndex", MultiPointConf, "ScaleTypeIdx") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
             te_Scale.DataBindings.Add(new Binding("EditValue", MultiPointConf, "MaxScale") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
         }

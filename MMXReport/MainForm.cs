@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Steema.TeeChart;
 using System.Windows.Forms;
 using MMXReport.DataBase;
+using Steema.TeeChart.Tools;
 
 namespace MMXReport
 {
@@ -194,19 +195,20 @@ namespace MMXReport
             if (MultiBandConf.Channel != null)
             {
                 Tchart_Trend.Series.Clear();
-                switch ((ScaleType)MultiPointConf.ScaleTypeIdx)
+                switch ((ScaleType)MultiBandConf.ScaleTypeIdx)
                 {
                     case ScaleType.Auto:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = true;
                         break;
                     case ScaleType.Alarm:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
-                        var alarms = MultiPointConf.Channel.Overrides[MultiPointConf.AlarmReferenceIdx].AlarmValues;
+                        var alarms = MultiBandConf.Channel.Overrides.Where(x => x.OverrideName.Equals(MultiBandConf.AlarmReferenceName)).First().AlarmValues;
+                        AddAlarmLineToTrendChart(alarms);
                         Tchart_Trend.Axes.Left.Maximum = alarms.Last() + 5;
                         break;
                     case ScaleType.Custom:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
-                        Tchart_Trend.Axes.Left.Maximum = MultiPointConf.MaxScale;
+                        Tchart_Trend.Axes.Left.Maximum = MultiBandConf.MaxScale;
                         break;
                 }
                 Tchart_Trend.Header.Lines = new string[] { MultiBandConf.Channel.PointName };
@@ -239,6 +241,18 @@ namespace MMXReport
                 }
             }
         }
+        private void AddAlarmLineToTrendChart(float[] alarms)
+        {
+            Tchart_Trend.Tools.Clear();
+            for (int i =0; i<alarms.Length; i++)
+            {
+                var alarmLine = new ColorLine();
+                alarmLine.Pen.Color = DailyReportItem.AlarmColors[i];
+                alarmLine.Axis = Tchart_Trend.Axes.Left;
+                alarmLine.Value = alarms[i];
+                Tchart_Trend.Tools.Add(alarmLine);
+            }
+        }
 
         private void BtnPreview_MultPointTrend_Click(object sender, EventArgs e)
         {
@@ -252,9 +266,10 @@ namespace MMXReport
                         break;
                     case ScaleType.Alarm:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
-                        var alarms = MultiPointConf.SelectedChannelList[MultiPointConf.AlarmReferenceIdx]. Overrides.Where(x=>x.OverrideName == MultiPointConf.SelectedBandpass.DisplayName).First().AlarmValues;
-                        
+                        var point = MultiPointConf.SelectedChannelList.Where(x=>x.PointName.Equals(MultiPointConf.AlarmReferenceName)).First();
+                        var alarms = point.Overrides.Where(x => x.OverrideName == MultiPointConf.SelectedBandpass.DisplayName).First().AlarmValues;
                         Tchart_Trend.Axes.Left.Maximum = alarms.Last() + 5;
+                        AddAlarmLineToTrendChart(alarms);
                         break;
                     case ScaleType.Custom:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;

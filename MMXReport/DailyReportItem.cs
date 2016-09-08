@@ -18,6 +18,7 @@ namespace MMXReport
     }
     public class DailyReportItem
     {
+        public static Color[] AlarmColors = new Color[] { Color.Orange, Color.Pink, Color.Red, Color.Black };
         public int ChannelId { get; set; }
         public string Machine { get; set; }
         public string Point { get; set; }
@@ -57,24 +58,24 @@ namespace MMXReport
             if (maxValue >= alarms[3])
             {
                 status.Stat = "Stop";
-                status.StatColor = Color.Red;
+                status.StatColor = AlarmColors[3];
                 status.StatColor_Font = Color.White;
             }
             else if (maxValue >= alarms[2])
             {
                 status.Stat = "Repair";
-                status.StatColor = Color.OrangeRed;
+                status.StatColor = AlarmColors[2];
                 status.StatColor_Font = Color.White;
             }
             else if (maxValue >= alarms[1])
             {
-                status.StatColor = Color.Yellow;
+                status.StatColor = AlarmColors[1];
                 status.StatColor_Font = Color.Black;
                 status.Stat = "Failure";
             }
             else if (maxValue >= alarms[0])
             {
-                status.StatColor = Color.Pink;
+                status.StatColor = AlarmColors[0];
                 status.StatColor_Font = Color.Black;
                 status.Stat = "Caution";
             }

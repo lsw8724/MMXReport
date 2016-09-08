@@ -37,7 +37,7 @@ namespace MMXReport.Dialog
             DateEdit_End.DateTime = BaseConfig.EndDate;
             MimicNodeTree.SetFocusedNode(MimicNodeTree.Nodes.FirstNode);
             
-            cbe_alarmScale.DataBindings.Add(new Binding("SelectedIndex", MultiBandConf, "AlarmReferenceIdx") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            cbe_alarmScale.DataBindings.Add(new Binding("EditValue", MultiBandConf, "AlarmReferenceName") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
             radioGroupScale.DataBindings.Add(new Binding("SelectedIndex", MultiBandConf, "ScaleTypeIdx") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
             te_Scale.DataBindings.Add(new Binding("EditValue", MultiBandConf, "MaxScale") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged }); 
         }
@@ -125,7 +125,9 @@ namespace MMXReport.Dialog
         private void cbe_alarmScale_Properties_PropertiesChanged(object sender, EventArgs e)
         {
             if (cbe_alarmScale.Properties.Items.Count == 0)
-                cbe_alarmScale.SelectedIndex = -1;
+                cbe_alarmScale.EditValue = string.Empty;
+            else if (cbe_alarmScale.Properties.Items.Count == 1)
+                cbe_alarmScale.SelectedIndex = 0;
         }
     }
 }

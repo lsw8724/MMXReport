@@ -87,7 +87,7 @@
             // 
             // Btn_Close
             // 
-            this.Btn_Close.Location = new System.Drawing.Point(0, 478);
+            this.Btn_Close.Location = new System.Drawing.Point(0, 462);
             this.Btn_Close.Size = new System.Drawing.Size(544, 23);
             // 
             // DateEdit_Start
@@ -208,7 +208,7 @@
             this.Gr_Machine.Location = new System.Drawing.Point(6, 168);
             this.Gr_Machine.Name = "Gr_Machine";
             this.Gr_Machine.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.Gr_Machine.Size = new System.Drawing.Size(263, 307);
+            this.Gr_Machine.Size = new System.Drawing.Size(263, 291);
             this.Gr_Machine.TabIndex = 8;
             this.Gr_Machine.Text = "설비 목록";
             // 
@@ -232,7 +232,7 @@
             this.MimicNodeTree.OptionsView.ShowHorzLines = false;
             this.MimicNodeTree.OptionsView.ShowIndicator = false;
             this.MimicNodeTree.OptionsView.ShowVertLines = false;
-            this.MimicNodeTree.Size = new System.Drawing.Size(239, 273);
+            this.MimicNodeTree.Size = new System.Drawing.Size(239, 257);
             this.MimicNodeTree.TabIndex = 2;
             this.MimicNodeTree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.MimicNodeTree_FocusedNodeChanged);
             // 
@@ -271,7 +271,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(544, 478);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(544, 462);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // groupControl2
@@ -340,14 +340,14 @@
             this.Gr_Bandpass.Location = new System.Drawing.Point(275, 168);
             this.Gr_Bandpass.Name = "Gr_Bandpass";
             this.Gr_Bandpass.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.Gr_Bandpass.Size = new System.Drawing.Size(263, 307);
+            this.Gr_Bandpass.Size = new System.Drawing.Size(263, 291);
             this.Gr_Bandpass.TabIndex = 9;
             this.Gr_Bandpass.Text = "밴드패스";
             // 
             // CheckEdit_All
             // 
             this.CheckEdit_All.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CheckEdit_All.Location = new System.Drawing.Point(10, 258);
+            this.CheckEdit_All.Location = new System.Drawing.Point(10, 264);
             this.CheckEdit_All.Name = "CheckEdit_All";
             this.CheckEdit_All.Properties.Caption = "일괄 체크";
             this.CheckEdit_All.Size = new System.Drawing.Size(109, 19);
@@ -362,7 +362,7 @@
             this.CheckList_Measures.Name = "CheckList_Measures";
             this.CheckList_Measures.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.CheckList_Measures.Size = new System.Drawing.Size(239, 273);
+            this.CheckList_Measures.Size = new System.Drawing.Size(239, 257);
             this.CheckList_Measures.TabIndex = 0;
             this.CheckList_Measures.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMeasures});
@@ -435,7 +435,7 @@
             this.cbe_alarmScale.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbe_alarmScale.Properties.PropertiesChanged += new System.EventHandler(this.cbe_alarmScale_Properties_PropertiesChanged);
-            this.cbe_alarmScale.Size = new System.Drawing.Size(100, 20);
+            this.cbe_alarmScale.Size = new System.Drawing.Size(148, 20);
             this.cbe_alarmScale.TabIndex = 17;
             // 
             // te_Scale
@@ -443,7 +443,7 @@
             this.te_Scale.EditValue = "100.0";
             this.te_Scale.Location = new System.Drawing.Point(103, 67);
             this.te_Scale.Name = "te_Scale";
-            this.te_Scale.Size = new System.Drawing.Size(100, 20);
+            this.te_Scale.Size = new System.Drawing.Size(148, 20);
             this.te_Scale.TabIndex = 14;
             // 
             // radioGroupScale
@@ -469,7 +469,7 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 501);
+            this.ClientSize = new System.Drawing.Size(544, 485);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.LookAndFeel.SkinName = "Office 2013";
