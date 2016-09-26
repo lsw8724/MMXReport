@@ -27,7 +27,7 @@ namespace MMXReport.Dialog
             groupControl2.Text = MultiLang.TypeOfMeasurement;
             groupControl3.Text = "Y " + MultiLang.Scale;
             Gr_Machine.Text = MultiLang.PlantMap;
-            Gr_Bandpass.Text = MultiLang.BandPass;
+            Gr_Measurement.Text = MultiLang.Measurement;
             DateEdit_Start.Properties.DisplayFormat.FormatString = "yyyy " + MultiLang.Years;
 
             MimicNodeTree.DataSource = common.LoadMimicNodes();

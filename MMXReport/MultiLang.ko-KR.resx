@@ -120,8 +120,8 @@
   <data name="AfterMaintenanc" xml:space="preserve">
     <value>수리 후</value>
   </data>
-  <data name="BandPass" xml:space="preserve">
-    <value>밴드패스</value>
+  <data name="Measurement" xml:space="preserve">
+    <value>측정 함수</value>
   </data>
   <data name="BatchCheck" xml:space="preserve">
     <value>일괄 체크</value>
@@ -194,5 +194,8 @@
   </data>
   <data name="Years" xml:space="preserve">
     <value>년도</value>
+  </data>
+  <data name="PeriodDays" xml:space="preserve">
+    <value>기간</value>
   </data>
 </root>

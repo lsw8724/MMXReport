@@ -10,7 +10,7 @@ using DevExpress.XtraTreeList;
 
 namespace MMXReport
 {
-    public enum ScaleType { Auto=0, Alarm=1, Custom=2 };
+    public enum ScaleType { Auto = 0, Custom = 1, Alarm = 2 };
     public abstract class BaseConfiguration
     {
         public double MaxScale { get; set; }

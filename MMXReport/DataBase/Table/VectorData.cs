@@ -60,6 +60,24 @@ namespace MMXReport.DataBase
             "GROUP BY CAST(DateTime AS date), ChannelId) ", measureType, time_from, time_to);
         }
 
+        private string GetPeriodDaysSummaryDataQuery(string measureType, string time_from, string time_to)
+        {
+            return string.Format("(SELECT [ChannelId]," +
+            "CAST({0}(Rpm) as float(24)) AS Rpm," +
+            "CAST({0}(Direct) as float(24)) AS Direct," +
+            "CAST({0}(OneXAmp) as float(24)) AS OneXAmp," +
+            "CAST({0}(OneXPhase) as float(24)) AS OneXPhase," +
+            "CAST({0}(TwoXAmp) as float(24)) AS TwoXAmp, " +
+            "CAST({0}(TwoXPhase) as float(24)) AS TwoXPhase," +
+            "CAST({0}(NXAmp) as float(24)) AS NXAmp," +
+            "CAST({0}(NXPhase) as float(24)) AS NXPhase," +
+            "CAST({0}(Bandpass) as float(24)) AS Bandpass," +
+            "CAST({0}(CrestFactor) as float(24)) AS CrestFactor " +
+            "FROM dbo.VectorData_day_{0} AS v WITH (NOLOCK) " +
+            "WHERE [DateTime] >= '{1}' and [DateTime] < '{2}' " +
+            "GROUP BY ChannelId) ", measureType, time_from, time_to);
+        }
+
         public DailyReportItem[] GetDailyData(DateTime timeStamp)
         {
             string query = string.Empty;
@@ -90,6 +108,42 @@ namespace MMXReport.DataBase
             using (SqlCommand cmd = new SqlCommand(query, DBConnection))
             {
                 cmd.Parameters.AddWithValue("@TIMESTEMP", timeStamp);
+                return GetDailyReportItemsByQuery(cmd);
+            }
+        }
+
+        public DailyReportItem[] GetPeriodDaysData(DateTime from, DateTime to)
+        {
+            string dateTime_from = from.ToString("yyyy-MM-dd HH:mm:ss");
+            string dateTime_to = to.ToString("yyyy-MM-dd HH:mm:ss");
+            string query = string.Empty;
+            var measures = Enum.GetNames(typeof(VectorOverrideOrder));
+            for (int i = 0; i < measures.Length; i++)
+            {
+                query += string.Format("SELECT DISTINCT point.[ChannelId],machine.[Name] as Machine, point.[Name] as Point, Measure = '{0}', " +
+                    "data_min.[{0}] as 'MIN'," +
+                    "data_max.[{0}] as 'MAX'," +
+                    "data_avg.[{0}] as 'AVG'," +
+                    "Ch.ExtraJson " +
+                    "FROM [{1}].dbo.MimicNode as point " +
+                    "JOIN [{1}].dbo.MimicNode as machine " +
+                    "ON point.ParentId = machine.Id " +
+                    "JOIN {2} as data_min ON point.ChannelId = data_min.ChannelId " +
+                    "JOIN {3} as data_max ON point.ChannelId = data_max.ChannelId " +
+                    "JOIN {4} as data_avg ON point.ChannelId = data_avg.ChannelId " +
+                    "JOIN [{1}].dbo.SensorChannel as Ch ON point.ChannelId = Ch.Id " +
+                    "WHERE point.NodeType = 300 AND point.[Name] != 'spare' AND point.[Name] NOT LIKE 'Trigger%' "
+                    , measures[i], Settings.Default.ConfigDBName,
+                GetPeriodDaysSummaryDataQuery("min", dateTime_from, dateTime_to),
+                GetPeriodDaysSummaryDataQuery("max", dateTime_from, dateTime_to),
+                GetPeriodDaysSummaryDataQuery("avg", dateTime_from, dateTime_to));
+                if (i < measures.Length - 1)
+                    query += " UNION ";
+            }
+            query += "ORDER BY Machine DESC";
+
+            using (SqlCommand cmd = new SqlCommand(query, DBConnection))
+            {
                 return GetDailyReportItemsByQuery(cmd);
             }
         }

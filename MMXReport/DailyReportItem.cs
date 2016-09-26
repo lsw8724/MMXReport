@@ -18,7 +18,7 @@ namespace MMXReport
     }
     public class DailyReportItem
     {
-        public static Color[] AlarmColors = new Color[] { Color.Orange, Color.Pink, Color.Red, Color.Black };
+        public static Color[] AlarmColors = new Color[] { Color.Orange, Color.PaleVioletRed, Color.Red, Color.DimGray };
         public int ChannelId { get; set; }
         public string Machine { get; set; }
         public string Point { get; set; }

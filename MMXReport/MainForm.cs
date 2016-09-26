@@ -16,6 +16,8 @@ using Steema.TeeChart;
 using System.Windows.Forms;
 using MMXReport.DataBase;
 using Steema.TeeChart.Tools;
+using System.Diagnostics;
+using System.IO;
 
 namespace MMXReport
 {
@@ -35,6 +37,9 @@ namespace MMXReport
         private PeriodConfigDlg PeriodConfigDlg { get; set; }
         private RepairConfiguration RepairConf { get; set; }
         private RepairConfigDlg RepairConfigDlg { get; set; }
+        private PeriodDaysConfiguration PeriodDaysConf { get; set; }
+        private PeriodDaysDlg PeriodDaysConfigDlg { get; set; }
+
         private ExcelIOManager ExcelManager { get; set; }
         public MainForm()
         {
@@ -47,6 +52,7 @@ namespace MMXReport
             BtnReport_Period.Text = MultiLang.PeriodicComparison;
             BtnReport_Daily.Text = MultiLang.Daily;
             BtnReport_Repair.Text = MultiLang.MaintenanceTask;
+            BtnReport_PeriodDays.Text = MultiLang.PeriodDays;
 
             BtnConfig_BandpassTrend.Text = MultiLang.Configuration;
             BtnConfig_PointTrend.Text = MultiLang.Configuration;
@@ -54,6 +60,7 @@ namespace MMXReport
             BtnConfig_Period.Text = MultiLang.Configuration;
             BtnConfig_Daily.Text = MultiLang.Configuration;
             BtnConfig_Repair.Text = MultiLang.Configuration;
+            BtnConfig_PeriodDays.Text = MultiLang.Configuration;
 
             BtnPreview_BandpassTrend.Text = MultiLang.Preview;
             BtnPreview_PointTrend.Text = MultiLang.Preview;
@@ -61,6 +68,7 @@ namespace MMXReport
             BtnPreview_Period.Text = MultiLang.Preview;
             BtnPreview_Daily.Text = MultiLang.Preview;
             BtnPreview_Repair.Text = MultiLang.Preview;
+            BtnPreview_PeriodDays.Text = MultiLang.Preview;
             #endregion
             try
             {
@@ -76,7 +84,9 @@ namespace MMXReport
                 PeriodConf = new PeriodConfiguration();
                 DailyConf = new DailyConfiguration();
                 RepairConf = new RepairConfiguration();
+                PeriodDaysConf = new PeriodDaysConfiguration();
 
+                PeriodDaysConfigDlg = new PeriodDaysDlg(PeriodDaysConf) { Owner = this };
                 DailyConfDlg = new DailyConfigDlg(DailyConf) { Owner = this };
                 MultiBandConfigDlg = new MultiMeasureConfigDlg(CommonConf, MultiBandConf) { Owner = this };
                 MultiPointConfigDlg = new MultiPointConfigDlg(CommonConf, MultiPointConf) { Owner = this };
@@ -202,9 +212,13 @@ namespace MMXReport
                         break;
                     case ScaleType.Alarm:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
-                        var alarms = MultiBandConf.Channel.Overrides.Where(x => x.OverrideName.Equals(MultiBandConf.AlarmReferenceName)).First().AlarmValues;
-                        AddAlarmLineToTrendChart(alarms);
-                        Tchart_Trend.Axes.Left.Maximum = alarms.Last() + 5;
+                        var overrideConf = MultiBandConf.Channel.Overrides.Where(x => x.OverrideName.Equals(MultiBandConf.AlarmReferenceName)).FirstOrDefault();
+                        if (overrideConf != null)
+                        {
+                            var alarms = overrideConf.AlarmValues;
+                            AddAlarmLineToTrendChart(alarms,Tchart_Trend);
+                            Tchart_Trend.Axes.Left.Maximum = alarms.Last();
+                        }
                         break;
                     case ScaleType.Custom:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
@@ -241,16 +255,23 @@ namespace MMXReport
                 }
             }
         }
-        private void AddAlarmLineToTrendChart(float[] alarms)
+        private void AddAlarmLineToTrendChart(float[] alarms,TChart trendChart, bool isRepairChart = false)
         {
-            Tchart_Trend.Tools.Clear();
+            if (alarms == null) return;
+            if(isRepairChart)
+            {
+                for (int i = 1; i < trendChart.Tools.Count; i++)
+                    trendChart.Tools.RemoveAt(i);
+            }
+            else trendChart.Tools.Clear();
             for (int i =0; i<alarms.Length; i++)
             {
                 var alarmLine = new ColorLine();
                 alarmLine.Pen.Color = DailyReportItem.AlarmColors[i];
-                alarmLine.Axis = Tchart_Trend.Axes.Left;
+                alarmLine.Pen.Style = DashStyle.Dash;
+                alarmLine.Axis = trendChart.Axes.Left;
                 alarmLine.Value = alarms[i];
-                Tchart_Trend.Tools.Add(alarmLine);
+                trendChart.Tools.Add(alarmLine);
             }
         }
 
@@ -268,8 +289,8 @@ namespace MMXReport
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
                         var point = MultiPointConf.SelectedChannelList.Where(x=>x.PointName.Equals(MultiPointConf.AlarmReferenceName)).First();
                         var alarms = point.Overrides.Where(x => x.OverrideName == MultiPointConf.SelectedBandpass.DisplayName).First().AlarmValues;
-                        Tchart_Trend.Axes.Left.Maximum = alarms.Last() + 5;
-                        AddAlarmLineToTrendChart(alarms);
+                        Tchart_Trend.Axes.Left.Maximum = alarms.Last();
+                        AddAlarmLineToTrendChart(alarms,Tchart_Trend);
                         break;
                     case ScaleType.Custom:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
@@ -321,9 +342,26 @@ namespace MMXReport
             {
                 Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy\nM.d";
                 Tchart_RepairTrend.Series.Clear();
-                Tchart_RepairTrend.Axes.Left.AutomaticMaximum = RepairConf.AutoScale;
-                if (!RepairConf.AutoScale)
-                    Tchart_RepairTrend.Axes.Left.Maximum = RepairConf.MaxScale;
+                switch ((ScaleType)RepairConf.ScaleTypeIdx)
+                {
+                    case ScaleType.Auto:
+                        Tchart_RepairTrend.Axes.Left.AutomaticMaximum = true;
+                        break;
+                    case ScaleType.Alarm:
+                        Tchart_RepairTrend.Axes.Left.AutomaticMaximum = false;
+                        var overrideConf = RepairConf.Channel.Overrides.Where(x => x.OverrideName.Equals(RepairConf.AlarmReferenceName)).FirstOrDefault();
+                        if (overrideConf != null)
+                        {
+                            var alarms = overrideConf.AlarmValues;
+                            AddAlarmLineToTrendChart(alarms,Tchart_RepairTrend,true);
+                            Tchart_RepairTrend.Axes.Left.Maximum = alarms.Last();
+                        }
+                        break;
+                    case ScaleType.Custom:
+                        Tchart_RepairTrend.Axes.Left.AutomaticMaximum = false;
+                        Tchart_RepairTrend.Axes.Left.Maximum = RepairConf.MaxScale;
+                        break;
+                }
                 Tchart_RepairTrend.Header.Lines = new string[] { RepairConf.Channel.PointName };
                 colorBand1.Start = RepairConf.BeforeRepairDate.ToOADate();
                 colorBand1.End = RepairConf.AfterRepairDate.ToOADate();
@@ -356,6 +394,7 @@ namespace MMXReport
                     AnalysisType = "* BarChart Analysis",
                     Img = ChartCaptur(Tchart_DayOfWeek, 740)
                 });
+                Process.Start(Path.GetDirectoryName(saveFileDialog1.FileName));
             }
         }
 
@@ -376,6 +415,7 @@ namespace MMXReport
                     AnalysisType = "* Trend Analysis",
                     Img = ChartCaptur(Tchart_Trend, 740)
                 });
+                Process.Start(Path.GetDirectoryName(saveFileDialog1.FileName));
             }
         }
         private void BtnReport_MultiPointTrend_Click(object sender, EventArgs e)
@@ -395,6 +435,7 @@ namespace MMXReport
                     AnalysisType = "* Trend Analysis",
                     Img = ChartCaptur(Tchart_Trend, 740)
                 });
+                Process.Start(Path.GetDirectoryName(saveFileDialog1.FileName));
             }
         }
 
@@ -415,6 +456,7 @@ namespace MMXReport
                     AnalysisType = "* BarChart Analysis",
                     Img = ChartCaptur(Tchart_Period, 740)
                 });
+                Process.Start(Path.GetDirectoryName(saveFileDialog1.FileName));
             }
         } 
 
@@ -422,14 +464,31 @@ namespace MMXReport
         {
             BtnPreview_Repair_Click(null, null);
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
-            TChart_Time.Axes.Left.AutomaticMaximum = RepairConf.AutoScale_Time;
-            if (!RepairConf.AutoScale_Time)
-                TChart_Time.Axes.Left.Maximum = RepairConf.MaxScale_Time;
+            switch ((ScaleType)RepairConf.ScaleTypeIdx_Time)
+            {
+                case ScaleType.Auto: 
+                    TChart_Time.Axes.Left.AutomaticMaximum = true;
+                    TChart_Time.Axes.Left.AutomaticMinimum = true;
+                    break;
+                case ScaleType.Custom:
+                    TChart_Time.Axes.Left.AutomaticMaximum = false;
+                    TChart_Time.Axes.Left.AutomaticMinimum = false;
+                    TChart_Time.Axes.Left.Maximum = RepairConf.MaxScale_Time;
+                    TChart_Time.Axes.Left.Minimum = RepairConf.MinScale_Time;
+                    break;
+            }               
 
-            TChart_Spectrum.Axes.Left.AutomaticMaximum = RepairConf.AutoScale_FFT;
-            if (!RepairConf.AutoScale_FFT)
-                TChart_Spectrum.Axes.Left.Maximum = RepairConf.MaxScale_FFT;
-
+            switch ((ScaleType)RepairConf.ScaleTypeIdx_Time)
+            {
+                case ScaleType.Auto: 
+                    TChart_Spectrum.Axes.Left.AutomaticMaximum = true;
+                    break;
+                case ScaleType.Custom:
+                    TChart_Spectrum.Axes.Left.AutomaticMaximum = false;
+                    TChart_Spectrum.Axes.Left.Maximum = RepairConf.MaxScale_FFT; 
+                    break;
+            }
+             
             TChart_Time.Series[0].Clear();
             TChart_Spectrum.Series[0].Clear();
 
@@ -483,6 +542,7 @@ namespace MMXReport
                     Img_AfterTime = time_afterImg,
                     Img_AfterFFT = fft_afterImg
                 });
+                Process.Start(Path.GetDirectoryName(saveFileDialog1.FileName));
             }
         }
 
@@ -492,6 +552,7 @@ namespace MMXReport
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
             DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Dialog.WaitLoadingDlg), false, false);
             var shiftItem = DailyConf.SelectedItem;
+            if (shiftItem == null) return;
             DailyReportItem[] items = null;
             if (shiftItem.To.Subtract(shiftItem.From) == new TimeSpan(23, 59, 59))
                 items = SQLRepository.VectorDatas.GetDailyData(DailyConf.StartDate);
@@ -505,6 +566,7 @@ namespace MMXReport
                 DailyDatas = items
             });
             DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
+            Process.Start(Path.GetDirectoryName(saveFileDialog1.FileName));   
         }
 
         private Bitmap ChartCaptur(TChart tchart, int width, int height = -1)
@@ -543,6 +605,34 @@ namespace MMXReport
                     case "Stop": e.Appearance.BackColor = Color.Red; break;
                 }
             }
+        }
+
+        private void BtnPreview_PeriodDays_Click(object sender, EventArgs e)
+        {
+            Tchart_RepairTrend.Hide();
+            Grid_DailyData.Show();
+        }
+
+        private void BtnReport_PeriodDays_Click(object sender, EventArgs e)
+        {
+            BtnPreview_PeriodDays_Click(null, null);
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
+            DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Dialog.WaitLoadingDlg), false, false);
+            DailyReportItem[] items = SQLRepository.VectorDatas.GetPeriodDaysData(PeriodDaysConf.StartDate, PeriodDaysConf.EndDate);
+
+            ExcelManager.CreateExcel("Template_DailyReport.xlsx", saveFileDialog1.FileName, new SheetItems()
+            {
+                DateTime = "Date : " + PeriodDaysConf.StartDateStr + " ~ " + PeriodDaysConf.EndDateStr,
+                Name = MultiLang.PeriodDays + " " + MultiLang.Report,
+                DailyDatas = items
+            });
+            DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
+            Process.Start(Path.GetDirectoryName(saveFileDialog1.FileName));   
+        }
+
+        private void BtnConfig_PeriodDays_Click(object sender, EventArgs e)
+        {
+            PeriodDaysConfigDlg.Show();
         }
     }
 }

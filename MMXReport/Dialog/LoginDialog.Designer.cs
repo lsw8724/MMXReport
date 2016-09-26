@@ -56,46 +56,46 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl1.Location = new System.Drawing.Point(74, 161);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Expo M", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelControl1.Location = new System.Drawing.Point(81, 164);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(15, 21);
+            this.labelControl1.Size = new System.Drawing.Size(14, 17);
             this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "IP";
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl2.Location = new System.Drawing.Point(26, 189);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Expo M", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelControl2.Location = new System.Drawing.Point(26, 192);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(63, 21);
+            this.labelControl2.Size = new System.Drawing.Size(69, 17);
             this.labelControl2.TabIndex = 7;
             this.labelControl2.Text = "Account";
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl3.Location = new System.Drawing.Point(17, 217);
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Expo M", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelControl3.Location = new System.Drawing.Point(20, 220);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(72, 21);
+            this.labelControl3.Size = new System.Drawing.Size(75, 17);
             this.labelControl3.TabIndex = 8;
             this.labelControl3.Text = "Password";
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl4.Location = new System.Drawing.Point(234, 159);
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Expo M", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelControl4.Location = new System.Drawing.Point(236, 164);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(78, 21);
+            this.labelControl4.Size = new System.Drawing.Size(81, 17);
             this.labelControl4.TabIndex = 9;
             this.labelControl4.Text = "Config DB";
             // 
             // labelControl5
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelControl5.Location = new System.Drawing.Point(248, 186);
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Expo M", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelControl5.Location = new System.Drawing.Point(249, 192);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(64, 21);
+            this.labelControl5.Size = new System.Drawing.Size(68, 17);
             this.labelControl5.TabIndex = 10;
             this.labelControl5.Text = "Data DB";
             // 
@@ -134,6 +134,8 @@
             // 
             // btn_ok
             // 
+            this.btn_ok.Appearance.Font = new System.Drawing.Font("Expo M", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_ok.Appearance.Options.UseFont = true;
             this.btn_ok.Location = new System.Drawing.Point(178, 292);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(76, 26);
@@ -143,6 +145,8 @@
             // 
             // btn_cancel
             // 
+            this.btn_cancel.Appearance.Font = new System.Drawing.Font("Expo M", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_cancel.Appearance.Options.UseFont = true;
             this.btn_cancel.Location = new System.Drawing.Point(260, 292);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(76, 26);
@@ -156,7 +160,7 @@
             this.radioGroup1.Location = new System.Drawing.Point(157, 245);
             this.radioGroup1.Name = "radioGroup1";
             this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup1.Properties.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.radioGroup1.Properties.Appearance.Font = new System.Drawing.Font("Expo M", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.radioGroup1.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
             this.radioGroup1.Properties.Appearance.Options.UseFont = true;
@@ -173,7 +177,7 @@
             // 
             this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::MMXReport.Properties.Settings.Default, "DataDBName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit5.EditValue = global::MMXReport.Properties.Settings.Default.DataDBName;
-            this.textEdit5.Location = new System.Drawing.Point(334, 186);
+            this.textEdit5.Location = new System.Drawing.Point(334, 191);
             this.textEdit5.Name = "textEdit5";
             this.textEdit5.Properties.Appearance.Font = new System.Drawing.Font("Gulim", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textEdit5.Properties.Appearance.Options.UseFont = true;
@@ -184,7 +188,7 @@
             // 
             this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::MMXReport.Properties.Settings.Default, "ConfigDBName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit4.EditValue = global::MMXReport.Properties.Settings.Default.ConfigDBName;
-            this.textEdit4.Location = new System.Drawing.Point(334, 161);
+            this.textEdit4.Location = new System.Drawing.Point(334, 163);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Properties.Appearance.Font = new System.Drawing.Font("Gulim", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textEdit4.Properties.Appearance.Options.UseFont = true;

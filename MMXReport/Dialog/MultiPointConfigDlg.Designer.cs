@@ -45,7 +45,7 @@
             this.Radio_Avg = new System.Windows.Forms.RadioButton();
             this.Radio_Min = new System.Windows.Forms.RadioButton();
             this.Radio_Max = new System.Windows.Forms.RadioButton();
-            this.Gr_Bandpass = new DevExpress.XtraEditors.GroupControl();
+            this.Gr_Measurement = new DevExpress.XtraEditors.GroupControl();
             this.List_Bandpass = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,8 +69,8 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Gr_Bandpass)).BeginInit();
-            this.Gr_Bandpass.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Gr_Measurement)).BeginInit();
+            this.Gr_Measurement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.List_Bandpass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -83,6 +83,8 @@
             // 
             // Btn_Close
             // 
+            this.Btn_Close.Appearance.Font = new System.Drawing.Font("Expo M", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Btn_Close.Appearance.Options.UseFont = true;
             this.Btn_Close.Location = new System.Drawing.Point(0, 478);
             this.Btn_Close.Size = new System.Drawing.Size(544, 23);
             // 
@@ -119,14 +121,17 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Expo M", 9F);
             this.label1.Location = new System.Drawing.Point(123, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 14);
+            this.label1.Size = new System.Drawing.Size(17, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "~";
             // 
             // groupControl1
             // 
+            this.groupControl1.Appearance.Font = new System.Drawing.Font("Expo M", 8.25F);
+            this.groupControl1.Appearance.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.Controls.Add(this.DateEdit_Start);
@@ -141,7 +146,7 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl3.Appearance.Font = new System.Drawing.Font("Expo M", 8.25F);
             this.groupControl3.Appearance.Options.UseFont = true;
             this.groupControl3.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.groupControl3.AppearanceCaption.Options.UseFont = true;
@@ -159,10 +164,10 @@
             // 
             this.Radio_Month.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Radio_Month.AutoSize = true;
-            this.Radio_Month.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.Radio_Month.Location = new System.Drawing.Point(218, 26);
+            this.Radio_Month.Font = new System.Drawing.Font("Expo M", 9F);
+            this.Radio_Month.Location = new System.Drawing.Point(216, 26);
             this.Radio_Month.Name = "Radio_Month";
-            this.Radio_Month.Size = new System.Drawing.Size(35, 18);
+            this.Radio_Month.Size = new System.Drawing.Size(37, 17);
             this.Radio_Month.TabIndex = 2;
             this.Radio_Month.Text = "월";
             this.Radio_Month.UseVisualStyleBackColor = true;
@@ -172,10 +177,10 @@
             // 
             this.Radio_Week.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Radio_Week.AutoSize = true;
-            this.Radio_Week.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.Radio_Week.Font = new System.Drawing.Font("Expo M", 9F);
             this.Radio_Week.Location = new System.Drawing.Point(111, 26);
             this.Radio_Week.Name = "Radio_Week";
-            this.Radio_Week.Size = new System.Drawing.Size(35, 18);
+            this.Radio_Week.Size = new System.Drawing.Size(37, 17);
             this.Radio_Week.TabIndex = 1;
             this.Radio_Week.Text = "주";
             this.Radio_Week.UseVisualStyleBackColor = true;
@@ -185,10 +190,10 @@
             // 
             this.Radio_Day.AutoSize = true;
             this.Radio_Day.Checked = true;
-            this.Radio_Day.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.Radio_Day.Font = new System.Drawing.Font("Expo M", 9F);
             this.Radio_Day.Location = new System.Drawing.Point(12, 25);
             this.Radio_Day.Name = "Radio_Day";
-            this.Radio_Day.Size = new System.Drawing.Size(35, 18);
+            this.Radio_Day.Size = new System.Drawing.Size(37, 17);
             this.Radio_Day.TabIndex = 0;
             this.Radio_Day.TabStop = true;
             this.Radio_Day.Text = "일";
@@ -197,6 +202,8 @@
             // 
             // Gr_Machine
             // 
+            this.Gr_Machine.Appearance.Font = new System.Drawing.Font("Expo M", 8.25F);
+            this.Gr_Machine.Appearance.Options.UseFont = true;
             this.Gr_Machine.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.Gr_Machine.AppearanceCaption.Options.UseFont = true;
             this.Gr_Machine.Controls.Add(this.MimicNodeTree);
@@ -219,6 +226,7 @@
             this.MimicNodeTree.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
             this.MimicNodeTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MimicNodeTree.Font = new System.Drawing.Font("Expo M", 9F);
             this.MimicNodeTree.Location = new System.Drawing.Point(12, 27);
             this.MimicNodeTree.Name = "MimicNodeTree";
             this.MimicNodeTree.OptionsBehavior.AllowExpandOnDblClick = false;
@@ -265,7 +273,7 @@
             this.tableLayoutPanel1.Controls.Add(this.groupControl2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.Gr_Machine, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.Gr_Bandpass, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.Gr_Measurement, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupControl3, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupControl4, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -281,7 +289,7 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl2.Appearance.Font = new System.Drawing.Font("Expo M", 8.25F);
             this.groupControl2.Appearance.Options.UseFont = true;
             this.groupControl2.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.groupControl2.AppearanceCaption.Options.UseFont = true;
@@ -300,10 +308,10 @@
             this.Radio_Avg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Radio_Avg.AutoSize = true;
             this.Radio_Avg.Checked = true;
-            this.Radio_Avg.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.Radio_Avg.Location = new System.Drawing.Point(203, 26);
+            this.Radio_Avg.Font = new System.Drawing.Font("Expo M", 9F);
+            this.Radio_Avg.Location = new System.Drawing.Point(201, 26);
             this.Radio_Avg.Name = "Radio_Avg";
-            this.Radio_Avg.Size = new System.Drawing.Size(49, 18);
+            this.Radio_Avg.Size = new System.Drawing.Size(51, 17);
             this.Radio_Avg.TabIndex = 2;
             this.Radio_Avg.TabStop = true;
             this.Radio_Avg.Text = "Avg";
@@ -314,10 +322,10 @@
             // 
             this.Radio_Min.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Radio_Min.AutoSize = true;
-            this.Radio_Min.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.Radio_Min.Font = new System.Drawing.Font("Expo M", 9F);
             this.Radio_Min.Location = new System.Drawing.Point(110, 26);
             this.Radio_Min.Name = "Radio_Min";
-            this.Radio_Min.Size = new System.Drawing.Size(47, 18);
+            this.Radio_Min.Size = new System.Drawing.Size(47, 17);
             this.Radio_Min.TabIndex = 1;
             this.Radio_Min.Text = "Min";
             this.Radio_Min.UseVisualStyleBackColor = true;
@@ -326,31 +334,34 @@
             // Radio_Max
             // 
             this.Radio_Max.AutoSize = true;
-            this.Radio_Max.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.Radio_Max.Font = new System.Drawing.Font("Expo M", 9F);
             this.Radio_Max.Location = new System.Drawing.Point(12, 26);
             this.Radio_Max.Name = "Radio_Max";
-            this.Radio_Max.Size = new System.Drawing.Size(50, 18);
+            this.Radio_Max.Size = new System.Drawing.Size(53, 17);
             this.Radio_Max.TabIndex = 0;
             this.Radio_Max.Text = "Max";
             this.Radio_Max.UseVisualStyleBackColor = true;
             this.Radio_Max.CheckedChanged += new System.EventHandler(this.Radio_Max_CheckedChanged_1);
             // 
-            // Gr_Bandpass
+            // Gr_Measurement
             // 
-            this.Gr_Bandpass.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.Gr_Bandpass.AppearanceCaption.Options.UseFont = true;
-            this.Gr_Bandpass.Controls.Add(this.List_Bandpass);
-            this.Gr_Bandpass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Bandpass.Location = new System.Drawing.Point(275, 168);
-            this.Gr_Bandpass.Name = "Gr_Bandpass";
-            this.Gr_Bandpass.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.Gr_Bandpass.Size = new System.Drawing.Size(263, 308);
-            this.Gr_Bandpass.TabIndex = 9;
-            this.Gr_Bandpass.Text = "밴드패스";
+            this.Gr_Measurement.Appearance.Font = new System.Drawing.Font("Expo M", 8.25F);
+            this.Gr_Measurement.Appearance.Options.UseFont = true;
+            this.Gr_Measurement.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.Gr_Measurement.AppearanceCaption.Options.UseFont = true;
+            this.Gr_Measurement.Controls.Add(this.List_Bandpass);
+            this.Gr_Measurement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Gr_Measurement.Location = new System.Drawing.Point(275, 168);
+            this.Gr_Measurement.Name = "Gr_Measurement";
+            this.Gr_Measurement.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.Gr_Measurement.Size = new System.Drawing.Size(263, 308);
+            this.Gr_Measurement.TabIndex = 9;
+            this.Gr_Measurement.Text = "밴드패스";
             // 
             // List_Bandpass
             // 
             this.List_Bandpass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.List_Bandpass.Font = new System.Drawing.Font("Expo M", 9F);
             this.List_Bandpass.Location = new System.Drawing.Point(12, 27);
             this.List_Bandpass.MainView = this.gridView1;
             this.List_Bandpass.Name = "List_Bandpass";
@@ -395,6 +406,8 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Appearance.Font = new System.Drawing.Font("Expo M", 8.25F);
+            this.groupControl4.Appearance.Options.UseFont = true;
             this.groupControl4.Controls.Add(this.cbe_alarmScale);
             this.groupControl4.Controls.Add(this.te_Scale);
             this.groupControl4.Controls.Add(this.radioGroupScale);
@@ -407,7 +420,7 @@
             // 
             // cbe_alarmScale
             // 
-            this.cbe_alarmScale.Location = new System.Drawing.Point(103, 45);
+            this.cbe_alarmScale.Location = new System.Drawing.Point(103, 66);
             this.cbe_alarmScale.Name = "cbe_alarmScale";
             this.cbe_alarmScale.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -418,7 +431,7 @@
             // te_Scale
             // 
             this.te_Scale.EditValue = "100.0";
-            this.te_Scale.Location = new System.Drawing.Point(103, 67);
+            this.te_Scale.Location = new System.Drawing.Point(103, 45);
             this.te_Scale.Name = "te_Scale";
             this.te_Scale.Size = new System.Drawing.Size(148, 20);
             this.te_Scale.TabIndex = 22;
@@ -428,11 +441,13 @@
             this.radioGroupScale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioGroupScale.Location = new System.Drawing.Point(2, 22);
             this.radioGroupScale.Name = "radioGroupScale";
+            this.radioGroupScale.Properties.Appearance.Font = new System.Drawing.Font("Expo M", 9F);
+            this.radioGroupScale.Properties.Appearance.Options.UseFont = true;
             this.radioGroupScale.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.radioGroupScale.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Auto"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Alarm"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Custom")});
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Custom"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Alarm")});
             this.radioGroupScale.Size = new System.Drawing.Size(259, 68);
             this.radioGroupScale.TabIndex = 21;
             // 
@@ -470,8 +485,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Gr_Bandpass)).EndInit();
-            this.Gr_Bandpass.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Gr_Measurement)).EndInit();
+            this.Gr_Measurement.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.List_Bandpass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
@@ -495,7 +510,7 @@
         protected System.Windows.Forms.Label label1;
         protected DevExpress.XtraEditors.GroupControl groupControl1;
         protected DevExpress.XtraEditors.GroupControl Gr_Machine;
-        protected DevExpress.XtraEditors.GroupControl Gr_Bandpass;
+        protected DevExpress.XtraEditors.GroupControl Gr_Measurement;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraTreeList.TreeList MimicNodeTree;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;

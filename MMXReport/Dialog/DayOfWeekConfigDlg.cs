@@ -23,7 +23,7 @@ namespace MMXReport.Dialog
             groupControl2.Text = MultiLang.TypeOfMeasurement;
             groupControl3.Text = "X " + MultiLang.Scale;
             Gr_Machine.Text = MultiLang.PlantMap;
-            Gr_Bandpass.Text = MultiLang.BandPass;
+            Gr_Measurement.Text = MultiLang.Measurement;
             CheckEdit_All.Text = MultiLang.BatchCheck;
 
             MimicNodeTree.DataSource = common.MimicNodes;

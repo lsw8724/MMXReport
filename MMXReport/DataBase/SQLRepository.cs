@@ -37,7 +37,7 @@ namespace MMXReport.DataBase
                 VectorDatas = new VectorDataTable(DataDBConnection);
                 WaveDatas = new WaveDataTable(DataDBConnection);
                 MimicNodeCache = MimicNodes.GetAllMimicNode().ToDictionary(x => x.Id);
-                SensorChannelCache = SensorChannels.GetAllSensorChannel().ToDictionary(x => x.Id); 
+                SensorChannelCache = SensorChannels.GetAllSensorChannel().ToDictionary(x => x.Id);
             }
             catch (SqlException sqlEx)
             {

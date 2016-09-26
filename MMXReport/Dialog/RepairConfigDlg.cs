@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using MMXReport.TsiConfig;
+using DevExpress.XtraEditors.Repository;
 
 namespace MMXReport.Dialog
 {
@@ -29,7 +30,7 @@ namespace MMXReport.Dialog
             groupControl2.Text = MultiLang.TypeOfMeasurement;
             groupControl3.Text = "Y " + MultiLang.Scale;
             Gr_Machine.Text = MultiLang.PlantMap;
-            Gr_Bandpass.Text = MultiLang.BandPass;
+            Gr_Measurement.Text = MultiLang.Measurement;
             CheckEdit_All.Text = MultiLang.BatchCheck;
             labelControl1.Text = MultiLang.BeforeMaintenance;
             labelControl2.Text = MultiLang.AfterMaintenance;
@@ -39,6 +40,15 @@ namespace MMXReport.Dialog
             Numeric_RepairOffset.Value = RepairConf.RepairOffsetDay;
             DateEdit_Before.DateTime = BaseConfig.StartDate;
             DateEdit_After.DateTime = BaseConfig.EndDate;
+
+            cbe_alarmScale.DataBindings.Add(new Binding("EditValue", RepairConf, "AlarmReferenceName") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            radioGroupScale.DataBindings.Add(new Binding("SelectedIndex", RepairConf, "ScaleTypeIdx") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            radioGroupScaleTime.DataBindings.Add(new Binding("SelectedIndex", RepairConf, "ScaleTypeIdx_Time") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            radioGroupScaleFFT.DataBindings.Add(new Binding("SelectedIndex", RepairConf, "ScaleTypeIdx_FFT") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            te_maxScale.DataBindings.Add(new Binding("EditValue", RepairConf, "MaxScale") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            te_maxScaleTime.DataBindings.Add(new Binding("EditValue", RepairConf, "MaxScale_Time") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            te_minScaleTime.DataBindings.Add(new Binding("EditValue", RepairConf, "MinScale_Time") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });
+            te_maxScaleFFT.DataBindings.Add(new Binding("EditValue", RepairConf, "MaxScale_FFT") { DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged });            
         }
 
         private void StartDateEdit_EditValueChanged(object sender, EventArgs e)
@@ -86,6 +96,7 @@ namespace MMXReport.Dialog
         private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             BaseConfig.Channel.BandpassArr[e.RowHandle].Active = (bool)e.Value;
+            cbeAlarmScale_Update(); 
         }
 
         private void CheckEdit_All_CheckedChanged(object sender, EventArgs e)
@@ -95,6 +106,7 @@ namespace MMXReport.Dialog
                 foreach (var band in BaseConfig.Channel.BandpassArr)
                     band.Active = CheckEdit_All.Checked;
                 CheckList_Bandpass.RefreshDataSource();
+                cbeAlarmScale_Update(); 
             }
         }
 
@@ -109,55 +121,20 @@ namespace MMXReport.Dialog
             else return Convert.ToDouble(te.Text);
         }
 
-        private void Radio_CustomScale_CheckedChanged(object sender, EventArgs e)
+        private void cbeAlarmScale_Update()
         {
-            switch((sender as RadioButton).Name)
-            {
-                case "Radio_CustomScale":
-                    RepairConf.AutoScale = false;
-                    TextEdit_Scale.Enabled = true;
-                    RepairConf.MaxScale = GetScaleMax(TextEdit_Scale);
-                    break;
-                case "Radio_CustomScale_Time":
-                    RepairConf.AutoScale_Time = false;
-                    TextEdit_Scale_Time.Enabled = true;
-                    RepairConf.MaxScale_Time = GetScaleMax(TextEdit_Scale_Time);
-                    break;
-                case "Radio_CustomScale_FFT":
-                    RepairConf.AutoScale_FFT = false;
-                    TextEdit_Scale_FFT.Enabled = true;
-                    RepairConf.MaxScale_FFT = GetScaleMax(TextEdit_Scale_FFT);
-                    break;
-            }
+            var cbItems = new ComboBoxItemCollection(new RepositoryItemComboBox());
+            foreach (var measure in BaseConfig.Channel.BandpassArr.Where(x => x.Active).ToList())
+                cbItems.Add(Name = measure.DisplayName);
+            cbe_alarmScale.Properties.Items.Assign(cbItems);
         }
 
-        private void Radio_AutoScale_CheckedChanged(object sender, EventArgs e)
+        private void cbe_alarmScale_Properties_PropertiesChanged(object sender, EventArgs e)
         {
-            switch ((sender as RadioButton).Name)
-            {
-                case "Radio_AutoScale":
-                    RepairConf.AutoScale = true;
-                    TextEdit_Scale.Enabled = false;
-                    break;
-                case "Radio_AutoScale_Time":
-                    RepairConf.AutoScale_Time = true;
-                    TextEdit_Scale_Time.Enabled = false;
-                    break;
-                case "Radio_AutoScale_FFT":
-                    RepairConf.AutoScale_FFT = true;
-                    TextEdit_Scale_FFT.Enabled = false;
-                    break;
-            }
-        }
-
-        private void TextEdit_Scale_EditValueChanged(object sender, EventArgs e)
-        {
-            switch ((sender as TextEdit).Name)
-            {
-                case "TextEdit_Scale": RepairConf.MaxScale = GetScaleMax(TextEdit_Scale); break;
-                case "TextEdit_Scale_Time": RepairConf.MaxScale_Time = GetScaleMax(TextEdit_Scale_Time); break;
-                case "TextEdit_Scale_FFT": RepairConf.MaxScale_FFT = GetScaleMax(TextEdit_Scale_FFT); break;
-            }
+            if (cbe_alarmScale.Properties.Items.Count == 0)
+                cbe_alarmScale.EditValue = string.Empty;
+            else if (cbe_alarmScale.Properties.Items.Count == 1)
+                cbe_alarmScale.SelectedIndex = 0;
         }
     }
 }

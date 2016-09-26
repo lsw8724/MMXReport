@@ -29,7 +29,7 @@ namespace MMXReport.Dialog
             groupControl3.Text = MultiLang.Unit;
             groupControl4.Text = "Y " + MultiLang.Scale;
             Gr_Machine.Text = MultiLang.PlantMap;
-            Gr_Bandpass.Text = MultiLang.BandPass;
+            Gr_Measurement.Text = MultiLang.Measurement;
             Radio_Day.Text = MultiLang.Day;
             Radio_Week.Text = MultiLang.Week;
             Radio_Month.Text = MultiLang.Month;

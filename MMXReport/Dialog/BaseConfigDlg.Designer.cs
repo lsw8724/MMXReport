@@ -33,6 +33,8 @@
             // 
             // Btn_Close
             // 
+            this.Btn_Close.Appearance.Font = new System.Drawing.Font("Expo M", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Btn_Close.Appearance.Options.UseFont = true;
             this.Btn_Close.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Btn_Close.Location = new System.Drawing.Point(0, 340);
             this.Btn_Close.Name = "Btn_Close";

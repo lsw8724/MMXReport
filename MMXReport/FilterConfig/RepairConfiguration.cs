@@ -8,18 +8,21 @@ namespace MMXReport
 {
     public class RepairConfiguration : BaseConfiguration
     {
-        public bool AutoScale_Time { get; set; }
-        public bool AutoScale_FFT { get; set; }
+        public int ScaleTypeIdx_Time {get;set;}
+        public int ScaleTypeIdx_FFT{ get; set; }
         public double MaxScale_Time { get; set; }
         public double MaxScale_FFT { get; set; }
+        public double MinScale_Time { get; set; }
         public DateTime BeforeRepairDate { get; set; }
         public DateTime AfterRepairDate { get; set; }
         public int RepairOffsetDay { get; set; }
         public RepairConfiguration()
         {
             RepairOffsetDay = 10;
-            AutoScale_Time = true;
-            AutoScale_FFT = true;
+            MaxScale = 100;
+            MinScale_Time = -10;
+            MaxScale_Time = 10;
+            MaxScale_FFT = 100;
         }
     }
 }

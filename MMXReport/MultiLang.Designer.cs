@@ -61,20 +61,11 @@ namespace MMXReport {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to After Maintenance.
+        ///   Looks up a localized string similar to After.
         /// </summary>
         internal static string AfterMaintenance {
             get {
                 return ResourceManager.GetString("AfterMaintenance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Band Pass.
-        /// </summary>
-        internal static string BandPass {
-            get {
-                return ResourceManager.GetString("BandPass", resourceCulture);
             }
         }
         
@@ -88,7 +79,7 @@ namespace MMXReport {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Before Maintenance.
+        ///   Looks up a localized string similar to Before.
         /// </summary>
         internal static string BeforeMaintenance {
             get {
@@ -169,6 +160,15 @@ namespace MMXReport {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Measure Function.
+        /// </summary>
+        internal static string Measurement {
+            get {
+                return ResourceManager.GetString("Measurement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Month.
         /// </summary>
         internal static string Month {
@@ -183,6 +183,15 @@ namespace MMXReport {
         internal static string OperationPeriod {
             get {
                 return ResourceManager.GetString("OperationPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Period of Days.
+        /// </summary>
+        internal static string PeriodDays {
+            get {
+                return ResourceManager.GetString("PeriodDays", resourceCulture);
             }
         }
         
