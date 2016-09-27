@@ -1026,7 +1026,7 @@
             // 
             // 
             this.horizBar1.Marks.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(123)))), ((int)(((byte)(99)))));
-            this.horizBar1.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Value;
+            this.horizBar1.Marks.Style = Steema.TeeChart.Styles.MarksStyles.Percent;
             // 
             // 
             // 

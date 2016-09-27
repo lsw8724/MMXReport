@@ -32,6 +32,7 @@ namespace MMXReport.Dialog
                     radioGroup1.Properties.Items.Add(item.ToRadioItem());
                 }
             }
+            if (radioGroup1.Properties.Items.Count > 0) radioGroup1.SelectedIndex = 0;
         }
 
         private void DateEdit_EditValueChanged(object sender, EventArgs e)

@@ -205,6 +205,13 @@ namespace MMXReport
             if (MultiBandConf.Channel != null)
             {
                 Tchart_Trend.Series.Clear();
+                var overrideConf = MultiBandConf.Channel.Overrides.Where(x => x.OverrideName.Equals(MultiBandConf.AlarmReferenceName)).FirstOrDefault();
+                float[] alarms = null;
+                if (overrideConf != null)
+                {
+                    alarms = overrideConf.AlarmValues;
+                    AddAlarmLineToTrendChart(alarms,Tchart_Trend);
+                }
                 switch ((ScaleType)MultiBandConf.ScaleTypeIdx)
                 {
                     case ScaleType.Auto:
@@ -212,13 +219,8 @@ namespace MMXReport
                         break;
                     case ScaleType.Alarm:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
-                        var overrideConf = MultiBandConf.Channel.Overrides.Where(x => x.OverrideName.Equals(MultiBandConf.AlarmReferenceName)).FirstOrDefault();
-                        if (overrideConf != null)
-                        {
-                            var alarms = overrideConf.AlarmValues;
-                            AddAlarmLineToTrendChart(alarms,Tchart_Trend);
+                        if(alarms != null)
                             Tchart_Trend.Axes.Left.Maximum = alarms.Last();
-                        }
                         break;
                     case ScaleType.Custom:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
@@ -242,7 +244,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Week");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + " Week");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiBandpassTrendData(MultiBandConf))
@@ -250,7 +252,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Month");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + " Month");
                         } break;
                 }
             }
@@ -280,6 +282,10 @@ namespace MMXReport
             if (MultiPointConf.CommonBandpassList.Count > 0)
             {
                 Tchart_Trend.Series.Clear();
+                var point = MultiPointConf.SelectedChannelList.Where(x => x.PointName.Equals(MultiPointConf.AlarmReferenceName)).First();
+                var alarms = point.Overrides.Where(x => x.OverrideName == MultiPointConf.SelectedBandpass.DisplayName).First().AlarmValues;
+                AddAlarmLineToTrendChart(alarms, Tchart_Trend);
+                
                 switch ((ScaleType)MultiPointConf.ScaleTypeIdx)
                 {
                     case ScaleType.Auto:
@@ -287,10 +293,7 @@ namespace MMXReport
                         break;
                     case ScaleType.Alarm:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
-                        var point = MultiPointConf.SelectedChannelList.Where(x=>x.PointName.Equals(MultiPointConf.AlarmReferenceName)).First();
-                        var alarms = point.Overrides.Where(x => x.OverrideName == MultiPointConf.SelectedBandpass.DisplayName).First().AlarmValues;
                         Tchart_Trend.Axes.Left.Maximum = alarms.Last();
-                        AddAlarmLineToTrendChart(alarms,Tchart_Trend);
                         break;
                     case ScaleType.Custom:
                         Tchart_Trend.Axes.Left.AutomaticMaximum = false;
@@ -314,7 +317,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Week");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + " Week");
                         } break;
                     case "month":
                         foreach (var dataTable in DBConn.LoadMultiPointTrendData(MultiPointConf))
@@ -322,7 +325,7 @@ namespace MMXReport
                             FastLine fastline = new FastLine() { Title = dataTable.TableName };
                             Tchart_Trend.Series.Add(fastline);
                             foreach (DataRow data in dataTable.Rows)
-                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + "Month");
+                                fastline.Add(Convert.ToDouble(data.ItemArray[2]), data.ItemArray[0].ToString() + "\n" + data.ItemArray[1].ToString() + " Month");
                         } break;
                 }
             }
@@ -342,6 +345,13 @@ namespace MMXReport
             {
                 Tchart_RepairTrend.Axes.Bottom.Labels.DateTimeFormat = "yyyy\nM.d";
                 Tchart_RepairTrend.Series.Clear();
+                var overrideConf = RepairConf.Channel.Overrides.Where(x => x.OverrideName.Equals(RepairConf.AlarmReferenceName)).FirstOrDefault();
+                float[] alarms = null;
+                if (overrideConf != null)
+                {
+                    alarms = overrideConf.AlarmValues;
+                    AddAlarmLineToTrendChart(alarms,Tchart_RepairTrend,true);        
+                }
                 switch ((ScaleType)RepairConf.ScaleTypeIdx)
                 {
                     case ScaleType.Auto:
@@ -349,13 +359,8 @@ namespace MMXReport
                         break;
                     case ScaleType.Alarm:
                         Tchart_RepairTrend.Axes.Left.AutomaticMaximum = false;
-                        var overrideConf = RepairConf.Channel.Overrides.Where(x => x.OverrideName.Equals(RepairConf.AlarmReferenceName)).FirstOrDefault();
-                        if (overrideConf != null)
-                        {
-                            var alarms = overrideConf.AlarmValues;
-                            AddAlarmLineToTrendChart(alarms,Tchart_RepairTrend,true);
+                        if(alarms != null)
                             Tchart_RepairTrend.Axes.Left.Maximum = alarms.Last();
-                        }
                         break;
                     case ScaleType.Custom:
                         Tchart_RepairTrend.Axes.Left.AutomaticMaximum = false;
@@ -549,10 +554,10 @@ namespace MMXReport
         private void BtnReport_Daily_Click(object sender, EventArgs e)
         {
             BtnPreview_Daily_Click(null,null);
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
-            DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Dialog.WaitLoadingDlg), false, false);
             var shiftItem = DailyConf.SelectedItem;
             if (shiftItem == null) return;
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
+            DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Dialog.WaitLoadingDlg), false, false);
             DailyReportItem[] items = null;
             if (shiftItem.To.Subtract(shiftItem.From) == new TimeSpan(23, 59, 59))
                 items = SQLRepository.VectorDatas.GetDailyData(DailyConf.StartDate);
