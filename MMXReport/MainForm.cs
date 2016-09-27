@@ -169,8 +169,7 @@ namespace MMXReport
                 foreach (var dataTable in datas)
                 {
                     HorizBar hBar = new HorizBar() { Title = dataTable.TableName, ColorEach = (datas.Count ==1)? true:false };
-                    hBar.Marks.Font.Bold = true;
-                    hBar.Marks.Style = MarksStyles.Value;
+                    hBar.Marks.Visible = false;
                     Tchart_DayOfWeek.Series.Add(hBar);
                     foreach (DataRow data in dataTable.Rows)
                         hBar.Add(Convert.ToDouble(data.ItemArray[1]), data.ItemArray[0].ToString());
