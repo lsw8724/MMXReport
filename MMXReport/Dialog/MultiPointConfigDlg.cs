@@ -18,7 +18,7 @@ namespace MMXReport.Dialog
     {
         public MultiPointConfiguration MultiPointConf { get { return (MultiPointConfiguration)BaseConfig; } }
 
-        public MultiPointConfigDlg(CommonConfig common, BaseConfiguration baseConf)
+        public MultiPointConfigDlg(BaseConfiguration baseConf)
             : base(baseConf)
         {
             InitializeComponent();
@@ -33,8 +33,8 @@ namespace MMXReport.Dialog
             Radio_Day.Text = MultiLang.Day;
             Radio_Week.Text = MultiLang.Week;
             Radio_Month.Text = MultiLang.Month;
-            
-            MimicNodeTree.DataSource = common.LoadMimicNodes();
+
+            MimicNodeTree.DataSource = baseConf.MimicNodes;
             MimicNodeTree.BestFitColumns();
             MimicNodeTree.ExpandAll();
             MimicNodeTree.CollapseAll();
@@ -123,7 +123,6 @@ namespace MMXReport.Dialog
                 else
                     MultiPointConf.CommonBandpassList[i].Active = false;
             }
-            cbeAlarmScale_Update();
         }
 
         private void cbeAlarmScale_Update()
@@ -138,7 +137,7 @@ namespace MMXReport.Dialog
         private void cbe_alarmScale_Properties_PropertiesChanged(object sender, EventArgs e)
         {
             if (cbe_alarmScale.Properties.Items.Count == 0)
-                cbe_alarmScale.SelectedIndex = -1;
+                cbe_alarmScale.Text = string.Empty;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MMXReport.Dialog
     {
         public PeriodConfiguration PeriodConf { get { return (PeriodConfiguration)BaseConfig; } }
 
-        public PeriodConfigDlg(CommonConfig common, BaseConfiguration baseConf)
+        public PeriodConfigDlg(BaseConfiguration baseConf)
             : base(baseConf)
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace MMXReport.Dialog
             Gr_Measurement.Text = MultiLang.Measurement;
             DateEdit_Start.Properties.DisplayFormat.FormatString = "yyyy " + MultiLang.Years;
 
-            MimicNodeTree.DataSource = common.LoadMimicNodes();
+            MimicNodeTree.DataSource = baseConf.MimicNodes;
             MimicNodeTree.BestFitColumns();
             MimicNodeTree.ExpandAll();
             MimicNodeTree.CollapseAll();

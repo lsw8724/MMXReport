@@ -13,7 +13,7 @@ namespace MMXReport.Dialog
 {
     public partial class DayOfWeekConfigDlg : BaseConfigDlg
     {
-        public DayOfWeekConfigDlg(CommonConfig common, BaseConfiguration baseConf)
+        public DayOfWeekConfigDlg(BaseConfiguration baseConf)
             : base(baseConf)
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace MMXReport.Dialog
             Gr_Measurement.Text = MultiLang.Measurement;
             CheckEdit_All.Text = MultiLang.BatchCheck;
 
-            MimicNodeTree.DataSource = common.MimicNodes;
+            MimicNodeTree.DataSource = baseConf.MimicNodes;
             MimicNodeTree.BestFitColumns();
             DateEdit_Start.DateTime = BaseConfig.StartDate;
             DateEdit_End.DateTime = BaseConfig.EndDate;            

@@ -20,7 +20,7 @@ namespace MMXReport.Dialog
             InitializeComponent();           
         }
 
-        public RepairConfigDlg(CommonConfig common, BaseConfiguration baseConf)
+        public RepairConfigDlg(BaseConfiguration baseConf)
             : base(baseConf)
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace MMXReport.Dialog
             labelControl1.Text = MultiLang.BeforeMaintenance;
             labelControl2.Text = MultiLang.AfterMaintenance;
             labelControl4.Text = MultiLang.Days;
-            MimicNodeTree.DataSource = common.MimicNodes;
+            MimicNodeTree.DataSource = baseConf.MimicNodes;
             MimicNodeTree.BestFitColumns();
             Numeric_RepairOffset.Value = RepairConf.RepairOffsetDay;
             DateEdit_Before.DateTime = BaseConfig.StartDate;

@@ -32,25 +32,48 @@ namespace MMXReport.TsiConfig
             MachineName = treeNode.ParentNode.ThisNode.Name;
             PointName = treeNode.ThisNode.Name;
             Id = treeNode.ThisNode.ChannelId;
-            Overrides = SQLRepository.SensorChannelCache.Where(x=>x.Value.Id == treeNode.ThisNode.ChannelId).First().Value.ExtraJson.VectorOverrides.Where(x=>! string.IsNullOrWhiteSpace(x.OverrideName)).ToArray();
+            var channel = SQLRepository.SensorChannelCache.Where(x=>x.Value.Id == treeNode.ThisNode.ChannelId).FirstOrDefault();
+            var extra = channel.Value.ExtraJson;
+            if(extra != null && extra.VectorOverrides != null)
+                Overrides = extra.VectorOverrides.Where(x =>!string.IsNullOrWhiteSpace(x.OverrideName)).ToArray();
             SetBandPass();
         }
 
         private void SetBandPass()
         {
-            BandpassArr = new BandpassConfig[Overrides.Length];
-            
-            for(int i=0 ; i<BandpassArr.Length; i++)
+            if (Overrides != null)
             {
-                string bandpassName = Enum.GetValues(typeof(VectorOverrideOrder)).GetValue(i).ToString();
-                
-                BandpassArr[i] = new BandpassConfig()
+                BandpassArr = new BandpassConfig[Overrides.Length];
+
+                for (int i = 0; i < BandpassArr.Length; i++)
                 {
-                    Visible = (Overrides[i].OverrideName == null || Overrides[i].OverrideName == string.Empty)? false:true,
-                    DisplayName = Overrides[i].OverrideName,
-                    OverrideInfo = Overrides[i],
-                    BandpassName = bandpassName
-                };
+                    string bandpassName = Enum.GetValues(typeof(VectorOverrideOrder)).GetValue(i).ToString();
+
+                    BandpassArr[i] = new BandpassConfig()
+                    {
+                        Visible = (Overrides[i].OverrideName == null || Overrides[i].OverrideName == string.Empty) ? false : true,
+                        DisplayName = Overrides[i].OverrideName,
+                        OverrideInfo = Overrides[i],
+                        BandpassName = bandpassName
+                    };
+                }
+            }
+            else //TSI 설정
+            {
+                BandpassArr = new BandpassConfig[Enum.GetValues(typeof(VectorOverrideOrder)).Length];
+
+                for (int i = 0; i < BandpassArr.Length; i++)
+                {
+                    string bandpassName = Enum.GetValues(typeof(VectorOverrideOrder)).GetValue(i).ToString();
+
+                    BandpassArr[i] = new BandpassConfig()
+                    {
+                        Visible = true,
+                        DisplayName = bandpassName,
+                        OverrideInfo = null,
+                        BandpassName = bandpassName
+                    };
+                }
             }
         }
     }

@@ -16,7 +16,7 @@ namespace MMXReport.Dialog
     {
         public MultiMeasureConfiguration MultiBandConf { get { return (MultiMeasureConfiguration)BaseConfig; } }
 
-        public MultiMeasureConfigDlg(CommonConfig common, BaseConfiguration baseConf) :base(baseConf)
+        public MultiMeasureConfigDlg(BaseConfiguration baseConf) :base(baseConf)
         {
             InitializeComponent();
             Text = MultiLang.TrendOfPoint + " " + MultiLang.Filter;
@@ -31,7 +31,7 @@ namespace MMXReport.Dialog
             Radio_Week.Text = MultiLang.Week;
             Radio_Month.Text = MultiLang.Month;
             CheckEdit_All.Text = MultiLang.BatchCheck;
-            MimicNodeTree.DataSource = common.MimicNodes;
+            MimicNodeTree.DataSource = baseConf.MimicNodes;
             MimicNodeTree.BestFitColumns();
             DateEdit_Start.DateTime = BaseConfig.StartDate;
             DateEdit_End.DateTime = BaseConfig.EndDate;
@@ -89,6 +89,7 @@ namespace MMXReport.Dialog
             {
                 ChannelConfig channel = new ChannelConfig(mimicNode);
                 BaseConfig.Channel = channel;
+                if (channel.BandpassArr == null) return;
                 CheckList_Measures.DataSource = channel.BandpassArr.Where(x=>x.Visible);
                 cbeAlarmScale_Update();
             }

@@ -86,6 +86,9 @@
             this.BtnReport_DayOfWeek = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.BtnPreview_GeneralTrend = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnConfig_GeneralTrend = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnReport_GeneralTrend = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPreview_BandpassTrend = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPreview_PointTrend = new DevExpress.XtraEditors.SimpleButton();
             this.BtnConfig_BandpassTrend = new DevExpress.XtraEditors.SimpleButton();
@@ -147,9 +150,9 @@
             this.Gr_Report.CaptionLocation = DevExpress.Utils.Locations.Left;
             this.Gr_Report.Controls.Add(this.tableLayoutPanel4);
             this.Gr_Report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Report.Location = new System.Drawing.Point(3, 491);
+            this.Gr_Report.Location = new System.Drawing.Point(3, 523);
             this.Gr_Report.Name = "Gr_Report";
-            this.Gr_Report.Size = new System.Drawing.Size(1085, 308);
+            this.Gr_Report.Size = new System.Drawing.Size(1085, 276);
             this.Gr_Report.TabIndex = 17;
             // 
             // tableLayoutPanel4
@@ -166,7 +169,7 @@
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(994, 304);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(994, 272);
             this.tableLayoutPanel4.TabIndex = 11;
             // 
             // groupControl4
@@ -179,7 +182,7 @@
             this.groupControl4.Location = new System.Drawing.Point(403, 16);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(585, 272);
+            this.groupControl4.Size = new System.Drawing.Size(585, 240);
             this.groupControl4.TabIndex = 4;
             this.groupControl4.Text = "groupControl4";
             // 
@@ -243,7 +246,7 @@
             // 
             this.Tchart_RepairTrend.Panning.Allow = Steema.TeeChart.ScrollModes.None;
             this.Tchart_RepairTrend.Series.Add(this.fastLine2);
-            this.Tchart_RepairTrend.Size = new System.Drawing.Size(581, 268);
+            this.Tchart_RepairTrend.Size = new System.Drawing.Size(581, 236);
             this.Tchart_RepairTrend.TabIndex = 0;
             this.Tchart_RepairTrend.Tools.Add(this.colorBand1);
             this.Tchart_RepairTrend.Tools.Add(this.annotation1);
@@ -373,7 +376,7 @@
             this.Grid_DailyData.Location = new System.Drawing.Point(2, 2);
             this.Grid_DailyData.MainView = this.gridView1;
             this.Grid_DailyData.Name = "Grid_DailyData";
-            this.Grid_DailyData.Size = new System.Drawing.Size(581, 268);
+            this.Grid_DailyData.Size = new System.Drawing.Size(581, 236);
             this.Grid_DailyData.TabIndex = 1;
             this.Grid_DailyData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -588,7 +591,7 @@
             this.TChart_Spectrum.Panel.MarginRight = 2D;
             this.TChart_Spectrum.Panel.MarginTop = 2D;
             this.TChart_Spectrum.Series.Add(this.fastLine4);
-            this.TChart_Spectrum.Size = new System.Drawing.Size(581, 268);
+            this.TChart_Spectrum.Size = new System.Drawing.Size(581, 236);
             this.TChart_Spectrum.TabIndex = 3;
             // 
             // fastLine4
@@ -659,7 +662,7 @@
             this.TChart_Time.Panel.MarginRight = 2D;
             this.TChart_Time.Panel.MarginTop = 2D;
             this.TChart_Time.Series.Add(this.fastLine3);
-            this.TChart_Time.Size = new System.Drawing.Size(581, 268);
+            this.TChart_Time.Size = new System.Drawing.Size(581, 236);
             this.TChart_Time.TabIndex = 2;
             // 
             // fastLine3
@@ -698,7 +701,7 @@
             this.groupControl3.Location = new System.Drawing.Point(6, 16);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.ShowCaption = false;
-            this.groupControl3.Size = new System.Drawing.Size(388, 272);
+            this.groupControl3.Size = new System.Drawing.Size(388, 240);
             this.groupControl3.TabIndex = 3;
             this.groupControl3.Text = "groupControl3";
             // 
@@ -715,10 +718,10 @@
             this.BtnPreview_PeriodDays.ImageList = this.SmallImageList;
             this.BtnPreview_PeriodDays.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_PeriodDays.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_PeriodDays.Location = new System.Drawing.Point(304, 101);
+            this.BtnPreview_PeriodDays.Location = new System.Drawing.Point(304, 89);
             this.BtnPreview_PeriodDays.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_PeriodDays.Name = "BtnPreview_PeriodDays";
-            this.BtnPreview_PeriodDays.Size = new System.Drawing.Size(70, 70);
+            this.BtnPreview_PeriodDays.Size = new System.Drawing.Size(70, 61);
             this.BtnPreview_PeriodDays.TabIndex = 18;
             this.BtnPreview_PeriodDays.Text = "Preview";
             this.BtnPreview_PeriodDays.Click += new System.EventHandler(this.BtnPreview_PeriodDays_Click);
@@ -736,10 +739,10 @@
             this.BtnConfig_PeriodDays.ImageList = this.SmallImageList;
             this.BtnConfig_PeriodDays.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_PeriodDays.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_PeriodDays.Location = new System.Drawing.Point(228, 101);
+            this.BtnConfig_PeriodDays.Location = new System.Drawing.Point(228, 89);
             this.BtnConfig_PeriodDays.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_PeriodDays.Name = "BtnConfig_PeriodDays";
-            this.BtnConfig_PeriodDays.Size = new System.Drawing.Size(70, 70);
+            this.BtnConfig_PeriodDays.Size = new System.Drawing.Size(70, 61);
             this.BtnConfig_PeriodDays.TabIndex = 17;
             this.BtnConfig_PeriodDays.Text = "설정";
             this.BtnConfig_PeriodDays.Click += new System.EventHandler(this.BtnConfig_PeriodDays_Click);
@@ -755,10 +758,10 @@
             this.BtnReport_PeriodDays.ImageIndex = 3;
             this.BtnReport_PeriodDays.ImageList = this.SmallImageList;
             this.BtnReport_PeriodDays.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_PeriodDays.Location = new System.Drawing.Point(15, 101);
+            this.BtnReport_PeriodDays.Location = new System.Drawing.Point(15, 89);
             this.BtnReport_PeriodDays.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_PeriodDays.Name = "BtnReport_PeriodDays";
-            this.BtnReport_PeriodDays.Size = new System.Drawing.Size(207, 70);
+            this.BtnReport_PeriodDays.Size = new System.Drawing.Size(207, 61);
             this.BtnReport_PeriodDays.TabIndex = 16;
             this.BtnReport_PeriodDays.Text = "기간";
             this.BtnReport_PeriodDays.Click += new System.EventHandler(this.BtnReport_PeriodDays_Click);
@@ -776,10 +779,10 @@
             this.BtnPreview_Repair.ImageList = this.SmallImageList;
             this.BtnPreview_Repair.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_Repair.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_Repair.Location = new System.Drawing.Point(304, 185);
+            this.BtnPreview_Repair.Location = new System.Drawing.Point(304, 156);
             this.BtnPreview_Repair.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_Repair.Name = "BtnPreview_Repair";
-            this.BtnPreview_Repair.Size = new System.Drawing.Size(70, 70);
+            this.BtnPreview_Repair.Size = new System.Drawing.Size(70, 61);
             this.BtnPreview_Repair.TabIndex = 15;
             this.BtnPreview_Repair.Text = "Preview";
             this.BtnPreview_Repair.Click += new System.EventHandler(this.BtnPreview_Repair_Click);
@@ -797,10 +800,10 @@
             this.BtnPreview_Daily.ImageList = this.SmallImageList;
             this.BtnPreview_Daily.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_Daily.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_Daily.Location = new System.Drawing.Point(304, 20);
+            this.BtnPreview_Daily.Location = new System.Drawing.Point(304, 22);
             this.BtnPreview_Daily.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_Daily.Name = "BtnPreview_Daily";
-            this.BtnPreview_Daily.Size = new System.Drawing.Size(70, 70);
+            this.BtnPreview_Daily.Size = new System.Drawing.Size(70, 61);
             this.BtnPreview_Daily.TabIndex = 14;
             this.BtnPreview_Daily.Text = "Preview";
             this.BtnPreview_Daily.Click += new System.EventHandler(this.BtnPreview_Daily_Click);
@@ -818,10 +821,10 @@
             this.BtnConfig_Repair.ImageList = this.SmallImageList;
             this.BtnConfig_Repair.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_Repair.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_Repair.Location = new System.Drawing.Point(228, 185);
+            this.BtnConfig_Repair.Location = new System.Drawing.Point(228, 156);
             this.BtnConfig_Repair.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_Repair.Name = "BtnConfig_Repair";
-            this.BtnConfig_Repair.Size = new System.Drawing.Size(70, 70);
+            this.BtnConfig_Repair.Size = new System.Drawing.Size(70, 61);
             this.BtnConfig_Repair.TabIndex = 13;
             this.BtnConfig_Repair.Text = "설정";
             this.BtnConfig_Repair.Click += new System.EventHandler(this.BtnConfig_Repair_Click);
@@ -837,10 +840,10 @@
             this.BtnReport_Repair.ImageIndex = 6;
             this.BtnReport_Repair.ImageList = this.SmallImageList;
             this.BtnReport_Repair.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_Repair.Location = new System.Drawing.Point(15, 185);
+            this.BtnReport_Repair.Location = new System.Drawing.Point(15, 156);
             this.BtnReport_Repair.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_Repair.Name = "BtnReport_Repair";
-            this.BtnReport_Repair.Size = new System.Drawing.Size(207, 70);
+            this.BtnReport_Repair.Size = new System.Drawing.Size(207, 61);
             this.BtnReport_Repair.TabIndex = 12;
             this.BtnReport_Repair.Text = "보전활동";
             this.BtnReport_Repair.Click += new System.EventHandler(this.BtnReport_Repair_Click);
@@ -858,10 +861,10 @@
             this.BtnConfig_Daily.ImageList = this.SmallImageList;
             this.BtnConfig_Daily.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_Daily.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_Daily.Location = new System.Drawing.Point(228, 20);
+            this.BtnConfig_Daily.Location = new System.Drawing.Point(228, 22);
             this.BtnConfig_Daily.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_Daily.Name = "BtnConfig_Daily";
-            this.BtnConfig_Daily.Size = new System.Drawing.Size(70, 70);
+            this.BtnConfig_Daily.Size = new System.Drawing.Size(70, 61);
             this.BtnConfig_Daily.TabIndex = 10;
             this.BtnConfig_Daily.Text = "설정";
             this.BtnConfig_Daily.Click += new System.EventHandler(this.BtnConfig_Daily_Click);
@@ -877,10 +880,10 @@
             this.BtnReport_Daily.ImageIndex = 3;
             this.BtnReport_Daily.ImageList = this.SmallImageList;
             this.BtnReport_Daily.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_Daily.Location = new System.Drawing.Point(15, 20);
+            this.BtnReport_Daily.Location = new System.Drawing.Point(15, 22);
             this.BtnReport_Daily.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_Daily.Name = "BtnReport_Daily";
-            this.BtnReport_Daily.Size = new System.Drawing.Size(207, 70);
+            this.BtnReport_Daily.Size = new System.Drawing.Size(207, 61);
             this.BtnReport_Daily.TabIndex = 6;
             this.BtnReport_Daily.Text = "일간";
             this.BtnReport_Daily.Click += new System.EventHandler(this.BtnReport_Daily_Click);
@@ -897,9 +900,9 @@
             this.Gr_Compare.CaptionLocation = DevExpress.Utils.Locations.Left;
             this.Gr_Compare.Controls.Add(this.tableLayoutPanel3);
             this.Gr_Compare.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gr_Compare.Location = new System.Drawing.Point(3, 247);
+            this.Gr_Compare.Location = new System.Drawing.Point(3, 283);
             this.Gr_Compare.Name = "Gr_Compare";
-            this.Gr_Compare.Size = new System.Drawing.Size(1085, 238);
+            this.Gr_Compare.Size = new System.Drawing.Size(1085, 234);
             this.Gr_Compare.TabIndex = 16;
             // 
             // tableLayoutPanel3
@@ -916,7 +919,7 @@
             this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(994, 234);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(994, 230);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // groupControl9
@@ -927,7 +930,7 @@
             this.groupControl9.Location = new System.Drawing.Point(403, 16);
             this.groupControl9.Name = "groupControl9";
             this.groupControl9.ShowCaption = false;
-            this.groupControl9.Size = new System.Drawing.Size(585, 202);
+            this.groupControl9.Size = new System.Drawing.Size(585, 198);
             this.groupControl9.TabIndex = 16;
             this.groupControl9.Text = "groupControl9";
             // 
@@ -989,7 +992,7 @@
             // 
             this.Tchart_DayOfWeek.Panning.Allow = Steema.TeeChart.ScrollModes.None;
             this.Tchart_DayOfWeek.Series.Add(this.horizBar1);
-            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(581, 198);
+            this.Tchart_DayOfWeek.Size = new System.Drawing.Size(581, 194);
             this.Tchart_DayOfWeek.TabIndex = 1;
             // 
             // 
@@ -1113,7 +1116,7 @@
             this.Tchart_Period.Series.Add(this.bar1);
             this.Tchart_Period.Series.Add(this.bar2);
             this.Tchart_Period.Series.Add(this.bar3);
-            this.Tchart_Period.Size = new System.Drawing.Size(581, 198);
+            this.Tchart_Period.Size = new System.Drawing.Size(581, 194);
             this.Tchart_Period.TabIndex = 1;
             this.Tchart_Period.Visible = false;
             // 
@@ -1224,7 +1227,7 @@
             this.groupControl1.Location = new System.Drawing.Point(6, 16);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(388, 202);
+            this.groupControl1.Size = new System.Drawing.Size(388, 198);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "groupControl1";
             // 
@@ -1241,10 +1244,10 @@
             this.BtnPreview_Period.ImageList = this.SmallImageList;
             this.BtnPreview_Period.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_Period.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_Period.Location = new System.Drawing.Point(304, 108);
+            this.BtnPreview_Period.Location = new System.Drawing.Point(304, 115);
             this.BtnPreview_Period.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_Period.Name = "BtnPreview_Period";
-            this.BtnPreview_Period.Size = new System.Drawing.Size(70, 70);
+            this.BtnPreview_Period.Size = new System.Drawing.Size(70, 61);
             this.BtnPreview_Period.TabIndex = 15;
             this.BtnPreview_Period.Text = "Preview";
             this.BtnPreview_Period.Click += new System.EventHandler(this.BtnPreview_Period_Click);
@@ -1262,10 +1265,10 @@
             this.BtnPreview_DayOfWeek.ImageList = this.SmallImageList;
             this.BtnPreview_DayOfWeek.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_DayOfWeek.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_DayOfWeek.Location = new System.Drawing.Point(304, 27);
+            this.BtnPreview_DayOfWeek.Location = new System.Drawing.Point(304, 22);
             this.BtnPreview_DayOfWeek.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_DayOfWeek.Name = "BtnPreview_DayOfWeek";
-            this.BtnPreview_DayOfWeek.Size = new System.Drawing.Size(70, 70);
+            this.BtnPreview_DayOfWeek.Size = new System.Drawing.Size(70, 61);
             this.BtnPreview_DayOfWeek.TabIndex = 14;
             this.BtnPreview_DayOfWeek.Text = "Preview";
             this.BtnPreview_DayOfWeek.Click += new System.EventHandler(this.BtnPreview_DayOfWeek_Click);
@@ -1283,10 +1286,10 @@
             this.BtnConfig_Period.ImageList = this.SmallImageList;
             this.BtnConfig_Period.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_Period.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_Period.Location = new System.Drawing.Point(228, 108);
+            this.BtnConfig_Period.Location = new System.Drawing.Point(228, 115);
             this.BtnConfig_Period.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_Period.Name = "BtnConfig_Period";
-            this.BtnConfig_Period.Size = new System.Drawing.Size(70, 70);
+            this.BtnConfig_Period.Size = new System.Drawing.Size(70, 61);
             this.BtnConfig_Period.TabIndex = 13;
             this.BtnConfig_Period.Text = "설정";
             this.BtnConfig_Period.Click += new System.EventHandler(this.BtnConfig_Period_Click);
@@ -1302,9 +1305,9 @@
             this.BtnReport_Period.ImageIndex = 4;
             this.BtnReport_Period.ImageList = this.SmallImageList;
             this.BtnReport_Period.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_Period.Location = new System.Drawing.Point(15, 108);
+            this.BtnReport_Period.Location = new System.Drawing.Point(15, 115);
             this.BtnReport_Period.Name = "BtnReport_Period";
-            this.BtnReport_Period.Size = new System.Drawing.Size(207, 70);
+            this.BtnReport_Period.Size = new System.Drawing.Size(207, 61);
             this.BtnReport_Period.TabIndex = 12;
             this.BtnReport_Period.Text = "기간 비교";
             this.BtnReport_Period.Click += new System.EventHandler(this.BtnReport_Period_Click);
@@ -1322,10 +1325,10 @@
             this.BtnConfig_DayOfWeek.ImageList = this.SmallImageList;
             this.BtnConfig_DayOfWeek.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_DayOfWeek.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_DayOfWeek.Location = new System.Drawing.Point(228, 27);
+            this.BtnConfig_DayOfWeek.Location = new System.Drawing.Point(228, 22);
             this.BtnConfig_DayOfWeek.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_DayOfWeek.Name = "BtnConfig_DayOfWeek";
-            this.BtnConfig_DayOfWeek.Size = new System.Drawing.Size(70, 70);
+            this.BtnConfig_DayOfWeek.Size = new System.Drawing.Size(70, 61);
             this.BtnConfig_DayOfWeek.TabIndex = 10;
             this.BtnConfig_DayOfWeek.Text = "설정";
             this.BtnConfig_DayOfWeek.Click += new System.EventHandler(this.BtnConfig_DayOfWeek_Click);
@@ -1341,10 +1344,10 @@
             this.BtnReport_DayOfWeek.ImageIndex = 2;
             this.BtnReport_DayOfWeek.ImageList = this.SmallImageList;
             this.BtnReport_DayOfWeek.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_DayOfWeek.Location = new System.Drawing.Point(15, 27);
+            this.BtnReport_DayOfWeek.Location = new System.Drawing.Point(15, 22);
             this.BtnReport_DayOfWeek.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_DayOfWeek.Name = "BtnReport_DayOfWeek";
-            this.BtnReport_DayOfWeek.Size = new System.Drawing.Size(207, 70);
+            this.BtnReport_DayOfWeek.Size = new System.Drawing.Size(207, 61);
             this.BtnReport_DayOfWeek.TabIndex = 6;
             this.BtnReport_DayOfWeek.Text = "요일 비교";
             this.BtnReport_DayOfWeek.Click += new System.EventHandler(this.BtnReport_DayOfWeek_Click);
@@ -1364,11 +1367,14 @@
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 214);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 250);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.BtnPreview_GeneralTrend);
+            this.groupControl2.Controls.Add(this.BtnConfig_GeneralTrend);
+            this.groupControl2.Controls.Add(this.BtnReport_GeneralTrend);
             this.groupControl2.Controls.Add(this.BtnPreview_BandpassTrend);
             this.groupControl2.Controls.Add(this.BtnPreview_PointTrend);
             this.groupControl2.Controls.Add(this.BtnConfig_BandpassTrend);
@@ -1379,9 +1385,76 @@
             this.groupControl2.Location = new System.Drawing.Point(6, 8);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.ShowCaption = false;
-            this.groupControl2.Size = new System.Drawing.Size(388, 198);
+            this.groupControl2.Size = new System.Drawing.Size(388, 234);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "groupControl2";
+            // 
+            // BtnPreview_GeneralTrend
+            // 
+            this.BtnPreview_GeneralTrend.AllowFocus = false;
+            this.BtnPreview_GeneralTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
+            this.BtnPreview_GeneralTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
+            this.BtnPreview_GeneralTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnPreview_GeneralTrend.Appearance.Font = new System.Drawing.Font("Expo M", 10F);
+            this.BtnPreview_GeneralTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.BtnPreview_GeneralTrend.Appearance.Options.UseFont = true;
+            this.BtnPreview_GeneralTrend.Appearance.Options.UseForeColor = true;
+            this.BtnPreview_GeneralTrend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnPreview_GeneralTrend.ImageIndex = 0;
+            this.BtnPreview_GeneralTrend.ImageList = this.SmallImageList;
+            this.BtnPreview_GeneralTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.BtnPreview_GeneralTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BtnPreview_GeneralTrend.Location = new System.Drawing.Point(304, 153);
+            this.BtnPreview_GeneralTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
+            this.BtnPreview_GeneralTrend.Name = "BtnPreview_GeneralTrend";
+            this.BtnPreview_GeneralTrend.Size = new System.Drawing.Size(70, 61);
+            this.BtnPreview_GeneralTrend.TabIndex = 18;
+            this.BtnPreview_GeneralTrend.Text = "Preview";
+            this.BtnPreview_GeneralTrend.Click += new System.EventHandler(this.BtnPreview_GeneralTrend_Click);
+            // 
+            // BtnConfig_GeneralTrend
+            // 
+            this.BtnConfig_GeneralTrend.AllowFocus = false;
+            this.BtnConfig_GeneralTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
+            this.BtnConfig_GeneralTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
+            this.BtnConfig_GeneralTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnConfig_GeneralTrend.Appearance.Font = new System.Drawing.Font("Expo M", 10F);
+            this.BtnConfig_GeneralTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.BtnConfig_GeneralTrend.Appearance.Options.UseFont = true;
+            this.BtnConfig_GeneralTrend.Appearance.Options.UseForeColor = true;
+            this.BtnConfig_GeneralTrend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnConfig_GeneralTrend.ImageIndex = 1;
+            this.BtnConfig_GeneralTrend.ImageList = this.SmallImageList;
+            this.BtnConfig_GeneralTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.BtnConfig_GeneralTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BtnConfig_GeneralTrend.Location = new System.Drawing.Point(228, 153);
+            this.BtnConfig_GeneralTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
+            this.BtnConfig_GeneralTrend.Name = "BtnConfig_GeneralTrend";
+            this.BtnConfig_GeneralTrend.Size = new System.Drawing.Size(70, 61);
+            this.BtnConfig_GeneralTrend.TabIndex = 17;
+            this.BtnConfig_GeneralTrend.Text = "설정";
+            this.BtnConfig_GeneralTrend.Click += new System.EventHandler(this.BtnConfig_GeneralTrend_Click);
+            // 
+            // BtnReport_GeneralTrend
+            // 
+            this.BtnReport_GeneralTrend.AllowFocus = false;
+            this.BtnReport_GeneralTrend.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.False;
+            this.BtnReport_GeneralTrend.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
+            this.BtnReport_GeneralTrend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnReport_GeneralTrend.Appearance.Font = new System.Drawing.Font("Expo M", 10F);
+            this.BtnReport_GeneralTrend.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.BtnReport_GeneralTrend.Appearance.Options.UseFont = true;
+            this.BtnReport_GeneralTrend.Appearance.Options.UseForeColor = true;
+            this.BtnReport_GeneralTrend.ImageIndex = 5;
+            this.BtnReport_GeneralTrend.ImageList = this.SmallImageList;
+            this.BtnReport_GeneralTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.BtnReport_GeneralTrend.Location = new System.Drawing.Point(15, 153);
+            this.BtnReport_GeneralTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
+            this.BtnReport_GeneralTrend.Name = "BtnReport_GeneralTrend";
+            this.BtnReport_GeneralTrend.Size = new System.Drawing.Size(207, 61);
+            this.BtnReport_GeneralTrend.TabIndex = 16;
+            this.BtnReport_GeneralTrend.Text = "종합 추이";
+            this.BtnReport_GeneralTrend.Click += new System.EventHandler(this.BtnReport_GeneralTrend_Click);
             // 
             // BtnPreview_BandpassTrend
             // 
@@ -1398,10 +1471,10 @@
             this.BtnPreview_BandpassTrend.ImageList = this.SmallImageList;
             this.BtnPreview_BandpassTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_BandpassTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_BandpassTrend.Location = new System.Drawing.Point(304, 104);
+            this.BtnPreview_BandpassTrend.Location = new System.Drawing.Point(304, 86);
             this.BtnPreview_BandpassTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_BandpassTrend.Name = "BtnPreview_BandpassTrend";
-            this.BtnPreview_BandpassTrend.Size = new System.Drawing.Size(70, 70);
+            this.BtnPreview_BandpassTrend.Size = new System.Drawing.Size(70, 61);
             this.BtnPreview_BandpassTrend.TabIndex = 15;
             this.BtnPreview_BandpassTrend.Text = "Preview";
             this.BtnPreview_BandpassTrend.Click += new System.EventHandler(this.BtnPreview_MultPointTrend_Click);
@@ -1421,10 +1494,10 @@
             this.BtnPreview_PointTrend.ImageList = this.SmallImageList;
             this.BtnPreview_PointTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnPreview_PointTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnPreview_PointTrend.Location = new System.Drawing.Point(304, 23);
+            this.BtnPreview_PointTrend.Location = new System.Drawing.Point(304, 19);
             this.BtnPreview_PointTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnPreview_PointTrend.Name = "BtnPreview_PointTrend";
-            this.BtnPreview_PointTrend.Size = new System.Drawing.Size(70, 70);
+            this.BtnPreview_PointTrend.Size = new System.Drawing.Size(70, 61);
             this.BtnPreview_PointTrend.TabIndex = 14;
             this.BtnPreview_PointTrend.Text = "Preview";
             this.BtnPreview_PointTrend.Click += new System.EventHandler(this.BtnPreview_MultiBandTrend_Click);
@@ -1444,10 +1517,10 @@
             this.BtnConfig_BandpassTrend.ImageList = this.SmallImageList;
             this.BtnConfig_BandpassTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_BandpassTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_BandpassTrend.Location = new System.Drawing.Point(228, 104);
+            this.BtnConfig_BandpassTrend.Location = new System.Drawing.Point(228, 86);
             this.BtnConfig_BandpassTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_BandpassTrend.Name = "BtnConfig_BandpassTrend";
-            this.BtnConfig_BandpassTrend.Size = new System.Drawing.Size(70, 70);
+            this.BtnConfig_BandpassTrend.Size = new System.Drawing.Size(70, 61);
             this.BtnConfig_BandpassTrend.TabIndex = 13;
             this.BtnConfig_BandpassTrend.Text = "설정";
             this.BtnConfig_BandpassTrend.Click += new System.EventHandler(this.BtnConfig_MultiPointTrend_Click);
@@ -1465,10 +1538,10 @@
             this.BtnReport_BandpassTrend.ImageIndex = 5;
             this.BtnReport_BandpassTrend.ImageList = this.SmallImageList;
             this.BtnReport_BandpassTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_BandpassTrend.Location = new System.Drawing.Point(15, 104);
+            this.BtnReport_BandpassTrend.Location = new System.Drawing.Point(15, 86);
             this.BtnReport_BandpassTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_BandpassTrend.Name = "BtnReport_BandpassTrend";
-            this.BtnReport_BandpassTrend.Size = new System.Drawing.Size(207, 70);
+            this.BtnReport_BandpassTrend.Size = new System.Drawing.Size(207, 61);
             this.BtnReport_BandpassTrend.TabIndex = 12;
             this.BtnReport_BandpassTrend.Text = "밴드별 추이";
             this.BtnReport_BandpassTrend.Click += new System.EventHandler(this.BtnReport_MultiPointTrend_Click);
@@ -1488,10 +1561,10 @@
             this.BtnConfig_PointTrend.ImageList = this.SmallImageList;
             this.BtnConfig_PointTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.BtnConfig_PointTrend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnConfig_PointTrend.Location = new System.Drawing.Point(228, 23);
+            this.BtnConfig_PointTrend.Location = new System.Drawing.Point(228, 19);
             this.BtnConfig_PointTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnConfig_PointTrend.Name = "BtnConfig_PointTrend";
-            this.BtnConfig_PointTrend.Size = new System.Drawing.Size(70, 70);
+            this.BtnConfig_PointTrend.Size = new System.Drawing.Size(70, 61);
             this.BtnConfig_PointTrend.TabIndex = 10;
             this.BtnConfig_PointTrend.Text = "설정";
             this.BtnConfig_PointTrend.Click += new System.EventHandler(this.BtnConfig_BandTrend_Click);
@@ -1509,10 +1582,10 @@
             this.BtnReport_PointTrend.ImageIndex = 5;
             this.BtnReport_PointTrend.ImageList = this.SmallImageList;
             this.BtnReport_PointTrend.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.BtnReport_PointTrend.Location = new System.Drawing.Point(15, 23);
+            this.BtnReport_PointTrend.Location = new System.Drawing.Point(15, 19);
             this.BtnReport_PointTrend.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.BtnReport_PointTrend.Name = "BtnReport_PointTrend";
-            this.BtnReport_PointTrend.Size = new System.Drawing.Size(207, 70);
+            this.BtnReport_PointTrend.Size = new System.Drawing.Size(207, 61);
             this.BtnReport_PointTrend.TabIndex = 6;
             this.BtnReport_PointTrend.Text = "포인트별 추이";
             this.BtnReport_PointTrend.Click += new System.EventHandler(this.BtnReport_MultiBand_Click);
@@ -1851,7 +1924,7 @@
             // 
             this.Tchart_Trend.Panning.Allow = Steema.TeeChart.ScrollModes.None;
             this.Tchart_Trend.Series.Add(this.fastLine1);
-            this.Tchart_Trend.Size = new System.Drawing.Size(585, 198);
+            this.Tchart_Trend.Size = new System.Drawing.Size(585, 234);
             this.Tchart_Trend.TabIndex = 1;
             // 
             // 
@@ -1977,9 +2050,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.45067F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.45067F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.09866F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1091, 802);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -1998,7 +2071,7 @@
             this.Gr_Variation.Location = new System.Drawing.Point(3, 3);
             this.Gr_Variation.Name = "Gr_Variation";
             this.Gr_Variation.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.Gr_Variation.Size = new System.Drawing.Size(1085, 238);
+            this.Gr_Variation.Size = new System.Drawing.Size(1085, 274);
             this.Gr_Variation.TabIndex = 17;
             // 
             // bandpassConfigBindingSource
@@ -2121,6 +2194,9 @@
         private DevExpress.XtraEditors.SimpleButton BtnPreview_PeriodDays;
         private DevExpress.XtraEditors.SimpleButton BtnConfig_PeriodDays;
         private DevExpress.XtraEditors.SimpleButton BtnReport_PeriodDays;
+        private DevExpress.XtraEditors.SimpleButton BtnPreview_GeneralTrend;
+        private DevExpress.XtraEditors.SimpleButton BtnConfig_GeneralTrend;
+        private DevExpress.XtraEditors.SimpleButton BtnReport_GeneralTrend;
 
 
     }

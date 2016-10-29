@@ -23,13 +23,6 @@ namespace MMXReport.TsiConfig
         public string Net100Password { get; set; }
         public string MelsecIp { get; set; }
         public int MelsecPort { get; set; }
-        public ExtraChannelConfig()
-        {
-            PeakWindowSize = 1;
-            ModbusIp = "192.168.0.0";
-            ModbusPort = 502; //혹은 4800을 보통 사용
-            //VectorOverrides = Enumerable.Range(0, 6).Select(i => new DspVectorOverride()).ToArray();  //생성버튼으로 생성하도록 수정
-        }
     }
 
     public class TorqueCalConfig { }

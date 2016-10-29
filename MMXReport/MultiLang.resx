@@ -144,6 +144,9 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="GenaralTrend" xml:space="preserve">
+    <value>General Trend</value>
+  </data>
   <data name="MaintenancePeriod" xml:space="preserve">
     <value>Maintenance Period</value>
   </data>

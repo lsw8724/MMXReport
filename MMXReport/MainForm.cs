@@ -24,7 +24,6 @@ namespace MMXReport
     public partial class MainForm : XtraForm
     {
         public DBConnector DBConn { get; set; }
-        public CommonConfig CommonConf { get; set; }
         private MultiMeasureConfiguration MultiBandConf { get; set; }
         private MultiMeasureConfigDlg MultiBandConfigDlg { get; set; }
         private DayOfWeekConfiguration DayOfWeekConf { get; set; }
@@ -39,6 +38,8 @@ namespace MMXReport
         private RepairConfigDlg RepairConfigDlg { get; set; }
         private PeriodDaysConfiguration PeriodDaysConf { get; set; }
         private PeriodDaysDlg PeriodDaysConfigDlg { get; set; }
+        private GeneralTrendConfiguration GeneralTrendConf { get; set; }
+        private GeneralConfigDlg GeneralTrendConfigDlg { get; set; }
 
         private ExcelIOManager ExcelManager { get; set; }
         public MainForm()
@@ -53,6 +54,7 @@ namespace MMXReport
             BtnReport_Daily.Text = MultiLang.Daily;
             BtnReport_Repair.Text = MultiLang.MaintenanceTask;
             BtnReport_PeriodDays.Text = MultiLang.PeriodDays;
+            BtnReport_GeneralTrend.Text = MultiLang.GenaralTrend;
 
             BtnConfig_BandpassTrend.Text = MultiLang.Configuration;
             BtnConfig_PointTrend.Text = MultiLang.Configuration;
@@ -61,6 +63,7 @@ namespace MMXReport
             BtnConfig_Daily.Text = MultiLang.Configuration;
             BtnConfig_Repair.Text = MultiLang.Configuration;
             BtnConfig_PeriodDays.Text = MultiLang.Configuration;
+            BtnConfig_GeneralTrend.Text = MultiLang.Configuration;
 
             BtnPreview_BandpassTrend.Text = MultiLang.Preview;
             BtnPreview_PointTrend.Text = MultiLang.Preview;
@@ -69,15 +72,14 @@ namespace MMXReport
             BtnPreview_Daily.Text = MultiLang.Preview;
             BtnPreview_Repair.Text = MultiLang.Preview;
             BtnPreview_PeriodDays.Text = MultiLang.Preview;
+            BtnPreview_GeneralTrend.Text = MultiLang.Preview;
             #endregion
-            try
-            {
+ 
                 SQLRepository.Init();
                 LogGenerator.CreateLogFile();
                 CreatePreviewSample();
                 DBConn = new DBConnector();
                 ExcelManager = new ExcelIOManager();
-                CommonConf = new CommonConfig();
                 MultiBandConf = new MultiMeasureConfiguration();
                 MultiPointConf = new MultiPointConfiguration();
                 DayOfWeekConf = new DayOfWeekConfiguration();
@@ -85,19 +87,17 @@ namespace MMXReport
                 DailyConf = new DailyConfiguration();
                 RepairConf = new RepairConfiguration();
                 PeriodDaysConf = new PeriodDaysConfiguration();
+                GeneralTrendConf = new GeneralTrendConfiguration();
+
 
                 PeriodDaysConfigDlg = new PeriodDaysDlg(PeriodDaysConf) { Owner = this };
                 DailyConfDlg = new DailyConfigDlg(DailyConf) { Owner = this };
-                MultiBandConfigDlg = new MultiMeasureConfigDlg(CommonConf, MultiBandConf) { Owner = this };
-                MultiPointConfigDlg = new MultiPointConfigDlg(CommonConf, MultiPointConf) { Owner = this };
-                DayOfWeekConfigDlg = new DayOfWeekConfigDlg(CommonConf, DayOfWeekConf) { Owner = this };
-                PeriodConfigDlg = new PeriodConfigDlg(CommonConf, PeriodConf) { Owner = this };
-                RepairConfigDlg = new RepairConfigDlg(CommonConf, RepairConf) { Owner = this };
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                MultiBandConfigDlg = new MultiMeasureConfigDlg(MultiBandConf) { Owner = this };
+                MultiPointConfigDlg = new MultiPointConfigDlg(MultiPointConf) { Owner = this };
+                DayOfWeekConfigDlg = new DayOfWeekConfigDlg(DayOfWeekConf) { Owner = this };
+                PeriodConfigDlg = new PeriodConfigDlg(PeriodConf) { Owner = this };
+                RepairConfigDlg = new RepairConfigDlg(RepairConf) { Owner = this };
+                GeneralTrendConfigDlg = new GeneralConfigDlg(GeneralTrendConf) { Owner = this };
         }
 
         private void CreatePreviewSample()
@@ -637,6 +637,20 @@ namespace MMXReport
         private void BtnConfig_PeriodDays_Click(object sender, EventArgs e)
         {
             PeriodDaysConfigDlg.Show();
+        }
+        private void BtnConfig_GeneralTrend_Click(object sender, EventArgs e)
+        {
+            GeneralTrendConfigDlg.Show();
+        }
+
+        private void BtnReport_GeneralTrend_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnPreview_GeneralTrend_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

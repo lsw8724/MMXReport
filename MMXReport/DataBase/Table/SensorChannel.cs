@@ -14,7 +14,19 @@ namespace MMXReport.DataBase
         public int Id { get; set; }
         public int ChannelType { get; set; }
         public string Name { get; set; }
-        public ExtraChannelConfig ExtraJson { get; set; }
+        public string ExtraJsonStr { get; set; }
+        public ExtraChannelConfig ExtraJson
+        {
+            get 
+            {
+                if (!string.IsNullOrWhiteSpace(ExtraJsonStr))
+                {
+                    return JsonConvert.DeserializeObject<ExtraChannelConfig>(ExtraJsonStr);
+                }
+                else
+                    return null;
+            }
+        }
     }
 
     public class SensorChannelTable
@@ -45,10 +57,11 @@ namespace MMXReport.DataBase
                 {
                     channels.Add(new SensorChannel()
                     {
+
                         Id = reader.GetInt32(0),
                         ChannelType = reader.GetInt32(1),
                         Name = reader.GetString(2),
-                        ExtraJson = JsonConvert.DeserializeObject<ExtraChannelConfig>(reader.GetString(3))
+                        ExtraJsonStr = reader["ExtraJson"].ToString()
                     });
                 }
             }

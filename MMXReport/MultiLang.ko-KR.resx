@@ -198,4 +198,7 @@
   <data name="PeriodDays" xml:space="preserve">
     <value>기간</value>
   </data>
+  <data name="GenaralTrend" xml:space="preserve">
+    <value>종합 추이</value>
+  </data>
 </root>

@@ -32,6 +32,31 @@ namespace MMXReport
 
     public class MimicTreeNodes : BindingList<MimicTreeNode>, TreeList.IVirtualTreeListData
     {
+        public void InitMimicNodes()
+        {
+            foreach (var node in SQLRepository.MimicNodeCache.Values)
+            {
+                switch (node.NodeType)
+                {
+                    case 100: Add(new MimicTreeNode(node)); break;
+                    case 200:
+                        var treeNode = this.Where(x => x.ThisNode.Id == node.ParentId).FirstOrDefault();
+                        treeNode.ChildNodes.Add(new MimicTreeNode(node, treeNode)); break;
+                    case 300:
+                        foreach (var m in this)
+                        {
+                            var temp = m.ChildNodes.Where(x => x.ThisNode.Id == node.ParentId);
+                            if (temp.Count() > 0)
+                            {
+                                var pNode = temp.First();
+                                pNode.ChildNodes.Add(new MimicTreeNode(node, pNode));
+                                break;
+                            }
+                        } break;
+                }
+            }
+        }
+
         private void AddRange(IEnumerable<MimicTreeNode> collection)
         {
             foreach (var item in collection)

@@ -13,6 +13,7 @@ namespace MMXReport
     public enum ScaleType { Auto = 0, Custom = 1, Alarm = 2 };
     public abstract class BaseConfiguration
     {
+        public MimicTreeNodes MimicNodes = new MimicTreeNodes();
         public double MaxScale { get; set; }
         public int ScaleTypeIdx { get; set; }
         public string AlarmReferenceName { get; set; } 
@@ -27,6 +28,7 @@ namespace MMXReport
         public BaseConfiguration()
         {
             SetDefault();
+            MimicNodes.InitMimicNodes();
         }
 
         protected void SetDefault()

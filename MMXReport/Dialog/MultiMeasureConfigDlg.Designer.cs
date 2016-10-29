@@ -182,7 +182,7 @@
             this.Radio_Week.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Radio_Week.AutoSize = true;
             this.Radio_Week.Font = new System.Drawing.Font("Expo M", 9F);
-            this.Radio_Week.Location = new System.Drawing.Point(111, 26);
+            this.Radio_Week.Location = new System.Drawing.Point(112, 26);
             this.Radio_Week.Name = "Radio_Week";
             this.Radio_Week.Size = new System.Drawing.Size(37, 17);
             this.Radio_Week.TabIndex = 1;

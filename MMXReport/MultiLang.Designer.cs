@@ -142,6 +142,15 @@ namespace MMXReport {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Trend.
+        /// </summary>
+        internal static string GenaralTrend {
+            get {
+                return ResourceManager.GetString("GenaralTrend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maintenance Period.
         /// </summary>
         internal static string MaintenancePeriod {

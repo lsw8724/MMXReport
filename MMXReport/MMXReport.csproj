@@ -124,6 +124,12 @@
     <Compile Include="Dialog\BaseConfigDlg.Designer.cs">
       <DependentUpon>BaseConfigDlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\GeneralTrendConfigDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\GeneralTrendConfigDlg.Designer.cs">
+      <DependentUpon>GeneralTrendConfigDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\DayOfWeekConfigDlg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,7 @@
     </Compile>
     <Compile Include="ExcelIOManager.cs" />
     <Compile Include="FFTConvertor.cs" />
+    <Compile Include="FilterConfig\GeneralTrendConfiguration.cs" />
     <Compile Include="FilterConfig\PeriodDaysConfiguration.cs" />
     <Compile Include="FilterConfig\DailyConfiguration.cs" />
     <Compile Include="Dialog\MultiMeasureConfigDlg.cs">
@@ -211,11 +218,13 @@
     <Compile Include="FilterConfig\MultiMeasureConfiguration.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TsiConfig\ChannelConfig.cs" />
-    <Compile Include="TsiConfig\CommonConfig.cs" />
     <Compile Include="TsiConfig\enums.cs" />
     <Compile Include="TsiConfig\ExtraChannelConfig.cs" />
     <EmbeddedResource Include="Dialog\BaseConfigDlg.resx">
       <DependentUpon>BaseConfigDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\GeneralTrendConfigDlg.resx">
+      <DependentUpon>GeneralTrendConfigDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DayOfWeekConfigDlg.resx">
       <DependentUpon>DayOfWeekConfigDlg.cs</DependentUpon>
